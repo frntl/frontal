@@ -2,10 +2,16 @@
   "name": "FRONTAL",
   "version": "0.1.0",
   "main": "main.js",
+  "scripts":{
+    "start":"./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron main.js"
+    },
   "dependencies": {
     "highlights": "^1.3.0",
     "markdown-to-html": "0.0.11",
     "marked": "^0.3.5",
     "marky-markdown": "^5.4.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.34.3"
   }
 }
