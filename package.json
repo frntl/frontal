@@ -2,9 +2,11 @@
   "name": "FRONTAL",
   "version": "0.1.0",
   "main": "main.js",
-  "scripts":{
-    "start":"./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron main.js"
-    },
+  "private": true,
+  "engines" : { "node" : "4.2" },
+  "scripts": {
+    "start": "./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron main.js"
+  },
   "dependencies": {
     "highlights": "^1.3.0",
     "markdown-to-html": "0.0.11",
@@ -13,5 +15,10 @@
   },
   "devDependencies": {
     "electron-prebuilt": "^0.34.3"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sebastian-meier/frontal.git"
   }
 }
