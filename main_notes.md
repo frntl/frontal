@@ -1,3 +1,7 @@
+//Converting Slides to a pdf would be nice:
+https://www.npmjs.com/package/phantom-html-to-pdf
+https://www.npmjs.com/package/html-pdf
+
 //Copy the whole template folder to a temporary folder within the app
 
 //Option to disable template javascript

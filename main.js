@@ -3,6 +3,7 @@ var app = require('app'),
 	dialog = require('dialog'),
 	ElectronScreen,
 	fs = require('fs'),
+	swig = require('swig'),
 	//remote = require('remote'),
 	BrowserWindow = require('browser-window');
 
@@ -318,6 +319,13 @@ global.initApp = function(){
 	//mainWindow.openDevTools();
 
 	mainWindow.loadUrl('file://' + __dirname + '/index.html');
+
+	/*
+
+	var tpl = swig.compileFile(app.getPath('userData')+'/templates/index.html');
+	mainWindow.loadUrl('data:text/html;charset=UTF-8,'+encodeURIComponent(tpl({ variable: 'Hello World'})));
+
+	*/
 
 	mainWindow.on('closed', function() {
 		mainWindow = null;
