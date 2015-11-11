@@ -53,3 +53,34 @@ p a{
 	padding-top:130px;
 	box-shadow: inset 0px 0px 5px 5px rgba(0,0,0,0.1);
 }
+
+/*Themes Page*/
+#themes .theme{
+	display: block;
+	padding:10px;
+	width:380px;
+	height:280px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #555;
+	background-size:400px 300px;
+	float:left;
+	margin: 20px 20px 0 0;
+}
+
+#themes span,
+#themes a{
+	float:left;
+	clear:both;
+	display: block;
+	padding:5px 8px;
+	background-color:#fff;
+	color:#000;
+	font-size:10px;
+	font-family: sans-serif;
+}
+
+#themes .name{
+	font-weight:bold;
+	font-size:16px;
+}

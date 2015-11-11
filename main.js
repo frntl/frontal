@@ -14,7 +14,7 @@ var ready = false;
 var preready = false;
 
 //Path to settings file
-global.settings_path = app.getPath('userData') + '/settings.json';
+global.settings_path = null;
 
 //Main Window
 var mainWindow = null;
@@ -24,6 +24,9 @@ var noteWindow = null;
 
 //Note Window
 var errorWindow = null;
+
+//Array of themes
+var themes = [];
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
@@ -54,6 +57,8 @@ app.on('open-file', function(event, path) {
 
 //App initialization
 app.on('ready', function() {
+	global.settings_path = app.getPath('userData') + '/settings.json';
+
 	//Load the settings
 	//If settings file does not exist, create the settings file
 	try {
@@ -72,9 +77,10 @@ app.on('ready', function() {
 		// of themes and also have the possibility to keep themes up to date by using git
 		//
 		fs.openSync(global.settings_path, 'r+'); //throws error if file doesn't exist, continues after catch
-		var data=fs.readFileSync(global.settings_path);
+		var data = fs.readFileSync(global.settings_path);
 		global.settings = JSON.parse(data);
 		global.error("Success, settings found:", global.settings);
+
 	} catch (err) {
 		//if error, then there was no settings file
 		try {
@@ -95,14 +101,42 @@ app.on('ready', function() {
 		}
 	}
 
+	//Load themes
+	if(global.settings.template_directory !== null){
+		fs.readdirSync(global.settings.template_directory).forEach(function(file){
+			if(fs.lstatSync(global.settings.template_directory+'/'+file).isDirectory()){
+				var theme = {
+					folder:file,
+					path:global.settings.template_directory+'/'+file,
+					name:file,
+					version : 'nan',
+					hasImage:false
+				};
+				if (fs.existsSync(global.settings.template_directory+'/'+file+'/preview.png')) {
+					theme.hasImage = true;
+				}
+				if (fs.existsSync(global.settings.template_directory+'/'+file+'/package.json')) {
+					var data = JSON.parse(fs.readFileSync(global.settings.template_directory+'/'+file+'/package.json'));
+					theme = extend(theme, data);
+				}
+				themes.push(theme);
+			}
+		});
+	}
+
+	console.log(themes);
+
 	//initialize app
 	initApp();
 
-	if(preready !== false){
-		openFolder(preready);
-	}
-
 });
+
+function extend(destination, source) {
+	var returnObj = {};
+	for (var attrname in destination) { returnObj[attrname] = destination[attrname]; }
+	for (attrname in source) { returnObj[attrname] = source[attrname]; }
+	return returnObj;
+}
 
 //!!TODO: KeyCommands (command+o, command+f, arrow keys, return key, space key, esc key), Menu Structure (), Settings?
 
@@ -285,7 +319,7 @@ global.initApp = function(){
 
 	ElectronScreen = require('screen');
 	var displays = ElectronScreen.getAllDisplays();
-	global.error('displays', displays);
+	//global.error('displays', displays);
 	var externalDisplay = null;
 	for (var i in displays) {
 		if (displays[i].bounds.x !== 0 || displays[i].bounds.y !== 0) {
@@ -304,7 +338,7 @@ global.initApp = function(){
 			title: 'Frontal:Notes'
 		});
 
-		noteWindow.loadUrl('file://' + __dirname + '/notes.html');
+		noteWindow.loadUrl('file://' + __dirname + '/views/notes.html');
 	}
 
 	ElectronScreen.on('display-added', function(event, newDisplay){
@@ -330,7 +364,7 @@ global.initApp = function(){
 
 	//mainWindow.openDevTools();
 
-	mainWindow.loadUrl('file://' + __dirname + '/index.html');
+	mainWindow.loadUrl('file://' + __dirname + '/views/index.html');
 
 	/*
 
@@ -343,6 +377,11 @@ global.initApp = function(){
 		mainWindow = null;
 		//Close the comment window
 	});
+
+	//If somebody dropped a folder on the app icon to start the app
+	if(preready !== false){
+		openFolder(preready);
+	}
 };
 
 //Validate folder and open it
@@ -351,6 +390,28 @@ global.openFolder = function(path){
 	//Set current slideshow path to this path
 	//Switch to presentation mode if not already in presentation mode
 	global.error("File dropped",path);
+};
+
+//Set Theme Folder
+global.setThemeFolder = function(path){
+	global.settings.template_directory = path[0];
+	global.updateSettings();
+};
+
+//Set Theme
+global.setTheme = function(theme){
+	global.settings.last_template = theme;
+	global.updateSettings();
+};
+
+//GoTo a certain page
+global.goTo = function(page){
+	mainWindow.loadUrl('file://' + __dirname + '/views/'+page+'.html');
+};
+
+//Load list of themes
+global.getThemes = function(){
+	return themes;
 };
 
 //Global error function

@@ -8,6 +8,8 @@ var remote = require('remote'),
 	dialog = remote.require('dialog');
 
 var openFolder = remote.getGlobal('openFolder');
+var setThemeFolder = remote.getGlobal('setThemeFolder');
+var goTo = remote.getGlobal('goTo');
 
 window.onload = function() {
 
@@ -41,9 +43,21 @@ window.onload = function() {
 	},false);
 
 	//Traditional select folder functionality
-	var selectBtn = document.getElementById('frontal-button');
-
-	selectBtn.onclick = function (){
+	document.getElementById('frontal-button').onclick = function (){
 		openFolder(dialog.showOpenDialog({ properties: [ 'openDirectory' ]}));
+	}
+
+	var settings = remote.getGlobal('settings');
+
+	//Change the Theme-Folder
+	document.getElementById('theme-location-button').innerHTML = settings.template_directory;
+	document.getElementById('theme-location-button').onclick = function (){
+		setThemeFolder(dialog.showOpenDialog({ properties: [ 'openDirectory' ]}));
+	}
+
+	//GoTo Theme page
+	document.getElementById('theme-button').innerHTML = settings.last_template;
+	document.getElementById('theme-button').onclick = function (){
+		goTo('themes');
 	}
 };
