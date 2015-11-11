@@ -77,7 +77,7 @@ app.on('ready', function() {
 
 			updateSettings();
 
-		} catch (err) {
+		} catch (err) { //jshint ignore:line
 			global.error("Error creating settings file:", err);
 			throw err;
 		}
@@ -273,12 +273,12 @@ global.initApp = function(){
 
 	ElectronScreen = require('screen');
 	var displays = ElectronScreen.getAllDisplays();
-	global.error('displays', displays)
+	global.error('displays', displays);
 	var externalDisplay = null;
 	for (var i in displays) {
-		if (displays[i].bounds.x != 0 || displays[i].bounds.y != 0) {
+		if (displays[i].bounds.x !== 0 || displays[i].bounds.y !== 0) {
 			externalDisplay = displays[i];
-			console.log()
+			console.log();
 			break;
 		}
 	}
@@ -339,7 +339,7 @@ global.openFolder = function(path){
 	//Set current slideshow path to this path
 	//Switch to presentation mode if not already in presentation mode
 	global.error("File dropped",path);
-}
+};
 
 //Global error function
 global.error = function(str, e){
