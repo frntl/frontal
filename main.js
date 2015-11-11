@@ -59,6 +59,18 @@ app.on('ready', function() {
 	try {
 		//WHERE SHOULD WE STORE THE SETTINGS? I guess on user level to support machines with multiple users?!
 		//var settingsPath = app.getPath('appData') + '/settings.json';
+		// I would suggest having a folder called
+		// ~/.frontal on OSX and something similar on Windows and other *nix
+		// distros
+		// there we could store
+		// ~/.frontal/themes
+		// ~/.frontal/settings.json
+		// and other things we need
+		// the installation of themes for advanced users could then be
+		// git clone git@github.com:sebastian-meier/frontal-theme-example.git ~/.frontal/themes/frontal-theme-example
+		// for non terminal users the app could handle the installation
+		// of themes and also have the possibility to keep themes up to date by using git
+		//
 		fs.openSync(global.settings_path, 'r+'); //throws error if file doesn't exist, continues after catch
 		var data=fs.readFileSync(global.settings_path);
 		global.settings = JSON.parse(data);
