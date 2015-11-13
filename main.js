@@ -338,7 +338,7 @@ global.initApp = function(){
 			title: 'Frontal:Notes'
 		});
 
-		noteWindow.loadUrl('file://' + __dirname + '/views/notes.html');
+		noteWindow.loadUrl('file://' + __dirname + '/app/views/layouts/notes.html');
 	}
 
 	ElectronScreen.on('display-added', function(event, newDisplay){
@@ -364,7 +364,7 @@ global.initApp = function(){
 
 	//mainWindow.openDevTools();
 
-	mainWindow.loadUrl('file://' + __dirname + '/views/index.html');
+	mainWindow.loadUrl('file://' + __dirname + '/app/views/layouts/index.html');
 
 	/*
 
@@ -406,7 +406,7 @@ global.setTheme = function(theme){
 
 //GoTo a certain page
 global.goTo = function(page){
-	mainWindow.loadUrl('file://' + __dirname + '/views/'+page+'.html');
+	mainWindow.loadUrl('file://' + __dirname + '/app/views/layouts/'+page+'.html');
 };
 
 //Load list of themes
