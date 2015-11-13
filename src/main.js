@@ -1,15 +1,20 @@
+'use strict';
+
 /* jshint  esnext: true, esversion:6 */
 var app = require('app'),
-	Menu = require('menu'),
-	dialog = require('dialog'),
-	ElectronScreen,
-	fs = require('fs'),
-	swig = require('swig'),
-	//remote = require('remote'),
-	BrowserWindow = require('browser-window');
+    Menu = require('menu'),
+    dialog = require('dialog'),
+    ElectronScreen,
+    fs = require('fs'),
+    swig = require('swig'),
+    parser = require('./controller/parser'),
+
+//remote = require('remote'),
+BrowserWindow = require('browser-window');
 
 //Variable that knows if the app is ready yet
-let ready = false; // ES6
+var ready = false; // ES6
+
 //Variable contains a path to a folder if "open-file" event is called before ready
 var preready = false;
 
@@ -36,8 +41,10 @@ var presentation = {
 	slides:null
 };
 
+var menu;
+
 // Quit when all windows are closed.
-app.on('window-all-closed', function() {
+app.on('window-all-closed', function () {
 	// On OS X it is common for applications and their menu bar
 	// to stay active until the user quits explicitly with Cmd + Q
 	if (process.platform != 'darwin') {
@@ -46,25 +53,25 @@ app.on('window-all-closed', function() {
 });
 
 //Somebody acticates the app (usually via tabbing or clicking the app icon)
-app.on('activate', function(event, path) {
-	if(mainWindow === null){
+app.on('activate', function (event, path) {
+	if (mainWindow === null) {
 		global.initApp();
 	}
 });
 
 
 //Starting the presentation mode if somebody drops a valid folder onto the app icon
-app.on('open-file', function(event, path) {
+app.on('open-file', function (event, path) {
 	//This event sometimes gets triggered before the ready event, so if app is not ready yet, initiate after ready
-	if(ready){
+	if (ready) {
 		global.openFolder(path);
-	}else{
+	} else {
 		preready = path;
 	}
 });
 
 //App initialization
-app.on('ready', function() {
+app.on('ready', function () {
 	global.settings_path = app.getPath('userData') + '/settings.json';
 
 	//Load the settings
@@ -85,7 +92,7 @@ app.on('ready', function() {
 		// of themes and also have the possibility to keep themes up to date by using git
 		//
 		fs.openSync(global.settings_path, 'r+'); //throws error if file doesn't exist, continues after catch
-		let data = fs.readFileSync(global.settings_path);
+		var data = fs.readFileSync(global.settings_path);
 		global.settings = JSON.parse(data);
 		global.error("Success, settings found:", global.settings);
 
@@ -97,34 +104,35 @@ app.on('ready', function() {
 
 			//empty settings
 			global.settings = {
-				"template_directory":null,
-				"last_template":null
+				"template_directory": null,
+				"last_template": null
 			};
 
 			updateSettings();
 
-		} catch (err) { //jshint ignore:line
+		} catch (err) {
+			//jshint ignore:line
 			global.error("Error creating settings file:", err);
 			throw err;
 		}
 	}
 
 	//Load themes
-	if(global.settings.template_directory !== null){
-		fs.readdirSync(global.settings.template_directory).forEach(function(file){
-			if(fs.lstatSync(global.settings.template_directory+'/'+file).isDirectory()){
+	if (global.settings.template_directory !== null) {
+		fs.readdirSync(global.settings.template_directory).forEach(function (file) {
+			if (fs.lstatSync(global.settings.template_directory + '/' + file).isDirectory()) {
 				var theme = {
-					folder:file,
-					path:global.settings.template_directory+'/'+file,
-					name:file,
-					version : 'nan',
-					hasImage:false
+					folder: file,
+					path: global.settings.template_directory + '/' + file,
+					name: file,
+					version: 'nan',
+					hasImage: false
 				};
-				if (fs.existsSync(global.settings.template_directory+'/'+file+'/preview.png')) {
+				if (fs.existsSync(global.settings.template_directory + '/' + file + '/preview.png')) {
 					theme.hasImage = true;
 				}
-				if (fs.existsSync(global.settings.template_directory+'/'+file+'/package.json')) {
-					var data = JSON.parse(fs.readFileSync(global.settings.template_directory+'/'+file+'/package.json'));
+				if (fs.existsSync(global.settings.template_directory + '/' + file + '/package.json')) {
+					var data = JSON.parse(fs.readFileSync(global.settings.template_directory + '/' + file + '/package.json'));
 					theme = extend(theme, data);
 				}
 				themes.push(theme);
@@ -141,182 +149,158 @@ app.on('ready', function() {
 
 function extend(destination, source) {
 	var returnObj = {};
-	for (var attrname in destination) { returnObj[attrname] = destination[attrname]; }
-	for (attrname in source) { returnObj[attrname] = source[attrname]; }
+	for (var attrname in destination) {
+		returnObj[attrname] = destination[attrname];
+	}
+	for (attrname in source) {
+		returnObj[attrname] = source[attrname];
+	}
 	return returnObj;
 }
 
 //!!TODO: KeyCommands (command+o, command+f, arrow keys, return key, space key, esc key), Menu Structure (), Settings?
 
-global.updateSettings = function(){
+global.updateSettings = function () {
 	try {
-		fs.writeFileSync(global.settings_path, JSON.stringify(global.settings) , 'utf-8');
-		global.error("settings saved:",global.settings_path);
+		fs.writeFileSync(global.settings_path, JSON.stringify(global.settings), 'utf-8');
+		global.error("settings saved:", global.settings_path);
 	} catch (err) {
 		global.error("Error writing to settings file: " + err);
 		throw err;
 	}
 };
 
-var menuTemplate = [
-	{
-		label:'Edit',
-		submenu: [
-			{
-				label:'Undo',
-				accelerator: 'CmdOrCtr+Z',
-				role: 'undo'
-			},
-			{
-				label:'Redo',
-				accelerator: 'Shift+CmdOrCtr+Z',
-				role: 'redo'
-			},
-			{
-				type: 'separator'
-			},
-			{
-				label:'Cut',
-				accelerator: 'CmdOrCtr+X',
-				role: 'cut'
-			},
-			{
-				label:'Copy',
-				accelerator: 'CmdOrCtr+C',
-				role: 'copy'
-			},
-			{
-				label:'Pase',
-				accelerator: 'CmdOrCtr+V',
-				role: 'paste'
-			},
-			{
-				label:'Select All',
-				accelerator: 'CmdOrCtr+A',
-				role: 'selectall'
+var menuTemplate = [{
+	label: 'Edit',
+	submenu: [{
+		label: 'Undo',
+		accelerator: 'CmdOrCtr+Z',
+		role: 'undo'
+	}, {
+		label: 'Redo',
+		accelerator: 'Shift+CmdOrCtr+Z',
+		role: 'redo'
+	}, {
+		type: 'separator'
+	}, {
+		label: 'Cut',
+		accelerator: 'CmdOrCtr+X',
+		role: 'cut'
+	}, {
+		label: 'Copy',
+		accelerator: 'CmdOrCtr+C',
+		role: 'copy'
+	}, {
+		label: 'Pase',
+		accelerator: 'CmdOrCtr+V',
+		role: 'paste'
+	}, {
+		label: 'Select All',
+		accelerator: 'CmdOrCtr+A',
+		role: 'selectall'
+	}]
+}, {
+	label: 'View',
+	submenu: [{
+		label: 'Toggle Full Screen',
+		accelerator: (function () {
+			if (process.platform == 'darwin') {
+				return 'Ctrl+Command+F';
+			} else {
+				return 'F11';
 			}
-		]
-	},{
-		label: 'View',
-		submenu:[
-			{
-				label: 'Toggle Full Screen',
-				accelerator: (function(){
-					if(process.platform == 'darwin'){
-						return 'Ctrl+Command+F';
-					}else{
-						return 'F11';
-					}
-				})(),
-				click: function(item, focusedWindow){
-					/*if(focusedWindow){
-						focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
-					}*/
+		})(),
+		click: function click(item, focusedWindow) {
+			/*if(focusedWindow){
+   	focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+   }*/
 
-					//For this to work on OS X you need to go to System Preferences > Spaces > Enable different spaces for external displays, otherwise you will get a black screen on the second display
-					if(mainWindow){
-						var state = true;
-						if(mainWindow.isFullScreen()){
-							state = false;
-						}
-						mainWindow.setFullScreen(state);
-						if(noteWindow){
-							//Make sure the note window is on the secondary display
-							noteWindow.setFullScreen(state);
-						}
-					}
+			//For this to work on OS X you need to go to System Preferences > Spaces > Enable different spaces for external displays, otherwise you will get a black screen on the second display
+			if (mainWindow) {
+				var state = true;
+				if (mainWindow.isFullScreen()) {
+					state = false;
 				}
-			},
-			{
-				label: 'Toggle Developer Tools',
-				accelerator: (function(){
-					if(process.platform == 'darwin'){
-						return 'Alt+Command+I';
-					}else{
-						return 'Ctrl+Shift+I';
-					}
-				})(),
-				click: function(item, focusedWindow){
-					if(focusedWindow){
-						focusedWindow.toggleDevTools();
-					}
+				mainWindow.setFullScreen(state);
+				if (noteWindow) {
+					//Make sure the note window is on the secondary display
+					noteWindow.setFullScreen(state);
 				}
 			}
-		]
-	},{
-		label:'Window',
-		role:'window',
-		submenu:[
-			{
-				label:'Minimize',
-				accelerator: 'CmdOrCtrl+M',
-				role:'minimize'
-			},
-			{
-				label:'Close',
-				accelerator: 'CmdOrCtrl+W',
-				role:'close'
+		}
+	}, {
+		label: 'Toggle Developer Tools',
+		accelerator: (function () {
+			if (process.platform == 'darwin') {
+				return 'Alt+Command+I';
+			} else {
+				return 'Ctrl+Shift+I';
 			}
-		]
-	}
-];
+		})(),
+		click: function click(item, focusedWindow) {
+			if (focusedWindow) {
+				focusedWindow.toggleDevTools();
+			}
+		}
+	}]
+}, {
+	label: 'Window',
+	role: 'window',
+	submenu: [{
+		label: 'Minimize',
+		accelerator: 'CmdOrCtrl+M',
+		role: 'minimize'
+	}, {
+		label: 'Close',
+		accelerator: 'CmdOrCtrl+W',
+		role: 'close'
+	}]
+}];
 
-global.initApp = function(){
+global.initApp = function () {
 	//If this app is a mac app, we add the standard first menu point containing the about stuff
-	if(process.platform == 'darwin'){
+	if (process.platform == 'darwin') {
 		var name = app.getName();
 		menuTemplate.unshift({
 			label: name,
-			submenu:[
-				{
-					label: 'About '+name,
-					role: 'about'
-				},
-				{
-					type:'separator'
-				},
-				{
-					label: 'Services',
-					role: 'services',
-					submenu:[]
-				},
-				{
-					label: 'Hide '+name,
-					accelerator:'Command+H',
-					role: 'hide'
-				},
-				{
-					label: 'Hide Others',
-					accelerator:'Command+Shift+H',
-					role: 'hideothers'
-				},
-				{
-					label: 'Show All',
-					role: 'unhide'
-				},
-				{
-					type:'separator'
-				},
-				{
-					label: 'Quit',
-					accelerator:'Command+Q',
-					click: function(){
-						app.quit();
-					}
+			submenu: [{
+				label: 'About ' + name,
+				role: 'about'
+			}, {
+				type: 'separator'
+			}, {
+				label: 'Services',
+				role: 'services',
+				submenu: []
+			}, {
+				label: 'Hide ' + name,
+				accelerator: 'Command+H',
+				role: 'hide'
+			}, {
+				label: 'Hide Others',
+				accelerator: 'Command+Shift+H',
+				role: 'hideothers'
+			}, {
+				label: 'Show All',
+				role: 'unhide'
+			}, {
+				type: 'separator'
+			}, {
+				label: 'Quit',
+				accelerator: 'Command+Q',
+				click: function click() {
+					app.quit();
 				}
-			]
+			}]
 		});
 
 		//Add mac os x specific window command
-		menuTemplate[3].submenu.push(
-			{
-				type:'separator'
-			},
-			{
-				label: 'Bring All to Front',
-				role:'front'
-			}
-		);
+		menuTemplate[3].submenu.push({
+			type: 'separator'
+		}, {
+			label: 'Bring All to Front',
+			role: 'front'
+		});
 	}
 
 	//Activate the menu
@@ -341,22 +325,23 @@ global.initApp = function(){
 		noteWindow = new BrowserWindow({
 			x: externalDisplay.bounds.x + 50,
 			y: externalDisplay.bounds.y + 50,
-			width:200,
-			height:200,
+			width: 200,
+			height: 200,
 			title: 'Frontal:Notes'
 		});
 
 		noteWindow.loadUrl('file://' + __dirname + '/views/layouts/notes.html');
 	}
-	ElectronScreen.on('display-added', function(event, newDisplay){
+
+	ElectronScreen.on('display-added', function (event, newDisplay) {
 		//Update Window Setup
 	});
 
-	ElectronScreen.on('display-removed', function(event, oldDisplay){
+	ElectronScreen.on('display-removed', function (event, oldDisplay) {
 		//Update Window Setup
 	});
 
-	ElectronScreen.on('display-metrics-changed', function(event, display, changedMetricts){
+	ElectronScreen.on('display-metrics-changed', function (event, display, changedMetricts) {
 		//Update Window Setup
 	});
 
@@ -364,9 +349,9 @@ global.initApp = function(){
 	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
-		x:0,
-		y:0,
-		title:"Frontal"
+		x: 0,
+		y: 0,
+		title: "Frontal"
 	});
 
 	//mainWindow.openDevTools();
@@ -374,25 +359,24 @@ global.initApp = function(){
 	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/index.html');
 
 	/*
+ 	var tpl = swig.compileFile(app.getPath('userData')+'/templates/index.html');
+ mainWindow.loadUrl('data:text/html;charset=UTF-8,'+encodeURIComponent(tpl({ variable: 'Hello World'})));
+ 	*/
 
-	var tpl = swig.compileFile(app.getPath('userData')+'/templates/index.html');
-	mainWindow.loadUrl('data:text/html;charset=UTF-8,'+encodeURIComponent(tpl({ variable: 'Hello World'})));
-
-	*/
-
-	mainWindow.on('closed', function() {
+	mainWindow.on('closed', function () {
 		mainWindow = null;
 		//Close the comment window
 	});
 
 	//If somebody dropped a folder on the app icon to start the app
-	if(preready !== false){
+	if (preready !== false) {
 		openFolder(preready);
 	}
 };
 
 //Validate folder and open it
-global.openFolder = function(path){
+global.openFolder = function (path) {
+	//Validate if selected folder contains all required elements for a frontal slide folder
 	/*
 		We accept:
 			xyz.md
@@ -437,10 +421,10 @@ global.openFolder = function(path){
 		var presentation_data = fs.readFileSync(path);
 
 		if(presentation.type === 'md'){
-			//presentation.slides = parser.md(presentation_data);
+			presentation.slides = parser.md(presentation_data);
 
 		}else if(presentation.type === 'json'){
-			//presentation.slides = parser.json(presentation_data);
+			presentation.slides = parser.json(presentation_data);
 
 		}else{
 			global.error("Unsupported file type: ",path);
@@ -454,55 +438,55 @@ global.openFolder = function(path){
 };
 
 //Set Theme Folder
-global.setThemeFolder = function(path){
+global.setThemeFolder = function (path) {
 	global.settings.template_directory = path[0];
 	global.updateSettings();
 };
 
 //Set Theme
-global.setTheme = function(theme){
+global.setTheme = function (theme) {
 	global.settings.last_template = theme;
 	global.updateSettings();
 };
 
 //GoTo a certain page
-global.goTo = function(page){
-	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/'+page+'.html');
+global.goTo = function (page) {
+	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/' + page + '.html');
 };
 
 //Load list of themes
-global.getThemes = function(){
+global.getThemes = function () {
 	return themes;
 };
 
 //Global error function
-global.error = function(str, e){
+global.error = function (str, e) {
 
-	var error_html = 'data:text/html;charset=UTF-8,'+encodeURIComponent('<!DOCTYPE html>'+
-		'<html>'+
-			'<head>'+
-				'<meta charset="UTF-8">'+
-				'<title>Error</title>'+
-				'<link rel="stylesheet" type="text/css" href="css/popup.css">'+
-			'</head>'+
-			'<body>'+
-				'<h1>'+str+'</h1>'+
-				'<p>'+JSON.stringify(e)+'</p>'+
-			'</body>'+
+	var error_html = 'data:text/html;charset=UTF-8,' + encodeURIComponent('<!DOCTYPE html>' +
+		'<html>' +
+			'<head>' +
+				'<meta charset="UTF-8">' +
+				'<title>Error</title>' +
+				'<link rel="stylesheet" type="text/css" href="css/popup.css">' +
+			'</head>' +
+			'<body>' +
+				'<h1>' + str + '</h1>' +
+				'<p>' + JSON.stringify(e) + '</p>' +
+			'</body>' +
 		'</html>');
 
-	if(errorWindow === null){
+	if (errorWindow === null) {
 		errorWindow = new BrowserWindow({
 			width: 400,
 			height: 400,
-			center:true,
-			title:"Frontal:Error"
+			center: true,
+			title: "Frontal:Error"
 		});
 	}
 
 	errorWindow.loadUrl(error_html);
 
-	errorWindow.on('closed', function(){
+	errorWindow.on('closed', function () {
 		errorWindow = null;
 	});
 };

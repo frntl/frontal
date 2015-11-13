@@ -1,18 +1,21 @@
-'use strict';
+'use strict'
 
 /* jshint  esnext: true, esversion:6 */
+;
 var app = require('app'),
     Menu = require('menu'),
     dialog = require('dialog'),
     ElectronScreen,
     fs = require('fs'),
     swig = require('swig'),
+    parser = require('./controller/parser'),
 
 //remote = require('remote'),
 BrowserWindow = require('browser-window');
 
 //Variable that knows if the app is ready yet
 var ready = false; // ES6
+
 //Variable contains a path to a folder if "open-file" event is called before ready
 var preready = false;
 
@@ -38,6 +41,8 @@ var presentation = {
 	file: null,
 	slides: null
 };
+
+var menu;
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -324,6 +329,7 @@ global.initApp = function () {
 
 		noteWindow.loadUrl('file://' + __dirname + '/views/layouts/notes.html');
 	}
+
 	ElectronScreen.on('display-added', function (event, newDisplay) {
 		//Update Window Setup
 	});
@@ -367,6 +373,7 @@ global.initApp = function () {
 
 //Validate folder and open it
 global.openFolder = function (path) {
+	//Validate if selected folder contains all required elements for a frontal slide folder
 	/*
  	We accept:
  		xyz.md
@@ -410,14 +417,12 @@ global.openFolder = function (path) {
 		var presentation_data = fs.readFileSync(path);
 
 		if (presentation.type === 'md') {
-			//presentation.slides = parser.md(presentation_data);
-
+			presentation.slides = parser.md(presentation_data);
 		} else if (presentation.type === 'json') {
-				//presentation.slides = parser.json(presentation_data);
-
-			} else {
-					global.error("Unsupported file type: ", path);
-				}
+			presentation.slides = parser.json(presentation_data);
+		} else {
+			global.error("Unsupported file type: ", path);
+		}
 	}
 
 	console.log(presentation);
