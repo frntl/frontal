@@ -1,3 +1,4 @@
+/* jshint  esnext: true, esversion:6 */
 var app = require('app'),
 	Menu = require('menu'),
 	dialog = require('dialog'),
@@ -8,8 +9,7 @@ var app = require('app'),
 	BrowserWindow = require('browser-window');
 
 //Variable that knows if the app is ready yet
-var ready = false;
-
+let ready = false; // ES6
 //Variable contains a path to a folder if "open-file" event is called before ready
 var preready = false;
 
@@ -85,7 +85,7 @@ app.on('ready', function() {
 		// of themes and also have the possibility to keep themes up to date by using git
 		//
 		fs.openSync(global.settings_path, 'r+'); //throws error if file doesn't exist, continues after catch
-		var data = fs.readFileSync(global.settings_path);
+		let data = fs.readFileSync(global.settings_path);
 		global.settings = JSON.parse(data);
 		global.error("Success, settings found:", global.settings);
 
@@ -346,9 +346,8 @@ global.initApp = function(){
 			title: 'Frontal:Notes'
 		});
 
-		noteWindow.loadUrl('file://' + __dirname + '/views/notes.html');
+		noteWindow.loadUrl('file://' + __dirname + '/views/layouts/notes.html');
 	}
-
 	ElectronScreen.on('display-added', function(event, newDisplay){
 		//Update Window Setup
 	});
@@ -372,7 +371,7 @@ global.initApp = function(){
 
 	//mainWindow.openDevTools();
 
-	mainWindow.loadUrl('file://' + __dirname + '/views/index.html');
+	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/index.html');
 
 	/*
 
@@ -468,7 +467,7 @@ global.setTheme = function(theme){
 
 //GoTo a certain page
 global.goTo = function(page){
-	mainWindow.loadUrl('file://' + __dirname + '/views/'+page+'.html');
+	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/'+page+'.html');
 };
 
 //Load list of themes
