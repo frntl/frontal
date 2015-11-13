@@ -4,12 +4,26 @@
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
+
+There is a comment in here
+<!-- comment 1 slide 1 -->
+
+
+There is a comment in here
+<!-- comment 2 slide 1 -->
+
+
+
 ---
 
 ### Heading three
 
 
     print "Hello world"
+
+
+There is a comment in here
+<!-- comment 1 slide 2 -->
 
 ---
 
