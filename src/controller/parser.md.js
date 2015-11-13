@@ -27,4 +27,3 @@ var parser_md = function(){
 };
 
 */
-"use strict";
