@@ -74,10 +74,10 @@ function md2json(data) {
 function md2html(data) {
   // just split the MD in a simple way at the
   // hr before it is html
-  var mdslides = data.split(/\n---\n||\r---\r/);
-
+  var mdslides = data.split(/\n---\n/);
+  var slides = [];
   for (var i = 0; i < mdslides.length; i++) {
-    slides.push(mark.toHTML(mdslides[i]));
+    slides.push(mark.markdown.toHTML(mdslides[i]));
   }
   return slides;
 }
