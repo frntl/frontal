@@ -2,12 +2,14 @@
 
 /* jshint  esnext: true, esversion:6 */
 var app = require('app'),
-    Menu = require('menu'),
     dialog = require('dialog'),
     ElectronScreen,
     fs = require('fs'),
     swig = require('swig'),
     parser = require('./controller/parser'),
+    themes = require('./controller/themes'),
+    frontal = require('./controller/frontal'),
+    settings = require('./controller/settings'),
 
 //remote = require('remote'),
 BrowserWindow = require('browser-window');
@@ -29,9 +31,6 @@ var noteWindow = null;
 
 //Note Window
 var errorWindow = null;
-
-//Array of themes
-var themes = [];
 
 //Presentation object
 var presentation = {
@@ -114,45 +113,11 @@ app.on('ready', function () {
 		}
 	}
 
-	//Load themes
-	if (global.settings.template_directory !== null) {
-		fs.readdirSync(global.settings.template_directory).forEach(function (file) {
-			if (fs.lstatSync(global.settings.template_directory + '/' + file).isDirectory()) {
-				var theme = {
-					folder: file,
-					path: global.settings.template_directory + '/' + file,
-					name: file,
-					version: 'nan',
-					hasImage: false
-				};
-				if (fs.existsSync(global.settings.template_directory + '/' + file + '/preview.png')) {
-					theme.hasImage = true;
-				}
-				if (fs.existsSync(global.settings.template_directory + '/' + file + '/package.json')) {
-					var data = JSON.parse(fs.readFileSync(global.settings.template_directory + '/' + file + '/package.json'));
-					theme = extend(theme, data);
-				}
-				themes.push(theme);
-			}
-		});
-	}
-
-	console.log(themes);
+	themes.init();
 
 	//initialize app
 	initApp();
 });
-
-function extend(destination, source) {
-	var returnObj = {};
-	for (var attrname in destination) {
-		returnObj[attrname] = destination[attrname];
-	}
-	for (attrname in source) {
-		returnObj[attrname] = source[attrname];
-	}
-	return returnObj;
-}
 
 //!!TODO: KeyCommands (command+o, command+f, arrow keys, return key, space key, esc key), Menu Structure (), Settings?
 
@@ -166,142 +131,8 @@ global.updateSettings = function () {
 	}
 };
 
-var menuTemplate = [{
-	label: 'Edit',
-	submenu: [{
-		label: 'Undo',
-		accelerator: 'CmdOrCtr+Z',
-		role: 'undo'
-	}, {
-		label: 'Redo',
-		accelerator: 'Shift+CmdOrCtr+Z',
-		role: 'redo'
-	}, {
-		type: 'separator'
-	}, {
-		label: 'Cut',
-		accelerator: 'CmdOrCtr+X',
-		role: 'cut'
-	}, {
-		label: 'Copy',
-		accelerator: 'CmdOrCtr+C',
-		role: 'copy'
-	}, {
-		label: 'Pase',
-		accelerator: 'CmdOrCtr+V',
-		role: 'paste'
-	}, {
-		label: 'Select All',
-		accelerator: 'CmdOrCtr+A',
-		role: 'selectall'
-	}]
-}, {
-	label: 'View',
-	submenu: [{
-		label: 'Toggle Full Screen',
-		accelerator: (function () {
-			if (process.platform == 'darwin') {
-				return 'Ctrl+Command+F';
-			} else {
-				return 'F11';
-			}
-		})(),
-		click: function click(item, focusedWindow) {
-			/*if(focusedWindow){
-   	focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
-   }*/
-
-			//For this to work on OS X you need to go to System Preferences > Spaces > Enable different spaces for external displays, otherwise you will get a black screen on the second display
-			if (mainWindow) {
-				var state = true;
-				if (mainWindow.isFullScreen()) {
-					state = false;
-				}
-				mainWindow.setFullScreen(state);
-				if (noteWindow) {
-					//Make sure the note window is on the secondary display
-					noteWindow.setFullScreen(state);
-				}
-			}
-		}
-	}, {
-		label: 'Toggle Developer Tools',
-		accelerator: (function () {
-			if (process.platform == 'darwin') {
-				return 'Alt+Command+I';
-			} else {
-				return 'Ctrl+Shift+I';
-			}
-		})(),
-		click: function click(item, focusedWindow) {
-			if (focusedWindow) {
-				focusedWindow.toggleDevTools();
-			}
-		}
-	}]
-}, {
-	label: 'Window',
-	role: 'window',
-	submenu: [{
-		label: 'Minimize',
-		accelerator: 'CmdOrCtrl+M',
-		role: 'minimize'
-	}, {
-		label: 'Close',
-		accelerator: 'CmdOrCtrl+W',
-		role: 'close'
-	}]
-}];
-
 global.initApp = function () {
-	//If this app is a mac app, we add the standard first menu point containing the about stuff
-	if (process.platform == 'darwin') {
-		var name = app.getName();
-		menuTemplate.unshift({
-			label: name,
-			submenu: [{
-				label: 'About ' + name,
-				role: 'about'
-			}, {
-				type: 'separator'
-			}, {
-				label: 'Services',
-				role: 'services',
-				submenu: []
-			}, {
-				label: 'Hide ' + name,
-				accelerator: 'Command+H',
-				role: 'hide'
-			}, {
-				label: 'Hide Others',
-				accelerator: 'Command+Shift+H',
-				role: 'hideothers'
-			}, {
-				label: 'Show All',
-				role: 'unhide'
-			}, {
-				type: 'separator'
-			}, {
-				label: 'Quit',
-				accelerator: 'Command+Q',
-				click: function click() {
-					app.quit();
-				}
-			}]
-		});
-
-		//Add mac os x specific window command
-		menuTemplate[3].submenu.push({
-			type: 'separator'
-		}, {
-			label: 'Bring All to Front',
-			role: 'front'
-		});
-	}
-
-	//Activate the menu
-	menu = Menu.buildFromTemplate(menuTemplate);
-	Menu.setApplicationMenu(menu);
+	frontal.buildMenu(app);
 
 	//MultiDisplay
 
