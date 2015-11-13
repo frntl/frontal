@@ -7,6 +7,7 @@ var app = require('app'),
     ElectronScreen,
     fs = require('fs'),
     swig = require('swig'),
+    parser = require('./controller/parser'),
 
 //remote = require('remote'),
 BrowserWindow = require('browser-window');
@@ -420,10 +421,10 @@ global.openFolder = function (path) {
 		var presentation_data = fs.readFileSync(path);
 
 		if(presentation.type === 'md'){
-			//presentation.slides = parser.md(presentation_data);
+			presentation.slides = parser.md(presentation_data);
 
 		}else if(presentation.type === 'json'){
-			//presentation.slides = parser.json(presentation_data);
+			presentation.slides = parser.json(presentation_data);
 
 		}else{
 			global.error("Unsupported file type: ",path);
