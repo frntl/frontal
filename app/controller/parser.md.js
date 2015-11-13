@@ -1,3 +1,7 @@
+// parser.md = function(data){
+// 	return data;
+// };
+
 /*
 
 1. The parser receives the content of a text-file either json or markdown the switch between parser is determined by file-extension.
@@ -22,7 +26,7 @@ var parser_md = function(){
 
 		return slides;
 	}
-	
+
 	return parser;
 };
 

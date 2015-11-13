@@ -1,6 +1,6 @@
-parser.md = function(data){
-	return data;
-};
+// parser.md = function(data){
+// 	return data;
+// };
 
 /*
 
@@ -26,7 +26,7 @@ var parser_md = function(){
 
 		return slides;
 	}
-	
+
 	return parser;
 };
 
