@@ -1,14 +1,14 @@
-'use strict'
+'use strict';
 
 /* jshint  esnext: true, esversion:6 */
-;
 var app = require('app'),
     Menu = require('menu'),
     dialog = require('dialog'),
     ElectronScreen,
     fs = require('fs'),
     swig = require('swig'),
-    parser = require('./controller/parser'),
+
+//parser = require('./controller/parser'),
 
 //remote = require('remote'),
 BrowserWindow = require('browser-window');
@@ -417,12 +417,14 @@ global.openFolder = function (path) {
 		var presentation_data = fs.readFileSync(path);
 
 		if (presentation.type === 'md') {
-			presentation.slides = parser.md(presentation_data);
+			//presentation.slides = parser.md(presentation_data);
+
 		} else if (presentation.type === 'json') {
-			presentation.slides = parser.json(presentation_data);
-		} else {
-			global.error("Unsupported file type: ", path);
-		}
+				//presentation.slides = parser.json(presentation_data);
+
+			} else {
+					global.error("Unsupported file type: ", path);
+				}
 	}
 
 	console.log(presentation);
