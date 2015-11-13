@@ -7,7 +7,8 @@ var app = require('app'),
     ElectronScreen,
     fs = require('fs'),
     swig = require('swig'),
-    parser = require('./controller/parser'),
+
+//parser = require('./controller/parser'),
 
 //remote = require('remote'),
 BrowserWindow = require('browser-window');
@@ -35,10 +36,10 @@ var themes = [];
 
 //Presentation object
 var presentation = {
-	type:'md|json',
-	path:null,
-	file:null,
-	slides:null
+	type: 'md|json',
+	path: null,
+	file: null,
+	slides: null
 };
 
 var menu;
@@ -58,7 +59,6 @@ app.on('activate', function (event, path) {
 		global.initApp();
 	}
 });
-
 
 //Starting the presentation mode if somebody drops a valid folder onto the app icon
 app.on('open-file', function (event, path) {
@@ -95,7 +95,6 @@ app.on('ready', function () {
 		var data = fs.readFileSync(global.settings_path);
 		global.settings = JSON.parse(data);
 		global.error("Success, settings found:", global.settings);
-
 	} catch (err) {
 		//if error, then there was no settings file
 		try {
@@ -109,7 +108,6 @@ app.on('ready', function () {
 			};
 
 			updateSettings();
-
 		} catch (err) {
 			//jshint ignore:line
 			global.error("Error creating settings file:", err);
@@ -144,7 +142,6 @@ app.on('ready', function () {
 
 	//initialize app
 	initApp();
-
 });
 
 function extend(destination, source) {
@@ -378,57 +375,56 @@ global.initApp = function () {
 global.openFolder = function (path) {
 	//Validate if selected folder contains all required elements for a frontal slide folder
 	/*
-		We accept:
-			xyz.md
-			xyz.json
-			folder/xyz.md
-			folder/xyz.json
-		we do not accept:
-			folder/package.json
-	*/
+ 	We accept:
+ 		xyz.md
+ 		xyz.json
+ 		folder/xyz.md
+ 		folder/xyz.json
+ 	we do not accept:
+ 		folder/package.json
+ */
 
 	//Test if path is a folder
 	var extension;
-	if(fs.lstatSync(path).isDirectory()){
+	if (fs.lstatSync(path).isDirectory()) {
 		//Loop through the folder
 		var presentation_file = null;
-		fs.readdirSync(path).forEach(function(file){
+		fs.readdirSync(path).forEach(function (file) {
 			//Ignore sub-folders
-			if(!fs.lstatSync(path+'/'+file).isDirectory()){
+			if (!fs.lstatSync(path + '/' + file).isDirectory()) {
 				//Ignore package and readme files (npm/git support)
-				if((file.toLowerCase() !== 'package.json')&&(file.toLowerCase() !== 'readme.md')){
-					extension = file.substring(file.lastIndexOf(".")+1).toLowerCase();
-					if((extension === 'md')||(extension === 'json')){
+				if (file.toLowerCase() !== 'package.json' && file.toLowerCase() !== 'readme.md') {
+					extension = file.substring(file.lastIndexOf(".") + 1).toLowerCase();
+					if (extension === 'md' || extension === 'json') {
 						presentation_file = file;
 					}
 				}
 			}
 		});
 
-		if(presentation_file !== null){
-			path = path+'/'+presentation_file;
-		}else{
-			global.error("No presentation file found in: ",path);
+		if (presentation_file !== null) {
+			path = path + '/' + presentation_file;
+		} else {
+			global.error("No presentation file found in: ", path);
 		}
-
 	}
 
-	if(fs.existsSync(path)&&(!fs.lstatSync(path).isDirectory())){
+	if (fs.existsSync(path) && !fs.lstatSync(path).isDirectory()) {
 
-		presentation.type = path.substring(path.lastIndexOf(".")+1).toLowerCase();
-		presentation.file = path.substring(path.lastIndexOf('/')+1);
-		presentation.path = path.substring(0, (path.length-presentation.file.length));
+		presentation.type = path.substring(path.lastIndexOf(".") + 1).toLowerCase();
+		presentation.file = path.substring(path.lastIndexOf('/') + 1);
+		presentation.path = path.substring(0, path.length - presentation.file.length);
 		var presentation_data = fs.readFileSync(path);
 
-		if(presentation.type === 'md'){
-			presentation.slides = parser.md(presentation_data);
+		if (presentation.type === 'md') {
+			//presentation.slides = parser.md(presentation_data);
 
-		}else if(presentation.type === 'json'){
-			presentation.slides = parser.json(presentation_data);
+		} else if (presentation.type === 'json') {
+				//presentation.slides = parser.json(presentation_data);
 
-		}else{
-			global.error("Unsupported file type: ",path);
-		}
+			} else {
+					global.error("Unsupported file type: ", path);
+				}
 	}
 
 	console.log(presentation);
@@ -462,18 +458,7 @@ global.getThemes = function () {
 //Global error function
 global.error = function (str, e) {
 
-	var error_html = 'data:text/html;charset=UTF-8,' + encodeURIComponent('<!DOCTYPE html>' +
-		'<html>' +
-			'<head>' +
-				'<meta charset="UTF-8">' +
-				'<title>Error</title>' +
-				'<link rel="stylesheet" type="text/css" href="css/popup.css">' +
-			'</head>' +
-			'<body>' +
-				'<h1>' + str + '</h1>' +
-				'<p>' + JSON.stringify(e) + '</p>' +
-			'</body>' +
-		'</html>');
+	var error_html = 'data:text/html;charset=UTF-8,' + encodeURIComponent('<!DOCTYPE html>' + '<html>' + '<head>' + '<meta charset="UTF-8">' + '<title>Error</title>' + '<link rel="stylesheet" type="text/css" href="css/popup.css">' + '</head>' + '<body>' + '<h1>' + str + '</h1>' + '<p>' + JSON.stringify(e) + '</p>' + '</body>' + '</html>');
 
 	if (errorWindow === null) {
 		errorWindow = new BrowserWindow({
