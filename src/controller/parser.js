@@ -1,8 +1,17 @@
-module.parser = function () {
-	json: function (data) {
-		return JSON.parse(data);
-	},
-	md: function () {
+export function parser (){
+}
+
+export function json(data){
+	return JSON.parse(data);
+}
+
+export function md (data){
+  let slides = data.split('\n---\n');
+
+  return slides;
+}
+
+
 		/*
 
 		1. The parser receives the content of a text-file either json or markdown the switch between parser is determined by file-extension.
@@ -27,10 +36,8 @@ module.parser = function () {
 
 				return slides;
 			}
-			
+
 			return parser;
 		};
 
 		*/
-	}
-};
