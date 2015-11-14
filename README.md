@@ -10,8 +10,11 @@ Markdown powered presentation tool build on Electron / Node.js
 Init the project by running:  
 
 ```bash
+#install nodejs
 nvm install 4.2.2  
-git@github.com:sebastian-meier/frontal.git && cd frontal
+# or using homebrew 
+brew install homebrew/versions/node4-lts
+git@github.com:frntl/frontal.git && cd frontal
 nvm use
 npm install --global babel-cli mocha
 npm install

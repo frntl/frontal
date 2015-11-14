@@ -6,9 +6,9 @@ from 'chai';
 import * as fs from 'fs';
 import * as parser from '../src/controller/parser.js';
 
-describe('Parser', function() {
-  describe('#json()', function() {
-    it('should return an Object', function(done) {
+describe('Parser', () => {
+  describe('#json()', () => {
+    it('should return an Object', (done) => {
       let str = '{"x":12,"y":100}';
       let res = parser.json(str);
       expect(res).to.be.instanceof(Object);
@@ -16,8 +16,8 @@ describe('Parser', function() {
     });
   });
 
-  describe('#md2html()', function() {
-    it('should accept an Markdown file content and return an Array of HTML Strings', function(done) {
+  describe('#md2html()', () => {
+    it('should accept an Markdown file content and return an Array of HTML Strings', (done)=>  {
       fs.readFile('./examples/presentation.md', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
@@ -31,11 +31,10 @@ describe('Parser', function() {
         }
       });
     });
-
   });
 
-  describe('#md2json()', function() {
-    it('should accept an Markdown file content and return an Array of Arrays', function(done) {
+  describe('#md2json()', () => {
+    it('should accept an Markdown file content and return an Array of Arrays', (done)=>  {
       fs.readFile('./examples/presentation.md', 'utf8', (err, data) => {
         if (err) {
           console.error(err);

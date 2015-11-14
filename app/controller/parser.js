@@ -56,6 +56,7 @@ function md2json(data) {
   // the mardown.js lib already
   // parses to json woohoo! \o/
   // so we just grab that
+
   var jarr = mark.markdown.parse(data);
   // console.log(jarr);
   var slides = []; // will hold the final result
@@ -80,6 +81,7 @@ function md2json(data) {
   }
   return slides;
 }
+
 /**
  * [md2html description]
  * @param  {String} data a Markdown String

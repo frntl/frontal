@@ -1,5 +1,6 @@
 // https://github.com/evilstreak/markdown-js
 import * as mark from 'markdown';
+
 // about this module:
 // It exports 3 Things:
 //     parser.json(data)
@@ -13,7 +14,6 @@ import * as mark from 'markdown';
 //     // or like this (not verified)
 //     import {md2json} from './controller/parser';
 // ```
-
 
 export function parser (){
   // nothing her yet
@@ -40,6 +40,7 @@ export function md2json(data){
   // the mardown.js lib already
   // parses to json woohoo! \o/
   // so we just grab that
+
   let jarr = mark.markdown.parse(data);
   // console.log(jarr);
   let slides = []; // will hold the final result
@@ -64,6 +65,7 @@ export function md2json(data){
   }
   return slides;
 }
+
 /**
  * [md2html description]
  * @param  {String} data a Markdown String
