@@ -2,12 +2,17 @@
 This file contains all the functionality specific to the index.html (start page of the application)
 */
 
-console.log("INDEX");
-
 var remote = require('remote'),
 	dialog = remote.require('dialog');
 
-var openFolder = remote.getGlobal('openFolder');
+console.log("index");
+
+var error = remote.getGlobal('error');
+setTimeout(function(){ console.log("hello"); error('hello'); }, 3000);
+
+console.log("done");
+
+/*var openFolder = remote.getGlobal('openFolder');
 var setThemeFolder = remote.getGlobal('setThemeFolder');
 var goTo = remote.getGlobal('goTo');
 
@@ -60,4 +65,4 @@ window.onload = function() {
 	document.getElementById('theme-button').onclick = function (){
 		goTo('themes');
 	};
-};
+};*/
