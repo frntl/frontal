@@ -1,4 +1,4 @@
-import * as BrowserWindow from 'browser-window';
+var BrowserWindow = require('browser-window');
 
 export var error_window = null;
 

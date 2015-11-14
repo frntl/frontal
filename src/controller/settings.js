@@ -82,4 +82,5 @@ export function init (app) {
 			throw err;
 		}
 	}
+
 }

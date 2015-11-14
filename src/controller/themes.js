@@ -1,5 +1,6 @@
 import * as fs from 'fs';
-import * as helper from './helper';
+import * as Helper from './helper';
+import * as Settings from './settings';
 
 /**
  *
@@ -21,22 +22,22 @@ export var data = [];
  */
 export function init () {
 	//Load themes
-	if (global.settings.template_directory !== null) {
-		fs.readdirSync(global.settings.template_directory).forEach(function (file) {
-			if (fs.lstatSync(global.settings.template_directory + '/' + file).isDirectory()) {
+	if (Settings.get().template_directory !== null) {
+		fs.readdirSync(Settings.get().template_directory).forEach(function (file) {
+			if (fs.lstatSync(Settings.get().template_directory + '/' + file).isDirectory()) {
 				var theme = {
 					folder: file,
-					path: global.settings.template_directory + '/' + file,
+					path: Settings.get().template_directory + '/' + file,
 					name: file,
 					version: 'nan',
 					hasImage: false
 				};
-				if (fs.existsSync(global.settings.template_directory + '/' + file + '/preview.png')) {
+				if (fs.existsSync(Settings.get().template_directory + '/' + file + '/preview.png')) {
 					theme.hasImage = true;
 				}
-				if (fs.existsSync(global.settings.template_directory + '/' + file + '/package.json')) {
-					var json = JSON.parse(fs.readFileSync(global.settings.template_directory + '/' + file + '/package.json'));
-					theme = helper.extend(theme, json);
+				if (fs.existsSync(Settings.get().template_directory + '/' + file + '/package.json')) {
+					var json = JSON.parse(fs.readFileSync(Settings.get().template_directory + '/' + file + '/package.json'));
+					theme = Helper.extend(theme, json);
 				}
 				data.push(theme);
 			}

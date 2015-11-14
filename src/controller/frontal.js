@@ -5,9 +5,139 @@
 
 import * as Menu from 'menu';
 
+//For some reason i cannot use the import function on all modules ?!
+var Presentation = require('./presentation');
+var Themes = require('./themes');
+var Settings = require('./settings')
+var BrowserWindow = require('browser-window');
+
 export function frontal (){
 
 }
+
+export var ElectronScreen;
+
+//Variable that knows if the app is ready yet
+export var ready = false; // ES6
+
+//Variable contains a path to a folder if "open-file" event is called before ready
+export var preready = false;
+
+//Main Window
+export var mainWindow = null;
+
+//local reference to app (set through init(app))
+export var app = null;
+
+export function init (global_app){
+	app = global_app;
+
+	//Initialize all the app event listeners
+
+	// Quit when all windows are closed.
+	app.on('window-all-closed', function () {
+		// On OS X it is common for applications and their menu bar
+		// to stay active until the user quits explicitly with Cmd + Q
+		if (process.platform != 'darwin') {
+			app.quit();
+		}
+	});
+
+	//Somebody acticates the app (usually via tabbing or clicking the app icon)
+	app.on('activate', function (event, path) {
+		if (mainWindow === null) {
+			initApp();
+		}
+	});
+
+
+	//Starting the presentation mode if somebody drops a valid folder onto the app icon
+	app.on('open-file', function (event, path) {
+		//This event sometimes gets triggered before the ready event, so if app is not ready yet, initiate after ready
+		if (ready) {
+			Presentation.openFolder(path);
+		} else {
+			preready = path;
+		}
+	});
+
+	//App initialization
+	app.on('ready', function () {
+		Settings.init(app);
+
+		Themes.init();
+
+		//initialize app
+		initApp();
+
+	});
+}
+
+export function initApp () {
+	buildMenu();
+
+	//MultiDisplay
+	//you need to require this after the app has been initialized (stupid package)
+	ElectronScreen = require('screen');
+	var displays = ElectronScreen.getAllDisplays();
+	//global.error('displays', displays);
+	var externalDisplay = null;
+	for (var i in displays) {
+		if (displays[i].bounds.x !== 0 || displays[i].bounds.y !== 0) {
+			externalDisplay = displays[i];
+			break;
+		}
+	}
+
+	ElectronScreen.on('display-added', function (event, newDisplay) {
+		//Update Window Setup
+	});
+
+	ElectronScreen.on('display-removed', function (event, oldDisplay) {
+		//Update Window Setup
+	});
+
+	ElectronScreen.on('display-metrics-changed', function (event, display, changedMetricts) {
+		//Update Window Setup
+	});
+
+	// Create the browser window.
+	mainWindow = new BrowserWindow({
+		width: 800,
+		height: 600,
+		x: 0,
+		y: 0,
+		title: "Frontal"
+	});
+
+	//mainWindow.openDevTools();
+
+	mainWindow.loadUrl('file://' + __dirname + '/../views/layouts/index.html');
+
+	/*
+ 	var tpl = swig.compileFile(app.getPath('userData')+'/templates/index.html');
+ 	mainWindow.loadUrl('data:text/html;charset=UTF-8,'+encodeURIComponent(tpl({ variable: 'Hello World'})));
+ 	*/
+
+	mainWindow.on('closed', function () {
+		mainWindow = null;
+		//Close the comment window
+	});
+
+	//If somebody dropped a folder on the app icon to start the app
+	if (preready !== false) {
+		Presentation.openFolder(preready);
+	}
+};
+
+//GoTo a certain page
+export function goTo (page) {
+	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/' + page + '.html');
+};
+
+
+/*-------------------- Menu --------------------*/
+
 
 var menuTemplate = [{
 	label: 'Edit',
@@ -96,7 +226,7 @@ var menuTemplate = [{
 	}]
 }];
 
-export function buildMenu (app){
+export function buildMenu (){
 	//If this app is a mac app, we add the standard first menu point containing the about stuff
 	if (process.platform == 'darwin') {
 		var name = app.getName();

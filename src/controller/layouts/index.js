@@ -2,6 +2,8 @@
 This file contains all the functionality specific to the index.html (start page of the application)
 */
 
+console.log("INDEX");
+
 var remote = require('remote'),
 	dialog = remote.require('dialog');
 

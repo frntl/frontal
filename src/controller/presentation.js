@@ -70,3 +70,20 @@ export function open (path) {
 	//Set current slideshow path to this path
 	//Switch to presentation mode if not already in presentation mode
 };
+
+//The note window is only required in presentation mode, so either manage it in presentation module or create a seperate note module
+//Note Window
+/*var noteWindow = null;
+
+if (externalDisplay) {
+		noteWindow = new BrowserWindow({
+			x: externalDisplay.bounds.x + 50,
+			y: externalDisplay.bounds.y + 50,
+			width: 200,
+			height: 200,
+			title: 'Frontal:Notes'
+		});
+
+		noteWindow.loadUrl('file://' + __dirname + '/views/layouts/notes.html');
+	}
+*/
