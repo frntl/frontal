@@ -1,40 +1,54 @@
-/*
+import * as fs from 'fs';
+import * as Helper from './helper';
+import * as Settings from './settings';
 
-This file contains all the functionality specific to the index.html (start page of the application)
-
-*/
-
-var remote = require('remote'),
-	dialog = remote.require('dialog');
-
-var getThemes = remote.getGlobal('getThemes');
-var setTheme = remote.getGlobal('setTheme');
-var goTo = remote.getGlobal('goTo');
-var error = remote.getGlobal('error');
-
-window.onload = function() {
-
-	//GoTo Theme page
-	document.getElementById('back').onclick = function (){
-		goTo('index');
-	}
-
-	//Build Theme Page
-	var container = document.getElementById('themes');
-	var themes = getThemes();
-	themes.forEach(function(theme){
-		var theme_str = '<div class="theme" id="'+theme.folder+'"';
-		if(theme.hasImage){
-			 theme_str += ' style="background-image:url(\''+theme.path+'/preview.png\');"';
-		}
-		theme_str += '><span class="name" id="'+theme.folder+'">'+theme.name+'</span><span class="version" id="'+theme.folder+'">'+theme.version+'</span><a id="'+theme.folder+'">use this theme &raquo;</a></div>';
-		container.innerHTML += theme_str;
-	});
-
-	container.onclick = function(event){
-		if(event.target.id !== 'themes'){
-			setTheme(event.target.id);
-			goTo('index');
-		}
-	};
+/**
+ *
+ * constructor
+ */
+export function themes (){
+  // nothing her yet
 };
+
+/**
+ *
+ * array containing the themes in the theme folder
+ */
+export var data = [];
+
+/**
+ *
+ * check if the template_directory is set, if set, parse the folder and populate the theme-array
+ */
+export function init () {
+	//Load themes
+	if (Settings.get().template_directory !== null) {
+		fs.readdirSync(Settings.get().template_directory).forEach(function (file) {
+			if (fs.lstatSync(Settings.get().template_directory + '/' + file).isDirectory()) {
+				var theme = {
+					folder: file,
+					path: Settings.get().template_directory + '/' + file,
+					name: file,
+					version: 'nan',
+					hasImage: false
+				};
+				if (fs.existsSync(Settings.get().template_directory + '/' + file + '/preview.png')) {
+					theme.hasImage = true;
+				}
+				if (fs.existsSync(Settings.get().template_directory + '/' + file + '/package.json')) {
+					var json = JSON.parse(fs.readFileSync(Settings.get().template_directory + '/' + file + '/package.json'));
+					theme = Helper.extend(theme, json);
+				}
+				data.push(theme);
+			}
+		});
+	}
+}
+
+/**
+ *
+ * @return theme data
+ */
+export function get () {
+	return data;
+}

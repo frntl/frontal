@@ -1,42 +1,74 @@
 'use strict';
 
-/*
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.data = undefined;
+exports.themes = themes;
+exports.init = init;
+exports.get = get;
 
-This file contains all the functionality specific to the index.html (start page of the application)
+var _fs = require('fs');
 
-*/
+var fs = _interopRequireWildcard(_fs);
 
-var remote = require('remote'),
-    dialog = remote.require('dialog');
+var _helper = require('./helper');
 
-var getThemes = remote.getGlobal('getThemes');
-var setTheme = remote.getGlobal('setTheme');
-var goTo = remote.getGlobal('goTo');
-var error = remote.getGlobal('error');
+var Helper = _interopRequireWildcard(_helper);
 
-window.onload = function () {
+var _settings = require('./settings');
 
-	//GoTo Theme page
-	document.getElementById('back').onclick = function () {
-		goTo('index');
-	};
+var Settings = _interopRequireWildcard(_settings);
 
-	//Build Theme Page
-	var container = document.getElementById('themes');
-	var themes = getThemes();
-	themes.forEach(function (theme) {
-		var theme_str = '<div class="theme" id="' + theme.folder + '"';
-		if (theme.hasImage) {
-			theme_str += ' style="background-image:url(\'' + theme.path + '/preview.png\');"';
-		}
-		theme_str += '><span class="name" id="' + theme.folder + '">' + theme.name + '</span><span class="version" id="' + theme.folder + '">' + theme.version + '</span><a id="' + theme.folder + '">use this theme &raquo;</a></div>';
-		container.innerHTML += theme_str;
-	});
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	container.onclick = function (event) {
-		if (event.target.id !== 'themes') {
-			setTheme(event.target.id);
-			goTo('index');
-		}
-	};
+/**
+ *
+ * constructor
+ */
+function themes() {
+	// nothing her yet
 };
+
+/**
+ *
+ * array containing the themes in the theme folder
+ */
+var data = exports.data = [];
+
+/**
+ *
+ * check if the template_directory is set, if set, parse the folder and populate the theme-array
+ */
+function init() {
+	//Load themes
+	if (Settings.get().template_directory !== null) {
+		fs.readdirSync(Settings.get().template_directory).forEach(function (file) {
+			if (fs.lstatSync(Settings.get().template_directory + '/' + file).isDirectory()) {
+				var theme = {
+					folder: file,
+					path: Settings.get().template_directory + '/' + file,
+					name: file,
+					version: 'nan',
+					hasImage: false
+				};
+				if (fs.existsSync(Settings.get().template_directory + '/' + file + '/preview.png')) {
+					theme.hasImage = true;
+				}
+				if (fs.existsSync(Settings.get().template_directory + '/' + file + '/package.json')) {
+					var json = JSON.parse(fs.readFileSync(Settings.get().template_directory + '/' + file + '/package.json'));
+					theme = Helper.extend(theme, json);
+				}
+				data.push(theme);
+			}
+		});
+	}
+}
+
+/**
+ *
+ * @return theme data
+ */
+function get() {
+	return data;
+}
