@@ -15,3 +15,9 @@ to use it in a es6 way (if you are in /src/main.js)
     import {md2json} from './controller/parser';
 ```
 
+
+## TDD
+
+    npm install -g mocha
+    npm install chai --save-dev
+    npm install mocha-traceur --save-dev  
