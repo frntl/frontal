@@ -4,12 +4,11 @@
  */
 import * as parser from './parser';
 import * as fs from 'fs';
-import * as md from 'markdown';
-
-
+// import * as md from 'markdown';
+// import {json} from './parser';
 
 let res = parser.json('{"one":"two"}');
-
+console.log(res);
 // test the md2json parsing
 fs.readFile('./../../examples/presentation.md', 'utf8', (err, data) => {
   if (err) {
@@ -20,7 +19,7 @@ fs.readFile('./../../examples/presentation.md', 'utf8', (err, data) => {
     for(let i = 0; i < slides.length;i++){
       console.log(slides[i][0]);
     }
-    // console.log(`we found ${slides.length} slides` );
+    console.log(`we found ${slides.length} slides` );
   }
 });
 

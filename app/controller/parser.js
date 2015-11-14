@@ -14,6 +14,20 @@ var mark = _interopRequireWildcard(_markdown);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+// about this module:
+// It exports 3 Things:
+//     parser.json(data)
+//     parser.md2json(data)
+//     parser.md2html(data)
+
+// to use it in a es6 way (if you are in /src/main.js)
+
+// ```js
+//     import * as parser from './controller/parser';
+//     // or like this (not verified)
+//     import {md2json} from './controller/parser';
+// ```
+
 function parser() {}
 // nothing her yet
 

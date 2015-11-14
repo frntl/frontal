@@ -1,5 +1,20 @@
 // https://github.com/evilstreak/markdown-js
 import * as mark from 'markdown';
+// about this module:
+// It exports 3 Things:
+//     parser.json(data)
+//     parser.md2json(data)
+//     parser.md2html(data)
+
+// to use it in a es6 way (if you are in /src/main.js)
+
+// ```js
+//     import * as parser from './controller/parser';
+//     // or like this (not verified)
+//     import {md2json} from './controller/parser';
+// ```
+
+
 export function parser (){
   // nothing her yet
 }
