@@ -28,7 +28,7 @@ export function setTheme (theme) {
 
 export function updateSettings () {
 	try {
-		fs.writeFileSync(settings_path, JSON.stringify(global.settings), 'utf-8');
+		fs.writeFileSync(settings_path, JSON.stringify(settings), 'utf-8');
 		error.error("settings saved:", settings_path);
 	} catch (err) {
 		error.error("Error writing to settings file: " + err);
@@ -64,6 +64,7 @@ export function init (app) {
 
 	} catch (err) {
 		//if error, then there was no settings file
+		error.error("No settings found:", settings);
 		try {
 			//create file if not exists
 			var fd = fs.openSync(settings_path, 'w+');

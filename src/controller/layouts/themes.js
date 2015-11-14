@@ -22,6 +22,7 @@ window.onload = function() {
 	//Build Theme Page
 	var container = document.getElementById('themes');
 	var themes = getThemes();
+	console.log(themes);
 	themes.forEach(function(theme){
 		var theme_str = '<div class="theme" id="'+theme.folder+'"';
 		if(theme.hasImage){

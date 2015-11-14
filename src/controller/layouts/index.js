@@ -5,16 +5,10 @@ This file contains all the functionality specific to the index.html (start page 
 var remote = require('remote'),
 	dialog = remote.require('dialog');
 
-console.log("index");
-
-var error = remote.getGlobal('error');
-setTimeout(function(){ console.log("hello"); error('hello'); }, 3000);
-
-console.log("done");
-
-/*var openFolder = remote.getGlobal('openFolder');
+var openFolder = remote.getGlobal('openFolder');
 var setThemeFolder = remote.getGlobal('setThemeFolder');
 var goTo = remote.getGlobal('goTo');
+var settings = remote.getGlobal('settings');
 
 window.onload = function() {
 
@@ -52,17 +46,15 @@ window.onload = function() {
 		openFolder(dialog.showOpenDialog({ properties: [ 'openDirectory' ]}));
 	};
 
-	var settings = remote.getGlobal('settings');
-
 	//Change the Theme-Folder
-	document.getElementById('theme-location-button').innerHTML = settings.template_directory;
+	document.getElementById('theme-location-button').innerHTML = settings().template_directory;
 	document.getElementById('theme-location-button').onclick = function (){
 		setThemeFolder(dialog.showOpenDialog({ properties: [ 'openDirectory' ]}));
 	};
 
 	//GoTo Theme page
-	document.getElementById('theme-button').innerHTML = settings.last_template;
+	document.getElementById('theme-button').innerHTML = settings().last_template;
 	document.getElementById('theme-button').onclick = function (){
 		goTo('themes');
 	};
-};*/
+};

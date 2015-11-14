@@ -6,9 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.app = exports.mainWindow = exports.preready = exports.ready = exports.ElectronScreen = undefined;
 exports.frontal = frontal;
 exports.init = init;
-exports.initApp = initApp;
 exports.goTo = goTo;
-exports.buildMenu = buildMenu;
 
 var _menu = require('menu');
 
@@ -143,7 +141,7 @@ function initApp() {
 
 //GoTo a certain page
 function goTo(page) {
-	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/' + page + '.html');
+	mainWindow.loadUrl('file://' + __dirname + '/../views/layouts/' + page + '.html');
 };
 
 /*-------------------- Menu --------------------*/

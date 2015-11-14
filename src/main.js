@@ -4,4 +4,3 @@ var app = require('app'),
     frontal = require('./controller/frontal');
 
 frontal.init(app);
-

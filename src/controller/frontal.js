@@ -73,7 +73,7 @@ export function init (global_app){
 	});
 }
 
-export function initApp () {
+function initApp () {
 	buildMenu();
 
 	//MultiDisplay
@@ -132,7 +132,7 @@ export function initApp () {
 
 //GoTo a certain page
 export function goTo (page) {
-	mainWindow.loadUrl('file://' + __dirname + '/views/layouts/' + page + '.html');
+	mainWindow.loadUrl('file://' + __dirname + '/../views/layouts/' + page + '.html');
 };
 
 
@@ -226,7 +226,7 @@ var menuTemplate = [{
 	}]
 }];
 
-export function buildMenu (){
+function buildMenu (){
 	//If this app is a mac app, we add the standard first menu point containing the about stuff
 	if (process.platform == 'darwin') {
 		var name = app.getName();
