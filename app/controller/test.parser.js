@@ -8,19 +8,18 @@ var _fs = require('fs');
 
 var fs = _interopRequireWildcard(_fs);
 
-var _markdown = require('markdown');
-
-var md = _interopRequireWildcard(_markdown);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var res = parser.json('{"one":"two"}');
+// import * as md from 'markdown';
+// import {json} from './parser';
 
-// test the md2json parsing
 /**
  * This file is just for testing the functions
  *
  */
+var res = parser.json('{"one":"two"}');
+console.log(res);
+// test the md2json parsing
 fs.readFile('./../../examples/presentation.md', 'utf8', function (err, data) {
   if (err) {
     console.error(err);
@@ -30,7 +29,7 @@ fs.readFile('./../../examples/presentation.md', 'utf8', function (err, data) {
     for (var i = 0; i < slides.length; i++) {
       console.log(slides[i][0]);
     }
-    // console.log(`we found ${slides.length} slides` );
+    console.log('we found ' + slides.length + ' slides');
   }
 });
 
