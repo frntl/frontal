@@ -24,7 +24,7 @@ describe('Parser', () => {
           done();
         } else {
           let res = parser.md2html(data);
-          console.log(res);
+          // console.log(res);
           expect(res).to.be.instanceof(Array);
           expect(res[0]).to.be.a('string');
           done();
