@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron app/main.js",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "lint": "eslint src"
+
   },
   "dependencies": {
     "highlights": "^1.3.0",
@@ -21,9 +23,11 @@
   "devDependencies": {
     "babel": "^6.1.18",
     "babel-core": "^6.1.21",
+    "babel-eslint": "^4.1.5",
     "babel-preset-es2015": "^6.1.18",
     "chai": "^3.4.1",
-    "electron-prebuilt": "^0.34.3"
+    "electron-prebuilt": "^0.34.3",
+    "eslint": "^1.9.0"
   },
   "license": "MIT",
   "repository": {
