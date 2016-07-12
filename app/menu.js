@@ -5,15 +5,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.menu = menu;
 exports.buildTemplate = buildTemplate;
+
+var _path = require('path');
+
+var path = _interopRequireWildcard(_path);
+
+var _processor = require('./processor');
+
+var processor = _interopRequireWildcard(_processor);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 var electron = require('electron');
 var app = electron.app;
 var shell = electron.shell;
 var dialog = electron.dialog;
+var JsonDB = require('node-json-db');
+
+// import * as database from './database';
 function menu() {}
 
 function sender(wins, title, msg) {
   wins.forEach(function (w, i) {
-    console.log(title);
+    // console.log(title);
     w.webContents.send(title, {
       msg: msg
     });
@@ -34,7 +48,21 @@ function buildTemplate(windows) {
         if (files === undefined) {
           console.log('aborted by user');
         } else {
-          console.log(files[0]);
+          var presentationFile = files[0];
+          console.log('presentationFile: ', presentationFile);
+          var dbFolderPath = path.dirname(presentationFile);
+          var dbFileName = path.basename(presentationFile, path.extname(presentationFile));
+          global.name = dbFileName;
+          var database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
+          var res = processor.process(presentationFile);
+          // console.log('res ' , res);
+
+          if (res !== null) {
+            database.push('/slides', res);
+            global.database = database;
+            console.log(res);
+            sender(windows, 'slides', res);
+          }
         }
       }
     }]

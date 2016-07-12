@@ -1,12 +1,17 @@
+import * as path from 'path';
 const electron = require('electron');
 const app = electron.app;
 const shell = electron.shell;
 const dialog = electron.dialog;
+const JsonDB = require('node-json-db');
+
+// import * as database from './database';
+import * as processor from './processor';
 export function menu() {}
 
 function sender(wins, title, msg) {
   wins.forEach(function(w, i) {
-    console.log(title);
+    // console.log(title);
     w.webContents.send(title, {
       msg: msg
     });
@@ -27,7 +32,21 @@ export function buildTemplate(windows) {
         if (files === undefined) {
           console.log('aborted by user');
         } else {
-          console.log(files[0]);
+          let presentationFile = files[0];
+          console.log('presentationFile: ', presentationFile);
+          let dbFolderPath = path.dirname(presentationFile);
+          let dbFileName = path.basename(presentationFile, path.extname(presentationFile));
+          global.name = dbFileName;
+          let database = new JsonDB(dbFolderPath + '/'+ dbFileName, true, true);
+          var res = processor.process(presentationFile);
+          // console.log('res ' , res);
+
+          if(res !== null) {
+            database.push('/slides', res);
+            global.database = database;
+            console.log(res);
+            sender(windows, 'slides', res);
+          }
         }
       }
     }]

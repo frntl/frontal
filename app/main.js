@@ -2,21 +2,6 @@
 
 var _menu = require('./menu');
 
-// const electron = require('electron');
-// const {app, BrowserWindow} = require('electron');
-// let slidesWindow, commentsWindow;
-// app.on('ready', () => {
-//   let displays = electron.screen.getAllDisplays();
-//   let externalDisplay = displays.find((display) => {
-//     return display.bounds.x !== 0 || display.bounds.y !== 0
-//   })
-//   if (externalDisplay) {
-//     slidesWindow = new BrowserWindow({
-//       x: externalDisplay.bounds.x + 50,
-//       y: externalDisplay.bounds.y + 50
-//     });
-//   }
-// });
 var electron = require('electron');
 var Menu = electron.Menu;
 var app = electron.app;
@@ -24,9 +9,11 @@ var ipcMain = electron.ipcMain;
 var MenuItem = electron.MenuItem;
 var BrowserWindow = electron.BrowserWindow;
 
-
+global.name = null;
+global.database = null;
 var slidesWindow = null;
 var commentsWindow = null;
+
 function createWindows() {
   // Create the browser window.
   // global.error('displays', displays);
@@ -72,7 +59,6 @@ function createWindows() {
 function createMenues() {
   var template = (0, _menu.buildTemplate)([slidesWindow, commentsWindow]);
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-
   // const menu = Menu.buildFromTemplate(template);
   // Menu.setApplicationMenu(menu);
 }
@@ -101,3 +87,9 @@ app.on('ready', function () {
 });
 // // In this file you can include the rest of your app's specific main process
 // // code. You can also put them in separate files and require them here.
+app.on('will-finish-launching', function (event) {
+  app.on('open-file', function (e, filePath) {
+    e.preventDefault();
+    console.log('User tried to open ' + filePath);
+  });
+});

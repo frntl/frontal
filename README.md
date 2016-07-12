@@ -28,7 +28,7 @@ npm install
 
 To write nice ES2015 style we use babel. Therefore we need to watch the whole `src` and compiel it to `app`. Run it like this in the root of the directory:  
 
-    babel src -w -d app
+    npm run watch
 
 ## tests
 
