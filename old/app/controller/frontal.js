@@ -179,13 +179,13 @@ var menuTemplate = [{
 	label: 'View',
 	submenu: [{
 		label: 'Toggle Full Screen',
-		accelerator: (function () {
+		accelerator: function () {
 			if (process.platform == 'darwin') {
 				return 'Ctrl+Command+F';
 			} else {
 				return 'F11';
 			}
-		})(),
+		}(),
 		click: function click(item, focusedWindow) {
 			/*if(focusedWindow){
    				focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
@@ -206,13 +206,13 @@ var menuTemplate = [{
 		}
 	}, {
 		label: 'Toggle Developer Tools',
-		accelerator: (function () {
+		accelerator: function () {
 			if (process.platform == 'darwin') {
 				return 'Alt+Command+I';
 			} else {
 				return 'Ctrl+Shift+I';
 			}
-		})(),
+		}(),
 		click: function click(item, focusedWindow) {
 			if (focusedWindow) {
 				focusedWindow.toggleDevTools();
