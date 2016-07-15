@@ -1,6 +1,7 @@
-root: "~"
+root: "~/Documents/frntl/frontal"
 layout:
   -
     - echo "Row 1, Pane 1"
+    - echo "Row 1, Pane 2"
   -
     - echo "Row 2, Pane 1"

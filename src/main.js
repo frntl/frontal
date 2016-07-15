@@ -35,7 +35,7 @@ function createWindows() {
     slidesWindow = null;
   });
   commentsWindow = new BrowserWindow({
-    width: 800,
+    width: 400,
     height: 600,
     x: 800,
     y: 0,

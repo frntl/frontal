@@ -21,6 +21,7 @@ var app = electron.app;
 var shell = electron.shell;
 var dialog = electron.dialog;
 var JsonDB = require('node-json-db');
+var chalk = require('chalk');
 
 // import * as database from './database';
 function menu() {}
@@ -49,18 +50,18 @@ function buildTemplate(windows) {
           console.log('aborted by user');
         } else {
           var presentationFile = files[0];
-          console.log('presentationFile: ', presentationFile);
+          console.log(chalk.green('presentationFile: ' + presentationFile));
           var dbFolderPath = path.dirname(presentationFile);
           var dbFileName = path.basename(presentationFile, path.extname(presentationFile));
           global.name = dbFileName;
           var database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
           var res = processor.process(presentationFile);
-          // console.log('res ' , res);
+          // console.log('res in menu.js ', res);
 
           if (res !== null) {
             database.push('/slides', res);
             global.database = database;
-            console.log(res);
+            // console.log(res);
             sender(windows, 'slides', res);
           }
         }

@@ -19,15 +19,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 //     parser.json(data)
 //     parser.md2json(data)
 //     parser.md2html(data)
-
 // to use it in a es6 way (if you are in /src/main.js)
-
 // ```js
 //     import * as parser from './controller/parser';
 //     // or like this (not verified)
 //     import {md2json} from './controller/parser';
 // ```
-
 function parser() {}
 // nothing her yet
 
@@ -39,7 +36,7 @@ function parser() {}
 // https://github.com/evilstreak/markdown-js
 function json(data) {
   return JSON.parse(data);
-};
+}
 /**
  * [md2json description]
  * @param  {String} Markdown String
@@ -56,7 +53,6 @@ function md2json(data) {
   // the mardown.js lib already
   // parses to json woohoo! \o/
   // so we just grab that
-
   var jarr = mark.markdown.parse(data);
   // console.log(jarr);
   var slides = []; // will hold the final result
@@ -81,7 +77,6 @@ function md2json(data) {
   }
   return slides;
 }
-
 /**
  * [md2html description]
  * @param  {String} data a Markdown String
@@ -94,6 +89,7 @@ function md2html(data) {
   var slides = [];
   for (var i = 0; i < mdslides.length; i++) {
     slides.push(mark.markdown.toHTML(mdslides[i]));
+    // console.log(slides);
   }
   return slides;
 }

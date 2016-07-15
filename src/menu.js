@@ -4,6 +4,8 @@ const app = electron.app;
 const shell = electron.shell;
 const dialog = electron.dialog;
 const JsonDB = require('node-json-db');
+const chalk = require('chalk');
+
 
 // import * as database from './database';
 import * as processor from './processor';
@@ -33,18 +35,18 @@ export function buildTemplate(windows) {
           console.log('aborted by user');
         } else {
           let presentationFile = files[0];
-          console.log('presentationFile: ', presentationFile);
+          console.log(chalk.green(`presentationFile: ${presentationFile}`));
           let dbFolderPath = path.dirname(presentationFile);
           let dbFileName = path.basename(presentationFile, path.extname(presentationFile));
           global.name = dbFileName;
-          let database = new JsonDB(dbFolderPath + '/'+ dbFileName, true, true);
+          let database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
           var res = processor.process(presentationFile);
-          // console.log('res ' , res);
+          // console.log('res in menu.js ', res);
 
           if(res !== null) {
             database.push('/slides', res);
             global.database = database;
-            console.log(res);
+            // console.log(res);
             sender(windows, 'slides', res);
           }
         }

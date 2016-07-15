@@ -42,9 +42,9 @@ function setContent() {
     if (element !== null) {
       console.log('found ' + ele + ' div');
       if (ele === 'slides') {
-        element.innerHTML = content.msg.slides[constrain(currentSlide, content.msg.slides)];
+        element.innerHTML = content.msg[constrain(currentSlide, content.msg)].slide;
       } else if (ele === 'comments') {
-        element.innerHTML = content.msg.comments[constrain(currentSlide, content.msg.comments)].comments;
+        element.innerHTML = content.msg[constrain(currentSlide, content.msg)].comments;
       }
     }
   });
