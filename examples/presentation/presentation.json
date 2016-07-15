@@ -1,22 +1,23 @@
 {
     "slides": {
         "slides": [
-            "<h1>Heading 1</h1>\n\n<h2>Hello World Heading 2</h2>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  </p>\n\n<p>There is a comment in here\n&lt;!-- comment 1 slide 1 --&gt;</p>\n\n<p>There is a comment in here\n&lt;!-- comment 2 slide 1 --&gt;</p>",
-            "<h3>Heading three</h3>\n\n<pre><code>print &quot;Hello world&quot;</code></pre>\n\n<p>There is a comment in here\n&lt;!-- comment 1 slide 2 --&gt;</p>",
-            ""
+            "<h1>Slide 1</h1>\n\n<h2>Hello World Heading 2</h2>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  </p>\n\n<p>There is a comment in here<br/>&lt;!-- comment 1 slide 1 --&gt;</p>\n\n<p>&lt;!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. --&gt;</p>\n\n<p>There is a comment in here<br/>&lt;!-- comment 2 slide 1 --&gt;</p>\n\n<p><img alt=\"\" src=\"http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg\"/>  </p>",
+            "<h3>Slide 2</h3>\n\n<pre><code>print &quot;Hello world&quot;</code></pre>\n\n<p>There is a comment in here\n&lt;!-- comment 1 \nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nslide 2 --&gt;</p>\n\n<p><img alt=\"\" src=\"http://i.giphy.com/xTiTnhMOQ4zE0ukz2U.gif\"/>  </p>",
+            "<h2>Slide 3</h2>"
         ],
         "comments": [
             {
                 "slide": 0,
                 "comments": [
                     "comment 1 slide 1 --&gt;",
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. --&gt;",
                     "comment 2 slide 1 --&gt;"
                 ]
             },
             {
                 "slide": 1,
                 "comments": [
-                    "comment 1 slide 2 --&gt;"
+                    ""
                 ]
             },
             {

@@ -46,7 +46,7 @@ function createWindows() {
   // and load the index.html of the app.
   commentsWindow.loadURL('file://' + __dirname + '/views/comments.html');
   // Open the DevTools.
-  // commentsWindow.webContents.openDevTools();
+  commentsWindow.webContents.openDevTools();
   // Emitted when the window is closed.
   commentsWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
