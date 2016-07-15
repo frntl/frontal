@@ -1,0 +1,13 @@
+@font-face { font-family: 'Vollkorn-Regular'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Regular.ttf") format("truetype"); }
+
+@font-face { font-family: 'Vollkorn-Bold'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Bold.ttf") format("truetype"); }
+
+body { font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; }
+
+h1 { font-family: 'Vollkorn-Bold'; }
+
+.content { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; margin-left: 20%; margin-right: 20%; }
+
+img { max-width: 80%; display: block; margin: 0 auto; }
+
+pre { text-align: left; }

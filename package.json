@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron app/main.js",
-    "watch": "./node_modules/.bin/babel src -w -d app -D"
+    "watch": "./node_modules/.bin/babel src -w -d app -D",
+    "sass":"./node_modules/.bin/node-sass -w src/views/themes/default/scss/ -o src/views/themes/default/css/ --output-style=compact"
   },
   "dependencies": {
     "chalk": "^1.1.3",
@@ -25,7 +26,8 @@
     "babel-cli": "^6.10.1",
     "babel-preset-es2015": "^6.9.0",
     "chai": "^3.4.1",
-    "electron-prebuilt": "^1.2.6"
+    "electron-prebuilt": "^1.2.6",
+    "node-sass": "^3.8.0"
   },
   "license": "MIT",
   "repository": {

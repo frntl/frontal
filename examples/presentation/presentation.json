@@ -1,15 +1,27 @@
 {
     "slides": [
         {
-            "slide": "<h1>Slide 1</h1>\n\n<h2>Hello World Heading 2</h2>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  </p>\n\n<p>There is a comment in here<br/></p>\n\n<p></p>\n\n<p>There is a comment in here<br/></p>\n\n<p><img alt=\"\" src=\"http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg\"/>  </p>",
-            "comments": " comment 1 slide 1 <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br><br> comment 2 slide 1 "
+            "slide": "<h1>Slide 1</h1>\n\n<h2>Hello World Heading 2</h2>\n\n<pre><code>print (Hello world)</code></pre>\n\n<p>There is a comment in here<br/></p>\n\n<p></p>\n\n<p>There is a comment in here<br/></p>\n\n<p><img alt=\"\" src=\"http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg\"/>  </p>",
+            "comments": " comment 1 slide 1 <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br><br> comment 3 slide 1 "
         },
         {
-            "slide": "<h3>Slide 2</h3>\n\n<pre><code>print \"Hello world\"</code></pre>\n\n<p>There is a comment in here\n</p>\n\n<p><img alt=\"\" src=\"http://i.giphy.com/xTiTnhMOQ4zE0ukz2U.gif\"/>  </p>",
+            "slide": "<h3>Slide 2</h3>\n\n<pre><code>print \"Hello world\"</code></pre>\n\n<p>There is a comment</p>\n\n<p></p>\n\n<p><img alt=\"\" src=\"http://i.giphy.com/xTiTnhMOQ4zE0ukz2U.gif\"/>  </p>",
             "comments": " comment 1 \nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nslide 2 "
         },
         {
-            "slide": "<h2>Slide 3</h2>",
+            "slide": "<h1>Slide 3</h1>\n\n<h2>Sub head</h2>",
+            "comments": ""
+        },
+        {
+            "slide": "<pre><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut\nlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\nvoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\nnon proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</code></pre>",
+            "comments": ""
+        },
+        {
+            "slide": "<p>Code below  </p>\n\n<p><div onload=\"writeit();\">\n<script type=\"text/javascript\">\nfunction writeit(){\ndocument.open();\ndocument.write(\"<h1>writen by JS</h1>\");\ndocument.close();\n}\n</script>\n</div></p>",
+            "comments": ""
+        },
+        {
+            "slide": "<h2>an image</h2>\n\n<p><img alt=\"\" src=\"me-fro.png\"/>  </p>",
             "comments": ""
         }
     ]

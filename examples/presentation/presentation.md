@@ -1,8 +1,7 @@
 # Slide 1
 ## Hello World Heading 2
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
-
+    print (Hello world)
 
 
 There is a comment in here  
@@ -23,8 +22,8 @@ There is a comment in here
 
     print "Hello world"
 
+There is a comment
 
-There is a comment in here
 <!-- comment 1 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 slide 2 -->
@@ -34,4 +33,34 @@ slide 2 -->
 ---
 
 
-## Slide 3
+# Slide 3
+## Sub head 
+
+---
+
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+---
+
+Code below  
+
+<div onload="writeit();">
+<script type="text/javascript">
+function writeit(){
+document.open();
+document.write("<h1>writen by JS</h1>");
+document.close();
+}
+</script>
+</div>
+
+---
+
+## an image
+
+![](me-fro.png)  

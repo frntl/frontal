@@ -84,3 +84,16 @@ ipcRenderer.on('slides', function (event, arg) {
   //   }
   // });
 });
+
+ipcRenderer.on('switch-theme', function (event, arg) {
+  console.log(arg);
+});
+
+function changeCSS(cssFilePath, cssLinkIndex) {
+  var oldLink = document.getElementsByTagName('link').item(cssLinkIndex); // eslint-disable-line no-undef
+  var newLink = document.createElement('link'); // eslint-disable-line no-undef
+  newLink.setAttribute('rel', 'stylesheet');
+  newLink.setAttribute('type', 'text/css');
+  newLink.setAttribute('href', cssFilePath);
+  document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink); // eslint-disable-line no-undef
+}

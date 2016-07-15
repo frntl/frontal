@@ -1,7 +1,7 @@
 root: "~/Documents/frntl/frontal"
 layout:
   -
-    - echo "Row 1, Pane 1"
-    - echo "Row 1, Pane 2"
+    - npm run watch
+    - npm run sass
   -
-    - echo "Row 2, Pane 1"
+    - npm start
