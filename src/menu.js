@@ -11,15 +11,8 @@ const chalk = require('chalk');
 import {processing} from './processor';
 import {sender} from './sender';
 import {reload} from './reload-presentation';
-// function sender(wins, title, msg) {
-//   wins.forEach(function(w, i) {
-//     // console.log(title);
-//     w.webContents.send(title, {
-//       msg: msg
-//     });
-//     // statements
-//   });
-// }
+import {watch} from './watcher';
+
 export function buildTemplate(windows) {
   let template = [{
     label: 'File',
@@ -46,6 +39,7 @@ export function buildTemplate(windows) {
           // console.log('res in menu.js ', res);
 
           if(res !== null) {
+            watch(global.presentationFile);
             // database.push('/slides', res);
             // global.database = database;
             // console.log(res);

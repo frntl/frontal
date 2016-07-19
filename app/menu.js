@@ -15,6 +15,8 @@ var _sender = require('./sender');
 
 var _reloadPresentation = require('./reload-presentation');
 
+var _watcher = require('./watcher');
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var electron = require('electron');
@@ -25,16 +27,6 @@ var JsonDB = require('node-json-db');
 var chalk = require('chalk');
 
 // import * as database from './database';
-
-// function sender(wins, title, msg) {
-//   wins.forEach(function(w, i) {
-//     // console.log(title);
-//     w.webContents.send(title, {
-//       msg: msg
-//     });
-//     // statements
-//   });
-// }
 function buildTemplate(windows) {
   var template = [{
     label: 'File',
@@ -61,6 +53,7 @@ function buildTemplate(windows) {
           // console.log('res in menu.js ', res);
 
           if (res !== null) {
+            (0, _watcher.watch)(global.presentationFile);
             // database.push('/slides', res);
             // global.database = database;
             // console.log(res);

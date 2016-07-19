@@ -1,7 +1,10 @@
 # Slide 1
 ## Hello World Heading 2
 
-    print (Hello world)
+    console.log ("Hello world")
+
+    print ("Fabian Morón Zirfas is super awesome")
+
 
 
 There is a comment in here  

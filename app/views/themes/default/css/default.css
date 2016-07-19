@@ -10,4 +10,6 @@ h1 { font-family: 'Vollkorn-Bold'; }
 
 img { max-width: 80%; display: block; margin: 0 auto; flaot: left; }
 
-pre { text-align: left; }
+pre { min-width: 100%; text-align: left; }
+
+code { text-align: left; }
