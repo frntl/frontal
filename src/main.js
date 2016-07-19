@@ -9,6 +9,8 @@ import {
 } from './menu';
 global.name = null;
 global.database = null;
+global.presetationRoot = null;
+
 let slidesWindow = null;
 let commentsWindow = null;
 

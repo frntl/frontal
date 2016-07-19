@@ -4,7 +4,7 @@ import {
 }
 from 'chai';
 import * as fs from 'fs';
-import * as parser from '../src/controller/parser.js';
+import * as parser from '../src/parser.js';
 
 describe('Parser', () => {
   describe('#json()', () => {
@@ -18,7 +18,7 @@ describe('Parser', () => {
 
   describe('#md2html()', () => {
     it('should accept an Markdown file content and return an Array of HTML Strings', (done)=>  {
-      fs.readFile('./examples/presentation.md', 'utf8', (err, data) => {
+      fs.readFile('./examples/presentation/presentation.md', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
           done();
@@ -35,7 +35,7 @@ describe('Parser', () => {
 
   describe('#md2json()', () => {
     it('should accept an Markdown file content and return an Array of Arrays', (done)=>  {
-      fs.readFile('./examples/presentation.md', 'utf8', (err, data) => {
+      fs.readFile('./examples/presentation/presentation.md', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
           done();

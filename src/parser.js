@@ -1,5 +1,6 @@
 // https://github.com/evilstreak/markdown-js
 import * as mark from 'markdown';
+const marked = require('marked');
 // about this module:
 // It exports 3 Things:
 //     parser.json(data)
@@ -74,6 +75,23 @@ export function md2html(data) {
   let slides = [];
   for (let i = 0; i < mdslides.length; i++) {
     slides.push(mark.markdown.toHTML(mdslides[i]));
+    // console.log(slides);
+  }
+  return slides;
+}
+export function md2htmlMarked(data) {
+  marked.setOptions({
+    highlight: function(code) {
+      return require('highlight.js')
+        .highlightAuto(code)
+        .value;
+    }
+  });
+
+  let mdslides = data.split(/\n-{3,1000}\n/);
+  let slides = [];
+  for (let i = 0; i < mdslides.length; i++) {
+    slides.push(marked(mdslides[i]));
     // console.log(slides);
   }
   return slides;

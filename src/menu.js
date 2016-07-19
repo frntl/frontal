@@ -39,6 +39,7 @@ export function buildTemplate(windows) {
           let dbFolderPath = path.dirname(presentationFile);
           let dbFileName = path.basename(presentationFile, path.extname(presentationFile));
           global.name = dbFileName;
+          global.presetationRoot = path.dirname(presentationFile);
           let database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
           var res = processor.process(presentationFile);
           // console.log('res in menu.js ', res);

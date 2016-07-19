@@ -1,27 +1,39 @@
 {
     "slides": [
         {
-            "slide": "<h1>Slide 1</h1>\n\n<h2>Hello World Heading 2</h2>\n\n<pre><code>print (Hello world)</code></pre>\n\n<p>There is a comment in here<br/></p>\n\n<p></p>\n\n<p>There is a comment in here<br/></p>\n\n<p><img alt=\"\" src=\"http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg\"/>  </p>",
+            "slide": "<h1 id=\"slide-1\">Slide 1</h1>\n<h2 id=\"hello-world-heading-2\">Hello World Heading 2</h2>\n<pre><code>print (<span class=\"hljs-name\">Hello</span> world)\n</code></pre><p>There is a comment in here<br></p>\n\n<p>There is a comment in here<br></p>\n<p><img src=\"http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg\" alt=\"\">  </p>\n",
             "comments": " comment 1 slide 1 <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br><br> comment 3 slide 1 "
         },
         {
-            "slide": "<h3>Slide 2</h3>\n\n<pre><code>print \"Hello world\"</code></pre>\n\n<p>There is a comment</p>\n\n<p></p>\n\n<p><img alt=\"\" src=\"http://i.giphy.com/xTiTnhMOQ4zE0ukz2U.gif\"/>  </p>",
+            "slide": "<h3 id=\"slide-2\">Slide 2</h3>\n<pre><code><span class=\"hljs-built_in\">print</span> <span class=\"hljs-string\">&quot;Hello world&quot;</span>\n</code></pre><p>There is a comment</p>\n\n<p><img src=\"http://i.giphy.com/xTiTnhMOQ4zE0ukz2U.gif\" alt=\"\">  </p>\n",
             "comments": " comment 1 \nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nslide 2 "
         },
         {
-            "slide": "<h1>Slide 3</h1>\n\n<h2>Sub head</h2>",
+            "slide": "<h1 id=\"slide-3\">Slide 3</h1>\n<h2 id=\"sub-head\">Sub head</h2>\n",
             "comments": ""
         },
         {
-            "slide": "<pre><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut\nlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\nvoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\nnon proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</code></pre>",
+            "slide": "<pre><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed <span class=\"hljs-keyword\">do</span> eiusmod tempor incididunt ut\nlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\nlaboris nisi ut aliquip <span class=\"hljs-keyword\">ex</span> ea commodo consequat. Duis aute irure dolor <span class=\"hljs-keyword\">in</span> reprehenderit <span class=\"hljs-keyword\">in</span>\nvoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\nnon proident, sunt <span class=\"hljs-keyword\">in</span> culpa <span class=\"hljs-keyword\">qui</span> officia deserunt mollit anim id <span class=\"hljs-keyword\">est</span> laborum.\n</code></pre>",
             "comments": ""
         },
         {
-            "slide": "<p>Code below  </p>\n\n<p><div onload=\"writeit();\">\n<script type=\"text/javascript\">\nfunction writeit(){\ndocument.open();\ndocument.write(\"<h1>writen by JS</h1>\");\ndocument.close();\n}\n</script>\n</div></p>",
+            "slide": "<p>Code below  </p>\n<div onload=\"writeit();\">\n<script type=\"text/javascript\">\nfunction writeit(){\ndocument.open();\ndocument.write(\"<h1>writen by JS</h1>\");\ndocument.close();\n}\n</script>\n</div>\n",
             "comments": ""
         },
         {
-            "slide": "<h2>an image</h2>\n\n<p><img alt=\"\" src=\"me-fro.png\"/>  </p>",
+            "slide": "<h2 id=\"an-image\">an image</h2>\n<p><img src=\"/Users/icke/Documents/frntl/frontal/examples/presentation/me-fro.png\" alt=\"\">  </p>\n",
+            "comments": ""
+        },
+        {
+            "slide": "<h1 id=\"this-is-a-codeblock\">This is a codeblock</h1>\n<pre><code><span class=\"hljs-built_in\">print</span> hello world\n</code></pre><pre><code class=\"lang-js\"><span class=\"hljs-keyword\">let</span> value = <span class=\"hljs-number\">5</span>;\n<span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">`<span class=\"hljs-subst\">${value}</span> times hello my friend`</span>);\n</code></pre>\n",
+            "comments": ""
+        },
+        {
+            "slide": "<h2 id=\"this-is-a-table-\">This is a table:</h2>\n<table>\n<thead>\n<tr>\n<th style=\"text-align:left\">Heading</th>\n<th style=\"text-align:left\">another one</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left\">something</td>\n<td style=\"text-align:left\">something else</td>\n</tr>\n</tbody>\n</table>\n",
+            "comments": ""
+        },
+        {
+            "slide": "<h1 id=\"some-random-quote\">Some random quote</h1>\n<blockquote>\n<p>Random QuoteView All Quotes<br>-Homer Jay Simpson</p>\n</blockquote>\n",
             "comments": ""
         }
     ]

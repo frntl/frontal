@@ -64,3 +64,31 @@ document.close();
 ## an image
 
 ![](me-fro.png)  
+
+---
+
+# This is a codeblock
+
+    print hello world
+
+```js
+let value = 5;
+console.log(`${value} times hello my friend`);
+```
+
+---
+
+## This is a table:  
+
+| Heading   | another one    |
+| :--       | :--            |
+| something | something else |
+
+---
+
+# Some random quote
+
+> Random QuoteView All Quotes  
+> -Homer Jay Simpson
+
+

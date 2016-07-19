@@ -11,6 +11,8 @@ var BrowserWindow = electron.BrowserWindow;
 
 global.name = null;
 global.database = null;
+global.presetationRoot = null;
+
 var slidesWindow = null;
 var commentsWindow = null;
 

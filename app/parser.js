@@ -7,6 +7,7 @@ exports.parser = parser;
 exports.json = json;
 exports.md2json = md2json;
 exports.md2html = md2html;
+exports.md2htmlMarked = md2htmlMarked;
 
 var _markdown = require('markdown');
 
@@ -14,6 +15,7 @@ var mark = _interopRequireWildcard(_markdown);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+var marked = require('marked');
 // about this module:
 // It exports 3 Things:
 //     parser.json(data)
@@ -25,6 +27,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 //     // or like this (not verified)
 //     import {md2json} from './controller/parser';
 // ```
+// https://github.com/evilstreak/markdown-js
 function parser() {}
 // nothing her yet
 
@@ -33,7 +36,6 @@ function parser() {}
  * @param  {String}) {            return JSON.parse(data [description]
  * @return {[type]}       [description]
  */
-// https://github.com/evilstreak/markdown-js
 function json(data) {
   return JSON.parse(data);
 }
@@ -89,6 +91,21 @@ function md2html(data) {
   var slides = [];
   for (var i = 0; i < mdslides.length; i++) {
     slides.push(mark.markdown.toHTML(mdslides[i]));
+    // console.log(slides);
+  }
+  return slides;
+}
+function md2htmlMarked(data) {
+  marked.setOptions({
+    highlight: function highlight(code) {
+      return require('highlight.js').highlightAuto(code).value;
+    }
+  });
+
+  var mdslides = data.split(/\n-{3,1000}\n/);
+  var slides = [];
+  for (var i = 0; i < mdslides.length; i++) {
+    slides.push(marked(mdslides[i]));
     // console.log(slides);
   }
   return slides;

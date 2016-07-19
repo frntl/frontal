@@ -18,6 +18,8 @@ function process(path) {
   if (res !== null) {
     var d = (0, _slides.slides)(res);
     return d;
+  } else {
+    throw Error('Could not convert slides');
   }
   // fs.readFile(path, 'utf8', (error, data) => {
   //   if (error) {
