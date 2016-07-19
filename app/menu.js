@@ -106,6 +106,18 @@ function buildTemplate(windows) {
         (0, _sender.sender)(windows, 'down', 'Hello down from main!');
       }
     }, {
+      label: 'BWD',
+      accelerator: 'left',
+      click: function click() {
+        (0, _sender.sender)(windows, 'up', 'Hello up from main!');
+      }
+    }, {
+      label: 'FWD',
+      accelerator: 'Right',
+      click: function click() {
+        (0, _sender.sender)(windows, 'down', 'Hello down from main!');
+      }
+    }, {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
       click: _reloadPresentation.reload

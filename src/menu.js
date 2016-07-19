@@ -92,6 +92,18 @@ export function buildTemplate(windows) {
         sender(windows, 'down', 'Hello down from main!');
       }
     }, {
+      label: 'BWD',
+      accelerator: 'left',
+      click: function() {
+        sender(windows, 'up', 'Hello up from main!');
+      }
+    }, {
+      label: 'FWD',
+      accelerator: 'Right',
+      click: function() {
+        sender(windows, 'down', 'Hello down from main!');
+      }
+    }, {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
       click: reload

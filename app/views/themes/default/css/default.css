@@ -2,7 +2,7 @@
 
 @font-face { font-family: 'Vollkorn-Bold'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Bold.ttf") format("truetype"); }
 
-body { font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 18px; }
+body { font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; }
 
 h1 { font-family: 'Vollkorn-Bold'; }
 
