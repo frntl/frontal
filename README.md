@@ -2,10 +2,6 @@
 
 Markdown powered presentation tool build on Electron / Node.js  
 
-## dependencies  
-
-- [https://github.com/creationix/nvm](https://github.com/creationix/nvm)  
-
 ## installation 
 Init the project by running:  
 
@@ -20,10 +16,6 @@ git clone git@github.com:frntl/frontal.git && cd frontal
 npm install
 npm start
 ```
-
-## execute
-
-    npm start
 
 ## development  
 
