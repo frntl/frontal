@@ -12,6 +12,34 @@ var ipcRenderer = _require.ipcRenderer;
 var content = null;
 var currentSlide = 0;
 var ids = ['comments', 'slides'];
+var shell = require('electron').shell;
+// open links externally by default
+// let links = document.getElementsByTagName('a'); // eslint-disable-line no-undef
+// console.log(links);
+
+// if (document.readyState != "complete") {
+//   document.addEventListener('DOMContentLoaded', function() {
+//     prepareTags()
+//   }, false);
+// } else {
+//   prepareTags();
+// }
+
+// function prepareTags(){
+//   aTags = document.getElementsByTagName("a");
+//   for (var i = 0; i < aTags.length; i++) {
+//     aTags[i].setAttribute("onclick","require('shell').openExternal('" + aTags[i].href + "')");
+//     aTags[i].href = "#";
+//   }
+//   return false;
+// }
+
+// Array.from(document.getElementsByTagName('a')).forEach((ele, i, arr) => {
+//   ele.onclick(function(event) {
+//     event.preventDefault();
+//     shell.openExternal(this.href);
+//   });
+// });
 function renderer() {}
 
 function increaseSlideNumber() {
@@ -25,6 +53,7 @@ function decreaseSlideNumber() {
     currentSlide--;
   }
 }
+
 function constrain(i, arr) {
   var ndx = null;
   if (i > arr.length - 1) {
@@ -36,7 +65,6 @@ function constrain(i, arr) {
 }
 
 function setContent() {
-
   ids.forEach(function (ele, index, array) {
     var element = document.getElementById(ele); // eslint-disable-line no-undef
     if (element !== null) {
@@ -49,7 +77,6 @@ function setContent() {
     }
   });
 }
-
 ipcRenderer.on('down', function (event, arg) {
   console.log(arg);
   increaseSlideNumber();
@@ -84,7 +111,6 @@ ipcRenderer.on('slides', function (event, arg) {
   //   }
   // });
 });
-
 ipcRenderer.on('switch-theme', function (event, arg) {
   console.log(arg);
 });

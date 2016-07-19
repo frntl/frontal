@@ -2,9 +2,17 @@
 
 @font-face { font-family: 'Vollkorn-Bold'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Bold.ttf") format("truetype"); }
 
-body { font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; }
+@font-face { font-family: 'Vollkorn-Italic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Italic.ttf") format("truetype"); }
 
-h1 { font-family: 'Vollkorn-Bold'; }
+body { font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; line-height: 1.5; color: #141414; word-wrap: break-word; hyphens: auto; }
+
+h1, h2, h3, h4 { font-family: 'Vollkorn-Bold'; }
+
+a { background-color: #6FC3F6; color: #FFFFFF; }
+
+em { font-family: 'Vollkorn-Italic'; }
+
+strong { font-family: 'Vollkorn-Bold'; }
 
 .content { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; margin-left: 20%; margin-right: 20%; }
 

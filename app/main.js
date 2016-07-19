@@ -8,6 +8,7 @@ var app = electron.app;
 var ipcMain = electron.ipcMain;
 var MenuItem = electron.MenuItem;
 var BrowserWindow = electron.BrowserWindow;
+var shell = electron.shell;
 
 global.name = null;
 global.database = null;
@@ -31,7 +32,13 @@ function createWindows() {
   // and load the index.html of the app.
   slidesWindow.loadURL('file://' + __dirname + '/views/slides.html');
   // Open the DevTools.
-  slidesWindow.webContents.openDevTools();
+  // slidesWindow.webContents.openDevTools();
+  // slidesWindow.on('will-navigate', (e, url) => {
+  //   if (url !== slidesWindow.getURL()) {
+  //     e.preventDefault();
+  //     shell.openExternal(url);
+  //   }
+  // });
   // Emitted when the window is closed.
   slidesWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
@@ -49,7 +56,7 @@ function createWindows() {
   // and load the index.html of the app.
   commentsWindow.loadURL('file://' + __dirname + '/views/comments.html');
   // Open the DevTools.
-  commentsWindow.webContents.openDevTools();
+  // commentsWindow.webContents.openDevTools();
   // Emitted when the window is closed.
   commentsWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows

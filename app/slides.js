@@ -11,6 +11,8 @@ var parser = _interopRequireWildcard(_parser);
 
 var _imageLinker = require('./image-linker');
 
+var _hrefLinker = require('./href-linker');
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var removeHtmlComments = require('remove-html-comments');
@@ -23,6 +25,8 @@ function slides(data) {
   for (var i = 0; i < slds.length; i++) {
     var clean = removeHtmlComments(entities.decodeHTML(slds[i]));
     clean.data = (0, _imageLinker.linker)(clean.data, global.presetationRoot);
+    clean.data = (0, _hrefLinker.hrefer)(clean.data);
+
     // console.log(chalk.red('slides.js Cleaned HTML: ') + JSON.stringify(clean, null, 2));
     var uncommented = [];
     for (var j = 0; j < clean.comments.length; j++) {

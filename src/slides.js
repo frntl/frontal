@@ -1,5 +1,6 @@
 import * as parser from './parser';
 import {linker} from './image-linker';
+import {hrefer} from './href-linker';
 const removeHtmlComments = require('remove-html-comments');
 const entities = require('entities');
 const chalk = require('chalk');
@@ -10,6 +11,8 @@ export function slides(data) {
   for (let i = 0; i < slds.length; i++) {
     let clean = removeHtmlComments(entities.decodeHTML(slds[i]));
     clean.data = linker(clean.data, global.presetationRoot);
+    clean.data = hrefer(clean.data);
+
     // console.log(chalk.red('slides.js Cleaned HTML: ') + JSON.stringify(clean, null, 2));
     let uncommented = [];
     for(let j = 0; j < clean.comments.length; j++) {

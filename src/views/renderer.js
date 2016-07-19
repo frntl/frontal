@@ -4,6 +4,35 @@ const {
 let content = null;
 let currentSlide = 0;
 let ids = ['comments', 'slides'];
+var shell = require('electron')
+  .shell;
+// open links externally by default
+// let links = document.getElementsByTagName('a'); // eslint-disable-line no-undef
+// console.log(links);
+
+// if (document.readyState != "complete") {
+//   document.addEventListener('DOMContentLoaded', function() {
+//     prepareTags()
+//   }, false);
+// } else {
+//   prepareTags();
+// }
+
+// function prepareTags(){
+//   aTags = document.getElementsByTagName("a");
+//   for (var i = 0; i < aTags.length; i++) {
+//     aTags[i].setAttribute("onclick","require('shell').openExternal('" + aTags[i].href + "')");
+//     aTags[i].href = "#";
+//   }
+//   return false;
+// }
+
+// Array.from(document.getElementsByTagName('a')).forEach((ele, i, arr) => {
+//   ele.onclick(function(event) {
+//     event.preventDefault();
+//     shell.openExternal(this.href);
+//   });
+// });
 export function renderer() {}
 
 function increaseSlideNumber() {
@@ -17,18 +46,18 @@ function decreaseSlideNumber() {
     currentSlide--;
   }
 }
-function constrain (i, arr) {
+
+function constrain(i, arr) {
   let ndx = null;
-  if(i > arr.length - 1) {
+  if (i > arr.length - 1) {
     ndx = arr.length - 1;
-  }else{
+  } else {
     ndx = i;
   }
   return ndx;
 }
 
-function setContent () {
-
+function setContent() {
   ids.forEach((ele, index, array) => {
     let element = document.getElementById(ele); // eslint-disable-line no-undef
     if (element !== null) {
@@ -41,7 +70,6 @@ function setContent () {
     }
   });
 }
-
 ipcRenderer.on('down', (event, arg) => {
   console.log(arg);
   increaseSlideNumber();
@@ -76,17 +104,18 @@ ipcRenderer.on('slides', (event, arg) => {
   //   }
   // });
 });
-
-ipcRenderer.on('switch-theme', (event, arg)=>{
+ipcRenderer.on('switch-theme', (event, arg) => {
   console.log(arg);
 });
 
 function changeCSS(cssFilePath, cssLinkIndex) {
-  let oldLink = document.getElementsByTagName('link').item(cssLinkIndex); // eslint-disable-line no-undef
+  let oldLink = document.getElementsByTagName('link')
+    .item(cssLinkIndex); // eslint-disable-line no-undef
   let newLink = document.createElement('link'); // eslint-disable-line no-undef
   newLink.setAttribute('rel', 'stylesheet');
   newLink.setAttribute('type', 'text/css');
   newLink.setAttribute('href', cssFilePath);
-  document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink); // eslint-disable-line no-undef
+  document.getElementsByTagName('head')
+    .item(0)
+    .replaceChild(newLink, oldLink); // eslint-disable-line no-undef
 }
-
