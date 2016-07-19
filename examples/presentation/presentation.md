@@ -61,9 +61,11 @@ document.close();
 
 ---
 
-## an image
+## an image relativ to the markdown file
 
-![](me-fro.png)  
+![some text](me-fro.png)  
+
+And some more text.  
 
 ---
 
@@ -92,3 +94,23 @@ console.log(`${value} times hello my friend`);
 > -Homer Jay Simpson
 
 
+---
+
+### some unordered list
+
+- item 1
+- item 2
+- - nested item 1
+- - nested item 2
+- item 3
+
+
+---
+
+### and a ordered list
+
+1. one
+2. two
+3. three
+4. four
+5. - four one

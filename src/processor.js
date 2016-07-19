@@ -2,7 +2,7 @@ import {
   slides
 } from './slides';
 import * as fs from 'fs';
-export function process (path) {
+export function processing (path) {
   let res = fs.readFileSync(path, 'utf8');
   if (res !== null) {
     let d = slides(res);

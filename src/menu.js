@@ -8,18 +8,18 @@ const chalk = require('chalk');
 
 
 // import * as database from './database';
-import * as processor from './processor';
-export function menu() {}
-
-function sender(wins, title, msg) {
-  wins.forEach(function(w, i) {
-    // console.log(title);
-    w.webContents.send(title, {
-      msg: msg
-    });
-    // statements
-  });
-}
+import {processing} from './processor';
+import {sender} from './sender';
+import {reload} from './reload-presentation';
+// function sender(wins, title, msg) {
+//   wins.forEach(function(w, i) {
+//     // console.log(title);
+//     w.webContents.send(title, {
+//       msg: msg
+//     });
+//     // statements
+//   });
+// }
 export function buildTemplate(windows) {
   let template = [{
     label: 'File',
@@ -36,17 +36,18 @@ export function buildTemplate(windows) {
         } else {
           let presentationFile = files[0];
           console.log(chalk.green(`presentationFile: ${presentationFile}`));
-          let dbFolderPath = path.dirname(presentationFile);
-          let dbFileName = path.basename(presentationFile, path.extname(presentationFile));
-          global.name = dbFileName;
+          // let dbFolderPath = path.dirname(presentationFile);
+          // let dbFileName = path.basename(presentationFile, path.extname(presentationFile));
+          global.name = path.basename(presentationFile, path.extname(presentationFile));
+          global.presentationFile = presentationFile;
           global.presetationRoot = path.dirname(presentationFile);
-          let database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
-          var res = processor.process(presentationFile);
+          // let database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
+          var res = processing(presentationFile);
           // console.log('res in menu.js ', res);
 
           if(res !== null) {
-            database.push('/slides', res);
-            global.database = database;
+            // database.push('/slides', res);
+            // global.database = database;
             // console.log(res);
             sender(windows, 'slides', res);
           }
@@ -99,11 +100,7 @@ export function buildTemplate(windows) {
     }, {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
-      click: function(item, focusedWindow) {
-        if (focusedWindow) {
-          focusedWindow.reload();
-        }
-      }
+      click: reload
     }, {
       label: 'Toggle Full Screen',
       accelerator: (function() {

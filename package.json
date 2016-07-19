@@ -10,7 +10,8 @@
     "start": "./node_modules/electron-prebuilt/dist/Electron.app/Contents/MacOS/Electron app/main.js",
     "watch": "./node_modules/.bin/babel src -w -d app -D",
     "sass": "./node_modules/.bin/node-sass -w src/views/themes/default/scss/ -o src/views/themes/default/css/ --output-style=compact",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-register"
+    "test": "./node_modules/.bin/mocha --compilers js:babel-register",
+    "pandoc":"echo 'trying to create markdown via pandoc for testing css in ./test/index.html' && sh bin/pandoc.sh"
   },
   "dependencies": {
     "chalk": "^1.1.3",

@@ -21,7 +21,7 @@
             "comments": ""
         },
         {
-            "slide": "<h2 id=\"an-image\">an image</h2>\n<p><img src=\"/Users/icke/Documents/frntl/frontal/examples/presentation/me-fro.png\" alt=\"\">  </p>\n",
+            "slide": "<h2 id=\"an-image-relativ-to-the-markdown-file\">an image relativ to the markdown file</h2>\n<p><img src=\"/Users/icke/Documents/frntl/frontal/examples/presentation/me-fro.png\" alt=\"\">  </p>\n",
             "comments": ""
         },
         {
@@ -34,6 +34,14 @@
         },
         {
             "slide": "<h1 id=\"some-random-quote\">Some random quote</h1>\n<blockquote>\n<p>Random QuoteView All Quotes<br>-Homer Jay Simpson</p>\n</blockquote>\n",
+            "comments": ""
+        },
+        {
+            "slide": "<h3 id=\"some-unordered-list\">some unordered list</h3>\n<ul>\n<li>item 1</li>\n<li>item 2</li>\n<li><ul>\n<li>nested item 1</li>\n</ul>\n</li>\n<li><ul>\n<li>nested item 2</li>\n</ul>\n</li>\n<li>item 3</li>\n</ul>\n",
+            "comments": ""
+        },
+        {
+            "slide": "<h3 id=\"and-a-ordered-list\">and a ordered list</h3>\n<ol>\n<li>one</li>\n<li>two</li>\n<li>three</li>\n<li>four</li>\n<li><ul>\n<li>four one</li>\n</ul>\n</li>\n</ol>\n",
             "comments": ""
         }
     ]

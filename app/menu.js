@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.menu = menu;
 exports.buildTemplate = buildTemplate;
 
 var _path = require('path');
@@ -12,7 +11,9 @@ var path = _interopRequireWildcard(_path);
 
 var _processor = require('./processor');
 
-var processor = _interopRequireWildcard(_processor);
+var _sender = require('./sender');
+
+var _reloadPresentation = require('./reload-presentation');
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -24,17 +25,16 @@ var JsonDB = require('node-json-db');
 var chalk = require('chalk');
 
 // import * as database from './database';
-function menu() {}
 
-function sender(wins, title, msg) {
-  wins.forEach(function (w, i) {
-    // console.log(title);
-    w.webContents.send(title, {
-      msg: msg
-    });
-    // statements
-  });
-}
+// function sender(wins, title, msg) {
+//   wins.forEach(function(w, i) {
+//     // console.log(title);
+//     w.webContents.send(title, {
+//       msg: msg
+//     });
+//     // statements
+//   });
+// }
 function buildTemplate(windows) {
   var template = [{
     label: 'File',
@@ -51,19 +51,20 @@ function buildTemplate(windows) {
         } else {
           var presentationFile = files[0];
           console.log(chalk.green('presentationFile: ' + presentationFile));
-          var dbFolderPath = path.dirname(presentationFile);
-          var dbFileName = path.basename(presentationFile, path.extname(presentationFile));
-          global.name = dbFileName;
+          // let dbFolderPath = path.dirname(presentationFile);
+          // let dbFileName = path.basename(presentationFile, path.extname(presentationFile));
+          global.name = path.basename(presentationFile, path.extname(presentationFile));
+          global.presentationFile = presentationFile;
           global.presetationRoot = path.dirname(presentationFile);
-          var database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
-          var res = processor.process(presentationFile);
+          // let database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
+          var res = (0, _processor.processing)(presentationFile);
           // console.log('res in menu.js ', res);
 
           if (res !== null) {
-            database.push('/slides', res);
-            global.database = database;
+            // database.push('/slides', res);
+            // global.database = database;
             // console.log(res);
-            sender(windows, 'slides', res);
+            (0, _sender.sender)(windows, 'slides', res);
           }
         }
       }
@@ -103,22 +104,18 @@ function buildTemplate(windows) {
       label: 'Previous',
       accelerator: 'Up',
       click: function click() {
-        sender(windows, 'up', 'Hello up from main!');
+        (0, _sender.sender)(windows, 'up', 'Hello up from main!');
       }
     }, {
       label: 'Next',
       accelerator: 'Down',
       click: function click() {
-        sender(windows, 'down', 'Hello down from main!');
+        (0, _sender.sender)(windows, 'down', 'Hello down from main!');
       }
     }, {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
-      click: function click(item, focusedWindow) {
-        if (focusedWindow) {
-          focusedWindow.reload();
-        }
-      }
+      click: _reloadPresentation.reload
     }, {
       label: 'Toggle Full Screen',
       accelerator: function () {

@@ -10,7 +10,7 @@ export function slides(data) {
   for (let i = 0; i < slds.length; i++) {
     let clean = removeHtmlComments(entities.decodeHTML(slds[i]));
     clean.data = linker(clean.data, global.presetationRoot);
-    console.log(chalk.red('slides.js Cleaned HTML: ') + JSON.stringify(clean, null, 2));
+    // console.log(chalk.red('slides.js Cleaned HTML: ') + JSON.stringify(clean, null, 2));
     let uncommented = [];
     for(let j = 0; j < clean.comments.length; j++) {
       uncommented.push(uncomment(clean.comments[j]));

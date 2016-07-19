@@ -10,7 +10,8 @@ import {
 global.name = null;
 global.database = null;
 global.presetationRoot = null;
-
+global.presentationFile = null;
+global.windows = [];
 let slidesWindow = null;
 let commentsWindow = null;
 
@@ -54,6 +55,8 @@ function createWindows() {
     // when you should delete the corresponding element.
     commentsWindow = null;
   });
+  global.windows.push(slidesWindow);
+  global.windows.push(commentsWindow);
 }
 
 function createMenues() {
