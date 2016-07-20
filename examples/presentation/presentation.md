@@ -25,7 +25,7 @@ There is a comment in here
 
 ## an image relativ to the markdown file
 ![some text](me-fro.png)  
-And some more text.  
+And some more text below it.
 
 ---
 
@@ -57,6 +57,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 # [LINK in headline](http://example.com)   
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. [link](http://example.com) in text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
+
 ---
 
 ## Code below should be executed

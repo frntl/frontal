@@ -36,19 +36,24 @@ export function buildTemplate(windows) {
           console.log('aborted by user');
         } else {
           let presentationFile = files[0];
-          let res = processing(presentationFile);
-          // console.log('res in menu.js ', res);
-          if (res !== null) {
-            watch(global.presentationFile);
+          console.log(presentationFile);
+          let slidesHTML = processing(presentationFile);
+          watch(presentationFile);
+          global.presentationFile = presentationFile;
+          sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
+            // console.log('res in menu.js ', res);
+            // if (res !== null) {
+            // watch(global.presentationFile);
             // database.push('/slides', res);
             // global.database = database;
             // console.log(res);
-            sender(windows, 'slides', res);
-          } else {
-            dialog.showErrorBox('Error', 'An error occurred while processing the file.' + 'Are you sure it is valid markdown?');
-          }
+            // sender(windows, 'slides', res);
         }
       }
+        // else {
+        // dialog.showErrorBox('Error', 'An error occurred while processing the file.' + 'Are you sure it is valid markdown?');
+        // }
+        // }
     }, {
       label: 'Close',
       accelerator: 'CmdOrCtrl+Q',

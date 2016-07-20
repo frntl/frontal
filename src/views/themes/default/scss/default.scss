@@ -59,18 +59,44 @@ body#frontal {
     code {
       text-align: left;
     }
+    p{
+      text-align: left;
+      max-width:50vw;
+    }
+    blockquote {
+      font-family:'Vollkorn-Italic';
+      font-size:1.6rem;
+    }
     table {
       margin-left: auto;
       margin-right: auto;
-      thead{
+      // border-bottom: 2px dashed #cccccc;
+      // border-collapse: collapse;
+      thead {
         font-family: 'Vollkorn-Bold';
-        background-color:none;
-        border-bottom: dotted #E6E6E6;
+        // background-color: none;
+        // background-color: rgba(1,1,1,0);
+        // border-bottom: 2px dashed #cccccc;
 
       }
-      tr:nth-child(even) {
-    background-color: #E6E6E6;
-}
+      th{
+          border-bottom: 3px dashed #848484;
+          padding-left:10px;
+          padding-right:10px;
+
+      }
+      td{
+          border-bottom: 2px dashed #cccccc;
+          padding-left:10px;
+          padding-right:10px;
+      }
+      tr{
+        // border-bottom: dotted #E6E6E6;
+
+      }
+      // tr:nth-child(even) {
+      //   background-color: #E6E6E6;
+      // }
     }
   }
 }

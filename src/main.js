@@ -10,11 +10,17 @@ import {
   buildTemplate
 } from './menu';
 import {
-  loadHelp
-} from './help/index';
+  watch
+} from './utils/watcher';
+// import {
+//   loadHelp
+// } from './help/index';
 import {
   sender
 } from './utils/sender';
+import {
+  processing
+} from './processor';
 global.name = null;
 global.database = null;
 global.presetationRoot = null;
@@ -23,14 +29,16 @@ global.slidesWindow = null;
 global.commentsWindow = null;
 let slidesWindow = null;
 let commentsWindow = null;
+let helpFilePath = './app/help/help.md';
 
 function windowsReady(wins) {
-
-  let msg = loadHelp();
+  global.presentationFile = helpFilePath;
+  let slidesHTML = processing(helpFilePath);
+  watch(global.presentationFile);
   wins.forEach((w, i, arr) => {
     w.webContents.on('did-finish-load', () => {
       w.webContents.send('slides', {
-        msg: msg
+        msg: slidesHTML
       });
     });
   });
@@ -118,9 +126,10 @@ app.on('window-all-closed', function() {
 app.on('activate', function() {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (slidesWindow === null || commentsWindow === null) {
+  if (global.slidesWindow === null || global.commentsWindow === null) {
     createWindows();
     createMenues();
+    windowsReady([global.slidesWindow, global.commentsWindow]);
   }
 });
 // This method will be called when Electron has finished
@@ -129,7 +138,7 @@ app.on('activate', function() {
 app.on('ready', () => {
   createWindows();
   createMenues();
-  windowsReady([slidesWindow, commentsWindow]);
+  windowsReady([global.slidesWindow, global.commentsWindow]);
 });
 // app.on('quit', ()=>{
 //   slidesWindow.destroy();

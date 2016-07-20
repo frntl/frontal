@@ -20,8 +20,14 @@ body#frontal #slides pre { min-width: 100%; text-align: left; }
 
 body#frontal #slides code { text-align: left; }
 
+body#frontal #slides p { text-align: left; max-width: 50vw; }
+
+body#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 1.6rem; }
+
 body#frontal #slides table { margin-left: auto; margin-right: auto; }
 
-body#frontal #slides table thead { font-family: 'Vollkorn-Bold'; background-color: none; border-bottom: dotted #E6E6E6; }
+body#frontal #slides table thead { font-family: 'Vollkorn-Bold'; }
 
-body#frontal #slides table tr:nth-child(even) { background-color: #E6E6E6; }
+body#frontal #slides table th { border-bottom: 3px dashed #848484; padding-left: 10px; padding-right: 10px; }
+
+body#frontal #slides table td { border-bottom: 2px dashed #cccccc; padding-left: 10px; padding-right: 10px; }
