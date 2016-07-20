@@ -9,7 +9,6 @@ var shell = require('electron')
 // open links externally by default
 // let links = document.getElementsByTagName('a'); // eslint-disable-line no-undef
 // console.log(links);
-
 // if (document.readyState != "complete") {
 //   document.addEventListener('DOMContentLoaded', function() {
 //     prepareTags()
@@ -17,7 +16,6 @@ var shell = require('electron')
 // } else {
 //   prepareTags();
 // }
-
 // function prepareTags(){
 //   aTags = document.getElementsByTagName("a");
 //   for (var i = 0; i < aTags.length; i++) {
@@ -26,7 +24,6 @@ var shell = require('electron')
 //   }
 //   return false;
 // }
-
 // Array.from(document.getElementsByTagName('a')).forEach((ele, i, arr) => {
 //   ele.onclick(function(event) {
 //     event.preventDefault();
@@ -36,7 +33,13 @@ var shell = require('electron')
 export function renderer() {}
 
 function increaseSlideNumber() {
-  currentSlide++;
+  if (content.msg !== null || content.msg !== undefined) {
+    if (currentSlide === content.msg.length - 1) {
+      currentSlide = content.msg.length - 1;
+    } else {
+      currentSlide++;
+    }
+  }
 }
 
 function decreaseSlideNumber() {

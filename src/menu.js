@@ -9,9 +9,9 @@ const chalk = require('chalk');
 
 // import * as database from './database';
 import {processing} from './processor';
-import {sender} from './sender';
-import {reload} from './reload-presentation';
-import {watch} from './watcher';
+import {sender} from './utils/sender';
+import {reload} from './utils/reload-presentation';
+import {watch} from './utils/watcher';
 
 export function buildTemplate(windows) {
   let template = [{

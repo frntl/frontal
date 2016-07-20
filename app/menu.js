@@ -11,11 +11,11 @@ var path = _interopRequireWildcard(_path);
 
 var _processor = require('./processor');
 
-var _sender = require('./sender');
+var _sender = require('./utils/sender');
 
-var _reloadPresentation = require('./reload-presentation');
+var _reloadPresentation = require('./utils/reload-presentation');
 
-var _watcher = require('./watcher');
+var _watcher = require('./utils/watcher');
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 

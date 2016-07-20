@@ -1,6 +1,6 @@
 import * as parser from './parser';
-import {linker} from './image-linker';
-import {hrefer} from './href-linker';
+import {linker} from './utils/image-linker';
+import {hrefer} from './utils/href-linker';
 const removeHtmlComments = require('remove-html-comments');
 const entities = require('entities');
 const chalk = require('chalk');
