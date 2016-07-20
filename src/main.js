@@ -19,7 +19,8 @@ global.name = null;
 global.database = null;
 global.presetationRoot = null;
 global.presentationFile = null;
-global.windows = [];
+global.slidesWindow = null;
+global.commentsWindow = null;
 let slidesWindow = null;
 let commentsWindow = null;
 
@@ -43,7 +44,10 @@ function createWindows() {
     height: 600,
     x: 0,
     y: 0,
-    title: 'Frontal'
+    title: 'Frontal',
+    closable:false,
+    frame: false,
+    titleBarStyle: 'hidden'
   });
   // and load the index.html of the app.
   slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
@@ -60,17 +64,22 @@ function createWindows() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    slidesWindow = null;
+    slidesWindow = global.slidesWindow = null;
   });
   // slidesWindow.on('ready-to-show', () => {
   //   console.log('ready-to-show');
+  // });
+  // slidesWindow.on('close', (event)=>{
+  //   console.log('I do not want to be closed');
+  //   // event.preventDefault();
   // });
   commentsWindow = new BrowserWindow({
     width: 400,
     height: 600,
     x: 800,
     y: 0,
-    title: 'Frontal'
+    closable:false,
+    title: 'Frontal Speaker Notes'
   });
   // and load the index.html of the app.
   commentsWindow.loadURL(`file://${__dirname}/views/comments.html`);
@@ -81,11 +90,11 @@ function createWindows() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    commentsWindow = null;
+    commentsWindow = global.commentsWindow = null;
   });
-  global.windows.push(slidesWindow);
-  global.windows.push(commentsWindow);
-  sender(global.windows, 'hello', 'msg');
+  // global.windows.push(slidesWindow);
+  // global.windows.push(commentsWindow);
+  // sender(global.windows, 'hello', 'msg');
   // loadHelp([slidesWindow, commentsWindow]);
 }
 
@@ -119,6 +128,12 @@ app.on('ready', () => {
   createMenues();
   windowsReady([slidesWindow, commentsWindow]);
 });
+
+// app.on('quit', ()=>{
+//   slidesWindow.destroy();
+//   commentsWindow.destroy();
+//   app.exit();
+// });
 // // In this file you can include the rest of your app's specific main process
 // // code. You can also put them in separate files and require them here.
 app.on('will-finish-launching', (event) => {

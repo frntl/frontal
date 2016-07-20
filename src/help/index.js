@@ -12,7 +12,6 @@ export function loadHelp() {
   // if (exists) console.log('file exists ', exists);
   let res = processing('./app/help/help.md');
   if (res !== null) {
-    // console.log(global.windows);
     return res;
   } else {
     return null;

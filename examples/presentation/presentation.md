@@ -94,6 +94,7 @@ console.log(`${value} times hello my friend`);
 | more      | even more      |
 | duck      | dog            |
 | junk      | food           |
+| hello     | world               |
 
 
 ---

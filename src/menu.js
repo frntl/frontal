@@ -1,4 +1,3 @@
-
 import * as path from 'path';
 const electron = require('electron');
 const app = electron.app;
@@ -6,18 +5,28 @@ const shell = electron.shell;
 const dialog = electron.dialog;
 const JsonDB = require('node-json-db');
 const chalk = require('chalk');
-
-import {processing} from './processor';
-import {sender} from './utils/sender';
-import {reload} from './utils/reload-presentation';
-import {watch} from './utils/watcher';
-
+import {
+  processing
+} from './processor';
+import {
+  sender
+} from './utils/sender';
+import {
+  reload
+} from './utils/reload-presentation';
+import {
+  watch
+} from './utils/watcher';
 export function buildTemplate(windows) {
   let template = [{
+    label: 'Frontal',
+    role: 'Services',
+    submenu: []
+  }, {
     label: 'File',
     submenu: [{
       label: 'Open...',
-      accelerator: 'Super+O',
+      accelerator: 'CmdOrCtrl+O',
       click: function() {
         console.log('Open...');
         let files = dialog.showOpenDialog({
@@ -29,36 +38,27 @@ export function buildTemplate(windows) {
           let presentationFile = files[0];
           let res = processing(presentationFile);
           // console.log('res in menu.js ', res);
-          if(res !== null) {
+          if (res !== null) {
             watch(global.presentationFile);
             // database.push('/slides', res);
             // global.database = database;
             // console.log(res);
             sender(windows, 'slides', res);
           } else {
-            dialog.showErrorBox('Error', 'An error occurred while processing the file.' +
-              'Are you sure it is valid markdown?');
+            dialog.showErrorBox('Error', 'An error occurred while processing the file.' + 'Are you sure it is valid markdown?');
           }
         }
+      }
+    }, {
+      label: 'Close',
+      accelerator: 'CmdOrCtrl+Q',
+      click: () => {
+        app.exit(0);
       }
     }]
   }, {
     label: 'Edit',
     submenu: [{
-      label: 'Undo',
-      accelerator: 'CmdOrCtrl+Z',
-      role: 'undo'
-    }, {
-      label: 'Redo',
-      accelerator: 'Shift+CmdOrCtrl+Z',
-      role: 'redo'
-    }, {
-      type: 'separator'
-    }, {
-      label: 'Cut',
-      accelerator: 'CmdOrCtrl+X',
-      role: 'cut'
-    }, {
       label: 'Copy',
       accelerator: 'CmdOrCtrl+C',
       role: 'copy'
@@ -97,6 +97,28 @@ export function buildTemplate(windows) {
       click: function() {
         sender(windows, 'down', 'Hello down from main!');
       }
+    }, {
+      type: 'separator'
+    }, {
+      label: 'Zoom in',
+      accelerator: 'CmdOrCtrl+Plus',
+      click: () => {
+        sender(windows, 'plus', 'plus');
+      }
+    }, {
+      label: 'Zoom Out',
+      accelerator: 'CmdOrCtrl+-',
+      click: () => {
+        sender(windows, 'minus', 'minus');
+      }
+    }, {
+      label: 'Zoom 100%',
+      accelerator: 'CmdOrCtrl+0',
+      click: () => {
+        sender(windows, 'zoom-reset', '100');
+      }
+    }, {
+      type: 'separator'
     }, {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',

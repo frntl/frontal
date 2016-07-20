@@ -1,11 +1,27 @@
 const {
   ipcRenderer
 } = require('electron');
+const {webFrame} = require('electron');
+let zoomFactorSlides = 1;
 let content = null;
 let currentSlide = 0;
 let ids = ['comments', 'slides'];
 var shell = require('electron')
   .shell;
+const drag = require('electron-drag');
+
+// Pass a query selector or a dom element to the function.
+// Dragging the element will drag the whole window.
+var clearF = drag('#frontal');
+var clearN = drag('#notes');
+
+// Call the returned function to make the element undraggable again.
+// clear();
+// Fallback to using -webkit-app-region property.
+if(!drag.supported) {
+    document.querySelector('#frontal').style['-webkit-app-region'] = 'drag';
+}
+
 // open links externally by default
 // let links = document.getElementsByTagName('a'); // eslint-disable-line no-undef
 // console.log(links);
@@ -132,6 +148,24 @@ ipcRenderer.on('switch-theme', (event, arg) => {
   console.log(arg);
 });
 
+ipcRenderer.on('plus', (event, arg)=>{
+  console.log(arg);
+  zoomFactorSlides += 0.1;
+  webFrame.setZoomFactor(zoomFactorSlides);
+
+});
+ipcRenderer.on('minus', (event, arg)=>{
+  console.log(arg);
+  zoomFactorSlides -= 0.1;
+  webFrame.setZoomFactor(zoomFactorSlides);
+
+});
+ipcRenderer.on('zoom-reset', (event, arg)=>{
+  console.log(arg);
+  zoomFactorSlides = 1;
+  webFrame.setZoomFactor(zoomFactorSlides);
+
+});
 function changeCSS(cssFilePath, cssLinkIndex) {
   let oldLink = document.getElementsByTagName('link')
     .item(cssLinkIndex); // eslint-disable-line no-undef
