@@ -5,12 +5,16 @@ import {
 import {
   processing
 } from '../processor';
-const fileExists = require('file-exists');
+
+let filePath = './app/help/help.md';
+import {watch} from '../utils/watcher';
+
 export function loadHelp() {
   // console.log('in app/help/' + process.cwd());
   // let exists = fileExists('./app/help/help.md');
   // if (exists) console.log('file exists ', exists);
-  let res = processing('./app/help/help.md');
+  let res = processing(filePath);
+  watch(filePath);
   if (res !== null) {
     return res;
   } else {

@@ -11,7 +11,6 @@
   font-family: 'Vollkorn-Italic';
   src: url('../font/vollkorn-3-005/TTF/Vollkorn-Italic.ttf')  format('truetype');
 }
-
 @mixin flexcenter() {
   display: flex;
   justify-content: center;
@@ -21,17 +20,18 @@
 }
 body#frontal {
   @include flexcenter();
-    font-family: 'Vollkorn-Regular';
-    max-height: 100%;
-    overflow: hidden;
-    font-size: 20px;
-    line-height: 1.5;
-    color: #141414;
-    word-wrap: break-word;
-    hyphens: auto;
-    text-align:center;
-          margin-left: 20%;
-      margin-right: 20%;
+  font-family: 'Vollkorn-Regular';
+  max-height: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #141414;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+
   #slides {
     h1, h2, h3, h4 {
       font-family: 'Vollkorn-Bold';
@@ -46,7 +46,6 @@ body#frontal {
     strong {
       font-family: 'Vollkorn-Bold';
     }
-
     img {
       max-width: 80%;
       display: block;
@@ -59,6 +58,19 @@ body#frontal {
     }
     code {
       text-align: left;
+    }
+    table {
+      margin-left: auto;
+      margin-right: auto;
+      thead{
+        font-family: 'Vollkorn-Bold';
+        background-color:none;
+        border-bottom: dotted #E6E6E6;
+
+      }
+      tr:nth-child(even) {
+    background-color: #E6E6E6;
+}
     }
   }
 }

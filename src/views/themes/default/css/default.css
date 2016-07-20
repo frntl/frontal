@@ -19,3 +19,9 @@ body#frontal #slides img { max-width: 80%; display: block; margin: 0 auto; flaot
 body#frontal #slides pre { min-width: 100%; text-align: left; }
 
 body#frontal #slides code { text-align: left; }
+
+body#frontal #slides table { margin-left: auto; margin-right: auto; }
+
+body#frontal #slides table thead { font-family: 'Vollkorn-Bold'; background-color: none; border-bottom: dotted #E6E6E6; }
+
+body#frontal #slides table tr:nth-child(even) { background-color: #E6E6E6; }
