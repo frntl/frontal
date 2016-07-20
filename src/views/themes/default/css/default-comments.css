@@ -1,0 +1,5 @@
+body#notes { font-size: 1.3rem; }
+
+body#notes header#speaker-notes { width: 100%; height: 30px; background-color: #3F3F3F; }
+
+body#notes #comments { margin-top: 30px; }

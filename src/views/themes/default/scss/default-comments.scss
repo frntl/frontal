@@ -1,0 +1,13 @@
+$headerHeight: 30px;
+
+body#notes{
+  font-size: 1.3rem;
+  header#speaker-notes {
+    width: 100%;
+    height: $headerHeight;
+    background-color: #3F3F3F;
+  }
+  #comments {
+    margin-top: $headerHeight;
+  }
+}

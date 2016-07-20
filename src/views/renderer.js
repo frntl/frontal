@@ -33,7 +33,7 @@ var shell = require('electron')
 export function renderer() {}
 
 function increaseSlideNumber() {
-  if (content.msg !== null || content.msg !== undefined) {
+  if (content !== null || content.msg !== undefined) {
     if (currentSlide === content.msg.length - 1) {
       currentSlide = content.msg.length - 1;
     } else {
@@ -60,6 +60,20 @@ function constrain(i, arr) {
   return ndx;
 }
 
+function setCurrentSlideNumber() {
+  let curr = document.getElementById('slides-current');
+  if (curr !== null) {
+    curr.innerHTML = currentSlide + 1;
+  }
+}
+
+function setSlideslength(i) {
+  let len = document.getElementById('slides-length');
+  if (len !== null) {
+    len.innerHTML = i;
+  }
+}
+
 function setContent() {
   ids.forEach((ele, index, array) => {
     let element = document.getElementById(ele); // eslint-disable-line no-undef
@@ -77,6 +91,7 @@ ipcRenderer.on('down', (event, arg) => {
   console.log(arg);
   increaseSlideNumber();
   setContent();
+  setCurrentSlideNumber();
   // document.getElementByClassName('content')
   // .innerHTML = currentSlide;
 });
@@ -84,6 +99,7 @@ ipcRenderer.on('up', (event, arg) => {
   console.log(arg);
   decreaseSlideNumber();
   setContent();
+  setCurrentSlideNumber();
   // document.getElementByClassName('content')
   // .innerHTML = currentSlide;
 });
@@ -95,6 +111,8 @@ ipcRenderer.on('slides', (event, arg) => {
   console.log(arg);
   content = arg;
   setContent();
+  setCurrentSlideNumber();
+  setSlideslength(content.msg.length);
   // ids.forEach((ele, index, array) => {
   //   let element = document.getElementById(ele);
   //   if (element !== null) {
@@ -106,6 +124,9 @@ ipcRenderer.on('slides', (event, arg) => {
   //     }
   //   }
   // });
+});
+ipcRenderer.on('hello', (event, arg) => {
+  console.log('hello');
 });
 ipcRenderer.on('switch-theme', (event, arg) => {
   console.log(arg);
