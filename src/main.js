@@ -25,6 +25,7 @@ let slidesWindow = null;
 let commentsWindow = null;
 
 function windowsReady(wins) {
+
   let msg = loadHelp();
   wins.forEach((w, i, arr) => {
     w.webContents.on('did-finish-load', () => {
@@ -45,14 +46,14 @@ function createWindows() {
     x: 0,
     y: 0,
     title: 'Frontal',
-    closable:false,
+    closable: false,
     frame: false,
     titleBarStyle: 'hidden'
   });
   // and load the index.html of the app.
   slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
   // Open the DevTools.
-  slidesWindow.webContents.openDevTools();
+  // slidesWindow.webContents.openDevTools();
   // slidesWindow.on('will-navigate', (e, url) => {
   //   if (url !== slidesWindow.getURL()) {
   //     e.preventDefault();
@@ -78,7 +79,7 @@ function createWindows() {
     height: 600,
     x: 800,
     y: 0,
-    closable:false,
+    closable: false,
     title: 'Frontal Speaker Notes'
   });
   // and load the index.html of the app.
@@ -96,6 +97,8 @@ function createWindows() {
   // global.windows.push(commentsWindow);
   // sender(global.windows, 'hello', 'msg');
   // loadHelp([slidesWindow, commentsWindow]);
+  global.commentsWindow = commentsWindow;
+  global.slidesWindow = slidesWindow;
 }
 
 function createMenues() {
@@ -128,7 +131,6 @@ app.on('ready', () => {
   createMenues();
   windowsReady([slidesWindow, commentsWindow]);
 });
-
 // app.on('quit', ()=>{
 //   slidesWindow.destroy();
 //   commentsWindow.destroy();

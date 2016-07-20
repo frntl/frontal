@@ -3,10 +3,21 @@
 # Welcome to frontal.app
 ## Hit ⌘ + O to open a Markdown presentation
 
-You can navigate this document by using the "Down ↓" or "Right →" keys for going forward and the "Up ↑" or "Left ←" keys for going backward. 
+You can navigate your document by using these keys.
 
+| Keys                | Actions                   |
+| --:                | :--                       |
+| Down ↓             | Next Slide                |
+| Right →            | Next Slide                |
+| Up ↑               | Previous Slide            |
+| Left ←             | Previous Slide            |
+| ⌘ or ^ + O         | Opens a new markdown file |
+| ⌘ or ^ + Q         | Closes the App            |
+| ⌘ or ^ + Plus (+)  | Zoom in (always 10%)      |
+| ⌘ or ^ + Minus (-) | Zoom out (always 10%)     |
 
 ---
+
 
 ## How to write a presentation?
 Creating a presentation is dead simple. Just write your Markdown like you always would. To create separate slides just split them with a horizontal line and leave a empty line before and after it.  
