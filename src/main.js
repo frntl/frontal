@@ -5,9 +5,16 @@ const ipcMain = electron.ipcMain;
 const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
+const webContents = electron.webContents;
 import {
   buildTemplate
 } from './menu';
+import {
+  loadHelp
+} from './help/index';
+import {
+  sender
+} from './utils/sender';
 global.name = null;
 global.database = null;
 global.presetationRoot = null;
@@ -15,6 +22,17 @@ global.presentationFile = null;
 global.windows = [];
 let slidesWindow = null;
 let commentsWindow = null;
+
+function windowsReady(wins) {
+  let msg = loadHelp();
+  wins.forEach((w, i, arr) => {
+    w.webContents.on('did-finish-load', () => {
+      w.webContents.send('slides', {
+        msg: msg
+      });
+    });
+  });
+}
 
 function createWindows() {
   // Create the browser window.
@@ -30,7 +48,7 @@ function createWindows() {
   // and load the index.html of the app.
   slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
   // Open the DevTools.
-  // slidesWindow.webContents.openDevTools();
+  slidesWindow.webContents.openDevTools();
   // slidesWindow.on('will-navigate', (e, url) => {
   //   if (url !== slidesWindow.getURL()) {
   //     e.preventDefault();
@@ -44,6 +62,9 @@ function createWindows() {
     // when you should delete the corresponding element.
     slidesWindow = null;
   });
+  // slidesWindow.on('ready-to-show', () => {
+  //   console.log('ready-to-show');
+  // });
   commentsWindow = new BrowserWindow({
     width: 400,
     height: 600,
@@ -64,6 +85,8 @@ function createWindows() {
   });
   global.windows.push(slidesWindow);
   global.windows.push(commentsWindow);
+  sender(global.windows, 'hello', 'msg');
+  // loadHelp([slidesWindow, commentsWindow]);
 }
 
 function createMenues() {
@@ -94,6 +117,7 @@ app.on('activate', function() {
 app.on('ready', () => {
   createWindows();
   createMenues();
+  windowsReady([slidesWindow, commentsWindow]);
 });
 // // In this file you can include the rest of your app's specific main process
 // // code. You can also put them in separate files and require them here.

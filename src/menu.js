@@ -1,3 +1,4 @@
+
 import * as path from 'path';
 const electron = require('electron');
 const app = electron.app;
@@ -6,8 +7,6 @@ const dialog = electron.dialog;
 const JsonDB = require('node-json-db');
 const chalk = require('chalk');
 
-
-// import * as database from './database';
 import {processing} from './processor';
 import {sender} from './utils/sender';
 import {reload} from './utils/reload-presentation';
@@ -28,22 +27,17 @@ export function buildTemplate(windows) {
           console.log('aborted by user');
         } else {
           let presentationFile = files[0];
-          console.log(chalk.green(`presentationFile: ${presentationFile}`));
-          // let dbFolderPath = path.dirname(presentationFile);
-          // let dbFileName = path.basename(presentationFile, path.extname(presentationFile));
-          global.name = path.basename(presentationFile, path.extname(presentationFile));
-          global.presentationFile = presentationFile;
-          global.presetationRoot = path.dirname(presentationFile);
-          // let database = new JsonDB(dbFolderPath + '/' + dbFileName, true, true);
-          var res = processing(presentationFile);
+          let res = processing(presentationFile);
           // console.log('res in menu.js ', res);
-
           if(res !== null) {
             watch(global.presentationFile);
             // database.push('/slides', res);
             // global.database = database;
             // console.log(res);
             sender(windows, 'slides', res);
+          } else {
+            dialog.showErrorBox('Error', 'An error occurred while processing the file.' +
+              'Are you sure it is valid markdown?');
           }
         }
       }

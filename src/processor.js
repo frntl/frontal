@@ -2,8 +2,13 @@ import {
   slides
 } from './slides';
 import * as fs from 'fs';
-export function processing (path) {
-  let res = fs.readFileSync(path, 'utf8');
+import * as path from 'path';
+
+export function processing (filePath) {
+  global.name = path.basename(filePath, path.extname(filePath));
+  global.presentationFile = filePath;
+  global.presetationRoot = path.dirname(filePath);
+  let res = fs.readFileSync(filePath, 'utf8');
   if (res !== null) {
     let d = slides(res);
     return d;

@@ -52,7 +52,7 @@
         "no-alert": 2,
         "no-caller": 2,
         "no-div-regex": 2,
-        "no-else-return": 2,
+        "no-else-return": 1,
         "no-eq-null": 2,
         "no-eval": 2,
         "no-extend-native": 2,
@@ -97,7 +97,7 @@
         "no-shadow-restricted-names": 2,
         "no-undef": 2,
         "no-undef-init": 2,
-        "no-undefined": 2,
+        "no-undefined": 0,
         //"no-unused-vars": 2,
         "no-use-before-define": 2,
         // Stylistic Issues

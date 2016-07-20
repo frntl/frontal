@@ -68,17 +68,17 @@ export function md2json(data) {
  * @param  {String} data a Markdown String
  * @return {HTML Array} parsed HTML splitted to slides
  */
-export function md2html(data) {
-  // just split the MD in a simple way at the
-  // hr before it is html
-  let mdslides = data.split(/\n-{3,1000}\n/);
-  let slides = [];
-  for (let i = 0; i < mdslides.length; i++) {
-    slides.push(mark.markdown.toHTML(mdslides[i]));
-    // console.log(slides);
-  }
-  return slides;
-}
+// export function md2html(data) {
+//   // just split the MD in a simple way at the
+//   // hr before it is html
+//   let mdslides = data.split(/\n-{3,1000}\n/);
+//   let slides = [];
+//   for (let i = 0; i < mdslides.length; i++) {
+//     slides.push(mark.markdown.toHTML(mdslides[i]));
+//     // console.log(slides);
+//   }
+//   return slides;
+// }
 export function md2htmlMarked(data) {
   marked.setOptions({
     highlight: function(code) {
@@ -87,12 +87,14 @@ export function md2htmlMarked(data) {
         .value;
     }
   });
-
-  let mdslides = data.split(/\n-{3,1000}\n/);
-  let slides = [];
-  for (let i = 0; i < mdslides.length; i++) {
-    slides.push(marked(mdslides[i]));
-    // console.log(slides);
-  }
+  console.log();
+  let html = marked(data);
+  let slides = html.split('<hr>');
+  // let mdslides = data.split(/\n-{3,1000}\n/);
+  // let slides = [];
+  // for (let i = 0; i < mdslides.length; i++) {
+  //   slides.push(marked(mdslides[i]));
+  //   // console.log(slides);
+  // }
   return slides;
 }

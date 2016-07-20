@@ -2,14 +2,13 @@ import * as parser from './parser';
 import {linker} from './utils/image-linker';
 import {hrefer} from './utils/href-linker';
 const removeHtmlComments = require('remove-html-comments');
-const entities = require('entities');
 const chalk = require('chalk');
 
 export function slides(data) {
   let slds = parser.md2htmlMarked(data);
   let objs = [];
   for (let i = 0; i < slds.length; i++) {
-    let clean = removeHtmlComments(entities.decodeHTML(slds[i]));
+    let clean = removeHtmlComments((slds[i]));
     clean.data = linker(clean.data, global.presetationRoot);
     clean.data = hrefer(clean.data);
 
