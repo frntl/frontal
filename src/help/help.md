@@ -181,7 +181,47 @@ _   underscore
  
 ---
 
+## Smartypants  
 
+Currently by default the [smartypants](https://pythonhosted.org/Markdown/extensions/smarty.html) transformations are enabled. That means that some typographical correct symbols will be used. For example will `"worng"` become "right". Se the table below for all the replaced symbols. 
+
+
+| ASCII symbol | Replacements |
+| :--          | :--          |
+|              |              |
+| '            | ‘ ’          |
+| "            | “ ”          |
+| << >>        | « »          |
+| ...          | …            |
+| --           | –            |
+| ---          | —            |
+|              |              |
+
+This is English only for the moment. Maybe we will have some language specific transformations in the future.  
+
+---
+
+## Tables  
+
+You can add tables to your presentation (who wouldn't?).  
+
+[M↓] tables are written like this:  
+
+```text
+| Left aligned | Center aligned | Right aligned |
+| :--          | :--:           | --:          |
+| Cell         | Cell           | Cell         |
+| Cell         | Cell           | Cell         |
+ ``` 
+
+This will become this beautiful table:  
+
+| Right aligned | Center aligned | Left aligned |
+| --:           | :--:           | :--          |
+| Cell          | Cell           | Cell         |
+| Cell          | Cell           | Cell         |
+
+---
 ## Speaker notes
 
 You can have speaker notes. Just enclose your text into standrad HTML comments and it will automagically appear in the "Speaker Notes" window.  
