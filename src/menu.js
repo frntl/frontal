@@ -1,3 +1,4 @@
+const pkg = require('../package.json');
 import * as path from 'path';
 const electron = require('electron');
 const app = electron.app;
@@ -18,11 +19,13 @@ import {
   watch
 } from './utils/watcher';
 export function buildTemplate(windows) {
-  let template = [{
-    label: 'Frontal',
-    role: 'Services',
-    submenu: []
-  }, {
+  let template = [
+  // {
+  //   label: 'Frontal',
+  //   role: 'Services',
+  //   submenu: []
+  // },
+   {
     label: 'File',
     submenu: [{
       label: 'Open...',
@@ -54,13 +57,15 @@ export function buildTemplate(windows) {
         // dialog.showErrorBox('Error', 'An error occurred while processing the file.' + 'Are you sure it is valid markdown?');
         // }
         // }
-    }, {
-      label: 'Close',
-      accelerator: 'CmdOrCtrl+Q',
-      click: () => {
-        app.exit(0);
-      }
-    }]
+    }
+    // , {
+    //   label: 'Close',
+    //   accelerator: 'CmdOrCtrl+Q',
+    //   click: () => {
+    //     app.exit(0);
+    //   }
+    // }
+    ]
   }, {
     label: 'Edit',
     submenu: [{
@@ -182,9 +187,9 @@ export function buildTemplate(windows) {
   if (process.platform === 'darwin') {
     var name = app.getName();
     template.unshift({
-      label: name,
+      label: pkg.name,
       submenu: [{
-        label: 'About ' + name,
+        label: 'About ' + pkg.name,
         role: 'about'
       }, {
         type: 'separator'
@@ -195,7 +200,7 @@ export function buildTemplate(windows) {
       }, {
         type: 'separator'
       }, {
-        label: 'Hide ' + name,
+        label: 'Hide ' + pkg.name,
         accelerator: 'Command+H',
         role: 'hide'
       }, {
@@ -211,7 +216,8 @@ export function buildTemplate(windows) {
         label: 'Quit',
         accelerator: 'Command+Q',
         click: function() {
-          app.quit();
+          // app.quit();
+          app.exit(0);
         }
       }]
     });
