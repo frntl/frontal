@@ -2,8 +2,11 @@
 # nodejs and web dev
 node_modules
 bower_components
+npm-debug.log
 #sublme sftp plugin
 sftp-config.json
 #
 FRONTAL-darwin-x64
 app
+*.sublime-project
+*.sublime-workspace
