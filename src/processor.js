@@ -21,12 +21,4 @@ export function processing (filePath) {
   } else {
     throw Error(`Could not read file ${filePath}`);
   }
-  // fs.readFile(path, 'utf8', (error, data) => {
-  //   if (error) {
-  //     console.error(`Error while reading file: ${path} || ${error}`);
-  //     return null;
-  //   } else {
-  //     console.log('d ' , d);
-  //   }
-  // });
 }

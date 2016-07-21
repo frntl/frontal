@@ -31,7 +31,7 @@ export function json(data) {
  * [ [ [ 'header', [Object], 'Heading 1' ],
     [ 'header', [Object], 'Hello World Heading 2' ],
     [ 'para',
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' ] ],
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' ] ],
   [ [ 'header', [Object], 'Heading three' ],
     [ 'code_block', 'print "Hello world"' ] ] ]
  */
@@ -63,24 +63,15 @@ export function md2json(data) {
   }
   return slides;
 }
+
 /**
- * [md2html description]
+ * [md2htmlMarked description]
  * @param  {String} data a Markdown String
  * @return {HTML Array} parsed HTML splitted to slides
  */
-// export function md2html(data) {
-//   // just split the MD in a simple way at the
-//   // hr before it is html
-//   let mdslides = data.split(/\n-{3,1000}\n/);
-//   let slides = [];
-//   for (let i = 0; i < mdslides.length; i++) {
-//     slides.push(mark.markdown.toHTML(mdslides[i]));
-//     // console.log(slides);
-//   }
-//   return slides;
-// }
 export function md2htmlMarked(data) {
   marked.setOptions({
+    smartypants: true,
     highlight: function(code) {
       return require('highlight.js')
         .highlightAuto(code)

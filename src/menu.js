@@ -19,13 +19,7 @@ import {
   watch
 } from './utils/watcher';
 export function buildTemplate(windows) {
-  let template = [
-  // {
-  //   label: 'Frontal',
-  //   role: 'Services',
-  //   submenu: []
-  // },
-   {
+  let template = [{
     label: 'File',
     submenu: [{
       label: 'Open...',
@@ -44,28 +38,9 @@ export function buildTemplate(windows) {
           watch(presentationFile);
           global.presentationFile = presentationFile;
           sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
-            // console.log('res in menu.js ', res);
-            // if (res !== null) {
-            // watch(global.presentationFile);
-            // database.push('/slides', res);
-            // global.database = database;
-            // console.log(res);
-            // sender(windows, 'slides', res);
         }
       }
-        // else {
-        // dialog.showErrorBox('Error', 'An error occurred while processing the file.' + 'Are you sure it is valid markdown?');
-        // }
-        // }
-    }
-    // , {
-    //   label: 'Close',
-    //   accelerator: 'CmdOrCtrl+Q',
-    //   click: () => {
-    //     app.exit(0);
-    //   }
-    // }
-    ]
+    }]
   }, {
     label: 'Edit',
     submenu: [{
