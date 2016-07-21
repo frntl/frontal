@@ -4,21 +4,31 @@
 
 @font-face { font-family: 'Vollkorn-Italic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Italic.ttf") format("truetype"); }
 
-body#frontal { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; line-height: 1.5; color: #141414; word-wrap: break-word; hyphens: auto; margin-left: 20%; margin-right: 20%; }
+@font-face { font-family: 'Vollkorn-SemiItalic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-SemiboldItalic.ttf") format("truetype"); }
+
+header, footer { font-family: 'Vollkorn-SemiItalic'; color: #7A7A7A; box-sizing: border-box; margin-top: auto; overflow: hidden; position: absolute; font-size: 0.8rem; text-align: right; width: 100%; left: 0; }
+
+header { top: 0; height: 35px; padding-top: 10px; padding-right: 10px; }
+
+footer { bottom: 0; height: 35px; padding-bottom: 10px; padding-right: 10px; }
+
+body#frontal { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; line-height: 1.5; color: #141414; word-wrap: break-word; hyphens: auto; }
 
 body#frontal ol ul { text-align: left !important; }
 
 body#frontal ol ul li { text-align: left !important; }
 
-body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4 { font-family: 'Vollkorn-Bold'; }
+body#frontal #slides { padding-top: 35px; padding-bottom: 35px; margin-left: 20%; margin-right: 20%; }
 
-body#frontal #slides a { background-color: #6FC3F6; color: #FFFFFF; }
+body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4 { font-family: 'Vollkorn-Bold'; text-align: center; }
+
+body#frontal #slides a { color: #005D7B; }
 
 body#frontal #slides em { font-family: 'Vollkorn-Italic'; }
 
 body#frontal #slides strong { font-family: 'Vollkorn-Bold'; }
 
-body#frontal #slides img { max-width: 80%; display: block; margin: 0 auto; flaot: left; }
+body#frontal #slides img { max-width: 80%; display: block; margin: 0 auto; }
 
 body#frontal #slides pre { min-width: 100%; text-align: left; }
 

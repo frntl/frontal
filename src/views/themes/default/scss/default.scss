@@ -1,16 +1,9 @@
 // hello world
-@font-face {
-  font-family: 'Vollkorn-Regular';
-  src: url('../font/vollkorn-3-005/TTF/Vollkorn-Regular.ttf')  format('truetype');
-}
-@font-face {
-  font-family: 'Vollkorn-Bold';
-  src: url('../font/vollkorn-3-005/TTF/Vollkorn-Bold.ttf')  format('truetype');
-}
-@font-face {
-  font-family: 'Vollkorn-Italic';
-  src: url('../font/vollkorn-3-005/TTF/Vollkorn-Italic.ttf')  format('truetype');
-}
+@import "fonts", "colors";
+
+$headerHeight: 35px;
+$headerPadding: 10px;
+
 @mixin flexcenter() {
   display: flex;
   justify-content: center;
@@ -18,7 +11,33 @@
   flex-direction: column;
   height: 100vh;
 }
+header, footer {
+  font-family: 'Vollkorn-SemiItalic';
+  color: $highlight;
+  box-sizing: border-box;
+  margin-top: auto;
+  overflow: hidden;
+  position: absolute;
+  font-size: 0.8rem;
+  text-align: right;
+  width: 100%;
+  left: 0;
+}
+header {
+  top: 0;
+  height: $headerHeight;
+  padding-top: $headerPadding;
+  padding-right: $headerPadding;
+}
+footer {
+  bottom: 0;
+  height: $headerHeight;
+  padding-bottom: $headerPadding;
+  padding-right: $headerPadding;
+}
 body#frontal {
+  margin: 0;
+  padding: 0;
   @include flexcenter();
   font-family: 'Vollkorn-Regular';
   max-height: 100%;
@@ -29,21 +48,28 @@ body#frontal {
   word-wrap: break-word;
   hyphens: auto;
   // text-align: center;
-  margin-left: 20%;
-  margin-right: 20%;
-    ol ul {
+
+  ol ul {
+    text-align: left !important;
+
+    li {
       text-align: left !important;
-      li {
-      text-align: left !important;
-      }
     }
+  }
   #slides {
+    padding-top: $headerHeight;
+    padding-bottom: $headerHeight;
+    margin-left: 20%;
+    margin-right: 20%;
+
     h1, h2, h3, h4 {
       font-family: 'Vollkorn-Bold';
+      text-align: center;
     }
     a {
-      background-color: #6FC3F6;
-      color: #FFFFFF;
+      color: $aColor;
+    }
+    a {
     }
     em {
       font-family: 'Vollkorn-Italic';
@@ -55,7 +81,6 @@ body#frontal {
       max-width: 80%;
       display: block;
       margin: 0 auto;
-      flaot: left;
     }
     pre {
       min-width: 100%;
@@ -64,45 +89,42 @@ body#frontal {
     code {
       text-align: left;
     }
-    p{
+    p {
       text-align: left;
-      max-width:50vw;
+      max-width: 50vw;
     }
-
     blockquote {
-      font-family:'Vollkorn-Italic';
-      font-size:1.6rem;
+      font-family: 'Vollkorn-Italic';
+      font-size: 1.6rem;
     }
     table {
       margin-left: auto;
       margin-right: auto;
       // border-bottom: 2px dashed #cccccc;
       // border-collapse: collapse;
+
       thead {
         font-family: 'Vollkorn-Bold';
         // background-color: none;
-        // background-color: rgba(1,1,1,0);
+        // background-color: rgba(1, 1, 1, 0);
         // border-bottom: 2px dashed #cccccc;
-
       }
-      th{
-          border-bottom: 3px dashed #848484;
-          padding-left:10px;
-          padding-right:10px;
-
+      th {
+        border-bottom: 3px dashed #848484;
+        padding-left: 10px;
+        padding-right: 10px;
       }
-      td{
-          border-bottom: 2px dashed #cccccc;
-          padding-left:10px;
-          padding-right:10px;
+      td {
+        border-bottom: 2px dashed #cccccc;
+        padding-left: 10px;
+        padding-right: 10px;
       }
-      tr{
+      tr {
         // border-bottom: dotted #E6E6E6;
-
       }
       // tr:nth-child(even) {
-      //   background-color: #E6E6E6;
-      // }
+        //   background-color: #E6E6E6;
+        //
+      }
     }
   }
-}

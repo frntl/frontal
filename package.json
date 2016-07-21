@@ -26,7 +26,8 @@
     "marked": "^0.3.5",
     "marky-markdown": "^5.4.0",
     "node-json-db": "^0.7.2",
-    "remove-html-comments": "^1.0.2"
+    "remove-html-comments": "^1.0.2",
+    "yaml-front-matter": "^3.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -42,5 +43,8 @@
     "type": "git",
     "url": "git@github.com:sebastian-meier/frontal.git"
   },
-  "contributors": ["Fabian Morón Zirfas <fabian.moron.zirfas@gmail.com> (http://fabianmoronzirfas.me)", "Sebastian Meier <contact@sebastianmeier.eu> (http://www.sebastianmeier.eu)"]
+  "contributors": [
+    "Fabian Morón Zirfas <fabian.moron.zirfas@gmail.com> (http://fabianmoronzirfas.me)",
+    "Sebastian Meier <contact@sebastianmeier.eu> (http://www.sebastianmeier.eu)"
+  ]
 }

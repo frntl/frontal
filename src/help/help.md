@@ -1,3 +1,6 @@
+{{{"header":"frontal.app",
+"footer":"An Electron powered [M↓] presentation tool"}}}
+
 ![](../../node_modules/markdown-mark/svg/markdown-mark.svg)  
 
 # Welcome to frontal.app
@@ -104,7 +107,7 @@ Of course you can also add codeblocks. Just indent your code with four spaces. O
 
 ## Quotes  
 
-> Of course there are quotes! They are done like this.  
+> "Of course there are quotes! They are done like this."  
 > fabiantheblind
 
 ```text
@@ -188,14 +191,12 @@ Currently by default the [smartypants](https://pythonhosted.org/Markdown/extensi
 
 | ASCII symbol | Replacements |
 | :--          | :--          |
-|              |              |
-| '            | ‘ ’          |
-| "            | “ ”          |
-| << >>        | « »          |
-| ...          | …            |
-| --           | –            |
-| ---          | —            |
-|              |              |
+| `'`            | ‘ ’          |
+| `"`            | “ ”          |
+| `<< >>`        | « »          |
+| `...`          | …            |
+| `--`           | –            |
+| `---`          | —            |
 
 This is English only for the moment. Maybe we will have some language specific transformations in the future.  
 
@@ -288,4 +289,4 @@ There are a lot of nice Markdown presentation tools out there. So why did we wri
 - Q: I don't like how xy works. Pls change!
 - A: No!
 - Q: Why are you being a such a douchebag?
-- A: Because open source projects tend to attract people who think that somebody who spends his time maintaining a free (as in beer) software he even has more time to fix their problems. 
+- A: Because open source projects tend to attract people who think that somebody who spends his time maintaining a free (as in beer) software -- has even more time to fix their problems. 

@@ -90,15 +90,33 @@ function setSlideslength(i) {
   }
 }
 
+function setHeaderFooter(html, name) {
+  let elementsHTMLCollection = document.getElementsByTagName(name);
+  let elements = Array.from(elementsHTMLCollection);
+  elements.forEach((ele, i, arr)=>{
+    ele.innerHTML = html;
+  });
+}
+
+
 function setContent() {
+  let cnt = content.msg[constrain(currentSlide, content.msg)];
   ids.forEach((ele, index, array) => {
     let element = document.getElementById(ele); // eslint-disable-line no-undef
     if (element !== null) {
       console.log(`found ${ele} div`);
       if (ele === 'slides') {
-        element.innerHTML = content.msg[constrain(currentSlide, content.msg)].slide;
+        element.innerHTML = cnt.slide;
+        if(cnt.attributes !== null) {
+          if(cnt.attributes.hasOwnProperty('footer') === true) {
+            setHeaderFooter(cnt.attributes.footer, 'footer');
+          }
+          if(cnt.attributes.hasOwnProperty('header') === true) {
+            setHeaderFooter(cnt.attributes.header, 'header');
+          }
+        }
       } else if (ele === 'comments') {
-        element.innerHTML = content.msg[constrain(currentSlide, content.msg)].comments;
+        element.innerHTML = cnt.comments;
       }
     }
   });

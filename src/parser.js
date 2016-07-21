@@ -1,6 +1,9 @@
 // https://github.com/evilstreak/markdown-js
 import * as mark from 'markdown';
 const marked = require('marked');
+import {
+  frontmatter
+} from './utils/frontmatter';
 // about this module:
 // It exports 3 Things:
 //     parser.json(data)
@@ -63,7 +66,6 @@ export function md2json(data) {
   }
   return slides;
 }
-
 /**
  * [md2htmlMarked description]
  * @param  {String} data a Markdown String
@@ -73,13 +75,11 @@ export function md2htmlMarked(data) {
   marked.setOptions({
     smartypants: true,
     highlight: function(code) {
-      return require('highlight.js')
-        .highlightAuto(code)
-        .value;
+      return require('highlight.js').highlightAuto(code).value;
     }
   });
-  console.log();
-  let html = marked(data);
+  let fmjson = frontmatter(data);
+  let html = marked(fmjson.body);
   let slides = html.split('<hr>');
   // let mdslides = data.split(/\n-{3,1000}\n/);
   // let slides = [];
@@ -87,5 +87,8 @@ export function md2htmlMarked(data) {
   //   slides.push(marked(mdslides[i]));
   //   // console.log(slides);
   // }
-  return slides;
+  return {
+    slides: slides,
+    attributes: fmjson.attributes
+  };
 }
