@@ -28,10 +28,15 @@ body#frontal {
   color: #141414;
   word-wrap: break-word;
   hyphens: auto;
-  text-align: center;
+  // text-align: center;
   margin-left: 20%;
   margin-right: 20%;
-
+    ol ul {
+      text-align: left !important;
+      li {
+      text-align: left !important;
+      }
+    }
   #slides {
     h1, h2, h3, h4 {
       font-family: 'Vollkorn-Bold';
@@ -63,6 +68,7 @@ body#frontal {
       text-align: left;
       max-width:50vw;
     }
+
     blockquote {
       font-family:'Vollkorn-Italic';
       font-size:1.6rem;

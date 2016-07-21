@@ -4,7 +4,11 @@
 
 @font-face { font-family: 'Vollkorn-Italic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Italic.ttf") format("truetype"); }
 
-body#frontal { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; line-height: 1.5; color: #141414; word-wrap: break-word; hyphens: auto; text-align: center; margin-left: 20%; margin-right: 20%; }
+body#frontal { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; line-height: 1.5; color: #141414; word-wrap: break-word; hyphens: auto; margin-left: 20%; margin-right: 20%; }
+
+body#frontal ol ul { text-align: left !important; }
+
+body#frontal ol ul li { text-align: left !important; }
 
 body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4 { font-family: 'Vollkorn-Bold'; }
 
