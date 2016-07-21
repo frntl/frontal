@@ -4,4 +4,4 @@ layout:
     - npm run watch
     - npm run sass
   -
-    - npm start
+    - echo "run 'npm start' here"
