@@ -5,6 +5,9 @@ import {
 import {
   hrefer
 } from './utils/href-linker';
+
+import {uncomment} from './utils/uncomment.js';
+
 const removeHtmlComments = require('remove-html-comments');
 const chalk = require('chalk');
 export function slides(data) {
@@ -29,12 +32,3 @@ export function slides(data) {
   return objs;
 }
 
-function uncomment(str) {
-  let regex = /(<!--)([\s\S]*?)(-->)/g;
-  let res = regex.exec(str);
-  let cleaned = '';
-  if (res !== null) {
-    cleaned = res[2];
-  }
-  return cleaned;
-}

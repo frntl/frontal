@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ScappleDocument Version="1.1" ID="732326BB-E73B-43B4-B8E1-E496A1FCE261">
+    <Notes>
+        <Note ID="0" FontSize="12.0" Position="94.359375,477.208333" Width="373.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>main.js
+
+- on startup load function windowsReady() help/help.md
+- - send filePath to processor.js
+- - gets {slides:[HTML],comments:[[M↓]], attributes:}
+- - sets file watching in utils/watcher.js
+- - sends: {slides:[HTML],comments:[[M↓]], attributes:} to views/renderer.js
+
+actually in menu.js
+- on open…
+- - gets filePath
+- - sends to processor.js
+- - sends filePath to utils/watcher.js
+- - gets data
+- - sends data to views/renderer.js  
+
+- on Up/Down/left/Right/zoom in/zoom out/ zoom 100%
+- - sends command to renderer.js</String>
+            <ConnectedNoteIDs>1, 3, 12, 15</ConnectedNoteIDs>
+            <PointsToNoteIDs>1, 3, 12, 15</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,8</FormatRange>
+                <FormatRange Bold="Yes">273,19</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="1" FontSize="12.0" Position="374.0,205.0" Width="101.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>menu.js
+- creates menu
+
+- returns menu </String>
+            <ConnectedNoteIDs>0, 3, 12, 15</ConnectedNoteIDs>
+            <PointsToNoteIDs>0, 3, 12, 15</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,8</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="3" FontSize="12.0" Position="1135.0,803.0" Width="362.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>processor.js
+- sets globals for:
+- - presentationRoot
+- - presentationFile
+- - name
+- reads file sync
+
+sends [M↓] to slides.js
+returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
+            <ConnectedNoteIDs>0-1, 4, 16</ConnectedNoteIDs>
+            <PointsToNoteIDs>0-2, 4, 16</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,13</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="4" FontSize="12.0" Position="1580.427083,851.90625" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>utils/slides.js
+- returns {slides:[HTML],comments:[[M↓]], attributes:}</String>
+            <ConnectedNoteIDs>3, 5-6, 9-11</ConnectedNoteIDs>
+            <PointsToNoteIDs>3, 5-6, 9-11</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,16</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="5" FontSize="12.0" Position="1869.058412,708.114916" Width="162.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.721286 0.936081 0.73224</Fill>
+            </Appearance>
+            <String>1) utils/parser.js
+- parses [M↓]
+- returns {[HTML],attributes}</String>
+            <ConnectedNoteIDs>4, 7-8</ConnectedNoteIDs>
+            <PointsToNoteIDs>4, 7-8</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,19</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="6" FontSize="12.0" Position="2163.973958,855.104167" Width="233.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.721286 0.936081 0.73224</Fill>
+            </Appearance>
+            <String>2) remove-html-comments
+- removes comments per slide
+- returns {data:HTML,comments:[M↓]</String>
+            <ConnectedNoteIDs>4</ConnectedNoteIDs>
+            <PointsToNoteIDs>4</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,24</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="7" FontSize="12.0" Position="2164.0,777.0" Width="93.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.812638 0.908039 0.94581</Fill>
+            </Appearance>
+            <String>2) marked
+returns HTML</String>
+            <ConnectedNoteIDs>5</ConnectedNoteIDs>
+            <PointsToNoteIDs>5</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,10</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="8" FontSize="12.0" Position="2212.354167,609.09375" Width="157.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.812638 0.908039 0.94581</Fill>
+            </Appearance>
+            <String>1) json-front-matter
+returns {attributes}</String>
+            <ConnectedNoteIDs>5</ConnectedNoteIDs>
+            <PointsToNoteIDs>5</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,21</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="9" FontSize="12.0" Position="2219.130208,978.0" Width="253.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.721286 0.936081 0.73224</Fill>
+            </Appearance>
+            <String>3) utils/image-linker.js
+- fixes realtiv image links per slide
+- returns HTML</String>
+            <ConnectedNoteIDs>4</ConnectedNoteIDs>
+            <PointsToNoteIDs>4</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,25</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="10" FontSize="12.0" Position="2214.640625,1117.114583" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.721286 0.936081 0.73224</Fill>
+            </Appearance>
+            <String>4) utils/href-linker.js
+- sets a links to be opened in default browser
+- returns: HTML</String>
+            <ConnectedNoteIDs>4</ConnectedNoteIDs>
+            <PointsToNoteIDs>4</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,24</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="11" FontSize="12.0" Position="2078.973958,1254.515625" Width="197.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.721286 0.936081 0.73224</Fill>
+            </Appearance>
+            <String>5) uitls/uncomment.js
+removes &lt;!— —&gt; from comments
+returns: [M↓]</String>
+            <ConnectedNoteIDs>4</ConnectedNoteIDs>
+            <PointsToNoteIDs>4</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,22</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="12" FontSize="12.0" Position="1088.0,130.0" Width="345.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.942546 0.785648 0.81194</Fill>
+            </Appearance>
+            <String>views/renderer.js
+- gets {slides:[HTML],comments:[[M↓]], attributes:}
+- sets content on</String>
+            <ConnectedNoteIDs>0-1, 13-14, 17</ConnectedNoteIDs>
+            <PointsToNoteIDs>13-14</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,18</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="13" FontSize="12.0" Position="1762.374053,21.722656" Width="121.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/slides.html</String>
+            <ConnectedNoteIDs>12</ConnectedNoteIDs>
+        </Note>
+        <Note ID="14" FontSize="12.0" Position="1487.952178,26.789063" Width="134.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/comments.html</String>
+            <ConnectedNoteIDs>12</ConnectedNoteIDs>
+        </Note>
+        <Note ID="15" FontSize="12.0" Position="1259.0,438.0" Width="246.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>utils/watcher.js
+- watches file for changes
+- calls utils/reload-presentation.js</String>
+            <ConnectedNoteIDs>0-1, 16</ConnectedNoteIDs>
+            <PointsToNoteIDs>16</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,17</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="16" FontSize="12.0" Position="1729.0,342.0" Width="220.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>utils/realod-presentation.js
+- sends filePath to processor.js
+- gets data
+- sends data to utils/sender.js</String>
+            <ConnectedNoteIDs>3, 15, 17</ConnectedNoteIDs>
+            <PointsToNoteIDs>3, 17</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,29</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="17" FontSize="12.0" Position="1539.831032,217.484012" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>utils/sender.js
+- sends data to views/renderer.js</String>
+            <ConnectedNoteIDs>12, 16</ConnectedNoteIDs>
+            <PointsToNoteIDs>12</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,16</FormatRange>
+            </Formatting>
+        </Note>
+    </Notes>
+    <BackgroundShapes></BackgroundShapes>
+    <AutoFit>1, 6, 9, 12-16</AutoFit>
+    <NoteStyles>
+        <Style Name="Title Text" ID="A09508C6-8499-462A-A18C-565A236F88FB" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Red Text" ID="6E3F425A-1428-471C-B9C6-A7B635DE8528" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Brown Bubble" ID="44AF2F78-88DF-49A2-B589-0B2EA59FD679" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.290055 0.1523 0.182215</BorderColor>
+            <FillColor>0.940019 0.892907 0.779716</FillColor>
+        </Style>
+        <Style Name="Yellow Bubble" ID="E310CD6D-4863-4368-BA85-AE35A427EAA2" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
+            <FillColor>0.906773 0.910625 0.634363</FillColor>
+        </Style>
+        <Style Name="Green Bubble" ID="E4A1C026-9124-4243-AF55-35B1B637B548" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.331867 0.609932 0.356197</BorderColor>
+            <FillColor>0.790123 0.882328 0.80198</FillColor>
+        </Style>
+        <Style Name="Blue Bubble" ID="219D4D40-B228-4171-86FC-31B42E9D6D8D" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
+            <FillColor>0.840969 0.866828 0.925903</FillColor>
+        </Style>
+        <Style Name="Pink Bubble" ID="8E996218-738C-48D5-B046-7C6251DC7D1C" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.747881 0.366532 0.542813</BorderColor>
+            <FillColor>0.918452 0.807302 0.863467</FillColor>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>1.0 1.0 1.0</BackgroundColor>
+        <DefaultFont>CamingoCode</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>

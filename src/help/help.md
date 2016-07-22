@@ -227,10 +227,10 @@ This will become this beautiful table:
 
 You can have speaker notes. Just enclose your text into standrad HTML comments and it will automagically appear in the "Speaker Notes" window.  
 
-<!-- Isn't it great what computers can do for you -->
+<!-- Isn't it great what computers can do for you? -->
 
 
-    <!-- Isn't it great what computers can do for you -->
+    <!-- Isn't it great what computers can do for you? -->
 
 ---
 
