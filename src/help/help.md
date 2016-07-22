@@ -8,7 +8,7 @@
 
 You can navigate your document by using these keys.
 
-| Keys                | Actions                   |
+| Keys               | Actions                   |
 | --:                | :--                       |
 | Down ↓             | Next Slide                |
 | Right →            | Next Slide                |
@@ -16,8 +16,12 @@ You can navigate your document by using these keys.
 | Left ←             | Previous Slide            |
 | ⌘ or ^ + O         | Opens a new markdown file |
 | ⌘ or ^ + Q         | Closes the App            |
-| ⌘ or ^ + Plus (+)  | Zoom in (always 10%)      |
-| ⌘ or ^ + Minus (-) | Zoom out (always 10%)     |
+| ⌘ or ^ + Plus (+)  | Zoom in (always 2px)      |
+| ⌘ or ^ + Minus (-) | Zoom out (always 2px)     |
+| ⌘ or ^ + 0         | Set Zoom to 100%          |
+| ⌘ or ^ + Dot (.)  | Zoom in speaker notes (always 2px)      |
+| ⌘ or ^ + Minus (,) | Zoom out speaker notes (always 2px)     |
+| ⌘ or ^ + 9         | Set Zoom of speaker notes to 100%          |
 
 ---
 
@@ -227,7 +231,13 @@ This will become this beautiful table:
 
 You can have speaker notes. Just enclose your text into standrad HTML comments and it will automagically appear in the "Speaker Notes" window.  
 
-<!-- Isn't it great what computers can do for you? -->
+<!--
+Isn't it great what computers can do for you?  
+Btw: you can use __[M↓]__ in the notes as well  
+
+> 'Awesome'  
+> - fabiantheblind  
+-->
 
 
     <!-- Isn't it great what computers can do for you? -->

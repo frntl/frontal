@@ -6,8 +6,39 @@
 
 @font-face { font-family: 'Vollkorn-SemiItalic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-SemiboldItalic.ttf") format("truetype"); }
 
-body#notes { background-color: #0C0C0C; font-size: 1.4rem; font-family: 'Vollkorn-Regular'; color: #E9E9E9; }
+body#notes { background-color: #0C0C0C; font-size: 1.1rem; font-family: monospace; color: #E9E9E9; }
 
-body#notes header#speaker-notes { width: 100%; height: 30px; background-color: #3F3F3F; }
+body#notes header#speaker-notes { box-sizing: border-box; padding-left: 15px; width: 100%; height: 30px; background-color: #3F3F3F; display: flex; justify-content: space-between; align-items: center; text-align: center; }
+
+body#notes header#speaker-notes input[type="button"] { width: 50px; }
+
+body#notes header#speaker-notes input[type="number"] { width: 50px; }
 
 body#notes #comments { margin-top: 30px; }
+
+.blink { -webkit-animation: blink .75s linear infinite; -moz-animation: blink .75s linear infinite; -ms-animation: blink .75s linear infinite; -o-animation: blink .75s linear infinite; animation: blink .75s linear infinite; }
+
+@-webkit-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@-moz-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@-ms-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@-o-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }

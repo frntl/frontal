@@ -3,15 +3,66 @@ $headerHeight: 30px;
 
 body#notes{
   background-color:#0C0C0C;
-  font-size: 1.4rem;
-  font-family:'Vollkorn-Regular';
+  font-size: 1.1rem;
+  // font-family:'Vollkorn-Regular';
+  font-family: monospace;
   color:#E9E9E9;
   header#speaker-notes {
+  box-sizing: border-box;
+    padding-left:15px;
     width: 100%;
     height: $headerHeight;
     background-color: #3F3F3F;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    text-align:center;
+      input[type="button"]{
+        width:50px;
+      }
+        input[type="number"]{
+        width:50px;
+      }
   }
   #comments {
     margin-top: $headerHeight;
   }
+}
+// http://www.computerhope.com/issues/ch001651.htm
+.blink {
+  -webkit-animation: blink .75s linear infinite;
+  -moz-animation: blink .75s linear infinite;
+  -ms-animation: blink .75s linear infinite;
+  -o-animation: blink .75s linear infinite;
+   animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-o-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
 }

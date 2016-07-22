@@ -1,6 +1,7 @@
 const {
   ipcRenderer
 } = require('electron');
+
 // const {
 //   webFrame
 // } = require('electron');
@@ -9,7 +10,6 @@ let initialCommentsFontsize = null;
 let initialSlidesFontsize = null;
 let initialSlidesHeaderFontsize = null;
 let initialSlidesFooterFontsize = null;
-
 if (document.getElementById('comments') !== null) {
   initialCommentsFontsize = getComputedFontSize(document.getElementById('comments'));
   // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
@@ -26,7 +26,6 @@ if (document.getElementById('footer') !== null) {
   initialSlidesFooterFontsize = getComputedFontSize(document.getElementById('footer'));
   // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
 }
-
 let content = null;
 let currentSlide = 0;
 let ids = ['comments', 'slides'];
@@ -36,7 +35,7 @@ const drag = require('electron-drag');
 // Pass a query selector or a dom element to the function.
 // Dragging the element will drag the whole window.
 var clearF = drag('#frontal');
-var clearN = drag('#notes');
+// var clearN = drag('#notes');
 // Call the returned function to make the element undraggable again.
 // clear();
 // Fallback to using -webkit-app-region property.
@@ -124,6 +123,12 @@ function setContent() {
   });
 }
 
+function clock() {
+  setInterval(function() {
+    document.getElementById("time-clock").innerHTML = (new Date()).toLocaleTimeString();
+  }, 1000);
+}
+
 function setFontSize(val, initVal, name) {
   let element = document.getElementById(name);
   if (element !== null) {
@@ -142,6 +147,10 @@ function changeCSS(cssFilePath, cssLinkIndex) {
   newLink.setAttribute('href', cssFilePath);
   document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink); // eslint-disable-line no-undef
 }
+
+// -----------execution-------------------
+//
+clock();
 ipcRenderer.on('down', (event, arg) => {
   console.log(arg);
   increaseSlideNumber();

@@ -5,6 +5,7 @@ import {
 import {
   hrefer
 } from './utils/href-linker';
+const marked = require('marked');
 
 import {uncomment} from './utils/uncomment.js';
 
@@ -21,7 +22,7 @@ export function slides(data) {
     // console.log(chalk.red('slides.js Cleaned HTML: ') + JSON.stringify(clean, null, 2));
     let uncommented = [];
     for (let j = 0; j < clean.comments.length; j++) {
-      uncommented.push(uncomment(clean.comments[j]));
+      uncommented.push(marked(uncomment(clean.comments[j])));
     }
     objs.push({
       slide: clean.data,

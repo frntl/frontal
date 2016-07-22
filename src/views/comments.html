@@ -11,12 +11,20 @@
   <span id="slides-current">0</span> / <span id="slides-length">0</span>
   </div>
   <div id="time-clock"></div>
-  <div id="time-running"></div>
+  <div id="time-running" class="">00:00:00</div>
+<div id="stopwatch-buttons">
+
+  Max Duration: <input type="number" value="20" id="duration">
+  <input type="button" value="start" id="start">
+  <input type="button" value="stop" id="stop">
+  <input type="button" value="reset" id="reset">
+  </div>
   </header>
     <div id="comments" class="content"></div>
   <script>
   // You can also require other files to run in this process
   require('./renderer.js');
+  require('./comments.js');
   </script>
   </body>
 </html>

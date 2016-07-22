@@ -66,14 +66,14 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,13</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="4" FontSize="12.0" Position="1697.052083,1013.161458" Width="200.0">
+        <Note ID="4" FontSize="12.0" Position="1696.010417,1013.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
             </Appearance>
             <String>utils/slides.js
 - returns {slides:[HTML],comments:[[M↓]], attributes:}</String>
-            <ConnectedNoteIDs>3, 5-6, 9-11</ConnectedNoteIDs>
+            <ConnectedNoteIDs>3, 5-6, 9-11, 22</ConnectedNoteIDs>
             <PointsToNoteIDs>3, 5-6, 9-11</PointsToNoteIDs>
             <Formatting>
                 <FormatRange Bold="Yes">0,16</FormatRange>
@@ -167,7 +167,7 @@ returns {attributes}</String>
                 <FormatRange Bold="Yes">0,24</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="11" FontSize="12.0" Position="2195.598958,1415.770833" Width="197.0">
+        <Note ID="11" FontSize="12.0" Position="2265.307292,1497.338542" Width="197.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -176,8 +176,8 @@ returns {attributes}</String>
             <String>5) uitls/uncomment.js
 removes &lt;!— —&gt; from comments
 returns: [M↓]</String>
-            <ConnectedNoteIDs>4</ConnectedNoteIDs>
-            <PointsToNoteIDs>4</PointsToNoteIDs>
+            <ConnectedNoteIDs>4, 22</ConnectedNoteIDs>
+            <PointsToNoteIDs>22</PointsToNoteIDs>
             <Formatting>
                 <FormatRange Bold="Yes">0,22</FormatRange>
             </Formatting>
@@ -254,9 +254,24 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,16</FormatRange>
             </Formatting>
         </Note>
+        <Note ID="22" FontSize="12.0" Position="1973.609375,1379.0" Width="127.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.721286 0.936081 0.73224</Fill>
+            </Appearance>
+            <String>marked
+parse [M↓] to HTML
+</String>
+            <ConnectedNoteIDs>4, 11</ConnectedNoteIDs>
+            <PointsToNoteIDs>4</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,7</FormatRange>
+            </Formatting>
+        </Note>
     </Notes>
     <BackgroundShapes></BackgroundShapes>
-    <AutoFit>1, 6, 9, 12-16</AutoFit>
+    <AutoFit>1, 6, 9, 12-16, 22</AutoFit>
     <NoteStyles>
         <Style Name="Title Text" ID="A09508C6-8499-462A-A18C-565A236F88FB" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
             <FontSize>28.0</FontSize>
