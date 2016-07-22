@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ScappleDocument Version="1.1" ID="732326BB-E73B-43B4-B8E1-E496A1FCE261">
     <Notes>
-        <Note ID="0" FontSize="12.0" Position="94.359375,477.208333" Width="373.0">
+        <Note ID="0" FontSize="12.0" Position="210.984375,638.463542" Width="373.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -31,7 +31,7 @@ actually in menu.js
                 <FormatRange Bold="Yes">273,19</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="1" FontSize="12.0" Position="374.0,205.0" Width="101.0">
+        <Note ID="1" FontSize="12.0" Position="490.625,366.255208" Width="101.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -46,7 +46,7 @@ actually in menu.js
                 <FormatRange Bold="Yes">0,8</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="3" FontSize="12.0" Position="1135.0,803.0" Width="362.0">
+        <Note ID="3" FontSize="12.0" Position="1251.625,964.255208" Width="362.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -66,7 +66,7 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,13</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="4" FontSize="12.0" Position="1580.427083,851.90625" Width="200.0">
+        <Note ID="4" FontSize="12.0" Position="1697.052083,1013.161458" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -79,7 +79,7 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,16</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="5" FontSize="12.0" Position="1869.058412,708.114916" Width="162.0">
+        <Note ID="5" FontSize="12.0" Position="1985.683412,869.370125" Width="162.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -94,7 +94,7 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,19</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="6" FontSize="12.0" Position="2163.973958,855.104167" Width="233.0">
+        <Note ID="6" FontSize="12.0" Position="2280.598958,1016.359375" Width="233.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -109,7 +109,7 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,24</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="7" FontSize="12.0" Position="2164.0,777.0" Width="93.0">
+        <Note ID="7" FontSize="12.0" Position="2280.625,938.255208" Width="93.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -123,7 +123,7 @@ returns HTML</String>
                 <FormatRange Bold="Yes">0,10</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="8" FontSize="12.0" Position="2212.354167,609.09375" Width="157.0">
+        <Note ID="8" FontSize="12.0" Position="2328.979167,770.348958" Width="157.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -137,7 +137,7 @@ returns {attributes}</String>
                 <FormatRange Bold="Yes">0,21</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="9" FontSize="12.0" Position="2219.130208,978.0" Width="253.0">
+        <Note ID="9" FontSize="12.0" Position="2335.755208,1139.255208" Width="253.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -152,7 +152,7 @@ returns {attributes}</String>
                 <FormatRange Bold="Yes">0,25</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="10" FontSize="12.0" Position="2214.640625,1117.114583" Width="200.0">
+        <Note ID="10" FontSize="12.0" Position="2331.265625,1278.369792" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -167,7 +167,7 @@ returns {attributes}</String>
                 <FormatRange Bold="Yes">0,24</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="11" FontSize="12.0" Position="2078.973958,1254.515625" Width="197.0">
+        <Note ID="11" FontSize="12.0" Position="2195.598958,1415.770833" Width="197.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -182,7 +182,7 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,22</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="12" FontSize="12.0" Position="1088.0,130.0" Width="345.0">
+        <Note ID="12" FontSize="12.0" Position="1204.625,291.255208" Width="345.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Fill>0.942546 0.785648 0.81194</Fill>
@@ -196,7 +196,7 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,18</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="13" FontSize="12.0" Position="1762.374053,21.722656" Width="121.0">
+        <Note ID="13" FontSize="12.0" Position="1878.999053,182.977865" Width="121.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Fill>0.90101 0.788728 0.943967</Fill>
@@ -204,7 +204,7 @@ returns: [M↓]</String>
             <String>views/slides.html</String>
             <ConnectedNoteIDs>12</ConnectedNoteIDs>
         </Note>
-        <Note ID="14" FontSize="12.0" Position="1487.952178,26.789063" Width="134.0">
+        <Note ID="14" FontSize="12.0" Position="1604.577178,188.044271" Width="134.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Fill>0.90101 0.788728 0.943967</Fill>
@@ -212,7 +212,7 @@ returns: [M↓]</String>
             <String>views/comments.html</String>
             <ConnectedNoteIDs>12</ConnectedNoteIDs>
         </Note>
-        <Note ID="15" FontSize="12.0" Position="1259.0,438.0" Width="246.0">
+        <Note ID="15" FontSize="12.0" Position="1375.625,599.255208" Width="246.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -226,7 +226,7 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,17</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="16" FontSize="12.0" Position="1729.0,342.0" Width="220.0">
+        <Note ID="16" FontSize="12.0" Position="1845.625,503.255208" Width="220.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -241,7 +241,7 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,29</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="17" FontSize="12.0" Position="1539.831032,217.484012" Width="200.0">
+        <Note ID="17" FontSize="12.0" Position="1656.456032,378.73922" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>

@@ -6,7 +6,7 @@
 
 @font-face { font-family: 'Vollkorn-SemiItalic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-SemiboldItalic.ttf") format("truetype"); }
 
-body#notes { background-color: #0C0C0C; font-size: 1.4rem; font: Sans; }
+body#notes { background-color: #0C0C0C; font-size: 1.4rem; font-family: 'Vollkorn-Regular'; color: #E9E9E9; }
 
 body#notes header#speaker-notes { width: 100%; height: 30px; background-color: #3F3F3F; }
 

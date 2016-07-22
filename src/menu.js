@@ -91,7 +91,7 @@ export function buildTemplate(windows) {
         sender(windows, 'plus', 'plus');
       }
     }, {
-      label: 'Zoom Out',
+      label: 'Zoom out',
       accelerator: 'CmdOrCtrl+-',
       click: () => {
         sender(windows, 'minus', 'minus');
@@ -101,6 +101,26 @@ export function buildTemplate(windows) {
       accelerator: 'CmdOrCtrl+0',
       click: () => {
         sender(windows, 'zoom-reset', '100');
+      }
+    }, {
+      type: 'separator'
+    }, {
+      label: 'Zoom in notes',
+      accelerator: 'CmdOrCtrl+.',
+      click: () => {
+        sender(windows, 'dot', 'dot');
+      }
+    }, {
+      label: 'Zoom out notes',
+      accelerator: 'CmdOrCtrl+,',
+      click: () => {
+        sender(windows, 'comma', 'comma');
+      }
+    }, {
+      label: 'Zoom 100% notes',
+      accelerator: 'CmdOrCtrl+9',
+      click: () => {
+        sender(windows, 'zoom-reset-notes', '100');
       }
     }, {
       type: 'separator'
@@ -153,9 +173,14 @@ export function buildTemplate(windows) {
     label: 'Help',
     role: 'help',
     submenu: [{
+      label:'Open help file',
+      click:function(){
+        console.log('should open the helpfile in a new window. Plain text');
+      }
+    },{
       label: 'Learn More',
       click: function() {
-        shell.openExternal('http://electron.atom.io');
+        shell.openExternal('https://github.com/frntl/frontal');
       }
     }]
   }];
