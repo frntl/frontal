@@ -196,21 +196,21 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,18</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="13" FontSize="12.0" Position="1878.999053,182.977865" Width="121.0">
+        <Note ID="13" FontSize="12.0" Position="1733.110991,246.586746" Width="121.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Fill>0.90101 0.788728 0.943967</Fill>
             </Appearance>
             <String>views/slides.html</String>
-            <ConnectedNoteIDs>12</ConnectedNoteIDs>
+            <ConnectedNoteIDs>12, 26</ConnectedNoteIDs>
         </Note>
-        <Note ID="14" FontSize="12.0" Position="1604.577178,188.044271" Width="134.0">
+        <Note ID="14" FontSize="12.0" Position="1379.592672,180.384968" Width="134.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Fill>0.90101 0.788728 0.943967</Fill>
             </Appearance>
             <String>views/comments.html</String>
-            <ConnectedNoteIDs>12</ConnectedNoteIDs>
+            <ConnectedNoteIDs>12, 23, 25</ConnectedNoteIDs>
         </Note>
         <Note ID="15" FontSize="12.0" Position="1375.625,599.255208" Width="246.0">
             <Appearance>
@@ -269,9 +269,80 @@ parse [M↓] to HTML
                 <FormatRange Bold="Yes">0,7</FormatRange>
             </Formatting>
         </Note>
+        <Note ID="23" FontSize="12.0" Position="1179.141433,156.887931" Width="121.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/comments.js</String>
+            <ConnectedNoteIDs>14, 24</ConnectedNoteIDs>
+            <PointsToNoteIDs>14</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,17</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="24" FontSize="12.0" Position="1031.873114,69.266164" Width="167.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/utils/stopwatch.js</String>
+            <ConnectedNoteIDs>23</ConnectedNoteIDs>
+        </Note>
+        <Note ID="25" FontSize="12.0" Position="1349.663793,101.651131" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/themes/default/css/default-comments.css</String>
+            <ConnectedNoteIDs>14, 27</ConnectedNoteIDs>
+            <PointsToNoteIDs>14</PointsToNoteIDs>
+        </Note>
+        <Note ID="26" FontSize="12.0" Position="1931.060345,250.048761" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/themes/default/css/default.css</String>
+            <ConnectedNoteIDs>13, 28</ConnectedNoteIDs>
+        </Note>
+        <Note ID="27" FontSize="12.0" Position="1575.275862,74.0" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/themes/default/css/default-comments.scss</String>
+            <ConnectedNoteIDs>25, 29</ConnectedNoteIDs>
+            <PointsToNoteIDs>25</PointsToNoteIDs>
+        </Note>
+        <Note ID="28" FontSize="12.0" Position="2003.015625,140.100485" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/themes/default/css/default.scss</String>
+            <ConnectedNoteIDs>26, 29-30</ConnectedNoteIDs>
+            <PointsToNoteIDs>26</PointsToNoteIDs>
+        </Note>
+        <Note ID="29" FontSize="12.0" Position="1839.074084,37.97764" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/themes/default/css/_fonts.scss</String>
+            <ConnectedNoteIDs>27-28</ConnectedNoteIDs>
+        </Note>
+        <Note ID="30" FontSize="12.0" Position="2116.335938,63.211476" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Fill>0.90101 0.788728 0.943967</Fill>
+            </Appearance>
+            <String>views/themes/default/css/_colors.scss</String>
+            <ConnectedNoteIDs>28</ConnectedNoteIDs>
+        </Note>
     </Notes>
     <BackgroundShapes></BackgroundShapes>
-    <AutoFit>1, 6, 9, 12-16, 22</AutoFit>
+    <AutoFit>1, 6, 9, 12-16, 22-24</AutoFit>
     <NoteStyles>
         <Style Name="Title Text" ID="A09508C6-8499-462A-A18C-565A236F88FB" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
             <FontSize>28.0</FontSize>

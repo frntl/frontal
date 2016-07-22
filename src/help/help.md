@@ -213,10 +213,10 @@ You can add tables to your presentation (who wouldn't?).
 [M↓] tables are written like this:  
 
 ```text
-| Left aligned | Center aligned | Right aligned |
-| :--          | :--:           | --:          |
-| Cell         | Cell           | Cell         |
-| Cell         | Cell           | Cell         |
+| Right aligned | Center aligned | Left aligned |
+| --:           | :--:           | :--          |
+| Cell          | Cell           | Cell         |
+| Cell          | Cell           | Cell         |
  ``` 
 
 This will become this beautiful table:  
@@ -256,7 +256,7 @@ We love emoji and so do you (we know it, all those little hearts you send to you
 
 Well there are so many good text editors out there we don't want to compete with them. Our editor of choice is [Sublime Text 3](https://www.sublimetext.com/3) but we can also recommend applications like [Atom](https://atom.io/), [Moeditor](https://github.com/Moeditor/Moeditor), [iAWriter](https://ia.net/) or [Marp](https://yhatt.github.io/marp/) (you can create slides with this one as well) and many more. We follow the unix philosophy. Do "One Thing Well". Writing an editor that can compete with the ones above is not in our scope.  
 
-When you are editing in your editor you fell in love with - we got you covered. frontal will automagically refresh you slides on save and try to stay at the current slide. Of course if you add a new slide it wont work.  
+When you are editing in your editor you fell in love with - we got you covered. frontal will automagically refresh your slides on save and try to stay at the current slide. Of course if you add a new slide it wont work.  
 
 ---
 
@@ -300,3 +300,8 @@ There are a lot of nice Markdown presentation tools out there. So why did we wri
 - A: No!
 - Q: Why are you being a such a douchebag?
 - A: Because open source projects tend to attract people who think that somebody who spends his time maintaining a free (as in beer) software -- has even more time to fix their problems. 
+
+---
+
+## Thank you for your attention
+### and testing frontal.app
