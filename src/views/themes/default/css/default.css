@@ -18,7 +18,15 @@ body#frontal ol ul { text-align: left !important; }
 
 body#frontal ol ul li { text-align: left !important; }
 
-body#frontal #slides { padding-top: 35px; padding-bottom: 35px; margin-left: 20%; margin-right: 20%; }
+body#frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
+
+body#frontal .wide { margin-left: 5%; margin-right: 5%; width: 100%; }
+
+body#frontal .narrow { margin-left: 20%; margin-right: 20%; }
+
+body#frontal .pwide { max-width: 90vw !important; }
+
+body#frontal #slides { padding-top: 35px; padding-bottom: 35px; }
 
 body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4 { font-family: 'Vollkorn-Bold'; text-align: center; }
 
@@ -29,6 +37,8 @@ body#frontal #slides em { font-family: 'Vollkorn-Italic'; }
 body#frontal #slides strong { font-family: 'Vollkorn-Bold'; }
 
 body#frontal #slides img { max-width: 80%; display: block; margin: 0 auto; }
+
+body#frontal #slides img[alt="left"] { float: left; margin-right: 10px; clear: both; }
 
 body#frontal #slides pre { min-width: 100%; text-align: left; }
 

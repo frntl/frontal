@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ScappleDocument Version="1.1" ID="732326BB-E73B-43B4-B8E1-E496A1FCE261">
     <Notes>
-        <Note ID="0" FontSize="12.0" Position="210.984375,638.463542" Width="373.0">
+        <Note ID="0" FontSize="12.0" Position="264.02524,1275.095353" Width="373.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -14,6 +14,22 @@
 - - sets file watching in utils/watcher.js
 - - sends: {slides:[HTML],comments:[[M↓]], attributes:} to views/renderer.js
 
+
+- on Up/Down/left/Right/zoom in/zoom out/ zoom 100%
+- - sends command to renderer.js</String>
+            <ConnectedNoteIDs>1, 12, 15</ConnectedNoteIDs>
+            <PointsToNoteIDs>1, 12, 15</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,8</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="1" FontSize="12.0" Position="394.902174,856.995584" Width="300.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>menu.js
+- creates menu
 actually in menu.js
 - on open…
 - - gets filePath
@@ -22,31 +38,15 @@ actually in menu.js
 - - gets data
 - - sends data to views/renderer.js  
 
-- on Up/Down/left/Right/zoom in/zoom out/ zoom 100%
-- - sends command to renderer.js</String>
-            <ConnectedNoteIDs>1, 3, 12, 15</ConnectedNoteIDs>
-            <PointsToNoteIDs>1, 3, 12, 15</PointsToNoteIDs>
-            <Formatting>
-                <FormatRange Bold="Yes">0,8</FormatRange>
-                <FormatRange Bold="Yes">273,19</FormatRange>
-            </Formatting>
-        </Note>
-        <Note ID="1" FontSize="12.0" Position="490.625,366.255208" Width="101.0">
-            <Appearance>
-                <Alignment>Left</Alignment>
-                <Border Weight="1"></Border>
-            </Appearance>
-            <String>menu.js
-- creates menu
-
 - returns menu </String>
-            <ConnectedNoteIDs>0, 3, 12, 15</ConnectedNoteIDs>
-            <PointsToNoteIDs>0, 3, 12, 15</PointsToNoteIDs>
+            <ConnectedNoteIDs>0, 3, 15-17</ConnectedNoteIDs>
+            <PointsToNoteIDs>0, 3, 15-17</PointsToNoteIDs>
             <Formatting>
                 <FormatRange Bold="Yes">0,8</FormatRange>
+                <FormatRange Bold="Yes">23,19</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="3" FontSize="12.0" Position="1251.625,964.255208" Width="362.0">
+        <Note ID="3" FontSize="12.0" Position="1128.873981,1401.568954" Width="362.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -60,13 +60,13 @@ actually in menu.js
 
 sends [M↓] to slides.js
 returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
-            <ConnectedNoteIDs>0-1, 4, 16</ConnectedNoteIDs>
-            <PointsToNoteIDs>0-2, 4, 16</PointsToNoteIDs>
+            <ConnectedNoteIDs>1, 4, 31</ConnectedNoteIDs>
+            <PointsToNoteIDs>1, 4, 31</PointsToNoteIDs>
             <Formatting>
                 <FormatRange Bold="Yes">0,13</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="4" FontSize="12.0" Position="1696.010417,1013.0" Width="200.0">
+        <Note ID="4" FontSize="12.0" Position="1802.0,1428.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -79,7 +79,7 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,16</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="5" FontSize="12.0" Position="1985.683412,869.370125" Width="162.0">
+        <Note ID="5" FontSize="12.0" Position="2092.0,1284.0" Width="162.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -94,7 +94,7 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,19</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="6" FontSize="12.0" Position="2280.598958,1016.359375" Width="233.0">
+        <Note ID="6" FontSize="12.0" Position="2387.0,1431.0" Width="233.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -109,7 +109,7 @@ returns: {slides:[HTML],comments:[[M↓]], attributes:}</String>
                 <FormatRange Bold="Yes">0,24</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="7" FontSize="12.0" Position="2280.625,938.255208" Width="93.0">
+        <Note ID="7" FontSize="12.0" Position="2432.0,1303.0" Width="93.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -123,7 +123,7 @@ returns HTML</String>
                 <FormatRange Bold="Yes">0,10</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="8" FontSize="12.0" Position="2328.979167,770.348958" Width="157.0">
+        <Note ID="8" FontSize="12.0" Position="2417.0,1185.0" Width="157.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -137,7 +137,7 @@ returns {attributes}</String>
                 <FormatRange Bold="Yes">0,21</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="9" FontSize="12.0" Position="2335.755208,1139.255208" Width="253.0">
+        <Note ID="9" FontSize="12.0" Position="2442.0,1554.0" Width="253.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -152,7 +152,7 @@ returns {attributes}</String>
                 <FormatRange Bold="Yes">0,25</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="10" FontSize="12.0" Position="2331.265625,1278.369792" Width="200.0">
+        <Note ID="10" FontSize="12.0" Position="2437.0,1693.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -167,7 +167,7 @@ returns {attributes}</String>
                 <FormatRange Bold="Yes">0,24</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="11" FontSize="12.0" Position="2265.307292,1497.338542" Width="197.0">
+        <Note ID="11" FontSize="12.0" Position="2242.872622,1919.727582" Width="197.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -182,21 +182,21 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,22</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="12" FontSize="12.0" Position="1204.625,291.255208" Width="345.0">
+        <Note ID="12" FontSize="12.0" Position="1180.66867,678.426482" Width="345.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.942546 0.785648 0.81194</Fill>
+                <Fill>1.0 1.0 1.0</Fill>
             </Appearance>
             <String>views/renderer.js
 - gets {slides:[HTML],comments:[[M↓]], attributes:}
 - sets content on</String>
-            <ConnectedNoteIDs>0-1, 13-14, 17</ConnectedNoteIDs>
+            <ConnectedNoteIDs>0, 13-14, 17</ConnectedNoteIDs>
             <PointsToNoteIDs>13-14</PointsToNoteIDs>
             <Formatting>
                 <FormatRange Bold="Yes">0,18</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="13" FontSize="12.0" Position="1733.110991,246.586746" Width="121.0">
+        <Note ID="13" FontSize="12.0" Position="1652.0,595.0" Width="121.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Fill>0.90101 0.788728 0.943967</Fill>
@@ -204,7 +204,7 @@ returns: [M↓]</String>
             <String>views/slides.html</String>
             <ConnectedNoteIDs>12, 26</ConnectedNoteIDs>
         </Note>
-        <Note ID="14" FontSize="12.0" Position="1379.592672,180.384968" Width="134.0">
+        <Note ID="14" FontSize="12.0" Position="1486.0,595.0" Width="134.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Fill>0.90101 0.788728 0.943967</Fill>
@@ -212,7 +212,7 @@ returns: [M↓]</String>
             <String>views/comments.html</String>
             <ConnectedNoteIDs>12, 23, 25</ConnectedNoteIDs>
         </Note>
-        <Note ID="15" FontSize="12.0" Position="1375.625,599.255208" Width="246.0">
+        <Note ID="15" FontSize="12.0" Position="1808.415264,1195.331931" Width="246.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -226,7 +226,7 @@ returns: [M↓]</String>
                 <FormatRange Bold="Yes">0,17</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="16" FontSize="12.0" Position="1845.625,503.255208" Width="220.0">
+        <Note ID="16" FontSize="12.0" Position="1783.6875,968.790665" Width="220.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -235,26 +235,26 @@ returns: [M↓]</String>
 - sends filePath to processor.js
 - gets data
 - sends data to utils/sender.js</String>
-            <ConnectedNoteIDs>3, 15, 17</ConnectedNoteIDs>
-            <PointsToNoteIDs>3, 17</PointsToNoteIDs>
+            <ConnectedNoteIDs>1, 15, 17</ConnectedNoteIDs>
+            <PointsToNoteIDs>17</PointsToNoteIDs>
             <Formatting>
                 <FormatRange Bold="Yes">0,29</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="17" FontSize="12.0" Position="1656.456032,378.73922" Width="200.0">
+        <Note ID="17" FontSize="12.0" Position="1245.318109,804.99359" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
             </Appearance>
             <String>utils/sender.js
 - sends data to views/renderer.js</String>
-            <ConnectedNoteIDs>12, 16</ConnectedNoteIDs>
+            <ConnectedNoteIDs>1, 12, 16</ConnectedNoteIDs>
             <PointsToNoteIDs>12</PointsToNoteIDs>
             <Formatting>
                 <FormatRange Bold="Yes">0,16</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="22" FontSize="12.0" Position="1973.609375,1379.0" Width="127.0">
+        <Note ID="22" FontSize="12.0" Position="1934.872622,1826.727582" Width="127.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
@@ -269,10 +269,10 @@ parse [M↓] to HTML
                 <FormatRange Bold="Yes">0,7</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="23" FontSize="12.0" Position="1179.141433,156.887931" Width="121.0">
+        <Note ID="23" FontSize="12.0" Position="1252.0,469.0" Width="121.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.941176 0.784314 0.811765</Fill>
             </Appearance>
             <String>views/comments.js</String>
             <ConnectedNoteIDs>14, 24</ConnectedNoteIDs>
@@ -281,100 +281,116 @@ parse [M↓] to HTML
                 <FormatRange Bold="Yes">0,17</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="24" FontSize="12.0" Position="1031.873114,69.266164" Width="167.0">
+        <Note ID="24" FontSize="12.0" Position="1134.0,382.0" Width="167.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.941176 0.784314 0.811765</Fill>
             </Appearance>
             <String>views/utils/stopwatch.js</String>
             <ConnectedNoteIDs>23</ConnectedNoteIDs>
         </Note>
-        <Note ID="25" FontSize="12.0" Position="1349.663793,101.651131" Width="200.0">
+        <Note ID="25" FontSize="12.0" Position="1420.0,451.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.611765 0.607843 0.909804</Fill>
             </Appearance>
             <String>views/themes/default/css/default-comments.css</String>
             <ConnectedNoteIDs>14, 27</ConnectedNoteIDs>
             <PointsToNoteIDs>14</PointsToNoteIDs>
         </Note>
-        <Note ID="26" FontSize="12.0" Position="1931.060345,250.048761" Width="200.0">
+        <Note ID="26" FontSize="12.0" Position="1679.0,456.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.611765 0.607843 0.909804</Fill>
             </Appearance>
             <String>views/themes/default/css/default.css</String>
             <ConnectedNoteIDs>13, 28</ConnectedNoteIDs>
         </Note>
-        <Note ID="27" FontSize="12.0" Position="1575.275862,74.0" Width="200.0">
+        <Note ID="27" FontSize="12.0" Position="1466.0,315.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.610802 0.606001 0.911316</Fill>
             </Appearance>
             <String>views/themes/default/css/default-comments.scss</String>
             <ConnectedNoteIDs>25, 29</ConnectedNoteIDs>
             <PointsToNoteIDs>25</PointsToNoteIDs>
         </Note>
-        <Note ID="28" FontSize="12.0" Position="2003.015625,140.100485" Width="200.0">
+        <Note ID="28" FontSize="12.0" Position="1813.0,351.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.610802 0.606001 0.911316</Fill>
             </Appearance>
             <String>views/themes/default/css/default.scss</String>
             <ConnectedNoteIDs>26, 29-30</ConnectedNoteIDs>
             <PointsToNoteIDs>26</PointsToNoteIDs>
         </Note>
-        <Note ID="29" FontSize="12.0" Position="1839.074084,37.97764" Width="200.0">
+        <Note ID="29" FontSize="12.0" Position="1475.0,210.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.610802 0.606001 0.911316</Fill>
             </Appearance>
             <String>views/themes/default/css/_fonts.scss</String>
             <ConnectedNoteIDs>27-28</ConnectedNoteIDs>
         </Note>
-        <Note ID="30" FontSize="12.0" Position="2116.335938,63.211476" Width="200.0">
+        <Note ID="30" FontSize="12.0" Position="1800.0,189.0" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
-                <Fill>0.90101 0.788728 0.943967</Fill>
+                <Fill>0.610802 0.606001 0.911316</Fill>
             </Appearance>
             <String>views/themes/default/css/_colors.scss</String>
             <ConnectedNoteIDs>28</ConnectedNoteIDs>
         </Note>
+        <Note ID="31" FontSize="12.0" Position="1187.159054,1633.248633" Width="266.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>Should look for configuration YAML file
+and read settings. _frontal.yaml
+
+https://github.com/nodeca/js-yaml</String>
+            <ConnectedNoteIDs>3</ConnectedNoteIDs>
+            <PointsToNoteIDs>3</PointsToNoteIDs>
+            <Formatting>
+                <FormatRange Bold="Yes">0,74</FormatRange>
+                <FormatRange Bold="Yes" Link="https://github.com/nodeca/js-yaml">74,33</FormatRange>
+            </Formatting>
+        </Note>
     </Notes>
     <BackgroundShapes></BackgroundShapes>
-    <AutoFit>1, 6, 9, 12-16, 22-24</AutoFit>
+    <AutoFit>6, 9, 12-16, 22-24, 31</AutoFit>
     <NoteStyles>
-        <Style Name="Title Text" ID="A09508C6-8499-462A-A18C-565A236F88FB" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
-            <FontSize>28.0</FontSize>
-            <IsBold>Yes</IsBold>
-        </Style>
-        <Style Name="Red Text" ID="6E3F425A-1428-471C-B9C6-A7B635DE8528" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
-            <TextColor>1.0 0.0 0.0</TextColor>
+        <Style Name="Blue Bubble" ID="219D4D40-B228-4171-86FC-31B42E9D6D8D" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
+            <FillColor>0.840969 0.866828 0.925903</FillColor>
         </Style>
         <Style Name="Brown Bubble" ID="44AF2F78-88DF-49A2-B589-0B2EA59FD679" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
             <BorderColor>0.290055 0.1523 0.182215</BorderColor>
             <FillColor>0.940019 0.892907 0.779716</FillColor>
         </Style>
-        <Style Name="Yellow Bubble" ID="E310CD6D-4863-4368-BA85-AE35A427EAA2" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
-            <BorderThickness>1</BorderThickness>
-            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
-            <FillColor>0.906773 0.910625 0.634363</FillColor>
-        </Style>
         <Style Name="Green Bubble" ID="E4A1C026-9124-4243-AF55-35B1B637B548" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
             <BorderColor>0.331867 0.609932 0.356197</BorderColor>
             <FillColor>0.790123 0.882328 0.80198</FillColor>
         </Style>
-        <Style Name="Blue Bubble" ID="219D4D40-B228-4171-86FC-31B42E9D6D8D" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
-            <BorderThickness>1</BorderThickness>
-            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
-            <FillColor>0.840969 0.866828 0.925903</FillColor>
-        </Style>
         <Style Name="Pink Bubble" ID="8E996218-738C-48D5-B046-7C6251DC7D1C" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
             <BorderColor>0.747881 0.366532 0.542813</BorderColor>
             <FillColor>0.918452 0.807302 0.863467</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="6E3F425A-1428-471C-B9C6-A7B635DE8528" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="A09508C6-8499-462A-A18C-565A236F88FB" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Yellow Bubble" ID="E310CD6D-4863-4368-BA85-AE35A427EAA2" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
+            <FillColor>0.906773 0.910625 0.634363</FillColor>
         </Style>
     </NoteStyles>
     <UISettings>
@@ -382,5 +398,5 @@ parse [M↓] to HTML
         <DefaultFont>CamingoCode</DefaultFont>
         <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
     </UISettings>
-    <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+    <PrintSettings PaperSize="594.999973,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScappleDocument>

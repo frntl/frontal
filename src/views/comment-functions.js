@@ -30,6 +30,13 @@ function setButtons() {
     }
   });
 }
+
+function clock() {
+  setInterval(function() {
+    document.getElementById("time-clock").innerHTML = (new Date()).toLocaleTimeString();
+  }, 1000);
+}
+
 // function getOvertime() {
 //   setInterval(() => {
 //     console.log(overtime());
@@ -41,5 +48,6 @@ function setButtons() {
 // }
 // -------execution--------
 //
+clock();
 setButtons();
 // getOvertime();

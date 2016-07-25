@@ -3,7 +3,7 @@ import {
 } from './slides';
 import * as fs from 'fs';
 import * as path from 'path';
-import {watch} from './utils/watcher';
+// import {watch} from './utils/watcher';
 import {sender} from './utils/sender';
 
 export function processing (filePath) {

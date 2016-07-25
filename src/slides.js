@@ -1,7 +1,7 @@
 import * as parser from './parser';
 import {
   linker
-} from './utils/image-linker';
+} from './utils/images';
 import {
   hrefer
 } from './utils/href-linker';

@@ -1,3 +1,4 @@
+
 // - should take html or markdown as input
 // - find <img src
 // - if the link as a relativ link

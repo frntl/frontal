@@ -56,11 +56,29 @@ body#frontal {
       text-align: left !important;
     }
   }
+
+     img[alt="left"]{
+      margin-left:5%;
+      margin-right:5%;
+    }
+  .wide{
+      margin-left: 5%;
+    margin-right: 5%;
+    width :100%;
+  }
+  .narrow {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .pwide{
+    max-width: 90vw !important;
+
+  }
+
   #slides {
     padding-top: $headerHeight;
     padding-bottom: $headerHeight;
-    margin-left: 20%;
-    margin-right: 20%;
 
     h1, h2, h3, h4 {
       font-family: 'Vollkorn-Bold';
@@ -81,6 +99,11 @@ body#frontal {
       max-width: 80%;
       display: block;
       margin: 0 auto;
+    }
+    img[alt="left"]{
+      float: left;
+      margin-right: 10px;
+      clear:both;
     }
     pre {
       min-width: 100%;

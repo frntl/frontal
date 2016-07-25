@@ -23,12 +23,19 @@ You can navigate your document by using these keys.
 | ⌘ or ^ + Minus (,) | Zoom out speaker notes (always 2px)     |
 | ⌘ or ^ + 9         | Set Zoom of speaker notes to 100%          |
 
+
+<!--
+## Speaker Notes
+
+These are the speaker notes. We are sure you want to know how these end up here? Well keep on reading. There is a slide dedicated only to this feature. 🦄 🌈
+ -->
+
 ---
 
 
 ## How to write a presentation?  
 
-Creating a presentation is dead simple. Just write your Markdown like you always would. To create separate slides just split them with a horizontal line and leave a empty line before and after it.  
+Creating a presentation is dead simple. Just write your [M↓] (Markdown) like you always would. To create separate slides just split them with a horizontal line and leave a empty line before and after it.  
 
 
 ```text
@@ -162,6 +169,13 @@ What would a presentation be without fancy shiny images? (Spoiler alert) Nothing
 ```
 
 You can also embed images from the web directly buy passing the url to your image to the same markup. `![](http://example.com/my-fancy-image.png)`. Of course you need a working Internet connection for that.  
+
+---
+
+## Images with text next to it
+
+![left](./images/me-fro.png)
+This text should be to the right of the image. It works but the slide needs less margins.  
 
 ---
 
