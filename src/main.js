@@ -29,7 +29,7 @@ global.slidesWindow = null;
 global.commentsWindow = null;
 let slidesWindow = null;
 let commentsWindow = null;
-let helpFilePath = './app/help/help.md';
+let helpFilePath = './help/help.md';
 
 // load the help file on startup
 // should be a preference

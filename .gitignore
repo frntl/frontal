@@ -10,3 +10,4 @@ FRONTAL-darwin-x64
 app
 *.sublime-project
 *.sublime-workspace
+dist

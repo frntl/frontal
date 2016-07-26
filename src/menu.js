@@ -1,4 +1,4 @@
-const pkg = require('../package.json');
+const pkg = require('./package.json');
 import * as path from 'path';
 const electron = require('electron');
 const app = electron.app;
