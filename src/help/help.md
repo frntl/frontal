@@ -172,10 +172,17 @@ You can also embed images from the web directly buy passing the url to your imag
 
 ---
 
+## Images with text below
+
+![](./images/me-fro.png)
+This text is below the image.  
+
+---
+
 ## Images with text next to it
 
 ![left](./images/me-fro.png)
-This text should be to the right of the image. It works but the slide needs less margins.  
+This text is the right of the image.  
 
 ---
 
