@@ -29,8 +29,7 @@ global.slidesWindow = null;
 global.commentsWindow = null;
 let slidesWindow = null;
 let commentsWindow = null;
-let helpFilePath = './help/help.md';
-
+let helpFilePath = `${__dirname}/help/help.md`;
 // load the help file on startup
 // should be a preference
 function windowsReady(wins) {
@@ -65,7 +64,6 @@ function createWindows() {
   // Open the DevTools.
   // slidesWindow.webContents.openDevTools();
   //
-
   // Emitted when the window is closed.
   slidesWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
@@ -73,7 +71,6 @@ function createWindows() {
     // when you should delete the corresponding element.
     slidesWindow = global.slidesWindow = null;
   });
-
   commentsWindow = new BrowserWindow({
     width: 400,
     height: 600,
@@ -97,6 +94,7 @@ function createWindows() {
   // global.windows.push(commentsWindow);
   // sender(global.windows, 'hello', 'msg');
   // loadHelp([slidesWindow, commentsWindow]);
+
   global.commentsWindow = commentsWindow;
   global.slidesWindow = slidesWindow;
 }
@@ -132,7 +130,6 @@ app.on('ready', () => {
   createMenues();
   windowsReady([global.slidesWindow, global.commentsWindow]);
 });
-
 // // In this file you can include the rest of your app's specific main process
 // // code. You can also put them in separate files and require them here.
 app.on('will-finish-launching', (event) => {

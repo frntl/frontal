@@ -5,14 +5,16 @@
   "private": true,
   "scripts": {
     "start": "./node_modules/.bin/electron app/main.js",
-    "prewatch": "echo 'not cleaning app/ folder'",
+    "prewatch": "echo ' cleaning app/ folder except node_modules' && find app/* -maxdepth 0 -name 'node_modules' -prune -o -exec rm -rf '{}' ';'",
     "watch": "./node_modules/.bin/babel src -w -d app -D",
     "sass": "./node_modules/.bin/node-sass -w src/views/themes/default/scss/ -o src/views/themes/default/css/ --output-style=compact",
     "test": "./node_modules/.bin/mocha --compilers js:babel-register",
     "pandoc": "echo 'trying to create markdown via pandoc for testing css in ./test/index.html' && sh bin/pandoc.sh",
     "postinstall": "install-app-deps",
     "pack": "build --dir",
-    "dist": "build"
+    "dist": "build",
+    "predist":"echo 'removing dist/ folder' && rm -rf dist/",
+    "prepack":"npm run predist"
   },
 
   "devDependencies": {
@@ -39,6 +41,7 @@
   ],
   "build": {
     "appId": "me.fabianmoronzirfas.frontal",
-    "asar":false
+    "asar":false,
+    "extraResources":"./help/*"
   }
 }

@@ -1,5 +1,6 @@
 const pkg = require('./package.json');
 import * as path from 'path';
+import {help} from './help/help-window.js';
 const electron = require('electron');
 const app = electron.app;
 const shell = electron.shell;
@@ -173,11 +174,11 @@ export function buildTemplate(windows) {
     label: 'Help',
     role: 'help',
     submenu: [{
-      label:'Open help file',
-      click:function(){
-        console.log('should open the helpfile in a new window. Plain text');
+      label: 'Open help file',
+      click: function() {
+        let win = help();
       }
-    },{
+    }, {
       label: 'Learn More',
       click: function() {
         shell.openExternal('https://github.com/frntl/frontal');

@@ -2,7 +2,8 @@
 
 Markdown powered presentation tool build on Electron / Node.js  
 
-## installation 
+## installation & run
+
 Init the project by running:  
 
 ```bash
@@ -19,7 +20,7 @@ npm start
 
 ## development  
 
-To write nice ES2015 style we use babel. Therefore we need to watch the whole `src` and compile it to `app`. Run it like this in the root of the directory:  
+To write nice ES2015 style we use babel. Therefore we need to watch the whole `src/` and compile it to `app`. Run it like this in the root of the directory (additional files in the src folder will also be copied by babel into the `app/` folder):  
 
     npm run watch
 
@@ -27,13 +28,28 @@ To write on the scss you can run
 
     npm run sass
 
+### installing additional modules  
 
+For packing the app we use the [`electron-builder`](https://github.com/electron-userland/electron-builder) package. Therefor we have two package.json files. If you want to add another module (currently - will be improved) you will need to:  
+
+    # dont do this while the watch task is running!
+    cd app/
+    npm install [your-module] --save && cat package.json ../src/package.json
+    
 ## tests
 
 To run the tests just do a  
 
     npm test
 
+
+## build  
+
+For buildung the distribution version we use the [`electron-builder`](https://github.com/electron-userland/electron-builder) package. To make this work we have two package.json files. One in the root for development (devDependencies) and one in the `src/` folder for distribution. Run  
+
+    npm run dist
+
+for building the package
 
 ## Related projects:
 
