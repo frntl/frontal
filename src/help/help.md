@@ -1,6 +1,6 @@
+
 {{{"header":"frontal.app",
 "footer":"An Electron powered [M↓] presentation tool"}}}
-
 ![](images/markdown-mark.svg)  
 
 # Welcome to frontal.app

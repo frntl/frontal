@@ -1,6 +1,6 @@
 // some fixes on images
 const $ = require('jquery');
-export function imagesLeft() {
+export default function () {
   console.log('execution imagesLeft');
   let imagesHTMLCollection = document.getElementsByTagName('img');
   let images = Array.from(imagesHTMLCollection);

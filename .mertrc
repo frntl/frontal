@@ -4,4 +4,4 @@ layout:
     - npm run watch
     - npm run sass
   -
-    - cd "~/Documents/frntl/frontal" && echo "run 'npm start' here"
+    - echo "run 'npm start' here"
