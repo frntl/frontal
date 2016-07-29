@@ -2,6 +2,10 @@
 
 Markdown powered presentation tool build on Electron / Node.js  
 
+![](docs/images/main-window.png)  
+![](docs/images/speaker-window.png)  
+
+
 ## installation & run
 
 Init the project by running:  
