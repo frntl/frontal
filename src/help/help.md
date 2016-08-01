@@ -1,7 +1,7 @@
 
 {{{"header":"frontal.app",
 "footer":"An Electron powered [M↓] presentation tool"}}}
-![](images/markdown-mark.svg)  
+![](images/256.png)  
 
 # Welcome to frontal.app
 ## Hit ⌘ + O to open a Markdown presentation
