@@ -1,0 +1,20 @@
+/*
+
+Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
+
+*/
+.hljs { display: block; overflow-x: auto; padding: 0.5em; background: #fdf6e3; }
+
+.hljs-comment, .hljs-quote { color: #93a1a1; }
+
+/* Solarized Green */
+/* Solarized Cyan */
+.hljs-number, .hljs-string, .hljs-meta .hljs-meta-string, .hljs-literal, .hljs-doctag, .hljs-regexp { color: #2aa198; }
+
+/* Solarized Blue */
+/* Solarized Yellow */
+/* Solarized Orange */
+/* Solarized Red */
+.hljs-emphasis { font-style: italic; }
+
+.hljs-strong { font-weight: bold; }
