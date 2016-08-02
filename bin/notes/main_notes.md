@@ -200,3 +200,10 @@ try {
 
 
 */
+
+
+## images
+
+embedding images
+
+https://www.npmjs.com/package/embed-images
