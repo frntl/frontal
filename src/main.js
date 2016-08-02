@@ -6,11 +6,13 @@ const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
 const webContents = electron.webContents;
-
-if(process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
   require('electron-reload')(__dirname);
 }
-
+import {
+  helpLoader,
+  initialHelpLoader
+} from './help/help-loader';
 import {
   buildTemplate
 } from './menu';
@@ -32,31 +34,34 @@ global.presetationRoot = null;
 global.presentationFile = null;
 global.slidesWindow = null;
 global.commentsWindow = null;
+global.helpFilePath = `${__dirname}/help/help.md`;
 let slidesWindow = null;
 let commentsWindow = null;
-let helpFilePath = `${__dirname}/help/help.md`;
 // load the help file on startup
 // should be a preference
-function windowsReady(wins) {
-  global.presentationFile = helpFilePath;
-  let slidesHTML = processing(helpFilePath);
-  watch(global.presentationFile);
-  wins.forEach((w, i, arr) => {
-    w.webContents.on('did-finish-load', () => {
-      w.webContents.send('slides', {
-        msg: slidesHTML
-      });
-    });
-  });
-}
-
+// function windowsReady(wins) {
+//   global.presentationFile = global.helpFilePath;
+//   let slidesHTML = processing(global.helpFilePath);
+//   watch(global.presentationFile);
+//   wins.forEach((w, i, arr) => {
+//     w.webContents.on('did-finish-load', () => {
+//       w.webContents.send('slides', {
+//         msg: slidesHTML
+//       });
+//     });
+//   });
+// }
 function createWindows() {
   // Create the browser window.
   // global.error('displays', displays);
   // Create the browser window.
+  const {
+    width,
+    height
+  } = electron.screen.getPrimaryDisplay().workAreaSize;
   slidesWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: (width / 3) * 2,
+    height: height,
     x: 0,
     y: 0,
     title: 'Frontal',
@@ -77,9 +82,9 @@ function createWindows() {
     slidesWindow = global.slidesWindow = null;
   });
   commentsWindow = new BrowserWindow({
-    width: 400,
-    height: 600,
-    x: 800,
+    width: (width / 3),
+    height: height,
+    x: (width / 3) * 2,
     y: 0,
     closable: false,
     frame: false,
@@ -101,7 +106,6 @@ function createWindows() {
   // global.windows.push(commentsWindow);
   // sender(global.windows, 'hello', 'msg');
   // loadHelp([slidesWindow, commentsWindow]);
-
   global.commentsWindow = commentsWindow;
   global.slidesWindow = slidesWindow;
 }
@@ -126,7 +130,7 @@ app.on('activate', function() {
   if (global.slidesWindow === null || global.commentsWindow === null) {
     createWindows();
     createMenues();
-    windowsReady([global.slidesWindow, global.commentsWindow]);
+    initialHelpLoader([global.slidesWindow, global.commentsWindow]);
   }
 });
 // This method will be called when Electron has finished
@@ -135,7 +139,7 @@ app.on('activate', function() {
 app.on('ready', () => {
   createWindows();
   createMenues();
-  windowsReady([global.slidesWindow, global.commentsWindow]);
+  initialHelpLoader([global.slidesWindow, global.commentsWindow]);
 });
 // // In this file you can include the rest of your app's specific main process
 // // code. You can also put them in separate files and require them here.

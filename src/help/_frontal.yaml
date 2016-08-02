@@ -1,0 +1,9 @@
+# http://yaml.org/
+# https://learnxinyminutes.com/docs/yaml/
+header: "frontal.app"
+footer: "An Electron powered [M↓] presentation tool"
+
+slides:
+  - header: "header slide 1"
+    footer: "footer slide 1"
+  -

@@ -1,12 +1,17 @@
 const pkg = require('./package.json');
 import * as path from 'path';
-import {help} from './help/help-window.js';
+import {
+  help
+} from './help/help-window.js';
 const electron = require('electron');
 const app = electron.app;
 const shell = electron.shell;
 const dialog = electron.dialog;
 const JsonDB = require('node-json-db');
 const chalk = require('chalk');
+import {
+  helpLoader
+} from './help/help-loader';
 import {
   processing
 } from './processor';
@@ -174,9 +179,16 @@ export function buildTemplate(windows) {
     label: 'Help',
     role: 'help',
     submenu: [{
-      label: 'Open help file',
+      label: 'Open intro file source',
       click: function() {
         let win = help();
+      }
+    }, {
+      label: 'Open intro in main window',
+      click: function() {
+        // let win = help();
+        console.log('User wants to open help again');
+        helpLoader([global.slidesWindow, global.commentsWindow]);
       }
     }, {
       label: 'Learn More',
