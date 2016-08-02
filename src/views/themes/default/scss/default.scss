@@ -77,6 +77,7 @@ body#frontal {
   }
 
   #slides {
+
     padding-top: $headerHeight;
     padding-bottom: $headerHeight;
 
@@ -111,6 +112,7 @@ body#frontal {
     }
     code {
       text-align: left;
+      font-family: 'CamingoCode-Regular';
     }
     p {
       text-align: left;

@@ -34,6 +34,9 @@
 //  To reset a paused stopwatch
 //    obj.stop();
 //
+//
+const $ = require('jquery');
+
 let ClsStopwatch = function() {
   // Private vars
   var startAt = 0; // Time of last start / resume. (0 if not running)
@@ -102,7 +105,7 @@ function update() {
   if(over === true && once === false) {
     once = true;
   let dur = document.getElementById('time-running');
-  dur.className += ' blink ';
+  dur.className += 'blink';
 
   }
 }
@@ -126,6 +129,8 @@ export function start() {
 export function stop() {
   x.stop();
   clearInterval(clocktimer);
+  $('#time-running').removeClass('blink');
+
 }
 export function reset() {
   stop();
@@ -133,6 +138,8 @@ export function reset() {
   update();
   over = false;
   once = true;
+  $('#time-running').removeClass('blink');
+
 }
 
 

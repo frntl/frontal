@@ -4,26 +4,20 @@
 // this file should
 // - require all files in theme/js
 // and execute them
-// the js file can export one main function so we only have to execute on thing
-// const reqAll = require('req-all');
-// const modules = reqAll('./themes/default/js'); // this needs to be dynamic
-import imagesLeft from './themes/default/js/images-left';
+// the js file can export one default function so we only have to execute on thing
+
+var libs = require('require-all')(__dirname + '/themes/default/js');
 const $ = require('jquery');
+console.log(libs);
 
-    $('#slides').bind('DOMSubtreeModified', imagesLeft);
+    // $('#slides').bind('DOMSubtreeModified', imagesLeft);
 
-// console.log(modules);
-// for (var key in modules) {
-//   if (modules.hasOwnProperty(key)) {
-//     console.log(key);
-//     console.log(modules[key]);
-//     $('#slides').bind('DOMSubtreeModified', (modules[key]));
-//   }
-// }
+for (var key in libs) {
+  // console.log(key);
+  //   console.log(libs[key].default);
+  if (libs.hasOwnProperty(key)) {
+    console.log(libs);
+    $('#slides').bind('DOMSubtreeModified', (libs[key].default));
+  }
+}
 
-// // some slide specific functions
-// import {
-//   imagesLeft
-// } from './utils/images';
-// const $ = require('jquery');
-// $('#slides').bind('DOMSubtreeModified', imagesLeft);

@@ -4,7 +4,7 @@
   "main": "app/main.js",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/electron app/main.js",
+    "start": "NODE_ENV=development ./node_modules/.bin/electron app/main.js",
     "prewatch": "echo ' cleaning app/ folder except node_modules' && find app/* -maxdepth 0 -name 'node_modules' -prune -o -exec rm -rf '{}' ';'",
     "watch": "./node_modules/.bin/babel src -w -d app -D",
     "sass": "./node_modules/.bin/node-sass -w src/views/themes/default/scss/ -o src/views/themes/default/css/ --output-style=compact",
@@ -15,7 +15,7 @@
     "dist": "build",
     "predist": "echo 'removing dist/ folder' && rm -rf dist/ && npm run prestart",
     "prepack": "npm run predist",
-    "prestart":"echo 'building help' && ./bin/build-help-html.js"
+    "prestart": "echo 'building help' && ./bin/build-help-html.js"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -26,6 +26,7 @@
     "electron-packager": "^7.3.0",
     "electron-prebuilt": "^1.3.0",
     "electron-rebuild": "^1.1.5",
+    "electron-reload": "^1.0.1",
     "file-exists": "^1.0.0",
     "mocha": "^2.5.3",
     "node-sass": "^3.8.0",

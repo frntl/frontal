@@ -36,12 +36,13 @@ window.onload = () => {
   // Pass a query selector or a dom element to the function.
   // Dragging the element will drag the whole window.
   var clearF = drag('#frontal');
-  // var clearN = drag('#notes');
+  var clearN = drag('#notes');
   // Call the returned function to make the element undraggable again.
   // clear();
   // Fallback to using -webkit-app-region property.
   if (!drag.supported) {
     document.querySelector('#frontal').style['-webkit-app-region'] = 'drag';
+    document.querySelector('#notes').style['-webkit-app-region'] = 'drag';
   }
 
   function getComputedFontSize(ele) {

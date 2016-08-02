@@ -6,6 +6,11 @@ const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
 const webContents = electron.webContents;
+
+if(process.env.NODE_ENV === 'development') {
+  require('electron-reload')(__dirname);
+}
+
 import {
   buildTemplate
 } from './menu';
@@ -77,6 +82,8 @@ function createWindows() {
     x: 800,
     y: 0,
     closable: false,
+    frame: false,
+    titleBarStyle: 'hidden',
     title: 'Frontal Speaker Notes'
   });
   // and load the index.html of the app.

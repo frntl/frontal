@@ -107,13 +107,13 @@ export function buildTemplate(windows) {
       type: 'separator'
     }, {
       label: 'Zoom in notes',
-      accelerator: 'CmdOrCtrl+.',
+      accelerator: 'CmdOrCtrl+7',
       click: () => {
         sender(windows, 'dot', 'dot');
       }
     }, {
       label: 'Zoom out notes',
-      accelerator: 'CmdOrCtrl+,',
+      accelerator: 'CmdOrCtrl+8',
       click: () => {
         sender(windows, 'comma', 'comma');
       }

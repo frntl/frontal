@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Speaker Notes</title>
@@ -14,10 +14,10 @@
   <div id="time-running" class="">00:00:00</div>
 <div id="stopwatch-buttons">
 
-  Max Duration: <input type="number" value="20" id="duration">
-  <input type="button" value="start" id="start">
-  <input type="button" value="stop" id="stop">
-  <input type="button" value="reset" id="reset">
+  Max Duration: <input type="number" pattern="[0-9]" value="20" id="duration">
+  <button type="button" value="start" id="start">Start</button>
+  <button type="button" value="stop" id="stop">Stop</button>
+  <button type="button" value="reset" id="reset">Reset</button>
   </div>
   </header>
     <div id="comments" class="content"></div>

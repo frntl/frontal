@@ -6,6 +6,14 @@
 
 @font-face { font-family: 'Vollkorn-SemiItalic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-SemiboldItalic.ttf") format("truetype"); }
 
+@font-face { font-family: 'CamingoCode-Regular'; src: url("../font/CamingoCode-v1.0/CamingoCode-Regular.ttf") format("truetype"); }
+
+@font-face { font-family: 'CamingoCode-Bold'; src: url("../font/CamingoCode-v1.0/CamingoCode-Bold.ttf") format("truetype"); }
+
+@font-face { font-family: 'CamingoCode-Italic'; src: url("../font/CamingoCode-v1.0/CamingoCode-Italic.ttf") format("truetype"); }
+
+@font-face { font-family: 'CamingoCode-SemiItalic'; src: url("../font/CamingoCode-v1.0/CamingoCode-BoldItalic.ttf") format("truetype"); }
+
 header, footer { font-family: 'Vollkorn-SemiItalic'; color: #7A7A7A; box-sizing: border-box; margin-top: auto; overflow: hidden; position: absolute; font-size: 0.8rem; text-align: right; width: 100%; left: 0; }
 
 header { top: 0; height: 35px; padding-top: 10px; padding-right: 10px; }
@@ -42,7 +50,7 @@ body#frontal #slides img[alt="left"] { float: left; margin-right: 10px; clear: b
 
 body#frontal #slides pre { min-width: 100%; text-align: left; }
 
-body#frontal #slides code { text-align: left; }
+body#frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'; }
 
 body#frontal #slides p { text-align: left; max-width: 50vw; }
 

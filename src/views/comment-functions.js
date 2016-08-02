@@ -3,6 +3,7 @@ import {
   stop,
   reset
 } from './utils/stopwatch';
+const $ = require('jquery');
 const remote = require('electron').remote;
 let slidesWindow = remote.getGlobal('slidesWindow');
 
@@ -14,8 +15,8 @@ function setButtons() {
       if (ele === 'start') {
         button.onclick = start;
         button.addEventListener('click', (e) => {
-          if(!slidesWindow.isFullScreen()) {
-          // if (!slidesWindow.isMaximized()) {
+          if (!slidesWindow.isFullScreen()) {
+            // if (!slidesWindow.isMaximized()) {
             // slidesWindow.maximize();
             slidesWindow.setFullScreen(true);
           }
@@ -36,7 +37,6 @@ function clock() {
     document.getElementById("time-clock").innerHTML = (new Date()).toLocaleTimeString();
   }, 1000);
 }
-
 // function getOvertime() {
 //   setInterval(() => {
 //     console.log(overtime());

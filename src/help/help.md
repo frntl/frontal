@@ -19,15 +19,15 @@ You can navigate your document by using these keys.
 | ⌘ or ^ + Plus (+)  | Zoom in (always 2px)      |
 | ⌘ or ^ + Minus (-) | Zoom out (always 2px)     |
 | ⌘ or ^ + 0         | Set Zoom to 100%          |
-| ⌘ or ^ + Dot (.)  | Zoom in speaker notes (always 2px)      |
-| ⌘ or ^ + Minus (,) | Zoom out speaker notes (always 2px)     |
+| ⌘ or ^ + 7   | Zoom in speaker notes (always 2px)      |
+| ⌘ or ^ + 8  | Zoom out speaker notes (always 2px)     |
 | ⌘ or ^ + 9         | Set Zoom of speaker notes to 100%          |
 
 
 <!--
 ## Speaker Notes
 
-These are the speaker notes. We are sure you want to know how these end up here? Well keep on reading. There is a slide dedicated only to this feature. 🦄 🌈
+These are the speaker notes. We are sure you want to know how these end up here? Well keep on reading. There is a slide dedicated only to this *__feature__*. 🦄 🌈
  -->
 
 ---
