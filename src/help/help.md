@@ -174,15 +174,47 @@ You can also embed images from the web directly buy passing the url to your imag
 
 ## Images with text below
 
-![](./images/me-fro.png)
-This text is below the image.  
+![](./images/me-fro.png)  
+
+This text is below the image. How simple can it be? Just add this markup to your [M↓].
+
+    ![](./images/me-fro.png)
+
+ Image sizes get reduced to fit the slides. If you want you can have soem additional image options. See the next slides for that.  
 
 ---
 
-## Images with text next to it
+## Images left with text to the right
 
 ![left](./images/me-fro.png)
-This text is the right of the image.  
+
+This text is the right of the image. Just add the `left` as alt text. Like this     
+
+    ![left](./images/me-fro.png)  
+
+The image is displayed in its original size.  
+
+---
+
+## Large images with text on top of it  
+
+Works also with some additional text if you want.  
+just add the alt text `full-top`.
+
+    ![full-top](./images/full-hd.png)  
+
+The image gets moved to the background and is also displayed in full size. Make sure to match your presentation screen. The default theme wont do that for you _(for now)_. 
+![full-top](./images/full-hd.png)  
+
+---
+## Large images in original size  
+
+Just add the alt text `full`  
+
+    ![full](./images/full-hd.png)   
+
+![full](./images/full-hd.png)  
+
 
 ---
 
@@ -265,6 +297,7 @@ Btw: you can use __[M↓]__ in the notes as well
 
 ---
 
+
 ## Emoji 💘 
 
 We love emoji and so do you (we know it, all those little hearts you send to your boyfriend/girlfriend) so yeah. Emoji works. 🚀💥🦄 🌈
@@ -326,3 +359,15 @@ There are a lot of nice Markdown presentation tools out there. So why did we wri
 
 ## Thank you for your attention
 ### and testing frontal.app
+
+
+---
+
+## Credits
+
+This application is proudly developed @ the University of Applied Sciences Potsdam (Germany) by Sebastian Meier ([@seb_meier](https://twitter.com/seb_meier)) & Fabian Morón Zirfas ([fabiantheblind](https://twitter.com/fabiantheblind)).
+
+Thanks go out to:  
+[@PDXIII](https://twitter.com/pdxiii) & [@SZirfas](https://twitter.com/szirfas) for the input on the logo design. To [@janfromm](https://twitter.com/janfromm) for his beautiful CamingoCode and [@FAlthausen](https://twitter.com/falthausen) for the sweet Vollkorn font. All the awesome node module and electron authors who make developing applications possible To Heki for beeing such a cutie.  
+
+This software is under MIT license.  

@@ -1,4 +1,7 @@
-$aColor:#005D7B;
-$aHoverColor:#006961;
-$aVisitedColor:#001816;
+$aColor:#E96368;
+$aHoverColor:darken($aColor, 15%);
+$aVisitedColor:lighten($aColor, 15%);
 $highlight:#7A7A7A;
+$codeAccent:#A4A4A4;
+$codeBG:#eee;
+$textColor:#465963;

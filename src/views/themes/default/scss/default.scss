@@ -35,18 +35,22 @@ footer {
   padding-bottom: $headerPadding;
   padding-right: $headerPadding;
 }
+
+
 body#frontal {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   @include flexcenter();
   font-family: 'Vollkorn-Regular';
   max-height: 100%;
+  max-widht:50em;
   overflow: hidden;
   font-size: 20px;
   line-height: 1.5;
-  color: #141414;
+  color: $textColor;
   word-wrap: break-word;
   hyphens: auto;
+  background-color: #FFFFFF;
   // text-align: center;
 
   ol ul {
@@ -62,8 +66,10 @@ body#frontal {
       margin-right:5%;
     }
   .wide{
-      margin-left: 5%;
+    margin-left: 5%;
     margin-right: 5%;
+    padding-left: 5%;
+    // padding-right: 5%;
     width :100%;
   }
   .narrow {
@@ -76,6 +82,7 @@ body#frontal {
 
   }
 
+
   #slides {
 
     padding-top: $headerHeight;
@@ -83,12 +90,13 @@ body#frontal {
 
     h1, h2, h3, h4 {
       font-family: 'Vollkorn-Bold';
-      text-align: center;
     }
     a {
       color: $aColor;
+      text-decoration: none;
     }
-    a {
+    a:hover {
+      color: darken( $aColor, 15% );
     }
     em {
       font-family: 'Vollkorn-Italic';
@@ -109,14 +117,19 @@ body#frontal {
     pre {
       min-width: 100%;
       text-align: left;
+      padding:1em;
+      // border-color: $codeAccent;
+      background:$codeBG;
+      border-left: 2px solid $codeAccent;
     }
     code {
       text-align: left;
       font-family: 'CamingoCode-Regular';
+      // font-size: 18px;
     }
     p {
       text-align: left;
-      max-width: 50vw;
+      max-width: 40vw;
     }
     blockquote {
       font-family: 'Vollkorn-Italic';

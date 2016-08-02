@@ -20,7 +20,7 @@ header { top: 0; height: 35px; padding-top: 10px; padding-right: 10px; }
 
 footer { bottom: 0; height: 35px; padding-bottom: 10px; padding-right: 10px; }
 
-body#frontal { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; overflow: hidden; font-size: 20px; line-height: 1.5; color: #141414; word-wrap: break-word; hyphens: auto; }
+body#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; max-widht: 50em; overflow: hidden; font-size: 20px; line-height: 1.5; color: #465963; word-wrap: break-word; hyphens: auto; background-color: #FFFFFF; }
 
 body#frontal ol ul { text-align: left !important; }
 
@@ -28,7 +28,7 @@ body#frontal ol ul li { text-align: left !important; }
 
 body#frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
 
-body#frontal .wide { margin-left: 5%; margin-right: 5%; width: 100%; }
+body#frontal .wide { margin-left: 5%; margin-right: 5%; padding-left: 5%; width: 100%; }
 
 body#frontal .narrow { margin-left: 20%; margin-right: 20%; }
 
@@ -36,9 +36,11 @@ body#frontal .pwide { max-width: 90vw !important; }
 
 body#frontal #slides { padding-top: 35px; padding-bottom: 35px; }
 
-body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4 { font-family: 'Vollkorn-Bold'; text-align: center; }
+body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4 { font-family: 'Vollkorn-Bold'; }
 
-body#frontal #slides a { color: #005D7B; }
+body#frontal #slides a { color: #E96368; text-decoration: none; }
+
+body#frontal #slides a:hover { color: #e02027; }
 
 body#frontal #slides em { font-family: 'Vollkorn-Italic'; }
 
@@ -48,11 +50,11 @@ body#frontal #slides img { max-width: 80%; display: block; margin: 0 auto; }
 
 body#frontal #slides img[alt="left"] { float: left; margin-right: 10px; clear: both; }
 
-body#frontal #slides pre { min-width: 100%; text-align: left; }
+body#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; background: #eee; border-left: 2px solid #A4A4A4; }
 
 body#frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'; }
 
-body#frontal #slides p { text-align: left; max-width: 50vw; }
+body#frontal #slides p { text-align: left; max-width: 40vw; }
 
 body#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 1.6rem; }
 
