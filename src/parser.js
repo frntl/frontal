@@ -81,8 +81,9 @@ export function md2htmlMarked(data) {
       return require('highlight.js').highlightAuto(code).value;
     }
   });
+  let testSplit = data.split('\n-{3,10000}\n');
+  console.log(testSplit);
   let fmjson = frontmatter(data);
-  // console.log(fmjson.attributes);
   let html = marked(fmjson.body);
   let slides = html.split('<hr>');
   // let mdslides = data.split(/\n-{3,1000}\n/);

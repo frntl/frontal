@@ -16,7 +16,7 @@
     "predist": "echo 'removing dist/ folder' && rm -rf dist/ && npm run prestart",
     "prepack": "npm run predist",
     "prestart": "echo 'building help' && ./bin/build-help-html.js",
-    "yaml": "./bin/test-yaml.sh"
+    "yaml": "echo 'parsing yaml at ./src/help/_frontal.yaml' && ./bin/test-yaml.sh"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
