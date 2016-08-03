@@ -101,6 +101,25 @@ window.onload = () => {
     });
   }
 
+  function setAttributes(attr) {
+    console.log(attr);
+    if (attr !== null) {
+      if (attr.hasOwnProperty('footer') === true) {
+        setHeaderFooter(attr.footer, 'footer');
+      }
+      if (attr.hasOwnProperty('header') === true) {
+        setHeaderFooter(attr.header, 'header');
+      }
+    } else if (attr === null) {
+      // if (attr.hasOwnProperty('footer') === true) {
+      setHeaderFooter('', 'footer');
+      // }
+      // if (attr.hasOwnProperty('header') === true) {
+      setHeaderFooter('', 'header');
+      // }
+    }
+  }
+
   function setContent() {
     let cnt = content.msg[constrain(currentSlide, content.msg)];
     ids.forEach((ele, index, array) => {
@@ -109,14 +128,15 @@ window.onload = () => {
         console.log(`found ${ele} div`);
         if (ele === 'slides') {
           element.innerHTML = cnt.slide;
-          if (cnt.attributes !== null) {
-            if (cnt.attributes.hasOwnProperty('footer') === true) {
-              setHeaderFooter(cnt.attributes.footer, 'footer');
-            }
-            if (cnt.attributes.hasOwnProperty('header') === true) {
-              setHeaderFooter(cnt.attributes.header, 'header');
-            }
-          }
+          setAttributes(cnt.attributes);
+          // if (cnt.attributes !== null) {
+          //   if (cnt.attributes.hasOwnProperty('footer') === true) {
+          //     setHeaderFooter(cnt.attributes.footer, 'footer');
+          //   }
+          //   if (cnt.attributes.hasOwnProperty('header') === true) {
+          //     setHeaderFooter(cnt.attributes.header, 'header');
+          //   }
+          // } else {}
         } else if (ele === 'comments') {
           element.innerHTML = cnt.comments;
         }

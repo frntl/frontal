@@ -4,6 +4,9 @@ const marked = require('marked');
 import {
   frontmatter
 } from './utils/frontmatter';
+
+const isEmpty = require('lodash.isempty');
+
 // about this module:
 // It exports 3 Things:
 //     parser.json(data)
@@ -87,8 +90,13 @@ export function md2htmlMarked(data) {
   //   slides.push(marked(mdslides[i]));
   //   // console.log(slides);
   // }
+  // if(isEmpty(fmjson.attributes) === true) {
+  //   console.log('no frontmatter');
+  // }else{
+  //   console.log(fmjson.attributes);
+  // }
   return {
     slides: slides,
-    attributes: fmjson.attributes
+    attributes: (isEmpty(fmjson.attributes) === true) ? null : fmjson.attributes
   };
 }
