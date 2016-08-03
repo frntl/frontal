@@ -19,7 +19,6 @@ export function slides(data) {
     let clean = removeHtmlComments((slds[i]));
     clean.data = linker(clean.data, global.presetationRoot);
     clean.data = hrefer(clean.data);
-    // console.log(chalk.red('slides.js Cleaned HTML: ') + JSON.stringify(clean, null, 2));
     let uncommented = [];
     for (let j = 0; j < clean.comments.length; j++) {
       uncommented.push(marked(uncomment(clean.comments[j])));

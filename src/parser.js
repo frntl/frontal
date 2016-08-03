@@ -82,6 +82,7 @@ export function md2htmlMarked(data) {
     }
   });
   let fmjson = frontmatter(data);
+  // console.log(fmjson.attributes);
   let html = marked(fmjson.body);
   let slides = html.split('<hr>');
   // let mdslides = data.split(/\n-{3,1000}\n/);

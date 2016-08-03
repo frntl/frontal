@@ -1,7 +1,6 @@
 const {
   ipcRenderer
 } = require('electron');
-
 window.onload = () => {
   // const {
   //   webFrame
