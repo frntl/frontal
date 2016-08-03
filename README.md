@@ -1,5 +1,7 @@
 # frontal  
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]() [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/frntl/frontal) ![](https://img.shields.io/badge/build%20with-%E2%9D%A4-brightgreen.svg)  
+
 Markdown powered presentation tool build on Electron / Node.js  
 
 ![](docs/images/main-window.png)  
