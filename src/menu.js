@@ -30,6 +30,7 @@ export function buildTemplate(windows) {
     submenu: [{
       label: 'Open...',
       accelerator: 'CmdOrCtrl+O',
+      role: 'open',
       click: function() {
         console.log('Open...');
         let files = dialog.showOpenDialog({

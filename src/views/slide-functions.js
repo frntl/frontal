@@ -8,13 +8,9 @@
 
 var libs = require('require-all')(__dirname + '/themes/default/js');
 const $ = require('jquery');
-console.log(libs);
-
+// console.log(libs);
     // $('#slides').bind('DOMSubtreeModified', imagesLeft);
-
 for (var key in libs) {
-  // console.log(key);
-  //   console.log(libs[key].default);
   if (libs.hasOwnProperty(key)) {
     console.log(libs);
     $('#slides').bind('DOMSubtreeModified', (libs[key].default));

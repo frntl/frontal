@@ -35,8 +35,8 @@ global.presentationFile = null;
 global.slidesWindow = null;
 global.commentsWindow = null;
 global.helpFilePath = `${__dirname}/help/help.md`;
-let slidesWindow = null;
-let commentsWindow = null;
+// let slidesWindow = null;
+// let commentsWindow = null;
 // load the help file on startup
 // should be a preference
 // function windowsReady(wins) {
@@ -59,7 +59,7 @@ function createWindows() {
     width,
     height
   } = electron.screen.getPrimaryDisplay().workAreaSize;
-  slidesWindow = new BrowserWindow({
+  global.slidesWindow = new BrowserWindow({
     width: (width / 3) * 2,
     height: height,
     x: 0,
@@ -70,18 +70,18 @@ function createWindows() {
     titleBarStyle: 'hidden'
   });
   // and load the index.html of the app.
-  slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
+  global.slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
   // Open the DevTools.
-  // slidesWindow.webContents.openDevTools();
+  // global.slidesWindow.webContents.openDevTools();
   //
   // Emitted when the window is closed.
-  slidesWindow.on('closed', () => {
+  global.slidesWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    slidesWindow = global.slidesWindow = null;
+    global.slidesWindow = null;
   });
-  commentsWindow = new BrowserWindow({
+  global.commentsWindow = new BrowserWindow({
     width: (width / 3),
     height: height,
     x: (width / 3) * 2,
@@ -92,30 +92,40 @@ function createWindows() {
     title: 'Frontal Speaker Notes'
   });
   // and load the index.html of the app.
-  commentsWindow.loadURL(`file://${__dirname}/views/comments.html`);
+  global.commentsWindow.loadURL(`file://${__dirname}/views/comments.html`);
   // Open the DevTools.
-  // commentsWindow.webContents.openDevTools();
+  // global.commentsWindow.webContents.openDevTools();
   // Emitted when the window is closed.
-  commentsWindow.on('closed', function() {
+  global.commentsWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    commentsWindow = global.commentsWindow = null;
+    global.commentsWindow = null;
   });
   // global.windows.push(slidesWindow);
   // global.windows.push(commentsWindow);
   // sender(global.windows, 'hello', 'msg');
   // loadHelp([slidesWindow, commentsWindow]);
-  global.commentsWindow = commentsWindow;
-  global.slidesWindow = slidesWindow;
+  // global.commentsWindow = commentsWindow;
+  // global.slidesWindow = slidesWindow;
 }
 
 function createMenues() {
-  let template = buildTemplate([slidesWindow, commentsWindow]);
+  let template = buildTemplate([global.slidesWindow, global.commentsWindow]);
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
   // const menu = Menu.buildFromTemplate(template);
   // Menu.setApplicationMenu(menu);
 }
+
+// // In this file you can include the rest of your app's specific main process
+// // code. You can also put them in separate files and require them here.
+app.on('will-finish-launching', (event) => {
+  app.on('open-file', (e, filePath) => {
+    e.preventDefault();
+    console.log('User tried to open ' + filePath);
+  });
+});
+
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
@@ -141,11 +151,4 @@ app.on('ready', () => {
   createMenues();
   initialHelpLoader([global.slidesWindow, global.commentsWindow]);
 });
-// // In this file you can include the rest of your app's specific main process
-// // code. You can also put them in separate files and require them here.
-app.on('will-finish-launching', (event) => {
-  app.on('open-file', (e, filePath) => {
-    e.preventDefault();
-    console.log('User tried to open ' + filePath);
-  });
-});
+
