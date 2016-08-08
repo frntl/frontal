@@ -4,9 +4,8 @@ const marked = require('marked');
 import {
   frontmatter
 } from './utils/frontmatter';
-
+const verex = require('verbal-expressions');
 const isEmpty = require('lodash.isempty');
-
 // about this module:
 // It exports 3 Things:
 //     parser.json(data)
@@ -75,30 +74,46 @@ export function md2json(data) {
  * @return {HTML Array} parsed HTML splitted to slides
  */
 export function md2htmlMarked(data) {
+  var tester = verex().lineBreak().then('---').lineBreak();
   marked.setOptions({
     smartypants: true,
     highlight: function(code) {
       return require('highlight.js').highlightAuto(code).value;
     }
   });
-  let testSplit = data.split('\n-{3,10000}\n');
-  console.log(testSplit);
-  let fmjson = frontmatter(data);
-  let html = marked(fmjson.body);
-  let slides = html.split('<hr>');
-  // let mdslides = data.split(/\n-{3,1000}\n/);
-  // let slides = [];
-  // for (let i = 0; i < mdslides.length; i++) {
-  //   slides.push(marked(mdslides[i]));
-  //   // console.log(slides);
-  // }
-  // if(isEmpty(fmjson.attributes) === true) {
-  //   console.log('no frontmatter');
-  // }else{
-  //   console.log(fmjson.attributes);
-  // }
-  return {
-    slides: slides,
-    attributes: (isEmpty(fmjson.attributes) === true) ? null : fmjson.attributes
-  };
+  // console.log(tester);
+  let testSplit = data.split(tester);
+  // console.log('Testing json frontmatter per slide');
+  // console.log(testSplit);
+  // console.log(testSplit.length);
+  let fmjsons = [];
+  let htmls = [];
+  let globalfm = false;
+  testSplit.forEach((ele, i, arr) => {
+    let tmpjson = frontmatter(ele);
+    // console.log(tmpjson);
+    if (i === 0 && tmpjson.attributes.hasOwnProperty('global') === true) {
+      globalfm = tmpjson.attributes.global;
+      fmjsons.push(tmpjson.attributes);
+    } else if (i !== 0 && globalfm === true) {
+      // clone the object
+      if (tmpjson.attributes.hasOwnProperty('overwrite') === false) {
+        fmjsons.push(JSON.parse(JSON.stringify(fmjsons[0])));
+      } else if (tmpjson.attributes.hasOwnProperty('overwrite') === true) {
+        if (tmpjson.attributes.overwrite === true) {
+          fmjsons.push(tmpjson.attributes);
+        } else {
+          fmjsons.push(JSON.parse(JSON.stringify(fmjsons[0])));
+        }
+      }
+    } else {
+      fmjsons.push(tmpjson.attributes);
+    }
+    htmls.push(marked(tmpjson.body));
+  });
+  let slides = htmls; // html.split('<hr>');
+  let result = {};
+  result.slides = slides;
+  result.attributes = fmjsons;
+  return result;
 }

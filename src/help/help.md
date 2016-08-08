@@ -1,6 +1,7 @@
 
 {{{"header":"frontal.app",
-"footer":"An Electron powered [M↓] presentation tool"}}}
+"footer":"An Electron powered [M↓] presentation tool",
+"global":true}}}
 ![](images/256.png)  
 
 # Welcome to frontal.app
@@ -31,7 +32,8 @@ These are the speaker notes. We are sure you want to know how these end up here?
  -->
 
 ---
-
+{{{"header":"frontal.app",
+"footer":"An Electron powered [M↓] presentation tool"}}}
 
 ## How to write a presentation?  
 
@@ -51,7 +53,9 @@ And more text
 Simple. Isn't it?  
 
 ---
-
+{{{"header":"This is overwritten",
+"footer":"An Electron powered [M↓] presentation tool",
+"overwrite":false}}}
 ## Markdown headings `# to ######`
 
 Of course you can use H1 to H6

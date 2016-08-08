@@ -97,7 +97,13 @@ window.onload = () => {
   }
 
   function setAttributes(attr) {
-    console.log(attr);
+    // console.log(attr);
+    if (isEmpty(attr) === true) {
+      console.log('attributes are empty');
+      setHeaderFooter('', 'footer');
+      setHeaderFooter('', 'header');
+      return;
+    }
     if (attr !== null) {
       if (attr.hasOwnProperty('footer') === true) {
         setHeaderFooter(attr.footer, 'footer');

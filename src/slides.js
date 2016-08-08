@@ -23,10 +23,12 @@ export function slides(data) {
     for (let j = 0; j < clean.comments.length; j++) {
       uncommented.push(marked(uncomment(clean.comments[j])));
     }
+
+    // console.log('parsed.attributes[i] ' , parsed.attributes[i]);
     objs.push({
       slide: clean.data,
       comments: uncommented.join('<br><br>'),
-      attributes: parsed.attributes
+      attributes: parsed.attributes[i]
     });
   }
   return objs;
