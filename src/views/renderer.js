@@ -1,6 +1,9 @@
 const {
   ipcRenderer
 } = require('electron');
+const isEmpty = require('lodash.isempty');
+import {getComputedFontSize, setFontSize} from './utils/fontsize';
+
 window.onload = () => {
   // const {
   //   webFrame
