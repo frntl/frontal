@@ -3,12 +3,15 @@ import * as path from 'path';
 import {
   help
 } from './help/help-window.js';
+
+
 const electron = require('electron');
 const app = electron.app;
 const shell = electron.shell;
 const dialog = electron.dialog;
 const JsonDB = require('node-json-db');
 const chalk = require('chalk');
+import {openFile, processFile} from './files';
 import {
   helpLoader
 } from './help/help-loader';
@@ -30,22 +33,25 @@ export function buildTemplate(windows) {
     submenu: [{
       label: 'Open...',
       accelerator: 'CmdOrCtrl+O',
-      role: 'open',
       click: function() {
-        console.log('Open...');
-        let files = dialog.showOpenDialog({
-          properties: ['openFile']
-        });
-        if (files === undefined) {
-          console.log('aborted by user');
-        } else {
-          let presentationFile = files[0];
-          console.log(presentationFile);
-          let slidesHTML = processing(presentationFile);
-          watch(presentationFile);
-          global.presentationFile = presentationFile;
-          sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
+        let file = openFile();
+        if(file !== null) {
+          processFile(file);
         }
+        // let files = dialog.showOpenDialog({
+        //   properties: ['openFile']
+        // });
+        // if (files === undefined) {
+        //   console.log('aborted by user');
+        // } else {
+        //   let presentationFile = files[0];
+        //   app.addRecentDocument(presentationFile);
+        //   console.log(presentationFile);
+        //   let slidesHTML = processing(presentationFile);
+        //   watch(presentationFile);
+        //   global.presentationFile = presentationFile;
+        //   sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
+        // }
       }
     }]
   }, {
