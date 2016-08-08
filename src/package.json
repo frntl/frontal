@@ -22,10 +22,11 @@
     "node-json-db": "^0.7.2",
     "remove-html-comments": "^1.0.2",
     "req-all": "^0.1.0",
+    "verbal-expressions": "^0.2.1",
     "yaml-front-matter": "^3.4.0"
   },
-  "scripts":{
-    "update-package":"cat package.json > ../src/package.json"
+  "scripts": {
+    "update-package": "cat package.json > ../src/package.json"
   },
   "license": "MIT",
   "repository": {
