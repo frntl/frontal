@@ -2,6 +2,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 header: "frontal.app"
 footer: "An Electron powered [M↓] presentation tool"
+global: true
 
 slides:
   - index: 3

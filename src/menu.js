@@ -15,9 +15,7 @@ import {openFile, processFile} from './files';
 import {
   helpLoader
 } from './help/help-loader';
-import {
-  processing
-} from './processor';
+
 import {
   sender
 } from './utils/sender';

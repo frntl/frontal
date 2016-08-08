@@ -2,8 +2,12 @@ const {
   ipcRenderer
 } = require('electron');
 const isEmpty = require('lodash.isempty');
-import {getComputedFontSize, setFontSize} from './utils/fontsize';
-
+import {
+  getComputedFontSize,
+  setFontSize
+} from './utils/fontsize';
+var shell = require('electron').shell;
+const drag = require('electron-drag');
 window.onload = () => {
   // const {
   //   webFrame
@@ -32,8 +36,6 @@ window.onload = () => {
   let content = null;
   let currentSlide = 0;
   let ids = ['comments', 'slides'];
-  var shell = require('electron').shell;
-  const drag = require('electron-drag');
   // console.log(webFrame);
   // Pass a query selector or a dom element to the function.
   // Dragging the element will drag the whole window.
@@ -46,8 +48,6 @@ window.onload = () => {
     document.querySelector('#frontal').style['-webkit-app-region'] = 'drag';
     document.querySelector('#notes').style['-webkit-app-region'] = 'drag';
   }
-
-
 
   function increaseSlideNumber() {
     if (content !== null || content.msg !== undefined) {
@@ -110,24 +110,29 @@ window.onload = () => {
     if (attr !== null) {
       if (attr.hasOwnProperty('footer') === true) {
         setHeaderFooter(attr.footer, 'footer');
+      }else {
+        setHeaderFooter('', 'footer');
+
       }
       if (attr.hasOwnProperty('header') === true) {
         setHeaderFooter(attr.header, 'header');
+      }else{
+        setHeaderFooter('', 'header');
+
       }
     }
   }
-
   class Content {
     constructor(msg) {
       this.msg = msg;
     }
-    getCurrentAttributes (i) {
+    getCurrentAttributes(i) {
       return this.msg[i].attributes;
     }
-    getCurrentHTML (i) {
+    getCurrentHTML(i) {
       return this.msg[i].slide;
     }
-    getCurrentComment (i) {
+    getCurrentComment(i) {
       return this.msg[i].comments;
     }
   }
@@ -158,8 +163,6 @@ window.onload = () => {
     });
   }
 
-
-
   function changeCSS(cssFilePath, cssLinkIndex) {
     let oldLink = document.getElementsByTagName('link').item(cssLinkIndex); // eslint-disable-line no-undef
     let newLink = document.createElement('link'); // eslint-disable-line no-undef
@@ -169,7 +172,14 @@ window.onload = () => {
     document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink); // eslint-disable-line no-undef
   }
   // -----------execution-------------------
-  //
+  ipcRenderer.on('new-file', (event, arg) => {
+    // reset all on new file
+    content = null;
+    currentSlide = 0;
+    setHeaderFooter('', 'footer');
+    setHeaderFooter('', 'header');
+
+  });
   ipcRenderer.on('down', (event, arg) => {
     // console.log(arg);
     console.log(content);

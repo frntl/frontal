@@ -4,6 +4,8 @@ import {
 import {
   watch
 } from '../utils/watcher';
+import {detectYamlConfig} from '../files';
+
 
 function send(w, slds) {
   // console.log(slds);
@@ -14,7 +16,8 @@ function send(w, slds) {
 
 function readHelpFile() {
   global.presentationFile = global.helpFilePath;
-  let slidesHTML = processing(global.helpFilePath);
+  let yamlres = detectYamlConfig(global.helpFilePath);
+  let slidesHTML = processing(global.helpFilePath, yamlres);
   watch(global.presentationFile);
   return slidesHTML;
 }

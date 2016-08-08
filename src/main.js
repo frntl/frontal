@@ -19,15 +19,14 @@ import {
 import {
   watch
 } from './utils/watcher';
-// import {
-//   loadHelp
-// } from './help/index';
+import {
+  processFile
+} from './files';
+
 import {
   sender
 } from './utils/sender';
-import {
-  processing
-} from './processor';
+
 global.name = null;
 global.database = null;
 global.presetationRoot = null;
@@ -35,22 +34,8 @@ global.presentationFile = null;
 global.slidesWindow = null;
 global.commentsWindow = null;
 global.helpFilePath = `${__dirname}/help/help.md`;
-// let slidesWindow = null;
-// let commentsWindow = null;
-// load the help file on startup
-// should be a preference
-// function windowsReady(wins) {
-//   global.presentationFile = global.helpFilePath;
-//   let slidesHTML = processing(global.helpFilePath);
-//   watch(global.presentationFile);
-//   wins.forEach((w, i, arr) => {
-//     w.webContents.on('did-finish-load', () => {
-//       w.webContents.send('slides', {
-//         msg: slidesHTML
-//       });
-//     });
-//   });
-// }
+
+
 function createWindows() {
   // Create the browser window.
   // global.error('displays', displays);
@@ -116,16 +101,18 @@ function createMenues() {
   // const menu = Menu.buildFromTemplate(template);
   // Menu.setApplicationMenu(menu);
 }
-
 // // In this file you can include the rest of your app's specific main process
 // // code. You can also put them in separate files and require them here.
 app.on('will-finish-launching', (event) => {
   app.on('open-file', (e, filePath) => {
     e.preventDefault();
     console.log('User tried to open ' + filePath);
+    // let file = openFile();
+    // if(file !== null) {
+    processFile(filePath);
+    // }
   });
 });
-
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
@@ -151,4 +138,3 @@ app.on('ready', () => {
   createMenues();
   initialHelpLoader([global.slidesWindow, global.commentsWindow]);
 });
-

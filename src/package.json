@@ -15,6 +15,7 @@
     "jquery": "^3.1.0",
     "js-yaml": "^3.6.1",
     "json-front-matter": "^1.0.0",
+    "lodash.isarray": "^4.0.0",
     "lodash.isempty": "^4.3.1",
     "markdown": "^0.5.0",
     "markdown-to-html": "0.0.11",

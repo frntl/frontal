@@ -12,10 +12,13 @@ export function yamlLoader(yamlFilePath) {
     let content = fs.readFileSync(yamlFilePath, 'utf8');
     try {
       doc = yaml.safeLoad(content);
-      console.log(doc);
+      // console.log(doc);
     } catch (err) {
       throw err;
+      return null;
     }
+    return doc;
+  } else {
+    return null;
   }
-  return doc;
 }
