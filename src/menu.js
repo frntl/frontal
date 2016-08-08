@@ -38,20 +38,6 @@ export function buildTemplate(windows) {
         if(file !== null) {
           processFile(file);
         }
-        // let files = dialog.showOpenDialog({
-        //   properties: ['openFile']
-        // });
-        // if (files === undefined) {
-        //   console.log('aborted by user');
-        // } else {
-        //   let presentationFile = files[0];
-        //   app.addRecentDocument(presentationFile);
-        //   console.log(presentationFile);
-        //   let slidesHTML = processing(presentationFile);
-        //   watch(presentationFile);
-        //   global.presentationFile = presentationFile;
-        //   sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
-        // }
       }
     }]
   }, {

@@ -6,6 +6,7 @@ import {
 } from '../utils/watcher';
 
 function send(w, slds) {
+  // console.log(slds);
   w.webContents.send('slides', {
     msg: slds
   });

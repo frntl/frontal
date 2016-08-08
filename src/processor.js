@@ -13,6 +13,7 @@ export function processing (filePath) {
   let fileContentMD = fs.readFileSync(filePath, 'utf8');
   if (fileContentMD !== null) {
     let slidesHTML = slides(fileContentMD);
+    // console.log(slidesHTML);
     if (slidesHTML !== null) {
       return slidesHTML;
     }else {

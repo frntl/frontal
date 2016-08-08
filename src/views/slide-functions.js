@@ -12,7 +12,7 @@ const $ = require('jquery');
     // $('#slides').bind('DOMSubtreeModified', imagesLeft);
 for (var key in libs) {
   if (libs.hasOwnProperty(key)) {
-    console.log(libs);
+    // console.log(libs);
     $('#slides').bind('DOMSubtreeModified', (libs[key].default));
   }
 }

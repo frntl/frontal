@@ -44,11 +44,7 @@ window.onload = () => {
     document.querySelector('#notes').style['-webkit-app-region'] = 'drag';
   }
 
-  function getComputedFontSize(ele) {
-    let style = window.getComputedStyle(ele, null).getPropertyValue('font-size');
-    let fontSize = parseFloat(style);
-    return fontSize;
-  }
+
 
   function increaseSlideNumber() {
     if (content !== null || content.msg !== undefined) {
@@ -109,24 +105,34 @@ window.onload = () => {
       if (attr.hasOwnProperty('header') === true) {
         setHeaderFooter(attr.header, 'header');
       }
-    } else if (attr === null) {
-      // if (attr.hasOwnProperty('footer') === true) {
-      setHeaderFooter('', 'footer');
-      // }
-      // if (attr.hasOwnProperty('header') === true) {
-      setHeaderFooter('', 'header');
-      // }
+    }
+  }
+
+  class Content {
+    constructor(msg) {
+      this.msg = msg;
+    }
+    getCurrentAttributes (i) {
+      return this.msg[i].attributes;
+    }
+    getCurrentHTML (i) {
+      return this.msg[i].slide;
+    }
+    getCurrentComment (i) {
+      return this.msg[i].comments;
     }
   }
 
   function setContent() {
     let cnt = content.msg[constrain(currentSlide, content.msg)];
+    // console.log(cnt);
     ids.forEach((ele, index, array) => {
       let element = document.getElementById(ele); // eslint-disable-line no-undef
       if (element !== null) {
         console.log(`found ${ele} div`);
         if (ele === 'slides') {
           element.innerHTML = cnt.slide;
+          // console.log(content.msg[constrain(currentSlide, content.msg)].attributes);
           setAttributes(cnt.attributes);
           // if (cnt.attributes !== null) {
           //   if (cnt.attributes.hasOwnProperty('footer') === true) {
@@ -143,15 +149,7 @@ window.onload = () => {
     });
   }
 
-  function setFontSize(val, initVal, name) {
-    let element = document.getElementById(name);
-    if (element !== null) {
-      // console.log(element);
-      console.log('font size: ', getComputedFontSize(element));
-      let currentFontSize = getComputedFontSize(element);
-      element.style.fontSize = initVal === null ? (currentFontSize + val) + 'px' : initVal + 'px';
-    }
-  }
+
 
   function changeCSS(cssFilePath, cssLinkIndex) {
     let oldLink = document.getElementsByTagName('link').item(cssLinkIndex); // eslint-disable-line no-undef
@@ -164,7 +162,8 @@ window.onload = () => {
   // -----------execution-------------------
   //
   ipcRenderer.on('down', (event, arg) => {
-    console.log(arg);
+    // console.log(arg);
+    console.log(content);
     increaseSlideNumber();
     setContent();
     setCurrentSlideNumber();
@@ -172,7 +171,7 @@ window.onload = () => {
     // .innerHTML = currentSlide;
   });
   ipcRenderer.on('up', (event, arg) => {
-    console.log(arg);
+    console.log(content);
     decreaseSlideNumber();
     setContent();
     setCurrentSlideNumber();
@@ -180,8 +179,8 @@ window.onload = () => {
     // .innerHTML = currentSlide;
   });
   ipcRenderer.on('update', (event, arg) => {
-    content = arg;
-    console.log(arg);
+    // content = arg;
+    // console.log(arg);
   });
   ipcRenderer.on('slides', (event, arg) => {
     console.log(arg);
@@ -202,10 +201,10 @@ window.onload = () => {
     // });
   });
   ipcRenderer.on('hello', (event, arg) => {
-    console.log('hello');
+    // console.log('hello');
   });
   ipcRenderer.on('switch-theme', (event, arg) => {
-    console.log(arg);
+    // console.log(arg);
   });
   ipcRenderer.on('plus', (event, arg) => {
     // console.log(arg);
@@ -233,17 +232,17 @@ window.onload = () => {
   });
   ipcRenderer.on('comma', (event, arg) => {
     // decrease speakerNotes
-    console.log(arg);
+    // console.log(arg);
     setFontSize(-2, null, 'comments');
   });
   ipcRenderer.on('dot', (event, arg) => {
     // increase speakerNotes
-    console.log(arg);
+    // console.log(arg);
     setFontSize(2, null, 'comments');
   });
   ipcRenderer.on('zoom-reset-notes', (event, arg) => {
     // decrease speakerNotes
-    console.log(arg);
+    // console.log(arg);
     setFontSize(null, initialCommentsFontsize, 'comments');
   });
-}
+};

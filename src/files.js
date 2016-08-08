@@ -12,6 +12,8 @@ import {
 import {
   watch
 } from './utils/watcher';
+
+
 export function openFile() {
   let files = dialog.showOpenDialog({
     properties: ['openFile']

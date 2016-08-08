@@ -11,7 +11,7 @@ export default function() {
         $('#slides').removeClass('narrow');
         $('#slides').addClass('wide');
         $('p').addClass('pwide');
-        console.log('We ave an image that wants to be left aligned');
+        // console.log('We ave an image that wants to be left aligned');
       } else if (ele.getAttribute('alt') === 'full-top') {
         let body = $('body');
         body.css('background-image', 'url(' + ele.src + ')');
