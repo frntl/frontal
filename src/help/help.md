@@ -2,10 +2,14 @@
 {{{"header":"frontal.app",
 "footer":"An Electron powered [M↓] presentation tool",
 "global":true}}}
-![](images/256.png)  
+![](images/icon_256x256.png)  
 
 # Welcome to frontal.app
 ## Hit ⌘ + O to open a Markdown presentation
+
+---
+
+## Navigation  
 
 You can navigate your document by using these keys.
 
@@ -40,19 +44,20 @@ These are the speaker notes. We are sure you want to know how these end up here?
 Creating a presentation is dead simple. Just write your [M↓] (Markdown) like you always would. To create separate slides just split them with a horizontal line and leave a empty line before and after it.  
 
 
-```text
-# Slide 1  
-And some text.
 
----
+    # Slide 1  
+    And some text.
+    
+    ---
+    
+    ## Slide 2
+    And more text
 
-## Slide 2
-And more text
-```
 
 Simple. Isn't it?  
 
 ---
+
 {{{"header":"This is overwritten",
 "footer":"An Electron powered [M↓] presentation tool",
 "overwrite":false}}}
@@ -275,7 +280,7 @@ You can add tables to your presentation (who wouldn't?).
 | --:           | :--:           | :--          |
 | Cell          | Cell           | Cell         |
 | Cell          | Cell           | Cell         |
- ``` 
+```
 
 This will become this beautiful table:  
 
@@ -285,6 +290,7 @@ This will become this beautiful table:
 | Cell          | Cell           | Cell         |
 
 ---
+
 ## Speaker notes
 
 You can have speaker notes. Just enclose your text into standrad HTML comments and it will automagically appear in the "Speaker Notes" window.  
@@ -308,6 +314,7 @@ Btw: you can use __[M↓]__ in the notes as well
 We love emoji and so do you (we know it, all those little hearts you send to your boyfriend/girlfriend) so yeah. Emoji works. 🚀💥🦄 🌈
 
 ---
+
 ## Editor
 
 > "Why can't I edit my [M↓] directly in frontal?"  
@@ -330,6 +337,61 @@ This one is not. How is it done? We just added the following code:
 Nifty, isn't it? In the future we want to have some custom CSS loading feature so you can have your own style.  
 
 ---
+{{{"header":"🌈 🦄",
+"footer":"Where do I come from?",
+"global":true, "overwrite":true}}}
+
+## JSON Frontmatter
+
+You sure wondered where the headers and footers are coming from? You can define some special fields for this template. Just add to your first page the following code:  
+
+    {{{"header":"Text to appear as header",
+    "footer":"Text to appear as footer",
+    "global":true}}}
+
+If you set the `global` key to `true` these settings will be used for all your pages. To have a specific page with a different header or footer just add the following code:  
+
+    {{{"header":"different header than the others",
+    "footer":"different footer than the others",
+    "overwrite":true}}}
+
+---
+## JSON Frontmatter
+
+See this table for the currently availabe keys and values for the inline json frontmatter:  
+
+| Key       | Value   | Result                                                                                |
+| :--       | :--     | :--                                                                                   |
+| header    | String  | upper right text                                                                      |
+| footer    | String  | lower right text                                                                      |
+| global    | Boolean | if these values should be used throughout the document (works only on the first page) |
+| overwrite | Boolean | overwrites the global values for header and footer                                                                                      |
+
+---
+
+## \_frontal.toml  
+
+If you don't like to have your configuration within the file you have the possibility to place a file called `_frontal.yaml` next to your [M↓] file. You can write your configuration in there. TOML (Tom's Obvious, Minimal Language) is an easy to learn configuration language. See an example below.  
+
+    # put your global settings header
+    header = "frontal.app"
+    footer = "An Electron powered [M↓] presentation tool"
+    # if you  specify something for your slides it will overwrite the
+    # global settings. Make sure you always add the index of your slide
+    # starting at 1 to tell frontal which slide to set
+    [[slides]]
+    index = 3
+    header = "header slide 3 overwrite with foo"
+    footer = "footer slide 3 bah"
+    [[slides]]
+    index = 6
+    header = "6 baz"
+    footer = "6 something"
+
+
+To learn some more toml go to [github.com/toml-lang/toml](https://github.com/toml-lang/toml) Note: using TOML this is the recommended way for configuration the json frontmatter might get removed in future versions.  
+---
+
 
 ## Realted Projects  
 
