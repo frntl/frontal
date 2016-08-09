@@ -15,6 +15,7 @@
     "jquery": "^3.1.0",
     "js-yaml": "^3.6.1",
     "json-front-matter": "^1.0.0",
+    "lodash.find": "^4.5.1",
     "lodash.isarray": "^4.0.0",
     "lodash.isempty": "^4.3.1",
     "markdown": "^0.5.0",
@@ -23,6 +24,7 @@
     "node-json-db": "^0.7.2",
     "remove-html-comments": "^1.0.2",
     "req-all": "^0.1.0",
+    "toml": "^2.3.0",
     "verbal-expressions": "^0.2.1",
     "yaml-front-matter": "^3.4.0"
   },
