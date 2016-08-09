@@ -3,7 +3,7 @@ import * as mark from 'markdown';
 const marked = require('marked');
 import {
   frontmatter
-} from './utils/frontmatter';
+} from './frontmatter';
 const verex = require('verbal-expressions');
 const isEmpty = require('lodash.isempty');
 // about this module:
@@ -114,6 +114,6 @@ export function md2htmlMarked(data) {
   let slides = htmls; // html.split('<hr>');
   let result = {};
   result.slides = slides;
-  result.attributes = fmjsons;
+  result.jsonAttributes = fmjsons;
   return result;
 }

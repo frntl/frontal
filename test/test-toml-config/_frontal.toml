@@ -1,0 +1,7 @@
+header = 'foo'
+footer = 'baz'
+
+[[slides]]
+index = 2
+header = 'overwrite header'
+footer = 'overwrite footer'

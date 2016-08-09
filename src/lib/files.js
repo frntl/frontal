@@ -1,25 +1,17 @@
 const electron = require('electron');
 const app = electron.app;
 const dialog = electron.dialog;
-import {
-  processing
-} from './processor';
-import {
-  sender
-} from './utils/sender';
-import {
-  watch
-} from './utils/watcher';
-import {
-  yamlLoader
-} from './utils/load-yaml';
-import {
-  dirname
-} from 'path';
-export function detectYamlConfig(filePath) {
+import {processing} from './processor';
+import {sender} from './sender';
+import {watch} from './watcher';
+import {yamlLoader} from './load-yaml';
+import {tomlLoader} from './load-toml';
+import {dirname} from 'path';
+
+export function detectTomlConfig(filePath) {
   var onlypath = dirname(filePath);
   console.log(onlypath);
-  let res = yamlLoader(onlypath + '/_frontal.yaml');
+  let res = tomlLoader(onlypath + '/_frontal.toml');
   if (res === false) {
     return null;
   } else {
@@ -42,7 +34,7 @@ export function processFile(file) {
   let presentationFile = file;
   app.addRecentDocument(presentationFile);
   console.log(presentationFile);
-  let parsedYaml = detectYamlConfig(presentationFile);
+  let parsedYaml = detectTomlConfig(presentationFile);
   let slidesHTML = processing(presentationFile, parsedYaml);
   watch(presentationFile);
   global.presentationFile = presentationFile;

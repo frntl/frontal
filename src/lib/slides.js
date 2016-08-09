@@ -1,28 +1,26 @@
 import * as parser from './parser';
-import {
-  linker
-} from './utils/images';
-import {
-  hrefer
-} from './utils/href-linker';
-import {
-  clone
-} from './utils/clone-object';
+import {linker} from './images';
+import {hrefer} from './href-linker';
+import {clone} from './clone-object';
+import {uncomment} from './uncomment.js';
+import {processConfig} from './process-config';
+
 const marked = require('marked');
 const isArray = require('lodash.isarray');
-import {
-  uncomment
-} from './utils/uncomment.js';
 const removeHtmlComments = require('remove-html-comments');
 const chalk = require('chalk');
+
 export function slides(data, config) {
-  if (config) {
-    console.log(config);
-  }
   let parsed = parser.md2htmlMarked(data);
-  let attributes = [];
   let slds = parsed.slides;
   let objs = [];
+  let useTomlConfig = false;
+  let tomlAttributes = null;
+  if (config) {
+    useTomlConfig = true;
+    tomlAttributes = processConfig(config, slds.length);
+  }
+
   for (let i = 0; i < slds.length; i++) {
     // if (config) {
     //   if (config.hasOwnProperty('global') === true) {
@@ -58,10 +56,16 @@ export function slides(data, config) {
       uncommented.push(marked(uncomment(clean.comments[j])));
     }
     // console.log('parsed.attributes[i] ' , parsed.attributes[i]);
+    let attr = null;
+    if(useTomlConfig) {
+      attr = tomlAttributes[i];
+    }else {
+      attr = parsed.jsonAttributes[i];
+    }
     objs.push({
       slide: clean.data,
       comments: uncommented.join('<br><br>'),
-      attributes: parsed.attributes[i]
+      attributes: attr
     });
   }
   return objs;

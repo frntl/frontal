@@ -2,7 +2,7 @@
 import {
   sender
 } from './sender';
-import {processFile} from '../files';
+import {processFile} from './files';
 
 const chalk = require('chalk');
 export function reload() {

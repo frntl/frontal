@@ -1,16 +1,14 @@
-import {
-  slides
-} from './slides';
+import {slides} from './slides';
 import * as fs from 'fs';
 import * as path from 'path';
-// import {watch} from './utils/watcher';
-import {sender} from './utils/sender';
+
+import {sender} from './sender';
 
 export function processing (filePath, config) {
   if(config) {
-    console.log('We have a yaml file');
+    console.log('We have a toml file');
   } else {
-    console.log('no yaml file detected');
+    console.log('no toml file detected');
   }
   global.name = path.basename(filePath, path.extname(filePath));
   global.presentationFile = filePath;
