@@ -20,7 +20,7 @@ header { top: 0; height: 35px; padding-top: 10px; padding-right: 10px; }
 
 footer { bottom: 0; height: 35px; padding-bottom: 10px; padding-right: 10px; }
 
-body#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; max-widht: 50em; overflow: hidden; font-size: 20px; line-height: 1.5; color: #465963; word-wrap: break-word; hyphens: auto; background-color: #FFFFFF; }
+body#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; max-widht: 50em; overflow: hidden; font-size: 1.3em; line-height: 1.5; color: #465963; word-wrap: break-word; hyphens: auto; background-color: #FFFFFF; }
 
 body#frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
 
@@ -54,7 +54,7 @@ body#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; back
 
 body#frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'; }
 
-body#frontal #slides p { text-align: left; max-width: 40vw; }
+body#frontal #slides p { text-align: left; max-width: 50vw; }
 
 body#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 1.6rem; }
 

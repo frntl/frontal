@@ -45,7 +45,7 @@ body#frontal {
   max-height: 100%;
   max-widht:50em;
   overflow: hidden;
-  font-size: 20px;
+  font-size: 1.3em;
   line-height: 1.5;
   color: $textColor;
   word-wrap: break-word;
@@ -128,7 +128,7 @@ body#frontal {
     }
     p {
       text-align: left;
-      max-width: 40vw;
+      max-width: 50vw;
     }
     blockquote {
       font-family: 'Vollkorn-Italic';
