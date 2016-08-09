@@ -1,0 +1,8 @@
+{
+  "defaults": {
+    "recentFiles": [],
+    "showIntroOnStratup": true,
+    "maxRecentFiles":10
+  },
+  "name": "frontal"
+}

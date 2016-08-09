@@ -7,6 +7,9 @@ const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
 const webContents = electron.webContents;
+const pkg = require('./package.json');
+const Config = require('electron-config');
+
 if (process.env.NODE_ENV === 'development') {// eslint-disable-line no-process-env
   require('electron-reload')(__dirname);
 }
@@ -24,6 +27,7 @@ global.presentationFile = null;
 global.slidesWindow = null;
 global.commentsWindow = null;
 global.helpFilePath = `${__dirname}/help/help.md`;
+global.config = new Config(require('./config/default.json'));
 
 
 function createWindows() {

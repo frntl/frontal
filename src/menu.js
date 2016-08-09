@@ -41,7 +41,18 @@ export function buildTemplate(windows) {
           processFile(file);
         }
       }
-    }]
+    }, {label: 'Recent Files', submenu: (()=>{
+      let items = [];
+      let rfs = getRecentFiles();
+      for(let i = 0; i < rfs.length; i++) {
+        items.push({label: rfs[i], click: ()=>{
+          processFile(rfs[i]);
+        }});
+      }
+      return items;
+    })()
+  }
+  ]
   }, {
     label: 'Edit',
     submenu: [{
@@ -174,20 +185,26 @@ export function buildTemplate(windows) {
     label: 'Help',
     role: 'help',
     submenu: [{
-      label: 'Open intro file source',
+      label: 'Open Intro File Source',
       click: function() {
         let win = help();
       }
     }, {
-      label: 'Open intro in main window',
+      label: 'Open Intro in Main Window',
       click: function() {
         // let win = help();
         console.log('User wants to open help again');
-        helpLoader([global.slidesWindow, global.commentsWindow]);
+        helpLoader(windows);
+      }
+    }, {
+      label: 'Open Config',
+      click: () => {
+        console.log('should open the config file');
+        shell.openItem(global.config.path);
       }
     }, {
       label: 'Learn More',
-      click: function() {
+      click: () => {
         shell.openExternal('https://github.com/frntl/frontal');
       }
     }]
@@ -201,7 +218,15 @@ export function buildTemplate(windows) {
         role: 'about'
       }, {
         type: 'separator'
-      }, {
+      },
+      {
+        label: 'Preferences',
+        accelerator: 'Command+,',
+        click: () => {
+          console.log('should open the preferences');
+        }
+      },
+      {
         label: 'Services',
         role: 'services',
         submenu: []
