@@ -1,3 +1,7 @@
+/**
+ * load a yaml config
+ * @deprecated
+ */
 const yaml = require('js-yaml');
 import * as fs from 'fs';
 const fileExists = require('file-exists');

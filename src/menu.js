@@ -1,34 +1,34 @@
-/* @flow */
-
-const pkg = require('./package.json');
 import * as path from 'path';
-import {
-  help
-} from './help/help-window.js';
-import {
-  openFile,
-  processFile
-} from './lib/files';
-import {
-  helpLoader
-} from './help/help-loader';
 
 const electron = require('electron');
 const app = electron.app;
 const shell = electron.shell;
 const dialog = electron.dialog;
-const JsonDB = require('node-json-db');
+// const JsonDB = require('node-json-db');
 const chalk = require('chalk');
 
+const pkg = require('./package.json');
 import {
-  sender
-} from './lib/sender';
+  help
+} from './help/help-window.js';
+import {
+  openFile,
+  processFile,
+  getRecentFiles
+} from './lib/files';
+import {
+  helpLoader
+} from './help/help-loader';
 import {
   reload
 } from './lib/reload-presentation';
 import {
   watch
 } from './lib/watcher';
+
+import {
+  sender
+} from './lib/sender';
 export function buildTemplate(windows) {
   let template = [{
     label: 'File',
