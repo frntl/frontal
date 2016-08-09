@@ -1,37 +1,40 @@
 import {
   processing
-} from '../processor';
+} from '../lib/processor';
 import {
   watch
-} from '../utils/watcher';
-import {detectYamlConfig} from '../files';
+} from '../lib/watcher';
+import {
+  detectTomlConfig
+} from '../lib/files';
 
-
-function send(w, slds) {
-  // console.log(slds);
-  w.webContents.send('slides', {
-    msg: slds
+function send(win, title, data) {
+  // console.log(data);
+  win.webContents.send(title, {
+    msg: data
   });
 }
 
 function readHelpFile() {
   global.presentationFile = global.helpFilePath;
-  let yamlres = detectYamlConfig(global.helpFilePath);
-  let slidesHTML = processing(global.helpFilePath, yamlres);
+  let tomlRes = detectTomlConfig(global.helpFilePath);
+  let slidesHTML = processing(global.helpFilePath, tomlRes);
   watch(global.presentationFile);
   return slidesHTML;
 }
 export function helpLoader(wins) {
   let slidesHTML = readHelpFile();
   wins.forEach((w, i, arr) => {
-    send(w, slidesHTML);
+    send(w, 'slides', slidesHTML);
+    // send(w, 'switch-theme', 'themes/default/');
   });
 }
 export function initialHelpLoader(wins) {
   let slidesHTML = readHelpFile();
   wins.forEach((w, i, arr) => {
     w.webContents.on('did-finish-load', () => {
-      send(w, slidesHTML);
+      send(w, 'slides', slidesHTML);
+      send(w, 'switch-theme', {path: 'themes/default'});
     });
   });
 }
