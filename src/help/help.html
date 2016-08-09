@@ -1,6 +1,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+    body {
+  margin: 0 auto;
+  max-width: 50em;
+  font-family: mono;
+  line-height: 1.5;
+  padding: 4em 1em;
+  color: #555;
+  }
+  code,
+pre {
+   background: #f5f7f9;
+  border-bottom: 1px solid #d8dee9;
+  color: ##131618;
+
+
+}
+
+code {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+
+}
+
+pre {
+  padding: 1em;
+  border-left: 2px solid #69c;
+}
+</style>
 </head>
 <body>
 <pre style="word-wrap: break-word; white-space: pre-wrap;">
@@ -376,7 +405,7 @@ See this table for the currently availabe keys and values for the inline json fr
 
 ## \_frontal.toml  
 
-If you don't like to have your configuration within the file - there is the possibility to place a file called `_frontal.yaml` next to your [M↓] file. You can write your configuration in there (this is the recommended way the json frontmatter might get removed in future versions). TOML (Tom's Obvious, Minimal Language) is an easy to learn configuration language. See an example below.  
+If you don't like to have your configuration within the file you have the possibility to place a file called `_frontal.yaml` next to your [M↓] file. You can write your configuration in there. TOML (Tom's Obvious, Minimal Language) is an easy to learn configuration language. See an example below.  
 
     # put your global settings header
     header = "frontal.app"
@@ -394,7 +423,7 @@ If you don't like to have your configuration within the file - there is the poss
     footer = "6 something"
 
 
-To learn some more toml go to [github.com/toml-lang/toml](https://github.com/toml-lang/toml)
+To learn some more toml go to [github.com/toml-lang/toml](https://github.com/toml-lang/toml) Note: using TOML this is the recommended way for configuration the json frontmatter might get removed in future versions.  
 ---
 
 
