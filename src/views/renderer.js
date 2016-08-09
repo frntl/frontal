@@ -1,14 +1,12 @@
-const {
-  ipcRenderer
-} = require('electron');
+const {ipcRenderer} = require('electron');
 const isEmpty = require('lodash.isempty');
-import {
-  getComputedFontSize,
-  setFontSize
-} from './utils/fontsize';
+import {getComputedFontSize, setFontSize} from './lib/fontsize';
+import {themeLoaderJS} from './lib/theme-loader';
+
 var shell = require('electron').shell;
+
 const drag = require('electron-drag');
-window.onload = () => {
+window.onload = () => { // eslint-disable-line no-undef
   // const {
   //   webFrame
   // } = require('electron');
@@ -17,20 +15,20 @@ window.onload = () => {
   let initialSlidesFontsize = null;
   let initialSlidesHeaderFontsize = null;
   let initialSlidesFooterFontsize = null;
-  if (document.getElementById('comments') !== null) {
-    initialCommentsFontsize = getComputedFontSize(document.getElementById('comments'));
+  if (document.getElementById('comments') !== null) {// eslint-disable-line no-undef
+    initialCommentsFontsize = getComputedFontSize(document.getElementById('comments'));// eslint-disable-line no-undef
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
-  if (document.getElementById('frontal') !== null) {
-    initialSlidesFontsize = getComputedFontSize(document.getElementById('frontal'));
+  if (document.getElementById('frontal') !== null) {// eslint-disable-line no-undef
+    initialSlidesFontsize = getComputedFontSize(document.getElementById('frontal'));// eslint-disable-line no-undef
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
-  if (document.getElementById('header') !== null) {
-    initialSlidesHeaderFontsize = getComputedFontSize(document.getElementById('header'));
+  if (document.getElementById('header') !== null) {// eslint-disable-line no-undef
+    initialSlidesHeaderFontsize = getComputedFontSize(document.getElementById('header'));// eslint-disable-line no-undef
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
-  if (document.getElementById('footer') !== null) {
-    initialSlidesFooterFontsize = getComputedFontSize(document.getElementById('footer'));
+  if (document.getElementById('footer') !== null) {// eslint-disable-line no-undef
+    initialSlidesFooterFontsize = getComputedFontSize(document.getElementById('footer'));// eslint-disable-line no-undef
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
   let content = null;
@@ -45,8 +43,8 @@ window.onload = () => {
   // clear();
   // Fallback to using -webkit-app-region property.
   if (!drag.supported) {
-    document.querySelector('#frontal').style['-webkit-app-region'] = 'drag';
-    document.querySelector('#notes').style['-webkit-app-region'] = 'drag';
+    document.querySelector('#frontal').style['-webkit-app-region'] = 'drag';// eslint-disable-line no-undef
+    document.querySelector('#notes').style['-webkit-app-region'] = 'drag';// eslint-disable-line no-undef
   }
 
   function increaseSlideNumber() {
@@ -78,21 +76,21 @@ window.onload = () => {
   }
 
   function setCurrentSlideNumber() {
-    let curr = document.getElementById('slides-current');
+    let curr = document.getElementById('slides-current');// eslint-disable-line no-undef
     if (curr !== null) {
       curr.innerHTML = currentSlide + 1;
     }
   }
 
   function setSlideslength(i) {
-    let len = document.getElementById('slides-length');
+    let len = document.getElementById('slides-length');// eslint-disable-line no-undef
     if (len !== null) {
       len.innerHTML = i;
     }
   }
 
   function setHeaderFooter(html, name) {
-    let elementsHTMLCollection = document.getElementsByTagName(name);
+    let elementsHTMLCollection = document.getElementsByTagName(name);// eslint-disable-line no-undef
     let elements = Array.from(elementsHTMLCollection);
     elements.forEach((ele, i, arr) => {
       ele.innerHTML = html;
