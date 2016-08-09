@@ -7,6 +7,10 @@
 # Welcome to frontal.app
 ## Hit ⌘ + O to open a Markdown presentation
 
+<!--
+ # These are your speaker notes
+ You will learn more about this window soon. 
+-->
 ---
 
 ## Navigation  
