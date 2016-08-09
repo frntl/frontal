@@ -54,3 +54,4 @@ export function processFile(file) {
   global.presentationFile = presentationFile;
   sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
 }
+

@@ -19,7 +19,6 @@ import {watch} from './lib/watcher';
 import {processFile} from './lib/files';
 import {sender} from './lib/sender';
 
-
 global.name = null;
 global.database = null;
 global.presetationRoot = null;
@@ -118,6 +117,7 @@ app.on('window-all-closed', function() {
 app.on('activate', function() {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
+  console.log('app:activate');
   if (global.slidesWindow === null || global.commentsWindow === null) {
     createWindows();
     createMenues();
@@ -128,6 +128,10 @@ app.on('activate', function() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
+  console.log('app:ready');
+  // global.config.path
+  console.log('global.config.all ', global.config.store);
+  // global.config.set('foo', 'bah');
   createWindows();
   createMenues();
   initialHelpLoader([global.slidesWindow, global.commentsWindow]);

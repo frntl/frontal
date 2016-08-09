@@ -249,7 +249,7 @@ export function buildTemplate(windows) {
         label: 'Quit',
         accelerator: 'Command+Q',
         click: function() {
-          // app.quit();
+            // app.quit();
           app.exit(0);
         }
       }]

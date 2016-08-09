@@ -11,22 +11,22 @@ const find = require('lodash.find');
  */
 export function processConfig (config, length) {
   let result = []; // will hold the result
-  console.log(config);
+  // console.log(config);
   for(let i = 0; i < length; i++) {
     let obj = {header: '', footer: ''};
     if(config.hasOwnProperty('header')) {
-      console.log('has global header');
+      // console.log('has global header');
       obj.header = config.header;
     }
     if(config.hasOwnProperty('footer')) {
-      console.log('has global footer');
+      // console.log('has global footer');
       obj.footer = config.footer;
     }
     if(config.hasOwnProperty('slides')) {
       if(isArray(config.slides)) {
         let res = find(config.slides, (o)=> (o.index - 1) === i);
         if(res !== undefined) {
-          console.log('yeah found ', res);
+          // console.log('yeah found ', res);
           if(res.hasOwnProperty('header')) {
             obj.header = res.header;
           }
@@ -34,7 +34,7 @@ export function processConfig (config, length) {
             obj.footer = res.footer;
           }
         }else{
-          console.log('no item found with matching index found ');
+          // console.log('no item found with matching index found ');
         }
       }
     }
