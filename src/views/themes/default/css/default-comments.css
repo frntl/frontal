@@ -14,7 +14,7 @@
 
 @font-face { font-family: 'CamingoCode-SemiItalic'; src: url("../font/CamingoCode-v1.0/CamingoCode-BoldItalic.ttf") format("truetype"); }
 
-body#notes { padding-top: 15px; background-color: #0C0C0C; font-size: 1.1rem; font-family: 'CamingoCode-Regular'; color: #E9E9E9; }
+body#notes { margin: 0 auto; max-width: 50em !important; padding-top: 15px; background-color: #0C0C0C; font-size: 1.1rem; font-family: 'CamingoCode-Regular'; color: #E9E9E9; }
 
 body#notes em { font-family: 'CamingoCode-Italic'; }
 

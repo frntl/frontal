@@ -1,8 +1,10 @@
 @import "fonts";
 $headerHeight: 30px;
-$headerMargin:10px;
+$headerMargin: 10px;
 
 body#notes{
+  margin: 0 auto;
+  max-width: 50em !important;
   padding-top:$headerHeight/2;
   background-color:#0C0C0C;
   font-size: 1.1rem;
