@@ -6,26 +6,15 @@ const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
 const webContents = electron.webContents;
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {// eslint-disable-line no-process-env
   require('electron-reload')(__dirname);
 }
-import {
-  helpLoader,
-  initialHelpLoader
-} from './help/help-loader';
-import {
-  buildTemplate
-} from './menu';
-import {
-  watch
-} from './utils/watcher';
-import {
-  processFile
-} from './files';
+import {helpLoader, initialHelpLoader} from './help/help-loader';
+import {buildTemplate} from './menu';
+import {watch} from './lib/watcher';
+import {processFile} from './lib/files';
+import {sender} from './lib/sender';
 
-import {
-  sender
-} from './utils/sender';
 
 global.name = null;
 global.database = null;

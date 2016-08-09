@@ -1,9 +1,17 @@
+/* @flow */
+
 const pkg = require('./package.json');
 import * as path from 'path';
 import {
   help
 } from './help/help-window.js';
-
+import {
+  openFile,
+  processFile
+} from './lib/files';
+import {
+  helpLoader
+} from './help/help-loader';
 
 const electron = require('electron');
 const app = electron.app;
@@ -11,20 +19,16 @@ const shell = electron.shell;
 const dialog = electron.dialog;
 const JsonDB = require('node-json-db');
 const chalk = require('chalk');
-import {openFile, processFile} from './files';
-import {
-  helpLoader
-} from './help/help-loader';
 
 import {
   sender
-} from './utils/sender';
+} from './lib/sender';
 import {
   reload
-} from './utils/reload-presentation';
+} from './lib/reload-presentation';
 import {
   watch
-} from './utils/watcher';
+} from './lib/watcher';
 export function buildTemplate(windows) {
   let template = [{
     label: 'File',
@@ -33,7 +37,7 @@ export function buildTemplate(windows) {
       accelerator: 'CmdOrCtrl+O',
       click: function() {
         let file = openFile();
-        if(file !== null) {
+        if (file !== null) {
           processFile(file);
         }
       }

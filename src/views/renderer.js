@@ -223,7 +223,8 @@ window.onload = () => {
     // console.log('hello');
   });
   ipcRenderer.on('switch-theme', (event, arg) => {
-    // console.log(arg);
+    console.log(arg);
+    themeLoaderJS(__dirname + '/' + arg.msg.path + '/js');
   });
   ipcRenderer.on('plus', (event, arg) => {
     // console.log(arg);
