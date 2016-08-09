@@ -1,0 +1,16 @@
+# To learn some more toml go to:
+# https://github.com/toml-lang/toml
+# put your global settings header
+header = "frontal.app"
+footer = "An Electron powered [M↓] presentation tool"
+# if you  specify something for your slides it will overwrite the
+# global settings. Make sure you always add the index of your slide
+# starting at 1 to tell frontal which slide to set
+[[slides]]
+index = 3
+header = "header slide 3"
+footer = "footer slide 3"
+[[slides]]
+index = 6
+header = "header slide 6"
+footer = "footer slide 6"
