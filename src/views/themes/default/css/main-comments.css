@@ -1,0 +1,62 @@
+@font-face { font-family: 'Vollkorn-Regular'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Regular.ttf") format("truetype"); }
+
+@font-face { font-family: 'Vollkorn-Bold'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Bold.ttf") format("truetype"); }
+
+@font-face { font-family: 'Vollkorn-Italic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-Italic.ttf") format("truetype"); }
+
+@font-face { font-family: 'Vollkorn-SemiItalic'; src: url("../font/vollkorn-3-005/TTF/Vollkorn-SemiboldItalic.ttf") format("truetype"); }
+
+@font-face { font-family: 'CamingoCode-Regular'; src: url("../font/CamingoCode-v1.0/CamingoCode-Regular.ttf") format("truetype"); }
+
+@font-face { font-family: 'CamingoCode-Bold'; src: url("../font/CamingoCode-v1.0/CamingoCode-Bold.ttf") format("truetype"); }
+
+@font-face { font-family: 'CamingoCode-Italic'; src: url("../font/CamingoCode-v1.0/CamingoCode-Italic.ttf") format("truetype"); }
+
+@font-face { font-family: 'CamingoCode-SemiItalic'; src: url("../font/CamingoCode-v1.0/CamingoCode-BoldItalic.ttf") format("truetype"); }
+
+body#notes { margin: 0 auto; max-width: 50em !important; padding-top: 15px; background-color: #0C0C0C; font-size: 1.1rem; font-family: 'CamingoCode-Regular'; color: #E9E9E9; }
+
+body#notes em { font-family: 'CamingoCode-Italic'; }
+
+body#notes em strong { font-family: 'CamingoCode-BoldItalic'; }
+
+body#notes strong { font-family: 'CamingoCode-Bold'; }
+
+body#notes strong em { font-family: 'CamingoCode-BoldItalic'; }
+
+body#notes header#speaker-notes { padding-left: 10px; padding-right: 10px; -webkit-border-radius: 3px; border-radius: 3px; box-sizing: border-box; padding-left: 15px; width: 100%; height: 30px; background-color: #3F3F3F; display: flex; justify-content: space-between; align-items: center; text-align: center; }
+
+body#notes header#speaker-notes button { width: 50px; -webkit-border-radius: 3px; border-radius: 3px; background-color: #C7C7C7; color: #000; border: none; box-shadow: none; text-shadow: -1px 1px #8B8B8B; height: 20px; }
+
+body#notes header#speaker-notes button:hover { color: #D0D0D0; background: #000000; }
+
+body#notes header#speaker-notes input[type="number"] { width: 50px; height: 20px; -webkit-border-radius: 3px; color: #000; border-radius: 3px; background-color: #C7C7C7; border: none; text-align: center; }
+
+body#notes #comments { margin-top: 30px; }
+
+.blink { -webkit-animation: blink .75s linear infinite; -moz-animation: blink .75s linear infinite; -ms-animation: blink .75s linear infinite; -o-animation: blink .75s linear infinite; animation: blink .75s linear infinite; }
+
+@-webkit-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@-moz-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@-ms-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@-o-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
+
+@keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; } }
