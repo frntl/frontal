@@ -80,19 +80,14 @@ function createWindows() {
     // when you should delete the corresponding element.
     global.commentsWindow = null;
   });
-  // global.windows.push(slidesWindow);
-  // global.windows.push(commentsWindow);
-  // sender(global.windows, 'hello', 'msg');
-  // loadHelp([slidesWindow, commentsWindow]);
-  // global.commentsWindow = commentsWindow;
-  // global.slidesWindow = slidesWindow;
 }
 
 function createMenues() {
   let template = buildTemplate([global.slidesWindow, global.commentsWindow]);
-  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-  // const menu = Menu.buildFromTemplate(template);
-  // Menu.setApplicationMenu(menu);
+  // Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+
 }
 // // In this file you can include the rest of your app's specific main process
 // // code. You can also put them in separate files and require them here.
@@ -100,10 +95,7 @@ app.on('will-finish-launching', (event) => {
   app.on('open-file', (e, filePath) => {
     e.preventDefault();
     console.log('User tried to open ' + filePath);
-    // let file = openFile();
-    // if(file !== null) {
     processFile(filePath);
-    // }
   });
 });
 // Quit when all windows are closed.
@@ -130,7 +122,7 @@ app.on('activate', function() {
 app.on('ready', () => {
   console.log('app:ready');
   // global.config.path
-  console.log('global.config.all ', global.config.store);
+  // console.log('global.config.all ', global.config.store);
   // global.config.set('foo', 'bah');
   createWindows();
   createMenues();

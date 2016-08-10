@@ -6,29 +6,15 @@ const shell = electron.shell;
 const dialog = electron.dialog;
 // const JsonDB = require('node-json-db');
 const chalk = require('chalk');
-
 const pkg = require('./package.json');
-import {
-  help
-} from './help/help-window.js';
-import {
-  openFile,
-  processFile,
-  getRecentFiles
-} from './lib/files';
-import {
-  helpLoader
-} from './help/help-loader';
-import {
-  reload
-} from './lib/reload-presentation';
-import {
-  watch
-} from './lib/watcher';
+import {help} from './help/help-window.js';
+import {openFile, processFile, getRecentFiles, getDirs} from './lib/files';
+import {helpLoader} from './help/help-loader';
+import {reload} from './lib/reload-presentation';
+import {watch} from './lib/watcher';
+import {switchTheme} from './lib/themes';
+import {sender} from './lib/sender';
 
-import {
-  sender
-} from './lib/sender';
 export function buildTemplate(windows) {
   let template = [{
     label: 'File',
