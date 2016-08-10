@@ -92,14 +92,14 @@ export function md2htmlMarked(data) {
   testSplit.forEach((ele, i, arr) => {
     let tmpjson = frontmatter(ele);
     // console.log(tmpjson);
-    if (i === 0 && tmpjson.attributes.hasOwnProperty('global') === true) {
+    if (i === 0 && 'global' in tmpjson.attributes) {
       globalfm = tmpjson.attributes.global;
       fmjsons.push(tmpjson.attributes);
     } else if (i !== 0 && globalfm === true) {
       // clone the object
-      if (tmpjson.attributes.hasOwnProperty('overwrite') === false) {
+      if (!('overwrite' in tmpjson.attributes)) {
         fmjsons.push(JSON.parse(JSON.stringify(fmjsons[0])));
-      } else if (tmpjson.attributes.hasOwnProperty('overwrite') === true) {
+      } else if ('overwrite' in tmpjson.attributes) {
         if (tmpjson.attributes.overwrite === true) {
           fmjsons.push(tmpjson.attributes);
         } else {

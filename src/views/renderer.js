@@ -106,13 +106,13 @@ window.onload = () => { // eslint-disable-line no-undef
       return;
     }
     if (attr !== null) {
-      if (attr.hasOwnProperty('footer') === true) {
+      if ('footer' in attr) {
         setHeaderFooter(attr.footer, 'footer');
       }else {
         setHeaderFooter('', 'footer');
 
       }
-      if (attr.hasOwnProperty('header') === true) {
+      if ('header' in attr) {
         setHeaderFooter(attr.header, 'header');
       }else{
         setHeaderFooter('', 'header');

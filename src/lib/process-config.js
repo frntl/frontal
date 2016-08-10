@@ -14,23 +14,23 @@ export function processConfig (config, length) {
   // console.log(config);
   for(let i = 0; i < length; i++) {
     let obj = {header: '', footer: ''};
-    if(config.hasOwnProperty('header')) {
+    if('header' in config) {
       // console.log('has global header');
       obj.header = config.header;
     }
-    if(config.hasOwnProperty('footer')) {
+    if('footer' in config) {
       // console.log('has global footer');
       obj.footer = config.footer;
     }
-    if(config.hasOwnProperty('slides')) {
+    if('slides' in config) {
       if(isArray(config.slides)) {
         let res = find(config.slides, (o)=> (o.index - 1) === i);
         if(res !== undefined) {
           // console.log('yeah found ', res);
-          if(res.hasOwnProperty('header')) {
+          if('header' in res) {
             obj.header = res.header;
           }
-          if(res.hasOwnProperty('footer')) {
+          if('footer' in res) {
             obj.footer = res.footer;
           }
         }else{

@@ -11,7 +11,7 @@ const $ = require('jquery');
 // console.log(libs);
     // $('#slides').bind('DOMSubtreeModified', imagesLeft);
 for (var key in libs) {
-  if (libs.hasOwnProperty(key)) {
+  if (key in libs) {
     // console.log(libs);
     $('#slides').bind('DOMSubtreeModified', (libs[key].default));
   }
