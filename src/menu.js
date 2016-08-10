@@ -8,11 +8,11 @@ const dialog = electron.dialog;
 const chalk = require('chalk');
 const pkg = require('./package.json');
 import {help} from './help/help-window.js';
-import {openFile, processFile, getRecentFiles, getDirs} from './lib/files';
+import {openFile, processFile, getRecentFiles, getDirs, openFolder} from './lib/files';
 import {helpLoader} from './help/help-loader';
 import {reload} from './lib/reload-presentation';
 import {watch} from './lib/watcher';
-import {switchTheme} from './lib/themes';
+import {switchTheme, loadCustomTheme} from './lib/themes';
 import {sender} from './lib/sender';
 
 export function buildTemplate(windows) {
@@ -74,9 +74,13 @@ export function buildTemplate(windows) {
             }});
         }
         res.push({type: 'separator'});
-        res.push({label: 'Load Custom CSS...', click: ()=>{
-          console.log('should load a custom CSS');
-        }});
+        res.push({
+          label: 'Load Custom CSS...',
+          Type: 'radio',
+          click: ()=>{
+            loadCustomTheme();
+            // console.log('should load a custom CSS');
+          }});
         return res;
       })()
     }, {

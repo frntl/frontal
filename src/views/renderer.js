@@ -226,6 +226,10 @@ window.onload = () => { // eslint-disable-line no-undef
     switchCSS(arg.msg, 0);
   });
 
+  ipcRenderer.on('switch-custom-theme', (event, arg) =>{
+    console.log('switch to custom theme: ', arg);
+  });
+
   ipcRenderer.on('plus', (event, arg) => {
     // console.log(arg);
     // zoomFactorSlides += 0.1;

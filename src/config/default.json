@@ -3,7 +3,8 @@
     "recentFiles": [],
     "showIntroOnStratup": true,
     "maxRecentFiles":10,
-    "currentTheme": "default"
+    "currentTheme": "default",
+    "customTheme": null
   },
   "name": "frontal"
 }

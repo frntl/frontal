@@ -30,6 +30,18 @@ export function openFile() {
     return files[0];
   }
 }
+
+export function openFolder () {
+  let folders = dialog.showOpenDialog({
+    properties: ['openDirectory']
+  });
+  if(folders === undefined) {
+    console.log('folder open aborted by user');
+    return null;
+  } else{
+    return folders[0];
+  }
+}
 export function setRecentFiles (filePath) {
   let recentFiles = global.config.get('recentFiles');
   recentFiles.unshift(resolve(__dirname, filePath));
@@ -56,6 +68,9 @@ export function processFile(file) {
   sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
 }
 
+export function folderExists(folderPath) {
+  return fs.existsSync(folderPath);
+}
 
 export function getDirs (rootDir, cb) {
   let files = fs.readdirSync(rootDir);
