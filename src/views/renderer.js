@@ -152,12 +152,20 @@ window.onload = () => { // eslint-disable-line no-undef
     });
   }
 
-  function changeCSS(cssFilePath, cssLinkIndex) {
+  function switchCSS(themeName, cssLinkIndex) {
+    let cssFilePath = __dirname + '/themes/' + themeName + '/css/';
     let oldLink = document.getElementsByTagName('link').item(cssLinkIndex); // eslint-disable-line no-undef
     let newLink = document.createElement('link'); // eslint-disable-line no-undef
     newLink.setAttribute('rel', 'stylesheet');
     newLink.setAttribute('type', 'text/css');
-    newLink.setAttribute('href', cssFilePath);
+    if(oldLink.id === 'slides-link') {
+      newLink.setAttribute('id', 'slides-link');
+      newLink.setAttribute('href', cssFilePath + 'main.css');
+
+    }else if(oldLink.id === 'comments-link') {
+      newLink.setAttribute('id', 'comments-link');
+      newLink.setAttribute('href', cssFilePath + 'main-comments.css');
+    }
     document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink); // eslint-disable-line no-undef
   }
   // -----------execution-------------------
@@ -211,10 +219,13 @@ window.onload = () => { // eslint-disable-line no-undef
   ipcRenderer.on('hello', (event, arg) => {
     // console.log('hello');
   });
+
   ipcRenderer.on('switch-theme', (event, arg) => {
-    console.log(arg);
-    themeLoaderJS(__dirname + '/' + arg.msg.path + '/js');
+    console.log('switcht ', arg.msg);
+    // themeLoaderJS(__dirname + '/' + arg.msg.path + '/js');
+    switchCSS(arg.msg, 0);
   });
+
   ipcRenderer.on('plus', (event, arg) => {
     // console.log(arg);
     // zoomFactorSlides += 0.1;

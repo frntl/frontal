@@ -34,7 +34,7 @@ export function initialHelpLoader(wins) {
   wins.forEach((w, i, arr) => {
     w.webContents.on('did-finish-load', () => {
       send(w, 'slides', slidesHTML);
-      send(w, 'switch-theme', {path: 'themes/default'});
+      send(w, 'switch-theme', global.config.get('currentTheme'));
     });
   });
 }

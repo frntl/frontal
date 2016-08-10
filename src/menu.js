@@ -71,6 +71,31 @@ export function buildTemplate(windows) {
   }, {
     label: 'View',
     submenu: [{
+      label: 'Themes',
+      submenu:
+      (()=>{
+        let currentTheme = global.config.get('currentTheme');
+        let dirs = getDirs(__dirname + '/views/themes');
+        let res = [];
+        for(let i = 0; i < dirs.length; i++) {
+          res.push({
+            label: dirs[i],
+            type: 'radio',
+            checked: (dirs[i] === currentTheme ? true : false),
+            click: ()=>{
+              console.log(`in menu creation ${dirs[i]}`);
+              switchTheme(`${dirs[i]}`);
+            }});
+        }
+        res.push({type: 'separator'});
+        res.push({label: 'Load Custom CSS...', click: ()=>{
+          console.log('should load a custom CSS');
+        }});
+        return res;
+      })()
+    }, {
+      type: 'separator'
+    }, {
       label: 'Previous',
       accelerator: 'Up',
       click: function() {

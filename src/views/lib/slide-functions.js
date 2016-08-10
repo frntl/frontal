@@ -5,6 +5,7 @@
 // - require all files in theme/js
 // and execute them
 // the js file can export one default function so we only have to execute on thing
+const {ipcRenderer} = require('electron');
 
 var libs = require('require-all')(__dirname + '/themes/default/js');
 const $ = require('jquery');

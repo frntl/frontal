@@ -7,6 +7,7 @@ import {watch} from './watcher';
 import {yamlLoader} from './load-yaml';
 import {tomlLoader} from './load-toml';
 import {dirname, resolve} from 'path';
+import * as fs from 'fs';
 
 export function detectTomlConfig(filePath) {
   var onlypath = dirname(filePath);
@@ -55,3 +56,20 @@ export function processFile(file) {
   sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
 }
 
+
+export function getDirs (rootDir, cb) {
+  let files = fs.readdirSync(rootDir);
+  // console.log(files);
+  var dirs = [];
+  for (let index = 0; index < files.length; index++) {
+    let file = files[index];
+    // if (file[0] !== '.') {
+    let filePath = rootDir + '/' + file;
+    let stat = fs.statSync(filePath);
+    if(stat.isDirectory()) {
+      dirs.push(file);
+      // }
+    }
+  }
+  return dirs;
+}
