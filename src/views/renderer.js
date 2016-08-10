@@ -144,16 +144,7 @@ window.onload = () => { // eslint-disable-line no-undef
         console.log(`found ${ele} div`);
         if (ele === 'slides') {
           element.innerHTML = cnt.slide;
-          // console.log(content.msg[constrain(currentSlide, content.msg)].attributes);
           setAttributes(cnt.attributes);
-          // if (cnt.attributes !== null) {
-          //   if (cnt.attributes.hasOwnProperty('footer') === true) {
-          //     setHeaderFooter(cnt.attributes.footer, 'footer');
-          //   }
-          //   if (cnt.attributes.hasOwnProperty('header') === true) {
-          //     setHeaderFooter(cnt.attributes.header, 'header');
-          //   }
-          // } else {}
         } else if (ele === 'comments') {
           element.innerHTML = cnt.comments;
         }

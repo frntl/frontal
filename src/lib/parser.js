@@ -36,7 +36,7 @@ export function json(data) {
  * [ [ [ 'header', [Object], 'Heading 1' ],
     [ 'header', [Object], 'Hello World Heading 2' ],
     [ 'para',
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' ] ],
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit...  ' ] ],
   [ [ 'header', [Object], 'Heading three' ],
     [ 'code_block', 'print "Hello world"' ] ] ]
  */
