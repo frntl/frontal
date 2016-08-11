@@ -1,7 +1,5 @@
 
-import {
-  sender
-} from './sender';
+import {sender, senderManaged} from './sender';
 import {processing} from './processor';
 import {detectTomlConfig} from './files';
 

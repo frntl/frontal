@@ -1,4 +1,5 @@
 const $ = require('jquery');
+
 export function themeLoaderJS (themePath) {
   var libs = require('require-all')(themePath);
 // console.log(libs);

@@ -5,9 +5,11 @@
 // - require all files in theme/js
 // and execute them
 // the js file can export one default function so we only have to execute on thing
-const {ipcRenderer} = require('electron');
+// const {ipcRenderer} = require('electron');
+import {resolve} from 'path';
 
-var libs = require('require-all')(__dirname + '/themes/default/js');
+let jspath = resolve(__dirname, '../themes/default/js');
+var libs = require('require-all')(jspath);
 const $ = require('jquery');
 // console.log(libs);
     // $('#slides').bind('DOMSubtreeModified', imagesLeft);

@@ -14,8 +14,8 @@ import {reload} from './lib/reload-presentation';
 import {watch} from './lib/watcher';
 import {switchTheme, loadCustomTheme} from './lib/themes';
 import {sender, senderManaged} from './lib/sender';
-import {openNotesWindow} from './lib/windows';
 const windowManager = require('electron-window-manager');
+import {openNotesWindow} from './lib/windows';
 
 
 export function buildTemplate(windows) {
@@ -201,22 +201,15 @@ export function buildTemplate(windows) {
     label: 'Window',
     role: 'window',
     submenu: [
-  //     {
-  //       label: 'Open Speaker Notes',
-  //       accelerator: 'CmdOrCtrl+N',
-  //       click: ()=>{
-  //         // let notesWin = windowManager.get('notes');
-  //         // openNotesWindow();
-  //         // notesWin.open();
-  //         let notesWin = windowManager.createNew('notes',
-  //   'Speaker Notes',
-  //   `file://${__dirname}/views/comments.html`,
-  //   'notes');
-
-  // // console.log('global.config', global.config);
-  //         notesWin.open();
-  //       }
-  //     },
+      // {
+      //   label: 'Open Speaker Notes',
+      //   accelerator: 'CmdOrCtrl+N',
+      //   click: ()=>{
+      //     if(windowManager.get('notes') === false) {
+      //       openNotesWindow();
+      //     }
+      //   }
+      // },
       {
         label: 'Minimize',
         accelerator: 'CmdOrCtrl+M',

@@ -162,8 +162,10 @@ window.onload = () => { // eslint-disable-line no-undef
     });
   }
 
-  function switchCSS(themeName, cssLinkIndex) {
-    let cssFilePath = __dirname + '/themes/' + themeName + '/css/';
+
+
+  function switchCSS(cssFilePath, cssLinkIndex) {
+
     let oldLink = document.getElementsByTagName('link').item(cssLinkIndex); // eslint-disable-line no-undef
     let newLink = document.createElement('link'); // eslint-disable-line no-undef
     newLink.setAttribute('rel', 'stylesheet');
@@ -177,6 +179,15 @@ window.onload = () => { // eslint-disable-line no-undef
       newLink.setAttribute('href', cssFilePath + 'main-comments.css');
     }
     document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink); // eslint-disable-line no-undef
+  }
+
+  function switchToBuildInCSS(themeName) {
+    let cssFilePath = __dirname + '/themes/' + themeName + '/css/';
+    switchCSS(cssFilePath, 0);
+  }
+
+  function switchToCustomCSS(filePath) {
+    switchCSS(filePath, 0);
   }
   // -----------execution-------------------
   ipcRenderer.on('new-file', (event, arg) => {
@@ -231,13 +242,16 @@ window.onload = () => { // eslint-disable-line no-undef
   });
 
   ipcRenderer.on('switch-theme', (event, arg) => {
-    console.log('switcht ', arg.msg);
+    // console.log('switch', arg.msg);
     // themeLoaderJS(__dirname + '/' + arg.msg.path + '/js');
-    switchCSS(arg.msg, 0);
+    switchToBuildInCSS(arg.msg, 0);
   });
 
   ipcRenderer.on('switch-custom-theme', (event, arg) =>{
     console.log('switch to custom theme: ', arg);
+    if(arg.msg.css.slidesTheme === true) {
+      switchToCustomCSS(arg.msg.css.path + '/');
+    }
   });
 
   ipcRenderer.on('plus', (event, arg) => {

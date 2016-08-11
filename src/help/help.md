@@ -436,7 +436,7 @@ There are a lot of nice Markdown presentation tools out there. So why did we wri
 
 ## Credits
 
-This application is proudly developed @ the University of Applied Sciences Potsdam (Germany) by Sebastian Meier ([@seb_meier](https://twitter.com/seb_meier)) & Fabian Morón Zirfas ([fabiantheblind](https://twitter.com/fabiantheblind)).
+This application is proudly developed @ the University of Applied Sciences Potsdam (Germany) by Sebastian Meier ([@seb_meier](https://twitter.com/seb_meier)) & Fabian Morón Zirfas ([@fabiantheblind](https://twitter.com/fabiantheblind)).
 
 Thanks go out to:  
 [@PDXIII](https://twitter.com/pdxiii) & [@SZirfas](https://twitter.com/szirfas) for the input on the logo design. To [@janfromm](https://twitter.com/janfromm) for his beautiful CamingoCode and [@FAlthausen](https://twitter.com/falthausen) for the sweet Vollkorn font. All the awesome node module and electron authors who make developing applications possible To Heki for beeing such a cutie.  

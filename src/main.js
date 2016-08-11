@@ -10,11 +10,11 @@ const shell = electron.shell;
 const pkg = require('./package.json');
 const Config = require('electron-config');
 const windowManager = require('electron-window-manager');
-
+import {initWindows} from './lib/windows';
 if (process.env.NODE_ENV === 'development') {// eslint-disable-line no-process-env
   require('electron-reload')(__dirname);
 }
-import {helpLoader, initialHelpLoader, initialHelpLoaderManaged} from './help/help-loader';
+import {helpLoader, initialHelpLoaderManaged} from './help/help-loader';
 import {buildTemplate} from './menu';
 import {watch} from './lib/watcher';
 import {processFile} from './lib/files';
@@ -49,54 +49,54 @@ function createWindows() {
   //   titleBarStyle: 'hidden'
   // });
 
-  windowManager.init({
-    layouts: {
-      slides: '/views/slides.html',
-      notes: '/views/comments.html'
-    }
-  });
+  // windowManager.init({
+  //   layouts: {
+  //     slides: '/views/slides.html',
+  //     notes: '/views/comments.html'
+  //   }
+  // });
+  initWindows(width, height);
+  // windowManager.templates.set('slides', {
+  //   width: (width / 3) * 2,
+  //   height: height,
+  //   x: 0,
+  //   y: 0,
+  //   title: 'Frontal',
+  //   closable: true,
+  //   frame: false,
+  //   titleBarStyle: 'hidden',
+  //   resizable: true
+  // });
 
-  windowManager.templates.set('slides', {
-    width: (width / 3) * 2,
-    height: height,
-    x: 0,
-    y: 0,
-    title: 'Frontal',
-    closable: true,
-    frame: false,
-    titleBarStyle: 'hidden',
-    resizable: true
-  });
+  // windowManager.templates.set('notes', {
+  //   width: (width / 3),
+  //   height: height,
+  //   x: (width / 3) * 2,
+  //   y: 0,
+  //   closable: false,
+  //   frame: false,
+  //   titleBarStyle: 'hidden',
+  //   title: 'Frontal Speaker Notes',
+  //   resizable: true
 
-  windowManager.templates.set('notes', {
-    width: (width / 3),
-    height: height,
-    x: (width / 3) * 2,
-    y: 0,
-    closable: false,
-    frame: false,
-    titleBarStyle: 'hidden',
-    title: 'Frontal Speaker Notes',
-    resizable: true
+  // });
 
-  });
-
-  windowManager.templates.set('source', {
-      closable: true,
-      title: 'Intro Source',
-      defaultEncoding: 'utf8',
-      webPreferences: {
-      defaultFontSize: 20,
-      defaultMonospaceFontSize: 20
-    },
-      width: (width / 3),
-      height: height,
-      x: (width / 3) * 2,
-      y: 0,
-      frame: false,
-      titleBarStyle: 'hidden',
-      resizable: true
-    });
+  // windowManager.templates.set('source', {
+  //   closable: true,
+  //   title: 'Intro Source',
+  //   defaultEncoding: 'utf8',
+  //   webPreferences: {
+  //     defaultFontSize: 20,
+  //     defaultMonospaceFontSize: 20
+  //   },
+  //   width: (width / 3),
+  //   height: height,
+  //   x: (width / 3) * 2,
+  //   y: 0,
+  //   frame: false,
+  //   titleBarStyle: 'hidden',
+  //   resizable: true
+  // });
   // and load the index.html of the app.
   // global.slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
   let introWin = windowManager.createNew('intro', 'Intro', `file://${__dirname}/views/slides.html`, 'slides');

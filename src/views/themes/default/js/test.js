@@ -1,3 +1,3 @@
-export default function (){
-  // console.log('Automagically loaded script');
+export default function () {
+  console.log('Automagically loaded script');
 }
