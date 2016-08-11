@@ -13,7 +13,10 @@ import {helpLoader} from './help/help-loader';
 import {reload} from './lib/reload-presentation';
 import {watch} from './lib/watcher';
 import {switchTheme, loadCustomTheme} from './lib/themes';
-import {sender} from './lib/sender';
+import {sender, senderManaged} from './lib/sender';
+import {openNotesWindow} from './lib/windows';
+const windowManager = require('electron-window-manager');
+
 
 export function buildTemplate(windows) {
   let template = [{
@@ -89,25 +92,29 @@ export function buildTemplate(windows) {
       label: 'Previous',
       accelerator: 'Up',
       click: function() {
-        sender(windows, 'up', 'Hello up from main!');
+        senderManaged('up', 'Hello up from main!');
+        // sender(windows, 'up', 'Hello up from main!');
       }
     }, {
       label: 'Next',
       accelerator: 'Down',
       click: function() {
-        sender(windows, 'down', 'Hello down from main!');
+        senderManaged('down', 'Hello down from main!');
+        // sender(windows, 'down', 'Hello down from main!');
       }
     }, {
       label: 'BWD',
       accelerator: 'left',
       click: function() {
-        sender(windows, 'up', 'Hello up from main!');
+        senderManaged('up', 'Hello up from main!');
+        // sender(windows, 'up', 'Hello up from main!');
       }
     }, {
       label: 'FWD',
       accelerator: 'Right',
       click: function() {
-        sender(windows, 'down', 'Hello down from main!');
+        senderManaged('down', 'Hello down from main!');
+        // sender(windows, 'down', 'Hello down from main!');
       }
     }, {
       type: 'separator'
@@ -115,19 +122,22 @@ export function buildTemplate(windows) {
       label: 'Zoom in',
       accelerator: 'CmdOrCtrl+Plus',
       click: () => {
-        sender(windows, 'plus', 'plus');
+        senderManaged('plus', 'plus');
+        // sender(windows, 'plus', 'plus');
       }
     }, {
       label: 'Zoom out',
       accelerator: 'CmdOrCtrl+-',
       click: () => {
-        sender(windows, 'minus', 'minus');
+        senderManaged('minus', 'minus');
+        // sender(windows, 'minus', 'minus');
       }
     }, {
       label: 'Zoom 100%',
       accelerator: 'CmdOrCtrl+0',
       click: () => {
-        sender(windows, 'zoom-reset', '100');
+        senderManaged('zoom-reset', '100');
+        // sender(windows, 'zoom-reset', '100');
       }
     }, {
       type: 'separator'
@@ -135,19 +145,22 @@ export function buildTemplate(windows) {
       label: 'Zoom in notes',
       accelerator: 'CmdOrCtrl+7',
       click: () => {
-        sender(windows, 'dot', 'dot');
+        senderManaged('dot', 'dot');
+        // sender(windows, 'dot', 'dot');
       }
     }, {
       label: 'Zoom out notes',
       accelerator: 'CmdOrCtrl+8',
       click: () => {
-        sender(windows, 'comma', 'comma');
+        senderManaged('comma', 'comma');
+        // sender(windows, 'comma', 'comma');
       }
     }, {
       label: 'Zoom 100% notes',
       accelerator: 'CmdOrCtrl+9',
       click: () => {
-        sender(windows, 'zoom-reset-notes', '100');
+        senderManaged('zoom-reset-notes', '100');
+        // sender(windows, 'zoom-reset-notes', '100');
       }
     }, {
       type: 'separator'
@@ -187,15 +200,32 @@ export function buildTemplate(windows) {
   }, {
     label: 'Window',
     role: 'window',
-    submenu: [{
-      label: 'Minimize',
-      accelerator: 'CmdOrCtrl+M',
-      role: 'minimize'
-    }, {
-      label: 'Close',
-      accelerator: 'CmdOrCtrl+W',
-      role: 'close'
-    }]
+    submenu: [
+  //     {
+  //       label: 'Open Speaker Notes',
+  //       accelerator: 'CmdOrCtrl+N',
+  //       click: ()=>{
+  //         // let notesWin = windowManager.get('notes');
+  //         // openNotesWindow();
+  //         // notesWin.open();
+  //         let notesWin = windowManager.createNew('notes',
+  //   'Speaker Notes',
+  //   `file://${__dirname}/views/comments.html`,
+  //   'notes');
+
+  // // console.log('global.config', global.config);
+  //         notesWin.open();
+  //       }
+  //     },
+      {
+        label: 'Minimize',
+        accelerator: 'CmdOrCtrl+M',
+        role: 'minimize'
+      }, {
+        label: 'Close',
+        accelerator: 'CmdOrCtrl+W',
+        role: 'close'
+      }]
   }, {
     label: 'Help',
     role: 'help',
@@ -264,7 +294,8 @@ export function buildTemplate(windows) {
         label: 'Quit',
         accelerator: 'Command+Q',
         click: function() {
-            // app.quit();
+          // app.quit();
+          windowManager.closeAll();
           app.exit(0);
         }
       }]

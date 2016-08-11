@@ -1,12 +1,9 @@
-import {
-  start,
-  stop,
-  reset
-} from './utils/stopwatch';
+import {start, stop, reset} from './stopwatch';
 const $ = require('jquery');
 const remote = require('electron').remote;
-let slidesWindow = remote.getGlobal('slidesWindow');
-
+// let slidesWindow = remote.getGlobal('slidesWindow');
+// const {ipcRenderer, remote} = require('electron');
+const windowManager = remote.require('electron-window-manager');
 function setButtons() {
   let buttonids = ['start', 'stop', 'reset'];
   buttonids.forEach((ele, i, arr) => {
@@ -15,11 +12,11 @@ function setButtons() {
       if (ele === 'start') {
         button.onclick = start;
         button.addEventListener('click', (e) => {
-          if (!slidesWindow.isFullScreen()) {
-            // if (!slidesWindow.isMaximized()) {
-            // slidesWindow.maximize();
-            slidesWindow.setFullScreen(true);
-          }
+          // if (!slidesWindow.isFullScreen()) {
+          //   // if (!slidesWindow.isMaximized()) {
+          //   // slidesWindow.maximize();
+          //   slidesWindow.setFullScreen(true);
+          // }
         });
       }
       if (ele === 'stop') {
@@ -34,7 +31,7 @@ function setButtons() {
 
 function clock() {
   setInterval(function() {
-    document.getElementById("time-clock").innerHTML = (new Date()).toLocaleTimeString();
+    document.getElementById('time-clock').innerHTML = (new Date()).toLocaleTimeString();
   }, 1000);
 }
 // function getOvertime() {

@@ -6,25 +6,26 @@ const ipcMain = electron.ipcMain;
 const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
-const webContents = electron.webContents;
+// const webContents = electron.webContents;
 const pkg = require('./package.json');
 const Config = require('electron-config');
+const windowManager = require('electron-window-manager');
 
 if (process.env.NODE_ENV === 'development') {// eslint-disable-line no-process-env
   require('electron-reload')(__dirname);
 }
-import {helpLoader, initialHelpLoader} from './help/help-loader';
+import {helpLoader, initialHelpLoader, initialHelpLoaderManaged} from './help/help-loader';
 import {buildTemplate} from './menu';
 import {watch} from './lib/watcher';
 import {processFile} from './lib/files';
 import {sender} from './lib/sender';
-
+import {openNotesWindow} from './lib/windows';
 global.name = null;
 global.database = null;
 global.presetationRoot = null;
 global.presentationFile = null;
-global.slidesWindow = null;
-global.commentsWindow = null;
+// global.slidesWindow = null;
+// global.commentsWindow = null;
 global.helpFilePath = `${__dirname}/help/help.md`;
 global.config = new Config(require('./config/default.json'));
 
@@ -37,29 +38,37 @@ function createWindows() {
     width,
     height
   } = electron.screen.getPrimaryDisplay().workAreaSize;
-  global.slidesWindow = new BrowserWindow({
+// global.slidesWindow = new BrowserWindow({
+  //   width: (width / 3) * 2,
+  //   height: height,
+  //   x: 0,
+  //   y: 0,
+  //   title: 'Frontal',
+  //   closable: false,
+  //   frame: false,
+  //   titleBarStyle: 'hidden'
+  // });
+
+  windowManager.init({
+    layouts: {
+      slides: '/views/slides.html',
+      notes: '/views/comments.html'
+    }
+  });
+
+  windowManager.templates.set('slides', {
     width: (width / 3) * 2,
     height: height,
     x: 0,
     y: 0,
     title: 'Frontal',
-    closable: false,
+    closable: true,
     frame: false,
-    titleBarStyle: 'hidden'
+    titleBarStyle: 'hidden',
+    resizable: true
   });
-  // and load the index.html of the app.
-  global.slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
-  // Open the DevTools.
-  // global.slidesWindow.webContents.openDevTools();
-  //
-  // Emitted when the window is closed.
-  global.slidesWindow.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    global.slidesWindow = null;
-  });
-  global.commentsWindow = new BrowserWindow({
+
+  windowManager.templates.set('notes', {
     width: (width / 3),
     height: height,
     x: (width / 3) * 2,
@@ -67,19 +76,73 @@ function createWindows() {
     closable: false,
     frame: false,
     titleBarStyle: 'hidden',
-    title: 'Frontal Speaker Notes'
+    title: 'Frontal Speaker Notes',
+    resizable: true
+
   });
+
+  windowManager.templates.set('source', {
+      closable: true,
+      title: 'Intro Source',
+      defaultEncoding: 'utf8',
+      webPreferences: {
+      defaultFontSize: 20,
+      defaultMonospaceFontSize: 20
+    },
+      width: (width / 3),
+      height: height,
+      x: (width / 3) * 2,
+      y: 0,
+      frame: false,
+      titleBarStyle: 'hidden',
+      resizable: true
+    });
   // and load the index.html of the app.
-  global.commentsWindow.loadURL(`file://${__dirname}/views/comments.html`);
+  // global.slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
+  let introWin = windowManager.createNew('intro', 'Intro', `file://${__dirname}/views/slides.html`, 'slides');
+  // let notesWindow = openNotesWindow();
+  let notesWindow = windowManager.createNew('notes',
+    'Speaker Notes',
+    `file://${__dirname}/views/comments.html`,
+    'notes');
+
+  // // console.log('global.config', global.config);
+  notesWindow.open();
+  if(global.config.get('showIntroOnStratup') === true) {
+    introWin.open();
+    // windowManager.open('intro', 'Intro', `file://${__dirname}/views/slides.html`, 'slides');
+  }
+  // Open the DevTools.
+  // global.slidesWindow.webContents.openDevTools();
+  //
+  // Emitted when the window is closed.
+  // global.slidesWindow.on('closed', () => {
+  //   // Dereference the window object, usually you would store windows
+  //   // in an array if your app supports multi windows, this is the time
+  //   // when you should delete the corresponding element.
+  //   global.slidesWindow = null;
+  // });
+  // global.commentsWindow = new BrowserWindow({
+  //   width: (width / 3),
+  //   height: height,
+  //   x: (width / 3) * 2,
+  //   y: 0,
+  //   closable: false,
+  //   frame: false,
+  //   titleBarStyle: 'hidden',
+  //   title: 'Frontal Speaker Notes'
+  // });
+  // and load the index.html of the app.
+  // global.commentsWindow.loadURL(`file://${__dirname}/views/comments.html`);
   // Open the DevTools.
   // global.commentsWindow.webContents.openDevTools();
   // Emitted when the window is closed.
-  global.commentsWindow.on('closed', function() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    global.commentsWindow = null;
-  });
+  // global.commentsWindow.on('closed', function() {
+  //   // Dereference the window object, usually you would store windows
+  //   // in an array if your app supports multi windows, this is the time
+  //   // when you should delete the corresponding element.
+  //   global.commentsWindow = null;
+  // });
 }
 
 function createMenues() {
@@ -103,18 +166,20 @@ app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    app.quit();
+    // app.quit();
+    app.exit(0);
+
   }
 });
 app.on('activate', function() {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  console.log('app:activate');
-  if (global.slidesWindow === null || global.commentsWindow === null) {
-    createWindows();
-    createMenues();
-    initialHelpLoader([global.slidesWindow, global.commentsWindow]);
-  }
+  // console.log('app:activate');
+  // if (global.slidesWindow === null || global.commentsWindow === null) {
+  createWindows();
+    // createMenues();
+    // initialHelpLoader([global.slidesWindow, global.commentsWindow]);
+  // }
 });
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -126,5 +191,7 @@ app.on('ready', () => {
   // global.config.set('foo', 'bah');
   createWindows();
   createMenues();
-  initialHelpLoader([global.slidesWindow, global.commentsWindow]);
+  initialHelpLoaderManaged();
+
+  // initialHelpLoader([global.slidesWindow, global.commentsWindow]);
 });

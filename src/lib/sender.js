@@ -5,6 +5,8 @@
  * @param  {[type]} msg   [description]
  * @return {[type]}       [description]
  */
+const windowManager = require('electron-window-manager');
+
 export function sender(wins, title, msg) {
   wins.forEach(function(w, i) {
     console.log('this is the ms in sender: ', msg);
@@ -15,3 +17,25 @@ export function sender(wins, title, msg) {
     }
   });
 }
+
+export function senderManaged(title, msg) {
+  let currWin = windowManager.getCurrent();
+  console.log(msg);
+  if(currWin !== false) {
+    currWin.content().send(title, {msg: msg});
+  }
+}
+
+export function senderManagedNewFile(title, msg, name) {
+  let currWin = windowManager.get(name);
+  // console.log(msg);
+  currWin.content().on('did-finish-load', ()=>{
+    currWin.content().send(title, {msg: msg});
+    currWin.content().send('switch-theme', {
+      msg: global.config.get('currentTheme')
+    });
+  });
+
+}
+
+

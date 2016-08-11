@@ -2,12 +2,13 @@ const electron = require('electron');
 const app = electron.app;
 const dialog = electron.dialog;
 import {processing} from './processor';
-import {sender} from './sender';
+import {sender, senderManaged, senderManagedNewFile} from './sender';
 import {watch} from './watcher';
 import {yamlLoader} from './load-yaml';
 import {tomlLoader} from './load-toml';
-import {dirname, resolve} from 'path';
+import {dirname, resolve, basename, extname} from 'path';
 import * as fs from 'fs';
+const windowManager = require('electron-window-manager');
 
 export function detectTomlConfig(filePath) {
   var onlypath = dirname(filePath);
@@ -56,7 +57,7 @@ export function getRecentFiles () {
 }
 
 export function processFile(file) {
-  sender([global.slidesWindow, global.commentsWindow], 'new-file', null);
+  // sender([global.slidesWindow, global.commentsWindow], 'new-file', null);
   let presentationFile = file;
   app.addRecentDocument(presentationFile);
   setRecentFiles(presentationFile);
@@ -65,7 +66,18 @@ export function processFile(file) {
   let slidesHTML = processing(presentationFile, parsedYaml);
   watch(presentationFile);
   global.presentationFile = presentationFile;
-  sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
+  let name = basename(presentationFile).replace(/[^a-z0-9]/gi, '_').toLowerCase();
+  let slideLayoutPath = resolve(__dirname, '../views/slides.html');
+  // console.log('slideLayoutPath', slideLayoutPath);
+
+  let newWin = windowManager.createNew(name,
+    'Slides',
+    `file://${slideLayoutPath}`,
+    'slides');
+  newWin.open();
+  // console.log(slidesHTML);
+  senderManagedNewFile('slides', slidesHTML, name);
+  // sender([global.slidesWindow, global.commentsWindow], 'slides', slidesHTML);
 }
 
 export function folderExists(folderPath) {

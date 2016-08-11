@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-
 const fs = require('fs');
-let pre = `<html>
-<head>
-<meta charset="UTF-8">
+let pre = `<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     body {
   margin: 0 auto;
@@ -16,7 +18,7 @@ let pre = `<html>
   code,
 pre {
    background: #f5f7f9;
-  border-bottom: 1px solid #d8dee9;
+  border-bottom: 1px solid #642428;
   color: ##131618;
 
 
@@ -30,11 +32,19 @@ code {
 
 pre {
   padding: 1em;
-  border-left: 2px solid #69c;
+  border-left: 2px solid #E96368;
+}
+header{
+  min-height:10em;
+  background-image:url('./images/icon_256x256.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 </style>
 </head>
-<body>
+<body id="body">
+<header id="header"></header>
+<script>require('./help-renderer.js');</script>
 <pre style="word-wrap: break-word; white-space: pre-wrap;">`;
 let post = `</pre>
 </body>

@@ -1,10 +1,14 @@
+
 const {ipcRenderer} = require('electron');
+const remote = require('electron').remote;
+
 const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
 import {themeLoaderJS} from './lib/theme-loader';
 
-var shell = require('electron').shell;
-
+const windowManager = remote.require('electron-window-manager');
+const shell = require('electron').shell;
+const padStart = require('lodash.padStart');
 const drag = require('electron-drag');
 window.onload = () => { // eslint-disable-line no-undef
   // const {
@@ -38,7 +42,7 @@ window.onload = () => { // eslint-disable-line no-undef
   // Pass a query selector or a dom element to the function.
   // Dragging the element will drag the whole window.
   var clearF = drag('#frontal');
-  var clearN = drag('#notes');
+  // var clearN = drag('#notes');
   // Call the returned function to make the element undraggable again.
   // clear();
   // Fallback to using -webkit-app-region property.
@@ -75,19 +79,19 @@ window.onload = () => { // eslint-disable-line no-undef
     return ndx;
   }
 
-  function setCurrentSlideNumber() {
-    let curr = document.getElementById('slides-current');// eslint-disable-line no-undef
-    if (curr !== null) {
-      curr.innerHTML = currentSlide + 1;
-    }
-  }
+  // function setCurrentSlideNumber() {
+  //   let curr = document.getElementById('slides-current');// eslint-disable-line no-undef
+  //   if (curr !== null) {
+  //     curr.innerHTML = currentSlide + 1;
+  //   }
+  // }
 
-  function setSlideslength(i) {
-    let len = document.getElementById('slides-length');// eslint-disable-line no-undef
-    if (len !== null) {
-      len.innerHTML = i;
-    }
-  }
+  // function setSlideslength(i) {
+  //   let len = document.getElementById('slides-length');// eslint-disable-line no-undef
+  //   if (len !== null) {
+  //     len.innerHTML = i;
+  //   }
+  // }
 
   function setHeaderFooter(html, name) {
     let elementsHTMLCollection = document.getElementsByTagName(name);// eslint-disable-line no-undef
@@ -145,9 +149,15 @@ window.onload = () => { // eslint-disable-line no-undef
         if (ele === 'slides') {
           element.innerHTML = cnt.slide;
           setAttributes(cnt.attributes);
-        } else if (ele === 'comments') {
-          element.innerHTML = cnt.comments;
+          windowManager.bridge.emit('content', {
+            message: {comment: cnt.comments,
+                      currentSlide: padStart(currentSlide + 1, String(content.msg.length).length, '0'),
+                        currentSlidesLength: content.msg.length}
+          });
         }
+        //  else if (ele === 'comments') {
+        //   element.innerHTML = cnt.comments;
+        // }
       }
     });
   }
@@ -182,7 +192,7 @@ window.onload = () => { // eslint-disable-line no-undef
     console.log(content);
     increaseSlideNumber();
     setContent();
-    setCurrentSlideNumber();
+    // setCurrentSlideNumber();
     // document.getElementByClassName('content')
     // .innerHTML = currentSlide;
   });
@@ -190,7 +200,7 @@ window.onload = () => { // eslint-disable-line no-undef
     console.log(content);
     decreaseSlideNumber();
     setContent();
-    setCurrentSlideNumber();
+    // setCurrentSlideNumber();
     // document.getElementByClassName('content')
     // .innerHTML = currentSlide;
   });
@@ -202,8 +212,8 @@ window.onload = () => { // eslint-disable-line no-undef
     console.log(arg);
     content = arg;
     setContent();
-    setCurrentSlideNumber();
-    setSlideslength(content.msg.length);
+    // setCurrentSlideNumber();
+    // setSlideslength(content.msg.length);
     // ids.forEach((ele, index, array) => {
     //   let element = document.getElementById(ele);
     //   if (element !== null) {

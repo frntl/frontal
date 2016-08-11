@@ -2,13 +2,18 @@
 import {
   sender
 } from './sender';
-import {processFile} from './files';
+import {processing} from './processor';
+import {detectTomlConfig} from './files';
+
 
 const chalk = require('chalk');
 export function reload() {
 
   if (global.presentationFile !== null) {
-    processFile(global.presentationFile);
+    // processFile(global.presentationFile);
+    let parsedYaml = detectTomlConfig(global.presentationFile);
+    let slidesHTML = processing(global.presentationFile, parsedYaml);
+    senderManaged('slides', slidesHTML);
     // let res = processing(global.presentationFile, null);
     // // console.log('res in menu.js ', res);
     // if (res !== null) {
