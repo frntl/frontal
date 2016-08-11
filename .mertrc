@@ -2,7 +2,8 @@ root: "~/Documents/frntl/frontal"
 layout:
   -
     - npm run watch
-    - npm run sass
+    - npm run sassdefault
+    - npm run sassblank
   -
     - ls
     - ls
