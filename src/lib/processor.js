@@ -2,8 +2,6 @@ import {slides} from './slides';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import {sender} from './sender';
-
 export function processing (filePath, config) {
   if(config) {
     console.log('We have a toml file');

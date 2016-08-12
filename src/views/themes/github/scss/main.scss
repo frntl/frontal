@@ -1,0 +1,73 @@
+@import "../../../../node_modules/github-markdown-css/github-markdown.css";
+
+$headerHeight: 35px;
+$headerPadding: 10px;
+
+@mixin flexcenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header, footer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 0.8em;
+  box-sizing: border-box;
+  margin-top: auto;
+  overflow: hidden;
+  position: absolute;
+  font-size: 0.8rem;
+  text-align: right;
+  width: 100%;
+  left: 0;
+}
+header {
+  top: 0;
+  height: $headerHeight;
+  padding-top: $headerPadding;
+  padding-right: $headerPadding;
+}
+footer {
+  bottom: 0;
+  height: $headerHeight;
+  padding-bottom: $headerPadding;
+  padding-right: $headerPadding;
+}
+body#frontal {
+  margin: 0 auto;
+  padding: 0;
+  @include flexcenter();
+  max-height: 100%;
+  max-width: 50em;
+  overflow: hidden;
+  // font-size: 1.3em;
+  // line-height: 1.5;
+  // color: $textColor;
+  word-wrap: break-word;
+  // hyphens: auto;
+  // background-color: #FFFFFF;
+}
+.markdown-body {
+      padding-top: $headerHeight;
+    padding-bottom: $headerHeight;
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  // padding: 45px;
+  // padding: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+pre {
+  min-width: 100%;
+  text-align: left;
+  padding: 1em;
+}
+code {
+  text-align: left;
+}

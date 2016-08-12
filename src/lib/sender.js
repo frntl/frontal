@@ -7,16 +7,16 @@
  */
 const windowManager = require('electron-window-manager');
 
-export function sender(wins, title, msg) {
-  wins.forEach(function(w, i) {
-    console.log('this is the ms in sender: ', msg);
-    if (w !== null) {
-      w.webContents.send(title, {
-        msg: msg
-      });
-    }
-  });
-}
+// export function sender(wins, title, msg) {
+//   wins.forEach(function(w, i) {
+//     console.log('this is the ms in sender: ', msg);
+//     if (w !== null) {
+//       w.webContents.send(title, {
+//         msg: msg
+//       });
+//     }
+//   });
+// }
 
 export function senderManaged(title, msg) {
   let currWin = windowManager.getCurrent();

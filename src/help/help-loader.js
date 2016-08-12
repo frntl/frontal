@@ -22,7 +22,7 @@ function send(win, title, data) {
 function readHelpFile() {
   let tomlRes = detectTomlConfig(global.helpFilePath);
   let slidesHTML = processing(global.helpFilePath, tomlRes);
-  if(process.env.NODE_ENV === 'development') {
+  if(global.isDev) {
     global.presentationFile = global.helpFilePath;
     watch(global.presentationFile);
   }

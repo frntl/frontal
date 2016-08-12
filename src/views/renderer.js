@@ -1,16 +1,16 @@
-
+/* global window, document*/
 const {ipcRenderer} = require('electron');
 const remote = require('electron').remote;
 
 const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
-import {themeLoaderJS} from './lib/theme-loader';
+import {switchToBuildInJS} from './lib/theme-loader';
 
 const windowManager = remote.require('electron-window-manager');
 const shell = require('electron').shell;
 const padStart = require('lodash.padStart');
 const drag = require('electron-drag');
-window.onload = () => { // eslint-disable-line no-undef
+window.onload = () => {
   // const {
   //   webFrame
   // } = require('electron');
@@ -19,20 +19,20 @@ window.onload = () => { // eslint-disable-line no-undef
   let initialSlidesFontsize = null;
   let initialSlidesHeaderFontsize = null;
   let initialSlidesFooterFontsize = null;
-  if (document.getElementById('comments') !== null) {// eslint-disable-line no-undef
-    initialCommentsFontsize = getComputedFontSize(document.getElementById('comments'));// eslint-disable-line no-undef
+  if (document.getElementById('comments') !== null) {
+    initialCommentsFontsize = getComputedFontSize(document.getElementById('comments'));
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
-  if (document.getElementById('frontal') !== null) {// eslint-disable-line no-undef
-    initialSlidesFontsize = getComputedFontSize(document.getElementById('frontal'));// eslint-disable-line no-undef
+  if (document.getElementById('frontal') !== null) {
+    initialSlidesFontsize = getComputedFontSize(document.getElementById('frontal'));
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
-  if (document.getElementById('header') !== null) {// eslint-disable-line no-undef
-    initialSlidesHeaderFontsize = getComputedFontSize(document.getElementById('header'));// eslint-disable-line no-undef
+  if (document.getElementById('header') !== null) {
+    initialSlidesHeaderFontsize = getComputedFontSize(document.getElementById('header'));
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
-  if (document.getElementById('footer') !== null) {// eslint-disable-line no-undef
-    initialSlidesFooterFontsize = getComputedFontSize(document.getElementById('footer'));// eslint-disable-line no-undef
+  if (document.getElementById('footer') !== null) {
+    initialSlidesFooterFontsize = getComputedFontSize(document.getElementById('footer'));
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
   let content = null;
@@ -47,8 +47,8 @@ window.onload = () => { // eslint-disable-line no-undef
   // clear();
   // Fallback to using -webkit-app-region property.
   if (!drag.supported) {
-    document.querySelector('#frontal').style['-webkit-app-region'] = 'drag';// eslint-disable-line no-undef
-    document.querySelector('#notes').style['-webkit-app-region'] = 'drag';// eslint-disable-line no-undef
+    document.querySelector('#frontal').style['-webkit-app-region'] = 'drag';
+    document.querySelector('#notes').style['-webkit-app-region'] = 'drag';
   }
 
   function increaseSlideNumber() {
@@ -80,21 +80,21 @@ window.onload = () => { // eslint-disable-line no-undef
   }
 
   // function setCurrentSlideNumber() {
-  //   let curr = document.getElementById('slides-current');// eslint-disable-line no-undef
+  //   let curr = document.getElementById('slides-current');
   //   if (curr !== null) {
   //     curr.innerHTML = currentSlide + 1;
   //   }
   // }
 
   // function setSlideslength(i) {
-  //   let len = document.getElementById('slides-length');// eslint-disable-line no-undef
+  //   let len = document.getElementById('slides-length');
   //   if (len !== null) {
   //     len.innerHTML = i;
   //   }
   // }
 
   function setHeaderFooter(html, name) {
-    let elementsHTMLCollection = document.getElementsByTagName(name);// eslint-disable-line no-undef
+    let elementsHTMLCollection = document.getElementsByTagName(name);
     let elements = Array.from(elementsHTMLCollection);
     elements.forEach((ele, i, arr) => {
       ele.innerHTML = html;
@@ -143,7 +143,7 @@ window.onload = () => { // eslint-disable-line no-undef
     let cnt = content.msg[constrain(currentSlide, content.msg)];
     // console.log(cnt);
     ids.forEach((ele, index, array) => {
-      let element = document.getElementById(ele); // eslint-disable-line no-undef
+      let element = document.getElementById(ele);
       if (element !== null) {
         console.log(`found ${ele} div`);
         if (ele === 'slides') {
@@ -162,12 +162,10 @@ window.onload = () => { // eslint-disable-line no-undef
     });
   }
 
-
-
   function switchCSS(cssFilePath, cssLinkIndex) {
 
-    let oldLink = document.getElementsByTagName('link').item(cssLinkIndex); // eslint-disable-line no-undef
-    let newLink = document.createElement('link'); // eslint-disable-line no-undef
+    let oldLink = document.getElementsByTagName('link').item(cssLinkIndex);
+    let newLink = document.createElement('link');
     newLink.setAttribute('rel', 'stylesheet');
     newLink.setAttribute('type', 'text/css');
     if(oldLink.id === 'slides-link') {
@@ -178,7 +176,7 @@ window.onload = () => { // eslint-disable-line no-undef
       newLink.setAttribute('id', 'comments-link');
       newLink.setAttribute('href', cssFilePath + 'main-comments.css');
     }
-    document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink); // eslint-disable-line no-undef
+    document.getElementsByTagName('head').item(0).replaceChild(newLink, oldLink);
   }
 
   function switchToBuildInCSS(themeName) {
@@ -242,9 +240,10 @@ window.onload = () => { // eslint-disable-line no-undef
   });
 
   ipcRenderer.on('switch-theme', (event, arg) => {
-    // console.log('switch', arg.msg);
-    // themeLoaderJS(__dirname + '/' + arg.msg.path + '/js');
+    console.log('switch', arg.msg);
     switchToBuildInCSS(arg.msg, 0);
+    let jsFolderPath = __dirname + '/themes/' + arg.msg + '/js/';
+    switchToBuildInJS(jsFolderPath);
   });
 
   ipcRenderer.on('switch-custom-theme', (event, arg) =>{

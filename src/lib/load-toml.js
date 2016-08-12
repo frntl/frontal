@@ -23,7 +23,7 @@ export function tomlLoader(tomlFilePath) {
       let msg = 'Parsing error on line ' + err.line + ', column ' + err.column +
     ': ' + err.message + '\nPlease read the help file or take a look at the ' +
     '.toml specs https://github.com/toml-lang/toml';
-      if(process.env.NODE_ENV === 'development') { // eslint-disable-line no-process-env
+      if(global.isDev) { // eslint-disable-line no-process-env
         console.error(msg);
       }else{
         dialog.showErrorBox('Error parsing your .toml file', msg);

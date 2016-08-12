@@ -11,7 +11,6 @@ $headerPadding: 10px;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-
 }
 header, footer {
   font-family: 'Vollkorn-SemiItalic';
@@ -79,6 +78,8 @@ body#frontal {
 
 
   #slides {
+    padding-top: $headerHeight;
+    padding-bottom: $headerHeight;
   ol, ul {
     text-align: left ;
       max-width: 50vw;
@@ -86,8 +87,6 @@ body#frontal {
       text-align: left;
     }
   }
-    padding-top: $headerHeight;
-    padding-bottom: $headerHeight;
 
     h1, h2, h3, h4 {
       font-family: 'Vollkorn-Bold';
