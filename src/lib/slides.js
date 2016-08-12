@@ -1,9 +1,8 @@
 import * as parser from './parser';
 import {linker} from './images';
 import {hrefer} from './href-linker';
-import {uncomment} from './uncomment.js';
-import {processConfig} from './process-config';
-
+import {uncomment} from './uncomment';
+import {processToml} from './load-toml';
 const marked = require('marked');
 const isArray = require('lodash.isarray');
 const removeHtmlComments = require('remove-html-comments');
@@ -17,7 +16,7 @@ export function slides(data, config) {
   let tomlAttributes = null;
   if (config) {
     useTomlConfig = true;
-    tomlAttributes = processConfig(config, slds.length);
+    tomlAttributes = processToml(config, slds.length);
   }
 
   for (let i = 0; i < slds.length; i++) {

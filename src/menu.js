@@ -261,7 +261,7 @@ export function buildTemplate(windows) {
         label: 'Preferences',
         accelerator: 'Command+,',
         click: () => {
-          console.log('should open the preferences');
+          openPrefs();
         }
       },
       {

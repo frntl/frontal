@@ -4,7 +4,7 @@ const remote = require('electron').remote;
 
 const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
-import {switchToBuildInJS} from './lib/theme-loader';
+import {switchJS} from './lib/theme-loader';
 import {setAttributes, setHeaderFooter} from './lib/header-footer';
 const windowManager = remote.require('electron-window-manager');
 const shell = require('electron').shell;
@@ -72,58 +72,11 @@ window.onload = () => {
     return ndx;
   }
 
-  // function setCurrentSlideNumber() {
-  //   let curr = document.getElementById('slides-current');
-  //   if (curr !== null) {
-  //     curr.innerHTML = currentSlide + 1;
-  //   }
-  // }
-
-  // function setSlideslength(i) {
-  //   let len = document.getElementById('slides-length');
-  //   if (len !== null) {
-  //     len.innerHTML = i;
-  //   }
-  // }
-
-  // function setHeaderFooter(html, name) {
-  //   let elementsHTMLCollection = document.getElementsByTagName(name);
-  //   let elements = Array.from(elementsHTMLCollection);
-  //   elements.forEach((ele, i, arr) => {
-  //     ele.innerHTML = html;
-  //   });
-  // }
-
-  // function setAttributes(attr) {
-  //   // console.log(attr);
-  //   if (isEmpty(attr) === true) {
-  //     console.log('attributes are empty');
-  //     setHeaderFooter('', 'footer');
-  //     setHeaderFooter('', 'header');
-  //     return;
-  //   }
-  //   if (attr !== null) {
-  //     if ('footer' in attr) {
-  //       setHeaderFooter(attr.footer, 'footer');
-  //     }else {
-  //       setHeaderFooter('', 'footer');
-
-  //     }
-  //     if ('header' in attr) {
-  //       setHeaderFooter(attr.header, 'header');
-  //     }else{
-  //       setHeaderFooter('', 'header');
-
-  //     }
-  //   }
-  // }
   function setContent() {
     let cnt = content.msg[constrain(currentSlide, content.msg)];
-    // console.log(cnt);
     ids.forEach((ele, index, array) => {
       let element = document.getElementById(ele);
       if (element !== null) {
-        console.log(`found ${ele} div`);
         if (ele === 'slides') {
           element.innerHTML = cnt.slide;
           setAttributes(cnt.attributes);
@@ -133,9 +86,6 @@ window.onload = () => {
                         currentSlidesLength: content.msg.length}
           });
         }
-        //  else if (ele === 'comments') {
-        //   element.innerHTML = cnt.comments;
-        // }
       }
     });
   }
@@ -165,6 +115,8 @@ window.onload = () => {
   function switchToCustomCSS(filePath) {
     switchCSS(filePath, 0);
   }
+
+
   // -----------execution-------------------
   ipcRenderer.on('new-file', (event, arg) => {
     // reset all on new file
@@ -176,7 +128,7 @@ window.onload = () => {
   });
   ipcRenderer.on('down', (event, arg) => {
     // console.log(arg);
-    console.log(content);
+    // console.log(content);
     increaseSlideNumber();
     setContent();
     // setCurrentSlideNumber();
@@ -184,7 +136,7 @@ window.onload = () => {
     // .innerHTML = currentSlide;
   });
   ipcRenderer.on('up', (event, arg) => {
-    console.log(content);
+    // console.log(content);
     decreaseSlideNumber();
     setContent();
     // setCurrentSlideNumber();
@@ -196,61 +148,42 @@ window.onload = () => {
     // console.log(arg);
   });
   ipcRenderer.on('slides', (event, arg) => {
-    console.log(arg);
+    // console.log(arg);
     content = arg;
     setContent();
-    // setCurrentSlideNumber();
-    // setSlideslength(content.msg.length);
-    // ids.forEach((ele, index, array) => {
-    //   let element = document.getElementById(ele);
-    //   if (element !== null) {
-    //     console.log(`found ${ele} div`);
-    //     if (ele === 'slides') {
-    //       element.innerHTML = content.msg.slides[constrain(currentSlide, content.msg.slides)];
-    //     } else if (ele === 'comments') {
-    //       element.innerHTML = content.msg.comments[constrain(currentSlide, content.msg.comments)].comments;
-    //     }
-    //   }
-    // });
+
   });
   ipcRenderer.on('hello', (event, arg) => {
-    // console.log('hello');
   });
 
   ipcRenderer.on('switch-theme', (event, arg) => {
-    console.log('switch', arg.msg);
+    // console.log('switch', arg.msg);
     switchToBuildInCSS(arg.msg, 0);
     let jsFolderPath = __dirname + '/themes/' + arg.msg + '/js/';
-    switchToBuildInJS(jsFolderPath);
+    switchJS(jsFolderPath);
   });
 
   ipcRenderer.on('switch-custom-theme', (event, arg) =>{
-    console.log('switch to custom theme: ', arg);
+    // console.log('switch to custom theme: ', arg);
     if(arg.msg.css.slidesTheme === true) {
       switchToCustomCSS(arg.msg.css.path + '/');
+    }
+    if(arg.msg.js.path !== null) {
+      switchJS(arg.msg.js.path);
     }
   });
 
   ipcRenderer.on('plus', (event, arg) => {
-    // console.log(arg);
-    // zoomFactorSlides += 0.1;
-    // webFrame.setZoomFactor(zoomFactorSlides);
     setFontSize(2, null, 'frontal');
     setFontSize(2, null, 'header');
     setFontSize(2, null, 'footer');
   });
   ipcRenderer.on('minus', (event, arg) => {
-    // console.log(arg);
-    // zoomFactorSlides -= 0.1;
-    // webFrame.setZoomFactor(zoomFactorSlides);
     setFontSize(-2, null, 'frontal');
     setFontSize(-2, null, 'header');
     setFontSize(-2, null, 'footer');
   });
   ipcRenderer.on('zoom-reset', (event, arg) => {
-    // console.log(arg);
-    // zoomFactorSlides = 1;
-    // webFrame.setZoomFactor(zoomFactorSlides);
     setFontSize(null, initialSlidesFontsize, 'frontal');
     setFontSize(null, initialSlidesHeaderFontsize, 'header');
     setFontSize(null, initialSlidesFooterFontsize, 'footer');
@@ -260,22 +193,17 @@ window.onload = () => {
     windowManager.bridge.emit('comma', {
       message: {val: -2}
     });
-    // setFontSize(-2, null, 'comments');
   });
   ipcRenderer.on('dot', (event, arg) => {
     // increase speakerNotes
-    // console.log(arg);
     windowManager.bridge.emit('dot', {
       message: {val: 2}
     });
-    // setFontSize(2, null, 'comments');
   });
   ipcRenderer.on('zoom-reset-notes', (event, arg) => {
     // decrease speakerNotes
-    // console.log(arg);
     windowManager.bridge.emit('zoom-reset-notes', {
       message: {val: null}
     });
-    // setFontSize(null, initialCommentsFontsize, 'comments');
   });
 };

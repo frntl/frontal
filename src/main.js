@@ -1,4 +1,3 @@
-/* @flow */
 const electron = require('electron');
 const Menu = electron.Menu;
 const app = electron.app;
@@ -6,14 +5,13 @@ const ipcMain = electron.ipcMain;
 const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
-// const webContents = electron.webContents;
 const pkg = require('./package.json');
 const Config = require('electron-config');
 const windowManager = require('electron-window-manager');
 const isDev = require('electron-is-dev');
 const chalk = require('chalk');
 import {initWindows} from './lib/windows';
-if (isDev) {// eslint-disable-line no-process-env
+if (isDev) {
   require('electron-reload')(__dirname);
 }
 import {helpLoader, initialHelpLoaderManaged} from './help/help-loader';
@@ -27,9 +25,6 @@ global.database = null;
 global.presetationRoot = null;
 global.presentationFile = null;
 global.isDev = isDev;
-
-// global.slidesWindow = null;
-// global.commentsWindow = null;
 global.helpFilePath = `${__dirname}/help/help.md`;
 global.config = new Config(require('./config/default.json'));
 
