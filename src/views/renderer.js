@@ -5,24 +5,22 @@ const remote = require('electron').remote;
 const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
 import {switchToBuildInJS} from './lib/theme-loader';
-
+import {setAttributes, setHeaderFooter} from './lib/header-footer';
 const windowManager = remote.require('electron-window-manager');
 const shell = require('electron').shell;
 const padStart = require('lodash.padStart');
 const drag = require('electron-drag');
+
 window.onload = () => {
-  // const {
-  //   webFrame
-  // } = require('electron');
-  // let zoomFactorSlides = 1;
-  let initialCommentsFontsize = null;
+
+  let content = null;
+  let currentSlide = 0;
+  let ids = ['comments', 'slides'];
+  // let initialCommentsFontsize = null;
   let initialSlidesFontsize = null;
   let initialSlidesHeaderFontsize = null;
   let initialSlidesFooterFontsize = null;
-  if (document.getElementById('comments') !== null) {
-    initialCommentsFontsize = getComputedFontSize(document.getElementById('comments'));
-    // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
-  }
+
   if (document.getElementById('frontal') !== null) {
     initialSlidesFontsize = getComputedFontSize(document.getElementById('frontal'));
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
@@ -35,14 +33,9 @@ window.onload = () => {
     initialSlidesFooterFontsize = getComputedFontSize(document.getElementById('footer'));
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);
   }
-  let content = null;
-  let currentSlide = 0;
-  let ids = ['comments', 'slides'];
-  // console.log(webFrame);
   // Pass a query selector or a dom element to the function.
   // Dragging the element will drag the whole window.
   var clearF = drag('#frontal');
-  // var clearN = drag('#notes');
   // Call the returned function to make the element undraggable again.
   // clear();
   // Fallback to using -webkit-app-region property.
@@ -93,52 +86,37 @@ window.onload = () => {
   //   }
   // }
 
-  function setHeaderFooter(html, name) {
-    let elementsHTMLCollection = document.getElementsByTagName(name);
-    let elements = Array.from(elementsHTMLCollection);
-    elements.forEach((ele, i, arr) => {
-      ele.innerHTML = html;
-    });
-  }
+  // function setHeaderFooter(html, name) {
+  //   let elementsHTMLCollection = document.getElementsByTagName(name);
+  //   let elements = Array.from(elementsHTMLCollection);
+  //   elements.forEach((ele, i, arr) => {
+  //     ele.innerHTML = html;
+  //   });
+  // }
 
-  function setAttributes(attr) {
-    // console.log(attr);
-    if (isEmpty(attr) === true) {
-      console.log('attributes are empty');
-      setHeaderFooter('', 'footer');
-      setHeaderFooter('', 'header');
-      return;
-    }
-    if (attr !== null) {
-      if ('footer' in attr) {
-        setHeaderFooter(attr.footer, 'footer');
-      }else {
-        setHeaderFooter('', 'footer');
+  // function setAttributes(attr) {
+  //   // console.log(attr);
+  //   if (isEmpty(attr) === true) {
+  //     console.log('attributes are empty');
+  //     setHeaderFooter('', 'footer');
+  //     setHeaderFooter('', 'header');
+  //     return;
+  //   }
+  //   if (attr !== null) {
+  //     if ('footer' in attr) {
+  //       setHeaderFooter(attr.footer, 'footer');
+  //     }else {
+  //       setHeaderFooter('', 'footer');
 
-      }
-      if ('header' in attr) {
-        setHeaderFooter(attr.header, 'header');
-      }else{
-        setHeaderFooter('', 'header');
+  //     }
+  //     if ('header' in attr) {
+  //       setHeaderFooter(attr.header, 'header');
+  //     }else{
+  //       setHeaderFooter('', 'header');
 
-      }
-    }
-  }
-  class Content {
-    constructor(msg) {
-      this.msg = msg;
-    }
-    getCurrentAttributes(i) {
-      return this.msg[i].attributes;
-    }
-    getCurrentHTML(i) {
-      return this.msg[i].slide;
-    }
-    getCurrentComment(i) {
-      return this.msg[i].comments;
-    }
-  }
-
+  //     }
+  //   }
+  // }
   function setContent() {
     let cnt = content.msg[constrain(currentSlide, content.msg)];
     // console.log(cnt);
@@ -279,17 +257,25 @@ window.onload = () => {
   });
   ipcRenderer.on('comma', (event, arg) => {
     // decrease speakerNotes
-    // console.log(arg);
-    setFontSize(-2, null, 'comments');
+    windowManager.bridge.emit('comma', {
+      message: {val: -2}
+    });
+    // setFontSize(-2, null, 'comments');
   });
   ipcRenderer.on('dot', (event, arg) => {
     // increase speakerNotes
     // console.log(arg);
-    setFontSize(2, null, 'comments');
+    windowManager.bridge.emit('dot', {
+      message: {val: 2}
+    });
+    // setFontSize(2, null, 'comments');
   });
   ipcRenderer.on('zoom-reset-notes', (event, arg) => {
     // decrease speakerNotes
     // console.log(arg);
-    setFontSize(null, initialCommentsFontsize, 'comments');
+    windowManager.bridge.emit('zoom-reset-notes', {
+      message: {val: null}
+    });
+    // setFontSize(null, initialCommentsFontsize, 'comments');
   });
 };
