@@ -12,7 +12,6 @@ export function openNotesWindow () {
   notesWin.open();
 }
 
-
 export function initWindows (width, height) {
   windowManager.init({
     layouts: {
@@ -22,7 +21,7 @@ export function initWindows (width, height) {
   });
 
   windowManager.templates.set('slides', {
-    width: (width / 3) * 2,
+    width: (global.isDev) ? (width / 3) * 2 : width,
     height: height,
     x: 0,
     y: 0,
@@ -34,9 +33,9 @@ export function initWindows (width, height) {
   });
 
   windowManager.templates.set('notes', {
-    width: (width / 3),
+    width: (global.isDev) ? (width / 3) : width,
     height: height,
-    x: (width / 3) * 2,
+    x: (global.isDev) ? (width / 3) * 2 : 0,
     y: 0,
     closable: false,
     frame: false,

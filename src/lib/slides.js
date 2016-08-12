@@ -1,7 +1,6 @@
 import * as parser from './parser';
 import {linker} from './images';
 import {hrefer} from './href-linker';
-import {clone} from './clone-object';
 import {uncomment} from './uncomment.js';
 import {processConfig} from './process-config';
 

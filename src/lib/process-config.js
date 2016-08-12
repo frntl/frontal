@@ -1,7 +1,6 @@
 
 const isArray = require('lodash.isarray');
 const find = require('lodash.find');
-
 /**
  * process the toml configuration file and create the
  * attributes for each slide
