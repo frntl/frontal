@@ -21,15 +21,27 @@ export function loadCustomTheme () {
       fileExists(res + '/css/main.css'));
     console.log(`the folder at ${res} has a css folder and a comments-main.css: `,
       fileExists(res + '/css/main-comments.css'));
+
+    console.log(`the folder at ${res} has a css folder: `, folderExists(res + '/js'));
+    console.log(`the folder at ${res} has a css folder and a main.css: `,
+      fileExists(res + '/css/main.css'));
+    console.log(`the folder at ${res} has a css folder and a comments-main.css: `,
+      fileExists(res + '/css/main-comments.css'));
   }
+
+  let data = {
+    css: {
+      slidesTheme: null,
+      commentsTheme: null,
+      path: null
+    },
+    js: {
+      path: null
+    }
+  };
   if(folderExists(res + '/css')) {
-    let data = {
-      css: {
-        slidesTheme: null,
-        commentsTheme: null,
-        path: res + '/css'
-      }
-    };
+    data.css.path = res + '/css';
+
     if(fileExists(res + '/css/main.css')) {
       data.css.slidesTheme = true;
     }
@@ -51,6 +63,8 @@ export function loadCustomTheme () {
     // lets do it
     // global.config.set('customTheme', data.css.path);
     // global.config.set('currentTheme', 'custom');
+    data.js.path = folderExists(res + '/js') ? res + '/js' : null;
+
     senderManaged('switch-custom-theme', data);
     // sender([global.slidesWindow, global.commentsWindow], 'switch-custom-theme', data);
 
