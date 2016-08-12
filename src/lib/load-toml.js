@@ -1,3 +1,6 @@
+const isArray = require('lodash.isarray');
+const find = require('lodash.find');
+
 /**
  * because toml rules over yaml
  * supreme
