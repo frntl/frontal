@@ -8,6 +8,8 @@ import {yamlLoader} from './load-yaml';
 import {tomlLoader} from './load-toml';
 import {dirname, resolve, basename, extname} from 'path';
 import * as fs from 'fs';
+const uuid = require('uuid');
+
 const windowManager = require('electron-window-manager');
 
 export function detectTomlConfig(filePath) {
@@ -66,7 +68,7 @@ export function processFile(file) {
   let slidesHTML = processing(presentationFile, parsedYaml);
   watch(presentationFile);
   global.presentationFile = presentationFile;
-  let name = basename(presentationFile).replace(/[^a-z0-9]/gi, '_').toLowerCase();
+  let name = basename(presentationFile).replace(/[^a-z0-9]/gi, '_').toLowerCase() + uuid.v4();
   let slideLayoutPath = resolve(__dirname, '../views/slides.html');
   // console.log('slideLayoutPath', slideLayoutPath);
 
