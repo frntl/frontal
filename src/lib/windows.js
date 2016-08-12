@@ -44,6 +44,22 @@ export function initWindows (width, height) {
     resizable: true
 
   });
+  windowManager.templates.set('prefs', {
+    closable: true,
+    title: 'Intro Source',
+    defaultEncoding: 'utf8',
+    webPreferences: {
+      defaultFontSize: 20,
+      defaultMonospaceFontSize: 20
+    },
+    width: (width / 3),
+    height: height,
+    x: (width / 3) * 2,
+    y: 0,
+    frame: false,
+    titleBarStyle: 'hidden',
+    resizable: true
+  });
 
   windowManager.templates.set('source', {
     closable: true,

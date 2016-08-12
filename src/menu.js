@@ -8,6 +8,7 @@ const dialog = electron.dialog;
 const chalk = require('chalk');
 const pkg = require('./package.json');
 import {help} from './help/help-window.js';
+import {openPrefs} from './config';
 import {openFile, processFile, getRecentFiles, getDirs, openFolder} from './lib/files';
 import {helpLoader} from './help/help-loader';
 import {reload} from './lib/reload-presentation';

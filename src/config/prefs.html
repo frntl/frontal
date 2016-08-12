@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../node_modules/flexboxgrid/css/flexboxgrid.min.css" type="text/css">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<!-- Form fields are taken from here
+  http://codepen.io/fabianmoronzirfas/pen/RRvwKQ
+ -->
+    <title>Preferences</title>
+  </head>
+  <style type="text/css">
+@font-face {
+  font-family: 'CamingoCode-Regular';
+  src: url('../views/themes/default/font/CamingoCode-v1.0/CamingoCode-Regular.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'CamingoCode-Bold';
+  src: url('../views/themes/default/font/CamingoCode-v1.0/CamingoCode-Bold.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'CamingoCode-Italic';
+  src: url('../views/themes/default/font/CamingoCode-v1.0/CamingoCode-Italic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'CamingoCode-SemiItalic';
+  src: url('../views/themes/default/font/CamingoCode-v1.0/CamingoCode-BoldItalic.ttf')  format('truetype');
+}
+    body {
+         background: #f5f7f9;
+      /*background-color: #fff;*/
+    }
+    /*
+  Responsive form elements
+  Flexbox layout
+*/
+/*/////////////// GLOBAL STYLES ////////////////////*/
+body{
+  padding: 3em;
+  background: #eee;
+  }
+/*header{margin-bottom: 5rem;}*/
+/*/////////////// FONT STYLES ////////////////////*/
+
+
+html{font-size: 62.5%;}
+body, textarea{
+  font-family: 'CamingoCode-Regular';
+  font-size: 1rem;
+  }
+h1{
+  font-size: 3rem;
+  font-family:'CamingoCode-Bold';
+}
+h2{font-size: 1.6rem;}
+/*form{font-size: 1.4rem; color: #222;}*/
+
+/*/////////////// FORM STYLES ////////////////////*/
+form .field-group{
+  display: flex;
+  margin: 0 0 12px 0;
+}
+form .field-group .label{
+  flex: 1;
+  text-align: right;
+  margin: 0 8px 0 0;
+  padding: 2px 0;
+  min-width:40%;
+}
+form .field-group .field{
+  flex: 3;
+}
+form .field-group:last-child{
+  display: flex;
+  justify-content: flex-end;
+  float: left;
+}
+/*form .field-group:last-child .field{
+  max-width: 75%;
+}*/
+input, select, textarea{
+  padding: .6rem 1rem;
+  border: solid 1px #eee;
+  background: #fff;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  font-family: 'CamingoCode-Regular';
+}
+textarea {
+  width: 100%;
+}
+input, select{
+  width: 50%;
+}
+input[type="radio"],
+input[type="checkbox"],
+input[type="submit"]{
+  width: auto;
+}
+
+/*/////////////// RWD STYLES ////////////////////*/
+@media (max-width: 720px) {
+  form .field-group .label{
+     text-align: left;
+     margin: 0;
+  }
+  input, select{
+    width: 60%;
+  }
+}
+@media (max-width: 480px) {
+  input,
+  select{width: 100%;}
+  input[type="radio"],
+  input[type="checkbox"],
+  input[type="submit"]{
+  width: auto;
+  }
+  form .field-group{
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 6px 0;
+  }
+  form .field-group .label{
+  padding: 0 0 5px 0;
+  margin: 10px 0 0 0;
+  }
+}
+  </style>
+  <body>
+  <div id="container">
+
+
+  <h1>Preferences</h1>
+   <form id="prefs" action="#">
+ <!--///////////////// TEXT FIELDS ///////////////////-->
+<!--    <div class="field-group">
+     <label for="text1" class="label">Full Name:</label>
+     <div class="field">
+       <input name="text1" id="text1"  type="text"  value="" placeholder="Text field" required>
+     </div>
+   </div> -->
+
+<!--    <div class="field-group">
+     <label for="email1" class="label">Email:</label>
+     <div class="field">
+       <input name="email1" id="email1" type="email" spellcheck="false"  value="" placeholder="Email field" required>
+     </div>
+   </div>
+ -->
+   <div class="field-group">
+     <label for="number1" class="label">Max Recent Files</label>
+     <div class="field">
+       <input name="number1" id="number1" type="number" value="" placeholder="Number field">
+     </div>
+   </div>
+
+<!--    <div class="field-group">
+     <label for="url1" class="label">Website URL:</label>
+     <div class="field">
+       <input name="url1" id="url1" type="url" value="" placeholder="URL field">
+     </div>
+   </div> -->
+
+<!--    <div class="field-group">
+     <label for="tel1" class="label">Phone:</label>
+     <div class="field">
+       <input name="tel1" id="tel1" type="tel" value="" placeholder="Tel field">
+     </div>
+   </div> -->
+
+<!--    <div class="field-group">
+     <label for="date1" class="label">Birthday:</label>
+     <div class="field">
+       <input name="date1" id="date1" type="datetime-local" value="">
+     </div>
+   </div> -->
+
+   <!--///////////////// TEXTAREA ///////////////////-->
+<!--    <div class="field-group">
+     <label for="textarea1" class="label">Description:</label>
+     <div class="field">
+       <textarea id="textarea1" name="textarea1" spellcheck="true" rows="10" cols="50" placeholder="Textarea"></textarea>
+     </div>
+   </div> -->
+
+   <!--///////////////// SELECT MENU ///////////////////-->
+<!--    <div class="field-group">
+     <div class="label">Multiple choice:</div>
+     <div class="field">
+       <select id="select1" name="select1">
+         <option value="First Choice">First Choice</option>
+         <option value="Second Choice">Second Choice</option>
+         <option value="Third Choice">Third Choice</option>
+       </select>
+     </div>
+   </div> -->
+
+   <!--///////////////// RADIO GROUP ///////////////////-->
+<!--    <div class="field-group">
+     <div class="label">Single choice:</div>
+
+     <div class="field">
+       <div>
+         <input id="radio1" name="radio" type="radio" value="First Choice" checked="checked">
+         <label for="radio1">First Choice</label>
+       </div>
+       <div>
+         <input id="radio2" name="radio" type="radio" value="Second Choice">
+         <label for="radio2">Second Choice</label>
+       </div>
+
+       <div>
+         <input id="radio3" name="radio" type="radio" value="Third Choice">
+         <label for="radio3">Third Choice</label>
+       </div>
+     </div>
+
+   </div> -->
+   <!--///////////////// CHECKBOX GROUP ///////////////////-->
+   <div class="field-group">
+     <div class="label">Show Intro on Startup</div>
+
+       <div class="field">
+         <div>
+           <input id="check1" name="check1" type="checkbox" value="">
+           <!-- <label class="check" for="check1">Show Intro Window on Startup</label> -->
+         </div>
+<!--          <div>
+           <input id="check2" name="check2" type="checkbox" value="Second Choice">
+           <label class="check" for="check2">Second Choice</label>
+         </div> -->
+<!--          <div>
+           <input id="check3" name="check3" type="checkbox" value="Third Choice">
+           <label class="check" for="check3">Third Choice</label>
+       </div> -->
+     </div>
+   </div>
+
+   <!--///////////////// SUBMIT BUTTON ///////////////////-->
+   <div class="field-group">
+     <div class="field">
+       <input id="saveForm" name="saveForm" type="submit" value="Save">
+     </div>
+   </div>
+
+ </form>
+</div>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+<!--     We are using node <script>document.write(process.versions.node)</script>,
+ -->
+   <!-- Chromium <script>document.write(process.versions.chrome)</script>, -->
+    <!-- and Electron <script>document.write(process.versions.electron)</script>. -->
+  <script>
+  // You can also require other files to run in this process
+  require('./prefs-renderer.js');
+  </script>
+  </body>
+</html>
