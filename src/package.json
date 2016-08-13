@@ -1,6 +1,6 @@
 {
   "name": "frontal",
-  "version": "0.7.0",
+  "version": "0.8.2",
   "main": "main.js",
   "private": true,
   "description": "An Electron powered [M↓] presentation tool",
