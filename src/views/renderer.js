@@ -1,4 +1,4 @@
-/* global window, document*/
+/* global window, document */
 const {ipcRenderer} = require('electron');
 const remote = require('electron').remote;
 
@@ -6,6 +6,7 @@ const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
 import {switchJS} from './lib/theme-loader';
 import {setAttributes, setHeaderFooter} from './lib/header-footer';
+
 const windowManager = remote.require('electron-window-manager');
 const shell = require('electron').shell;
 const padStart = require('lodash.padStart');
@@ -157,10 +158,10 @@ window.onload = () => {
   });
 
   ipcRenderer.on('switch-theme', (event, arg) => {
-    // console.log('switch', arg.msg);
     switchToBuildInCSS(arg.msg, 0);
     let jsFolderPath = __dirname + '/themes/' + arg.msg + '/js/';
     switchJS(jsFolderPath);
+
   });
 
   ipcRenderer.on('switch-custom-theme', (event, arg) =>{

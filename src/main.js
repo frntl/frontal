@@ -43,7 +43,6 @@ function createWindows() {
   initWindows(width, height);
   // and load the index.html of the app.
   // global.slidesWindow.loadURL(`file://${__dirname}/views/slides.html`);
-  let introWin = windowManager.createNew('intro', 'Intro', `file://${__dirname}/views/slides.html`, 'slides');
   // let notesWindow = openNotesWindow();
   let notesWindow = windowManager.createNew('notes',
     'Speaker Notes',
@@ -53,13 +52,14 @@ function createWindows() {
   // // console.log('global.config', global.config);
   notesWindow.open();
   if(global.config.get('showIntroOnStratup') === true) {
+    let introWin = windowManager.createNew('intro', 'Intro', `file://${__dirname}/views/slides.html`, 'slides');
     introWin.open();
   }
 
 }
 
 function createMenues() {
-  let template = buildTemplate([global.slidesWindow, global.commentsWindow]);
+  let template = buildTemplate();
   // Menu.setApplicationMenu(Menu.buildFromTemplate(template));
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);

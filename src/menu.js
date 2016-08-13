@@ -19,7 +19,7 @@ const windowManager = require('electron-window-manager');
 import {openNotesWindow} from './lib/windows';
 
 
-export function buildTemplate(windows) {
+export function buildTemplate() {
   let template = [{
     label: 'File',
     submenu: [{
@@ -233,7 +233,8 @@ export function buildTemplate(windows) {
       click: function() {
         // let win = help();
         console.log('User wants to open help again');
-        helpLoader(windows);
+        // helpLoader(windows);
+        helpLoader();
       }
     }, {
       label: 'Open Config',

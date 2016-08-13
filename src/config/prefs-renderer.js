@@ -2,6 +2,7 @@
 const $ = require('jquery');
 const remote = require('electron').remote;
 window.onload = () => {
+  // $('#check1').prop('disabled', true);
   let config = remote.getGlobal('config');
   // console.log(config.get('showIntroOnStratup'));
   $('#check1').prop('checked', config.get('showIntroOnStratup'));

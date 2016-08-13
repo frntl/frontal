@@ -28,15 +28,16 @@ function readHelpFile() {
   }
   return slidesHTML;
 }
-export function helpLoader(wins) {
+export function helpLoader() {
   let win = windowManager.get('intro');
+  console.log('in help loader', win);
   let slidesHTML = readHelpFile();
   if(win === false) {
     let filePath = resolve(__dirname, '../views/slides.html');
     win = windowManager.createNew('intro', 'Intro', `file://${filePath}`, 'slides');
     win.open();
     waitForWindow(win, slidesHTML);
-  }else {
+  } else {
     sendManaged(win, slidesHTML);
   }
   //   win.content().on('did-finish-load', ()=>{

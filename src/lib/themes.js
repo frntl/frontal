@@ -22,6 +22,7 @@ export function loadCustomTheme () {
     console.log(`the folder at ${res} has a css folder and a comments-main.css: `,
       fileExists(res + '/css/main-comments.css'));
 
+
     console.log(`the folder at ${res} has a css folder: `, folderExists(res + '/js'));
     console.log(`the folder at ${res} has a css folder and a main.css: `,
       fileExists(res + '/css/main.css'));
@@ -39,6 +40,7 @@ export function loadCustomTheme () {
       path: null
     }
   };
+
   if(folderExists(res + '/css')) {
     data.css.path = res + '/css';
 
