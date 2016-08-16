@@ -47,7 +47,7 @@ body#frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
 
 body#frontal .wide { margin-left: 5%; margin-right: 5%; padding-left: 5%; width: 100%; }
 
-body#frontal .narrow { margin-left: 20%; margin-right: 20%; }
+body#frontal .narrow { margin-left: 10%; margin-right: 10%; }
 
 body#frontal .pwide { max-width: 90vw !important; }
 
@@ -57,7 +57,7 @@ body#frontal #slides ol, body#frontal #slides ul { text-align: left; max-width: 
 
 body#frontal #slides ol li, body#frontal #slides ul li { text-align: left; }
 
-body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4 { font-family: 'Vollkorn-Bold'; }
+body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4, body#frontal #slides h5, body#frontal #slides h6 { font-family: 'Vollkorn-Bold'; text-align: center; }
 
 body#frontal #slides a { color: #E96368; text-decoration: none; }
 
@@ -77,7 +77,9 @@ body#frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'
 
 body#frontal #slides p { text-align: left; max-width: 50vw; }
 
-body#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 1.6rem; }
+body#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 2rem; }
+
+body#frontal #slides blockquote p { max-width: 70vw !important; }
 
 body#frontal #slides table { margin-left: auto; margin-right: auto; }
 

@@ -65,8 +65,8 @@ body#frontal {
     width :100%;
   }
   .narrow {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
   .pwide{
@@ -86,8 +86,9 @@ body#frontal {
     }
   }
 
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5, h6 {
       font-family: 'Vollkorn-Bold';
+      text-align: center;
     }
     a {
       color: $aColor;
@@ -131,7 +132,11 @@ body#frontal {
     }
     blockquote {
       font-family: 'Vollkorn-Italic';
-      font-size: 1.6rem;
+      font-size: 2rem;
+      p{
+
+        max-width:70vw !important;
+      }
     }
     table {
       margin-left: auto;
