@@ -1,6 +1,6 @@
-# frontal  
+# frontal
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]() [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/frntl/frontal) ![](https://img.shields.io/badge/build%20with-%E2%9D%A4-brightgreen.svg)  
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]() [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/frntl/frontal) ![](https://img.shields.io/badge/build%20with-%E2%9D%A4-brightgreen.svg) [![Code Climate](https://codeclimate.com/github/frntl/frontal/badges/gpa.svg)](https://codeclimate.com/github/frntl/frontal) [![Test Coverage](https://codeclimate.com/github/frntl/frontal/badges/coverage.svg)](https://codeclimate.com/github/frntl/frontal/coverage) [![Issue Count](https://codeclimate.com/github/frntl/frontal/badges/issue_count.svg)](https://codeclimate.com/github/frntl/frontal)  
 
 Markdown powered presentation tool build on Electron / Node.js  
 
@@ -11,7 +11,7 @@ Markdown powered presentation tool build on Electron / Node.js
 
 ---
 
-## installation & run
+## Installation & run
 
 Init the project by running:  
 
@@ -27,23 +27,23 @@ npm install
 npm start
 ```
 
-
 ---
 
+## Development  
 
-## development  
+
 
 To write nice ES2015 style we use babel. Therefore we need to watch the whole `src/` and compile it to `app`. Run it like this in the root of the directory (additional files in the src folder will also be copied by babel into the `app/` folder):  
 
     npm run watch
 
-To write on the scss you can run
+To write on the default theme scss you can run
 
-    npm run sass
+    npm run sassdefault
 
 ---
 
-### installing additional modules  
+### Installing Additional Modules  
 
 For packing the app we use the [`electron-builder`](https://github.com/electron-userland/electron-builder) package. Therefor we have two package.json files. If you want to add another module (currently - will be improved) you will need to:  
 
