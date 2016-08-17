@@ -11,6 +11,10 @@ engines:
     enabled: true
   fixme:
     enabled: true
+  scss-lint:
+    enabled: true
+  markdownlint:
+    enabled: true
 ratings:
   paths:
   - "**.css"
@@ -25,7 +29,7 @@ exclude_paths:
 - test/
 - app/
 - bin/
-- .github/
+- ".github/"
 - build/
 - dist/
 - docs/
