@@ -1,7 +1,7 @@
 ---
 engines:
   csslint:
-    enabled: true
+    enabled: false
   duplication:
     enabled: true
     config:
@@ -15,16 +15,14 @@ engines:
     enabled: true
   markdownlint:
     enabled: true
+  nodesecurity:
+    enabled: true
+  requiresafe:
+    enabled: true
 ratings:
   paths:
-  - "**.css"
-  # - "**.inc"
+  - "**.scss"
   - "**.js"
-  # - "**.jsx"
-  # - "**.module"
-  # - "**.php"
-  # - "**.py"
-  # - "**.rb"
 exclude_paths:
 - test/
 - app/
@@ -35,4 +33,4 @@ exclude_paths:
 - docs/
 - example/
 - node_modules/
-- .git/
+- ".git/"
