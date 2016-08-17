@@ -18,13 +18,13 @@ engines:
 ratings:
   paths:
   - "**.css"
-  - "**.inc"
+  # - "**.inc"
   - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
-  - "**.py"
-  - "**.rb"
+  # - "**.jsx"
+  # - "**.module"
+  # - "**.php"
+  # - "**.py"
+  # - "**.rb"
 exclude_paths:
 - test/
 - app/
@@ -34,3 +34,5 @@ exclude_paths:
 - dist/
 - docs/
 - example/
+- node_modules/
+- .git/
