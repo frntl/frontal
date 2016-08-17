@@ -62,7 +62,7 @@ body#frontal {
     margin-right: 5%;
     padding-left: 5%;
     // padding-right: 5%;
-    width :100%;
+    width :90vw;
   }
   .narrow {
     margin-left: 10%;
@@ -71,6 +71,9 @@ body#frontal {
 
   .pwide{
     max-width: 90vw !important;
+    pre{
+      float:right;
+    }
 
   }
 
@@ -120,6 +123,7 @@ body#frontal {
       // border-color: $codeAccent;
       background:$codeBG;
       border-left: 2px solid $codeAccent;
+      min-width:50vw;
     }
     code {
       text-align: left;
@@ -134,7 +138,6 @@ body#frontal {
       font-family: 'Vollkorn-Italic';
       font-size: 2rem;
       p{
-
         max-width:70vw !important;
       }
     }

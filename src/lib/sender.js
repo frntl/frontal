@@ -6,6 +6,7 @@
  * @return {[type]}       [description]
  */
 const windowManager = require('electron-window-manager');
+const chalk = require('chalk');
 
 // export function sender(wins, title, msg) {
 //   wins.forEach(function(w, i) {
@@ -20,9 +21,10 @@ const windowManager = require('electron-window-manager');
 
 export function senderManaged(title, msg) {
   let currWin = windowManager.getCurrent();
-  console.log(msg);
+  console.log(chalk.red('senderManaged'));
   if(currWin !== false) {
     currWin.content().send(title, {msg: msg});
+
   }
 }
 

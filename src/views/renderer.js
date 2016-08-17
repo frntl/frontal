@@ -149,10 +149,9 @@ window.onload = () => {
     // console.log(arg);
   });
   ipcRenderer.on('slides', (event, arg) => {
-    // console.log(arg);
+    console.log(arg);
     content = arg;
     setContent();
-
   });
   ipcRenderer.on('hello', (event, arg) => {
   });

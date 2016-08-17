@@ -45,11 +45,13 @@ body#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: cente
 
 body#frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
 
-body#frontal .wide { margin-left: 5%; margin-right: 5%; padding-left: 5%; width: 100%; }
+body#frontal .wide { margin-left: 5%; margin-right: 5%; padding-left: 5%; width: 90vw; }
 
 body#frontal .narrow { margin-left: 10%; margin-right: 10%; }
 
 body#frontal .pwide { max-width: 90vw !important; }
+
+body#frontal .pwide pre { float: right; }
 
 body#frontal #slides { padding-top: 35px; padding-bottom: 35px; }
 
@@ -71,7 +73,7 @@ body#frontal #slides img { max-width: 80%; display: block; margin: 0 auto; }
 
 body#frontal #slides img[alt="left"] { float: left; margin-right: 10px; clear: both; }
 
-body#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; background: #eee; border-left: 2px solid #A4A4A4; }
+body#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; background: #eee; border-left: 2px solid #A4A4A4; min-width: 50vw; }
 
 body#frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'; }
 

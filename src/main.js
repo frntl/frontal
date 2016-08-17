@@ -20,6 +20,8 @@ import {watch} from './lib/watcher';
 import {processFile} from './lib/files';
 import {sender} from './lib/sender';
 import {openNotesWindow} from './lib/windows';
+import {log} from './lib/logging';
+
 global.name = null;
 global.database = null;
 global.presetationRoot = null;

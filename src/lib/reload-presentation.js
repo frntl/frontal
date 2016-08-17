@@ -11,6 +11,7 @@ export function reload() {
     // processFile(global.presentationFile);
     let parsedYaml = detectTomlConfig(global.presentationFile);
     let slidesHTML = processing(global.presentationFile, parsedYaml);
+    console.log(chalk.red('reload'));
     senderManaged('slides', slidesHTML);
   } else {
     console.log(chalk.red('Error reloading file'));
