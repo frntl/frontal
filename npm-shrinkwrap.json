@@ -1,6 +1,6 @@
 {
   "name": "frontal",
-  "version": "0.9.1",
+  "version": "0.8.4",
   "dependencies": {
     "@develar/asar": {
       "version": "0.13.1",
