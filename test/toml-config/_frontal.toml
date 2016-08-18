@@ -1,6 +1,9 @@
 header = 'foo'
 footer = 'baz'
 
+custom_theme_path = ""
+custom_js = ""
+custom_css = ""
 [[slides]]
 index = 2
 header = 'overwrite header'
