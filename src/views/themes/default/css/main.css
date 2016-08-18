@@ -14,6 +14,9 @@
 
 @font-face { font-family: 'CamingoCode-SemiItalic'; src: url("../font/CamingoCode-v1.0/CamingoCode-BoldItalic.ttf") format("truetype"); }
 
+/* Coolors Exported Palette - coolors.co/e96368-f7f7f9-d9d9db-848b9e-2f3f56 */
+/* HSL */
+/* RGB */
 /*
 
 Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
@@ -37,56 +40,70 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 
 header, footer { font-family: 'Vollkorn-SemiItalic'; color: #7A7A7A; box-sizing: border-box; margin-top: auto; overflow: hidden; position: absolute; font-size: 0.8rem; text-align: right; width: 100%; left: 0; }
 
-header { top: 0; height: 35px; padding-top: 10px; padding-right: 10px; }
+header { top: 0; height: 5vh; padding-top: 1vh; padding-right: 1vh; }
 
-footer { bottom: 0; height: 35px; padding-bottom: 10px; padding-right: 10px; }
+footer { bottom: 0; height: 5vh; padding-bottom: 1vh; padding-right: 1vh; }
 
-body#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; max-width: 50em; overflow: hidden; font-size: 1.3em; line-height: 1.5; color: #465963; word-wrap: break-word; hyphens: auto; background-color: #FFFFFF; }
+#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; max-width: 50em; overflow: hidden; font-size: 1.3em; line-height: 1.5; color: #2f3f56; word-wrap: break-word; hyphens: auto; background-color: #FFFFFF; }
 
-body#frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
+#frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
 
-body#frontal .wide { margin-left: 5%; margin-right: 5%; padding-left: 5%; width: 90vw; }
+#frontal .wide { margin-left: 5%; margin-right: 5%; padding-left: 5%; width: 90vw; }
 
-body#frontal .narrow { margin-left: 10%; margin-right: 10%; }
+#frontal .narrow { margin-left: 10%; margin-right: 10%; }
 
-body#frontal .pwide { max-width: 90vw !important; }
+#frontal .pwide { max-width: 90vw !important; }
 
-body#frontal .pwide pre { float: right; }
+#frontal .pwide pre { float: right; }
 
-body#frontal #slides { padding-top: 35px; padding-bottom: 35px; }
+#frontal #slides { padding-top: 5vh; padding-bottom: 5vh; }
 
-body#frontal #slides ol, body#frontal #slides ul { text-align: left; max-width: 50vw; }
+#frontal #slides ol, #frontal #slides ul { text-align: left; max-width: 50vw; }
 
-body#frontal #slides ol li, body#frontal #slides ul li { text-align: left; }
+#frontal #slides ol li, #frontal #slides ul li { text-align: left; }
 
-body#frontal #slides h1, body#frontal #slides h2, body#frontal #slides h3, body#frontal #slides h4, body#frontal #slides h5, body#frontal #slides h6 { font-family: 'Vollkorn-Bold'; text-align: center; }
+#frontal #slides p code { background-color: #E6E6E6; padding-left: 0.1vw; padding-right: 0.1vw; }
 
-body#frontal #slides a { color: #E96368; text-decoration: none; }
+#frontal #slides h1, #frontal #slides h2, #frontal #slides h3, #frontal #slides h4, #frontal #slides h5, #frontal #slides h6 { font-family: 'Vollkorn-Bold'; text-align: center; }
 
-body#frontal #slides a:hover { color: #e02027; }
+#frontal #slides h1 { font-size: 7vmin; }
 
-body#frontal #slides em { font-family: 'Vollkorn-Italic'; }
+#frontal #slides h2 { font-size: 6vmin; }
 
-body#frontal #slides strong { font-family: 'Vollkorn-Bold'; }
+#frontal #slides h3 { font-family: 'Vollkorn-Regular'; font-size: 4vmin; }
 
-body#frontal #slides img { max-width: 80%; display: block; margin: 0 auto; }
+#frontal #slides h4 { font-family: 'Vollkorn-Regular'; font-size: 3vmin; }
 
-body#frontal #slides img[alt="left"] { float: left; margin-right: 10px; clear: both; }
+#frontal #slides h5 { font-family: 'Vollkorn-Regular'; font-size: 2.5vmin; }
 
-body#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; background: #eee; border-left: 2px solid #A4A4A4; min-width: 50vw; }
+#frontal #slides h6 { font-size: 2vmin; }
 
-body#frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'; }
+#frontal #slides a { color: #e96368; text-decoration: none; }
 
-body#frontal #slides p { text-align: left; max-width: 50vw; }
+#frontal #slides a:hover { color: #e02027; }
 
-body#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 2rem; }
+#frontal #slides em { font-family: 'Vollkorn-Italic'; }
 
-body#frontal #slides blockquote p { max-width: 70vw !important; }
+#frontal #slides strong { font-family: 'Vollkorn-Bold'; }
 
-body#frontal #slides table { margin-left: auto; margin-right: auto; }
+#frontal #slides img { max-width: 100%; display: block; margin: 0 auto; }
 
-body#frontal #slides table thead { font-family: 'Vollkorn-Bold'; }
+#frontal #slides img[alt="left"] { float: left; margin-right: 10px; clear: both; max-width: 45vw; }
 
-body#frontal #slides table th { border-bottom: 3px dashed #848484; padding-left: 10px; padding-right: 10px; }
+#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; background: #eee; border-left: 2px solid #A4A4A4; min-width: 50vw; }
 
-body#frontal #slides table td { border-bottom: 2px dashed #cccccc; padding-left: 10px; padding-right: 10px; }
+#frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'; }
+
+#frontal #slides p { text-align: left; max-width: 50vw; }
+
+#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 2rem; }
+
+#frontal #slides blockquote p { max-width: 70vw !important; }
+
+#frontal #slides table { margin-left: auto; margin-right: auto; }
+
+#frontal #slides table thead { font-family: 'Vollkorn-Bold'; }
+
+#frontal #slides table th { border-bottom: 3px dashed #848484; padding-left: 10px; padding-right: 10px; }
+
+#frontal #slides table td { border-bottom: 2px dashed #cccccc; padding-left: 10px; padding-right: 10px; }

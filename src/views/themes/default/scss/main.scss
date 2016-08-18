@@ -1,8 +1,8 @@
 // hello world
 @import "fonts", "colors", "solarized-light";
 
-$headerHeight: 35px;
-$headerPadding: 10px;
+$headerHeight: 5vh;
+$headerPadding: 1vh;
 @mixin flexcenter() {
   display: flex;
   justify-content: center;
@@ -36,7 +36,8 @@ footer {
 }
 
 
-body#frontal {
+
+#frontal {
   margin: 0 auto;
   padding: 0;
   @include flexcenter();
@@ -89,10 +90,36 @@ body#frontal {
     }
   }
 
+  p{
+  code{
+  background-color: $inlineCode;
+  padding-left: 0.1vw;
+  padding-right: 0.1vw;
+
+  }
+}
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Vollkorn-Bold';
       text-align: center;
     }
+    h1{font-size:7vmin}
+    h2{font-size:6vmin}
+    h3{
+      font-family: 'Vollkorn-Regular';
+      font-size:4vmin;
+    }
+    h4{
+      font-family: 'Vollkorn-Regular';
+      font-size:3vmin;
+    }
+    h5{
+      font-family: 'Vollkorn-Regular';
+      font-size:2.5vmin;
+    }
+    h6{font-size:2vmin; }
+
+
+
     a {
       color: $aColor;
       text-decoration: none;
@@ -107,7 +134,7 @@ body#frontal {
       font-family: 'Vollkorn-Bold';
     }
     img {
-      max-width: 80%;
+      max-width: 100%;
       display: block;
       margin: 0 auto;
     }
@@ -115,6 +142,7 @@ body#frontal {
       float: left;
       margin-right: 10px;
       clear:both;
+      max-width:45vw;
     }
     pre {
       min-width: 100%;

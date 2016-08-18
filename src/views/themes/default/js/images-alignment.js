@@ -26,6 +26,11 @@ export default function() {
         alltxt.css('padding', '0px 5px 0px 5px');
       } else if (ele.getAttribute('alt') === 'full') {
         let img = $('img[alt*="full"]');
+        //
+        // TODO: move image out of p tag
+        // sourround with </p><img><p>
+        // or will this create an new error?
+        //
         // var image = new Image();
         // image.src = img.attr("src");
         // console.log('image.src ' , image.src);
