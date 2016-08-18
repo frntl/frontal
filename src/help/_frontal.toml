@@ -3,6 +3,9 @@
 # put your global settings header
 header = "frontal.app"
 footer = "An Electron powered [M↓] presentation tool"
+custom_css = ""
+custom_js = ""
+custom_theme_path = ""
 # if you  specify something for your slides it will overwrite the
 # global settings. Make sure you always add the index of your slide
 # starting at 1 to tell frontal which slide to set
