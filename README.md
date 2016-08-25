@@ -6,6 +6,9 @@ Markdown powered presentation tool build on Electron / Node.js
 
 ---
 
+Grab a build from [here](https://github.com/frntl/frontal/releases). Be aware that this is a pre-release. There might be 🐛 🐉.  
+---
+
 ![](docs/images/main-window.png)  
 ![](docs/images/speaker-window.png)  
 
