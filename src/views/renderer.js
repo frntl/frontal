@@ -11,6 +11,7 @@ const windowManager = remote.require('electron-window-manager');
 const shell = require('electron').shell;
 const padStart = require('lodash.padStart');
 const drag = require('electron-drag');
+const smalltalk = require('smalltalk');
 
 window.onload = () => {
 
@@ -204,6 +205,16 @@ window.onload = () => {
     // decrease speakerNotes
     windowManager.bridge.emit('zoom-reset-notes', {
       message: {val: null}
+    });
+  });
+  ipcRenderer.on('goto', (event, arg) => {
+    // decrease speakerNotes
+    smalltalk.prompt('Goto', 'Enter a slide number?', '1').then((value) => {
+      console.log(value);
+      currentSlide = !isNaN(parseInt(value, 10)) ? constrain(parseInt(value, 10) - 1, content.msg) : currentSlide;
+      setContent();
+    }, ()=> {
+      console.log('cancel');
     });
   });
 };

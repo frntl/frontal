@@ -118,6 +118,12 @@ export function buildTemplate() {
         // sender(windows, 'down', 'Hello down from main!');
       }
     }, {
+      label:'GoTo:',
+      accelerator:'CmdOrCtrl+G',
+      click: ()=>{
+        senderManaged('goto', 'goto');
+      }
+    }, {
       type: 'separator'
     }, {
       label: 'Zoom in',
