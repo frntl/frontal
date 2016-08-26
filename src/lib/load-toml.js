@@ -53,7 +53,7 @@ export function processToml (config, length) {
   let result = []; // will hold the result
   // console.log(config);
   for(let i = 0; i < length; i++) {
-    let obj = {header: '', footer: ''};
+    let obj = {header: '', footer: '', slide_numbering: false};
     if('header' in config) {
       // console.log('has global header');
       obj.header = config.header;
@@ -61,6 +61,9 @@ export function processToml (config, length) {
     if('footer' in config) {
       // console.log('has global footer');
       obj.footer = config.footer;
+    }
+    if('slide_numbering' in config) {
+      obj.slide_numbering = config.slide_numbering;
     }
     if('slides' in config) {
       if(isArray(config.slides)) {
@@ -72,6 +75,9 @@ export function processToml (config, length) {
           }
           if('footer' in res) {
             obj.footer = res.footer;
+          }
+          if('slide_numbering' in config) {
+            obj.slide_numbering = res.slide_numbering;
           }
         }else{
           // console.log('no item found with matching index found ');

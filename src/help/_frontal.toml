@@ -3,6 +3,7 @@
 # put your global settings header
 header = "frontal.app"
 footer = "An Electron powered [M↓] presentation tool"
+slide_numbering = true
 custom_css = ""
 custom_js = ""
 custom_theme_path = ""
@@ -12,7 +13,8 @@ custom_theme_path = ""
 [[slides]]
 index = 3
 header = "header slide 3"
-footer = "footer slide 3"
+footer = "footer slide 3 without nmubering"
+slide_numbering = false
 [[slides]]
 index = 6
 header = "header slide 6"

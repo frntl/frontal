@@ -9,7 +9,7 @@ export function setHeaderFooter(html, name) {
   });
 }
 
-export function setAttributes(attr) {
+export function setAttributes(attr, currentSlide, numberOfSlides) {
     // console.log(attr);
   if (isEmpty(attr) === true) {
     console.log('attributes are empty');
@@ -19,7 +19,11 @@ export function setAttributes(attr) {
   }
   if (attr !== null) {
     if ('footer' in attr) {
-      setHeaderFooter(attr.footer, 'footer');
+      let num = '';
+      if('slide_numbering' in attr) {
+        num = `${currentSlide}/${numberOfSlides}`;
+      }
+      setHeaderFooter(attr.slide_numbering === true ? `${num} || ${attr.footer}` : `${attr.footer}`, 'footer');
     }else {
       setHeaderFooter('', 'footer');
 

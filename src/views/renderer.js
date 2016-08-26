@@ -80,7 +80,7 @@ window.onload = () => {
       if (element !== null) {
         if (ele === 'slides') {
           element.innerHTML = cnt.slide;
-          setAttributes(cnt.attributes);
+          setAttributes(cnt.attributes, currentSlide + 1, content.msg.length);
           windowManager.bridge.emit('content', {
             message: {comment: cnt.comments,
                       currentSlide: padStart(currentSlide + 1, String(content.msg.length).length, '0'),
