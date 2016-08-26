@@ -34,3 +34,4 @@ exclude_paths:
 - example/
 - node_modules/
 - ".git/"
+- src/views/themes/**/css/
