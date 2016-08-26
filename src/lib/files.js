@@ -8,6 +8,7 @@ import {yamlLoader} from './load-yaml';
 import {tomlLoader} from './load-toml';
 import {dirname, resolve, basename, extname} from 'path';
 import * as fs from 'fs';
+const uniq = require('lodash.uniq');
 const uuid = require('uuid');
 
 const windowManager = require('electron-window-manager');
@@ -48,6 +49,7 @@ export function openFolder () {
 export function setRecentFiles (filePath) {
   let recentFiles = global.config.get('recentFiles');
   recentFiles.unshift(resolve(__dirname, filePath));
+  recentFiles = uniq(recentFiles);
   while(recentFiles.length > global.config.get('maxRecentFiles')) {
     recentFiles.pop();
   }
