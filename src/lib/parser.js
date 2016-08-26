@@ -77,6 +77,7 @@ export function md2htmlMarked(data) {
   var tester = verex().lineBreak().then('---').lineBreak();
   marked.setOptions({
     smartypants: true,
+    sanitize: false,
     highlight: function(code) {
       return require('highlight.js').highlightAuto(code).value;
     }
