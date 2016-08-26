@@ -1,5 +1,5 @@
 // hello world
-@import "fonts", "colors", "solarized-light";
+@import "fonts", "colors", "solarized-light", "additional-code-highlight";
 
 $headerHeight: 5vh;
 $headerPadding: 1vh;
@@ -314,9 +314,14 @@ footer {
     }
     blockquote {
       font-family: 'Vollkorn-Italic';
-      font-size: 2rem;
+      font-size: 2.2vh;
       p{
         max-width:70vw !important;
+      }
+      pre{
+        code{
+          font-size:1.5vh;
+        }
       }
     }
     table {

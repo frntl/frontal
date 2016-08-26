@@ -15,6 +15,7 @@
 @font-face { font-family: 'CamingoCode-SemiItalic'; src: url("../font/CamingoCode-v1.0/CamingoCode-BoldItalic.ttf") format("truetype"); }
 
 /* Coolors Exported Palette - coolors.co/e96368-f7f7f9-d9d9db-848b9e-2f3f56 */
+/* Coolors Exported Palette - coolors.co/ff7d7d-f7f7f9-d9d9db-848b9e-2f3f56 */
 /* HSL */
 /* RGB */
 /*
@@ -37,6 +38,8 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .hljs-emphasis { font-style: italic; }
 
 .hljs-strong { font-weight: bold; }
+
+.lang-text .hljs, .lang-text .hljs-comment, .lang-text .hljs-quote, .lang-text .hljs-keyword, .lang-text .hljs-selector-tag, .lang-text .hljs-addition, .lang-text .hljs-number, .lang-text .hljs-string, .lang-text .hljs-meta .hljs-meta-string, .lang-text .hljs-literal, .lang-text .hljs-doctag, .lang-text .hljs-regexp, .lang-text .hljs-title, .lang-text .hljs-section, .lang-text .hljs-name, .lang-text .hljs-selector-id, .lang-text .hljs-selector-class, .lang-text .hljs-attribute, .lang-text .hljs-attr, .lang-text .hljs-variable, .lang-text .hljs-template-variable, .lang-text .hljs-class .hljs-title, .lang-text .hljs-type, .lang-text .hljs-symbol, .lang-text .hljs-bullet, .lang-text .hljs-subst, .lang-text .hljs-meta, .lang-text .hljs-meta .hljs-keyword, .lang-text .hljs-selector-attr, .lang-text .hljs-selector-pseudo, .lang-text .hljs-link, .lang-text .hljs-built_in, .lang-text .hljs-deletion, .lang-text .hljs-formula, .lang-text .hljs-emphasis, .lang-text .hljs-strong, .lang-pseudo .hljs, .lang-pseudo .hljs-comment, .lang-pseudo .hljs-quote, .lang-pseudo .hljs-keyword, .lang-pseudo .hljs-selector-tag, .lang-pseudo .hljs-addition, .lang-pseudo .hljs-number, .lang-pseudo .hljs-string, .lang-pseudo .hljs-meta .hljs-meta-string, .lang-pseudo .hljs-literal, .lang-pseudo .hljs-doctag, .lang-pseudo .hljs-regexp, .lang-pseudo .hljs-title, .lang-pseudo .hljs-section, .lang-pseudo .hljs-name, .lang-pseudo .hljs-selector-id, .lang-pseudo .hljs-selector-class, .lang-pseudo .hljs-attribute, .lang-pseudo .hljs-attr, .lang-pseudo .hljs-variable, .lang-pseudo .hljs-template-variable, .lang-pseudo .hljs-class .hljs-title, .lang-pseudo .hljs-type, .lang-pseudo .hljs-symbol, .lang-pseudo .hljs-bullet, .lang-pseudo .hljs-subst, .lang-pseudo .hljs-meta, .lang-pseudo .hljs-meta .hljs-keyword, .lang-pseudo .hljs-selector-attr, .lang-pseudo .hljs-selector-pseudo, .lang-pseudo .hljs-link, .lang-pseudo .hljs-built_in, .lang-pseudo .hljs-deletion, .lang-pseudo .hljs-formula, .lang-pseudo .hljs-emphasis, .lang-pseudo .hljs-strong { color: #93a1a1; }
 
 header, footer { font-family: 'Vollkorn-SemiItalic'; color: #7A7A7A; box-sizing: border-box; margin-top: auto; overflow: hidden; position: absolute; font-size: 0.8rem; text-align: right; width: 100%; left: 0; }
 
@@ -78,9 +81,9 @@ footer { bottom: 0; height: 5vh; padding-bottom: 1vh; padding-right: 1vh; }
 
 #frontal #slides h6 { font-size: 2vmin; }
 
-#frontal #slides a { color: #e96368; text-decoration: none; }
+#frontal #slides a { color: #ff7d7d; text-decoration: none; }
 
-#frontal #slides a:hover { color: #e02027; }
+#frontal #slides a:hover { color: #ff3131; }
 
 #frontal #slides em { font-family: 'Vollkorn-Italic'; }
 
@@ -96,9 +99,11 @@ footer { bottom: 0; height: 5vh; padding-bottom: 1vh; padding-right: 1vh; }
 
 #frontal #slides p { text-align: left; max-width: 50vw; }
 
-#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 2rem; }
+#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 2.2vh; }
 
 #frontal #slides blockquote p { max-width: 70vw !important; }
+
+#frontal #slides blockquote pre code { font-size: 1.5vh; }
 
 #frontal #slides table { margin-left: auto; margin-right: auto; }
 
@@ -107,3 +112,11 @@ footer { bottom: 0; height: 5vh; padding-bottom: 1vh; padding-right: 1vh; }
 #frontal #slides table th { border-bottom: 3px dashed #848484; padding-left: 10px; padding-right: 10px; }
 
 #frontal #slides table td { border-bottom: 2px dashed #cccccc; padding-left: 10px; padding-right: 10px; }
+
+.smalltalk { z-index: 10; width: 30vw; height: 10vh; min-height: 6em; min-width: 10em; position: absolute; top: 40vh; left: 35vw; background-color: #fff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin: 0 auto; padding: 1vw; -webkit-border-radius: 5px; border-radius: 5px; }
+
+.smalltalk .page { height: 100%; }
+
+.smalltalk .page .action-area { position: absolute; bottom: 0; width: 100%; height: 50px; }
+
+.smalltalk header { animation: none; animation-delay: 0; animation-direction: normal; animation-duration: 0; animation-fill-mode: none; animation-iteration-count: 1; animation-name: none; animation-play-state: running; animation-timing-function: ease; backface-visibility: visible; background: 0; background-attachment: scroll; background-clip: border-box; background-color: transparent; background-image: none; background-origin: padding-box; background-position: 0 0; background-position-x: 0; background-position-y: 0; background-repeat: repeat; background-size: auto auto; border: 0; border-style: none; border-width: medium; border-color: inherit; border-bottom: 0; border-bottom-color: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-style: none; border-bottom-width: medium; border-collapse: separate; border-image: none; border-left: 0; border-left-color: inherit; border-left-style: none; border-left-width: medium; border-radius: 0; border-right: 0; border-right-color: inherit; border-right-style: none; border-right-width: medium; border-spacing: 0; border-top: 0; border-top-color: inherit; border-top-left-radius: 0; border-top-right-radius: 0; border-top-style: none; border-top-width: medium; bottom: auto; box-shadow: none; box-sizing: content-box; caption-side: top; clear: none; clip: auto; color: inherit; columns: auto; column-count: auto; column-fill: balance; column-gap: normal; column-rule: medium none currentColor; column-rule-color: currentColor; column-rule-style: none; column-rule-width: none; column-span: 1; column-width: auto; content: normal; counter-increment: none; counter-reset: none; cursor: auto; direction: ltr; display: inline; empty-cells: show; float: none; font: normal; font-family: inherit; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; height: auto; hyphens: none; left: auto; letter-spacing: normal; line-height: normal; list-style: none; list-style-image: none; list-style-position: outside; list-style-type: disc; margin: 0; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; max-height: none; max-width: none; min-height: 0; min-width: 0; opacity: 1; orphans: 0; outline: 0; outline-color: invert; outline-style: none; outline-width: medium; overflow: visible; overflow-x: visible; overflow-y: visible; padding: 0; padding-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; page-break-after: auto; page-break-before: auto; page-break-inside: auto; perspective: none; perspective-origin: 50% 50%; position: static; /* May need to alter quotes for different locales (e.g fr) */ quotes: '\201C' '\201D' '\2018' '\2019'; right: auto; tab-size: 8; table-layout: auto; text-align: inherit; text-align-last: auto; text-decoration: none; text-decoration-color: inherit; text-decoration-line: none; text-decoration-style: solid; text-indent: 0; text-shadow: none; text-transform: none; top: auto; transform: none; transform-style: flat; transition: none; transition-delay: 0s; transition-duration: 0s; transition-property: none; transition-timing-function: ease; unicode-bidi: normal; vertical-align: baseline; visibility: visible; white-space: normal; widows: 0; width: auto; word-spacing: normal; z-index: auto; text-align: left; font-size: 2em; min-height: 2em; }
