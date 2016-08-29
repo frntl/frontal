@@ -7,6 +7,11 @@ export default function() {
   let images = Array.from($('img'));
   if (images.length !== 0) {
     images.forEach((ele, i, arr) => {
+      // use startsWith instead
+      // ele.getAttribute('alt').startsWith('left')
+      // ele.getAttribute('alt').startsWith('full-top')
+      // ele.getAttribute('alt').startsWith('full')
+      // looking for sub: could be done like this
       if (ele.getAttribute('alt') === 'left') {
         $('#slides').removeClass('narrow');
         $('#slides').addClass('wide');
