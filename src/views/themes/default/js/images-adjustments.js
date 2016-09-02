@@ -1,8 +1,9 @@
+/* global window document */
 // some fixes on images
 const $ = require('jquery');
 export default function() {
   // console.log('execution imagesLeft');
-  let imagesHTMLCollection = document.getElementsByTagName('img'); // eslint-disable-line no-undef
+  // let imagesHTMLCollection = document.getElementsByTagName('img'); // eslint-disable-line no-undef
   // let images = Array.from(imagesHTMLCollection);
   let images = Array.from($('img'));
   if (images.length !== 0) {
@@ -13,12 +14,14 @@ export default function() {
       // ele.getAttribute('alt').startsWith('full')
       // looking for sub: could be done like this
       // ^.*?sub:(.*?)$
-      if (ele.getAttribute('alt') === 'left') {
+      if (ele.getAttribute('alt').startsWith('left') === true) {
+        console.log('left image');
         $('#slides').removeClass('narrow');
         $('#slides').addClass('wide');
         $('p').addClass('pwide');
         // console.log('We ave an image that wants to be left aligned');
-      } else if (ele.getAttribute('alt') === 'full-top') {
+      } else if (ele.getAttribute('alt').startsWith('full-top') === true) {
+        console.log('full-top image');
         let body = $('body');
         body.css('background-image', 'url(' + ele.src + ')');
         body.css('background-position', 'center');
@@ -30,9 +33,9 @@ export default function() {
         // console.log(body.css('background-color'));
         alltxt.css('background-color', body.css('background-color'));
         alltxt.css('padding', '0px 5px 0px 5px');
-      } else if (ele.getAttribute('alt') === 'full') {
+      } else if (ele.getAttribute('alt').startsWith('full') === true) {
         let img = $('img[alt*="full"]');
-        //
+        console.log('full image');
         // TODO: move image out of p tag
         // sourround with </p><img><p>
         // or will this create an new error?
@@ -51,11 +54,30 @@ export default function() {
           'margin-left': '0%',
           'margin-right': '0%'
         });
-      } else {
+      }else {
         $('#slides').removeClass('wide');
         $('#slides').addClass('narrow');
         $('p').removeClass('pwide');
         $('body').css('background-image', 'url()');
+      }
+      // check if the alt attributes contains the words
+      // sub:
+      // the ~ returns the index of the word if it is true
+      //  and 0 if not
+      if(~ele.getAttribute('alt').indexOf('sub:') !== 0) {
+        let subtext = ele.getAttribute('alt').match(/^.*?sub\:(.*?)$/)[1];
+        console.log(subtext);
+        let height = $(window).height;
+        let width = $(window).width;
+
+        if($('#subtext').length === 0) {
+          $('body').append('<div id="subtext"><div>');
+        }
+        let container = $('#subtext');
+        console.log(container);
+        container.html(`${subtext}`);
+      }else{
+        $('#subtext').remove();
       }
     });
   } else {

@@ -262,3 +262,21 @@ footer {
 -webkit-border-radius: 5px;
 border-radius: 5px;
 }
+
+
+// ------------ SUBTEXT
+
+#subtext{
+  font-size:1.5rem;
+  font-style: italic;
+  color:$color4;
+  background-color: #FFFFFF;
+  position: absolute;
+    bottom:$headerHeight;
+  height:$headerHeight;
+  width:100vw;
+  line-height:$headerHeight;
+  text-align:center;
+  z-index:9998;
+
+}
