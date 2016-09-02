@@ -12,6 +12,7 @@ export default function() {
       // ele.getAttribute('alt').startsWith('full-top')
       // ele.getAttribute('alt').startsWith('full')
       // looking for sub: could be done like this
+      // ^.*?sub:(.*?)$
       if (ele.getAttribute('alt') === 'left') {
         $('#slides').removeClass('narrow');
         $('#slides').addClass('wide');
