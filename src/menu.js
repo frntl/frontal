@@ -7,6 +7,7 @@ const dialog = electron.dialog;
 // const JsonDB = require('node-json-db');
 const chalk = require('chalk');
 const pkg = require('./package.json');
+const sizes = require('./config/window-sizes.json');
 import {help} from './help/help-window.js';
 import {openPrefs} from './config';
 import {openFile, processFile, getRecentFiles, getDirs, openFolder} from './lib/files';
@@ -225,6 +226,21 @@ export function buildTemplate() {
         label: 'Close',
         accelerator: 'CmdOrCtrl+W',
         role: 'close'
+      }, {
+        type: 'separator'
+      }, {
+        label: 'Set Size...',
+        submenu: (()=>{
+          sizes.forEach((ele, i, arr)=>{
+            ele.click = ()=>{
+              senderManaged('set-window-size', {
+                width: ele.width,
+                height: ele.height
+              });
+            };
+          });
+          return sizes;
+        })()
       }]
   }, {
     label: 'Help',

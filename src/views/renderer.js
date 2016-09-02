@@ -12,9 +12,28 @@ const shell = require('electron').shell;
 const padStart = require('lodash.padStart');
 const drag = require('electron-drag');
 const smalltalk = require('smalltalk');
+let dimensions = false;
 
+function showDimensions() {
+  let ele = document.getElementById('dimensions');
+  if(dimensions === true) {
+    if(ele !== null) {
+      ele.style.visibility = 'visible';
+      let myWidth = window.innerWidth;
+      let myHeight = window.innerHeight;
+        // your size calculation code here
+      ele.innerHTML = myWidth + ' × ' + myHeight;
+    }
+  }else if(dimensions === false && ele !== null) {
+    ele.style.visibility = 'hidden';
+
+  }
+}
+window.onresize = ()=>{
+  showDimensions();
+};
 window.onload = () => {
-
+  showDimensions();
   let content = null;
   let currentSlide = 0;
   let ids = ['comments', 'slides'];
@@ -206,6 +225,18 @@ window.onload = () => {
     windowManager.bridge.emit('zoom-reset-notes', {
       message: {val: null}
     });
+  });
+
+  ipcRenderer.on('set-window-size', (event, arg)=>{
+    let win = remote.getCurrentWindow();
+    console.log('set window size: ', arg);
+    win.setSize(arg.msg.width, arg.msg.height, true);
+  });
+  ipcRenderer.on('toggle-dimensions', (event, arg)=>{
+
+    dimensions = !dimensions;
+    showDimensions();
+    console.log('dimensions toggled to: ', dimensions);
   });
   ipcRenderer.on('goto', (event, arg) => {
     // decrease speakerNotes
