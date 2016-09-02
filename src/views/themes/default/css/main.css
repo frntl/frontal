@@ -39,15 +39,15 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 
 .hljs-strong { font-weight: bold; }
 
-.lang-text .hljs, .lang-text .hljs-comment, .lang-text .hljs-quote, .lang-text .hljs-keyword, .lang-text .hljs-selector-tag, .lang-text .hljs-addition, .lang-text .hljs-number, .lang-text .hljs-string, .lang-text .hljs-meta .hljs-meta-string, .lang-text .hljs-literal, .lang-text .hljs-doctag, .lang-text .hljs-regexp, .lang-text .hljs-title, .lang-text .hljs-section, .lang-text .hljs-name, .lang-text .hljs-selector-id, .lang-text .hljs-selector-class, .lang-text .hljs-attribute, .lang-text .hljs-attr, .lang-text .hljs-variable, .lang-text .hljs-template-variable, .lang-text .hljs-class .hljs-title, .lang-text .hljs-type, .lang-text .hljs-symbol, .lang-text .hljs-bullet, .lang-text .hljs-subst, .lang-text .hljs-meta, .lang-text .hljs-meta .hljs-keyword, .lang-text .hljs-selector-attr, .lang-text .hljs-selector-pseudo, .lang-text .hljs-link, .lang-text .hljs-built_in, .lang-text .hljs-deletion, .lang-text .hljs-formula, .lang-text .hljs-emphasis, .lang-text .hljs-strong, .lang-pseudo .hljs, .lang-pseudo .hljs-comment, .lang-pseudo .hljs-quote, .lang-pseudo .hljs-keyword, .lang-pseudo .hljs-selector-tag, .lang-pseudo .hljs-addition, .lang-pseudo .hljs-number, .lang-pseudo .hljs-string, .lang-pseudo .hljs-meta .hljs-meta-string, .lang-pseudo .hljs-literal, .lang-pseudo .hljs-doctag, .lang-pseudo .hljs-regexp, .lang-pseudo .hljs-title, .lang-pseudo .hljs-section, .lang-pseudo .hljs-name, .lang-pseudo .hljs-selector-id, .lang-pseudo .hljs-selector-class, .lang-pseudo .hljs-attribute, .lang-pseudo .hljs-attr, .lang-pseudo .hljs-variable, .lang-pseudo .hljs-template-variable, .lang-pseudo .hljs-class .hljs-title, .lang-pseudo .hljs-type, .lang-pseudo .hljs-symbol, .lang-pseudo .hljs-bullet, .lang-pseudo .hljs-subst, .lang-pseudo .hljs-meta, .lang-pseudo .hljs-meta .hljs-keyword, .lang-pseudo .hljs-selector-attr, .lang-pseudo .hljs-selector-pseudo, .lang-pseudo .hljs-link, .lang-pseudo .hljs-built_in, .lang-pseudo .hljs-deletion, .lang-pseudo .hljs-formula, .lang-pseudo .hljs-emphasis, .lang-pseudo .hljs-strong { color: #93a1a1; }
+.lang-text .hljs, .lang-text .hljs-comment, .lang-text .hljs-quote, .lang-text .hljs-keyword, .lang-text .hljs-selector-tag, .lang-text .hljs-addition, .lang-text .hljs-number, .lang-text .hljs-string, .lang-text .hljs-meta .hljs-meta-string, .lang-text .hljs-literal, .lang-text .hljs-doctag, .lang-text .hljs-regexp, .lang-text .hljs-title, .lang-text .hljs-section, .lang-text .hljs-name, .lang-text .hljs-selector-id, .lang-text .hljs-selector-class, .lang-text .hljs-attribute, .lang-text .hljs-attr, .lang-text .hljs-variable, .lang-text .hljs-template-variable, .lang-text .hljs-class .hljs-title, .lang-text .hljs-type, .lang-text .hljs-symbol, .lang-text .hljs-bullet, .lang-text .hljs-subst, .lang-text .hljs-meta, .lang-text .hljs-meta .hljs-keyword, .lang-text .hljs-selector-attr, .lang-text .hljs-selector-pseudo, .lang-text .hljs-link, .lang-text .hljs-built_in, .lang-text .hljs-deletion, .lang-text .hljs-formula, .lang-text .hljs-emphasis, .lang-text .hljs-strong, .lang-pseudo .hljs, .lang-pseudo .hljs-comment, .lang-pseudo .hljs-quote, .lang-pseudo .hljs-keyword, .lang-pseudo .hljs-selector-tag, .lang-pseudo .hljs-addition, .lang-pseudo .hljs-number, .lang-pseudo .hljs-string, .lang-pseudo .hljs-meta .hljs-meta-string, .lang-pseudo .hljs-literal, .lang-pseudo .hljs-doctag, .lang-pseudo .hljs-regexp, .lang-pseudo .hljs-title, .lang-pseudo .hljs-section, .lang-pseudo .hljs-name, .lang-pseudo .hljs-selector-id, .lang-pseudo .hljs-selector-class, .lang-pseudo .hljs-attribute, .lang-pseudo .hljs-attr, .lang-pseudo .hljs-variable, .lang-pseudo .hljs-template-variable, .lang-pseudo .hljs-class .hljs-title, .lang-pseudo .hljs-type, .lang-pseudo .hljs-symbol, .lang-pseudo .hljs-bullet, .lang-pseudo .hljs-subst, .lang-pseudo .hljs-meta, .lang-pseudo .hljs-meta .hljs-keyword, .lang-pseudo .hljs-selector-attr, .lang-pseudo .hljs-selector-pseudo, .lang-pseudo .hljs-link, .lang-pseudo .hljs-built_in, .lang-pseudo .hljs-deletion, .lang-pseudo .hljs-formula, .lang-pseudo .hljs-emphasis, .lang-pseudo .hljs-strong { color: #93a1a1 !important; }
 
 header, footer { font-family: 'Vollkorn-SemiItalic'; color: #7A7A7A; box-sizing: border-box; margin-top: auto; overflow: hidden; position: absolute; font-size: 0.8rem; text-align: right; width: 100%; left: 0; }
 
 header { top: 0; height: 5vh; padding-top: 1vh; padding-right: 1vh; }
 
-footer { bottom: 0; height: 5vh; padding-bottom: 1vh; padding-right: 1vh; }
+footer { bottom: 0; height: 5vh; line-height: 5vh; padding-bottom: 1vh; padding-right: 1vh; }
 
-#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; max-width: 50em; overflow: hidden; font-size: 1.3em; line-height: 1.5; color: #2f3f56; word-wrap: break-word; hyphens: auto; background-color: #FFFFFF; }
+#frontal { margin: 0 auto; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; font-family: 'Vollkorn-Regular'; max-height: 100%; max-width: 50em; overflow: hidden; font-size: 2.0em; line-height: 1.5; color: #2f3f56; word-wrap: break-word; hyphens: auto; background-color: #FFFFFF; }
 
 #frontal img[alt="left"] { margin-left: 5%; margin-right: 5%; }
 
@@ -93,19 +93,21 @@ footer { bottom: 0; height: 5vh; padding-bottom: 1vh; padding-right: 1vh; }
 
 #frontal #slides img[alt="left"] { float: left; margin-right: 10px; clear: both; max-width: 45vw; }
 
-#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; background: #eee; border-left: 2px solid #A4A4A4; min-width: 50vw; }
+#frontal #slides pre { min-width: 100%; text-align: left; padding: 1em; background: #eee; border-left: 2px solid #A4A4A4; min-width: 50vw; font-size: 1.5rem; }
 
 #frontal #slides code { text-align: left; font-family: 'CamingoCode-Regular'; }
 
 #frontal #slides p { text-align: left; max-width: 50vw; }
 
-#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 2.2vh; }
+#frontal #slides blockquote { font-family: 'Vollkorn-Italic'; font-size: 2rem; }
+
+#frontal #slides blockquote h1, #frontal #slides blockquote h2, #frontal #slides blockquote h3, #frontal #slides blockquote h4, #frontal #slides blockquote h5, #frontal #slides blockquote h6 { text-align: left; }
 
 #frontal #slides blockquote p { max-width: 70vw !important; }
 
 #frontal #slides blockquote pre code { font-size: 1.5vh; }
 
-#frontal #slides table { margin-left: auto; margin-right: auto; }
+#frontal #slides table { margin-left: auto; margin-right: auto; font-size: 1.5rem; }
 
 #frontal #slides table thead { font-family: 'Vollkorn-Bold'; }
 

@@ -19,12 +19,14 @@ header, footer {
 header {
   top: 0;
   height: $headerHeight;
+  // line-height:$headerHeight;
   padding-top: $headerPadding;
   padding-right: $headerPadding;
 }
 footer {
   bottom: 0;
   height: $headerHeight;
+  line-height:$headerHeight;
   padding-bottom: $headerPadding;
   padding-right: $headerPadding;
 }
@@ -39,7 +41,7 @@ footer {
   max-height: 100%;
   max-width:50em;
   overflow: hidden;
-  font-size: 1.3em;
+  font-size: 2.0em;
   line-height: 1.5;
   color: $textColor;
   word-wrap: break-word;
@@ -146,8 +148,10 @@ footer {
       background:$codeBG;
       border-left: 2px solid $codeAccent;
       min-width:50vw;
+      font-size:1.5rem;
     }
     code {
+
       text-align: left;
       font-family: 'CamingoCode-Regular';
       // font-size: 18px;
@@ -157,8 +161,11 @@ footer {
       max-width: 50vw;
     }
     blockquote {
+      h1,h2,h3,h4,h5,h6{
+        text-align: left;
+      }
       font-family: 'Vollkorn-Italic';
-      font-size: 2.2vh;
+      font-size: 2rem;
       p{
         max-width:70vw !important;
       }
@@ -173,7 +180,7 @@ footer {
       margin-right: auto;
       // border-bottom: 2px dashed #cccccc;
       // border-collapse: collapse;
-
+      font-size:1.5rem;
       thead {
         font-family: 'Vollkorn-Bold';
         // background-color: none;
