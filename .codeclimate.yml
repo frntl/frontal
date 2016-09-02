@@ -9,6 +9,9 @@ engines:
       - javascript
   eslint:
     enabled: true
+    exclude_fingerprints:
+    - 8d8ce2a8dff1059ad49c44a5273f660d
+    - 8d8ce2a8dff1059ad49c44a5273f660d
   fixme:
     enabled: true
   scss-lint:

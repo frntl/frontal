@@ -120,7 +120,7 @@ export function buildTemplate() {
       }
     }, {
       label: 'GoTo:',
-      accelerator:' CmdOrCtrl+G',
+      accelerator: 'CmdOrCtrl+G',
       click: ()=>{
         senderManaged('goto', 'goto');
       }
@@ -178,7 +178,7 @@ export function buildTemplate() {
       click: reload
     }, {
       label: 'Toggle Full Screen',
-      accelerator: (function() {
+      accelerator: (()=> {
         if (process.platform === 'darwin') {
           return 'Ctrl+Command+F';
         } else {
@@ -192,7 +192,7 @@ export function buildTemplate() {
       }
     }, {
       label: 'Toggle Developer Tools',
-      accelerator: (function() {
+      accelerator: (()=> {
         if (process.platform === 'darwin') {
           return 'Alt+Command+I';
         } else {
@@ -224,6 +224,7 @@ export function buildTemplate() {
       //     }
       //   }
       // },
+      //
       {
         label: 'Minimize',
         accelerator: 'CmdOrCtrl+M',
