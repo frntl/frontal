@@ -42,6 +42,7 @@ window.onload = () => {
   let initialSlidesHeaderFontsize = null;
   let initialSlidesFooterFontsize = null;
 
+
   if (document.getElementById('frontal') !== null) {
     initialSlidesFontsize = getComputedFontSize(document.getElementById('frontal'));
     // console.log('initialCommentsFontsize ' , initialCommentsFontsize);

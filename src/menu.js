@@ -119,8 +119,8 @@ export function buildTemplate() {
         // sender(windows, 'down', 'Hello down from main!');
       }
     }, {
-      label:'GoTo:',
-      accelerator:'CmdOrCtrl+G',
+      label: 'GoTo:',
+      accelerator:' CmdOrCtrl+G',
       click: ()=>{
         senderManaged('goto', 'goto');
       }
@@ -203,6 +203,12 @@ export function buildTemplate() {
         if (focusedWindow) {
           focusedWindow.toggleDevTools();
         }
+      }
+    }, {
+      label: 'Toggle Window Dimensions',
+      accelerator: 'CmdOrCtrl+D',
+      click: ()=>{
+        senderManaged('toggle-dimensions', '');
       }
     }]
   }, {
