@@ -1,7 +1,7 @@
 /* global window, document */
 const {ipcRenderer} = require('electron');
 const remote = require('electron').remote;
-
+const $ = require('jquery');
 const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
 import {switchJS} from './lib/theme-loader';
@@ -251,4 +251,7 @@ window.onload = () => {
         console.log('cancel');
       });
   });
+
+  console.log('on load fade off');
+  $('.se-pre-con').delay(3000).fadeOut('slow');
 };

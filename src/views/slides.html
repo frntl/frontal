@@ -8,6 +8,23 @@
     <link rel="stylesheet" id="slides-link" type="text/css" href="./themes/default/css/main.css">
   </head>
   <body id="frontal">
+  <div class="se-pre-con"></div>
+  <style type="text/css">
+    /* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript,
+if it's not present, don't show loader */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(assets/images/sm-loading.gif) center no-repeat #fff;
+}
+  </style>
   <header id="header"></header>
     <div id="slides" class="content">
     </div>
@@ -16,6 +33,17 @@
   <script>
   require('./renderer.js');
   require('./lib/slide-functions.js');
+  </script>
+  <script type="text/javascript">
+  /* global window */
+  const $ = require('jquery');
+  // paste this code under the head tag or in a separate js file.
+  // Wait for window load
+  $(window).on('load', function() {
+    // Animate loader off screen
+    // console.log('on load fade off');
+    // $('.se-pre-con').fadeOut('slow');
+  });
   </script>
   </body>
 </html>
