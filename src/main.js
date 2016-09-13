@@ -24,7 +24,7 @@ import {log} from './lib/logging';
 
 global.name = null;
 global.database = null;
-global.presetationRoot = null;
+global.presentationRoot = null;
 global.presentationFile = null;
 global.isDev = isDev;
 global.helpFilePath = `${__dirname}/help/help.md`;

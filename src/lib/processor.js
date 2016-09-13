@@ -10,7 +10,7 @@ export function processing (filePath, config) {
   }
   global.name = path.basename(filePath, path.extname(filePath));
   global.presentationFile = filePath;
-  global.presetationRoot = path.dirname(filePath);
+  global.presentationRoot = path.dirname(filePath);
   let fileContentMD = fs.readFileSync(filePath, 'utf8');
   if (fileContentMD !== null) {
     let slidesHTML = slides(fileContentMD, config);
