@@ -11,8 +11,8 @@ export function linker(data, rootPath) {
   $('img').each((i, elem) => {
     // do the replacing here
     let src = $(elem).attr('src');
+    console.log(src);
     if(!src.startsWith('http')) {
-      // console.log(src);
       let res = path.resolve(rootPath, src);
       // console.log(res);
       $(elem).attr('src', res);
