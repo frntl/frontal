@@ -24,7 +24,6 @@ export function senderManaged(title, msg) {
   console.log(chalk.red('senderManaged'));
   if(currWin !== false) {
     currWin.content().send(title, {msg: msg});
-
   }
 }
 

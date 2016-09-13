@@ -125,6 +125,12 @@ export function buildTemplate() {
         senderManaged('goto', 'goto');
       }
     }, {
+      label:'GoBack!',
+      accelerator:'Backspace',
+      click: ()=>{
+        console.log('should send a window back');
+      }
+    }, {
       type: 'separator'
     }, {
       label: 'Zoom in',
