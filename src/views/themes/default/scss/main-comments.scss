@@ -2,7 +2,11 @@
 $headerHeight: 30px;
 $headerMargin: 10px;
 
+
 body#notes{
+  img{
+    max-width:200px;
+  }
   margin: 0 auto;
   max-width: 50em !important;
   padding-top:$headerHeight/2;
