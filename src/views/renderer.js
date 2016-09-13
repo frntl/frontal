@@ -305,6 +305,6 @@ window.onload = () => {
       });
   });
 
-  console.log('on load fade off');
-  $('.se-pre-con').delay(3000).fadeOut('slow');
+  // console.log('on load fade off');
+  // $('.se-pre-con').delay(3000).fadeOut('slow');
 };
