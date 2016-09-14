@@ -33,6 +33,14 @@ export default function() {
         // console.log(body.css('background-color'));
         alltxt.css('background-color', body.css('background-color'));
         alltxt.css('padding', '0px 5px 0px 5px');
+        let texts = $('p, pre, blockquote');
+        texts.css('margin', 'auto');
+        let pre = $('pre');
+        pre.css('margin', 'auto');
+        pre.css('width', '50vw');
+        pre.css('padding', '5px');
+        let headlines = $('h1, h2, h3, h4, h5, h6');
+        headlines.css('width', '100vw');
       } else if (ele.getAttribute('alt').startsWith('full') === true) {
         let img = $('img[alt*="full"]');
         console.log('full image');
