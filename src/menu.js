@@ -125,8 +125,8 @@ export function buildTemplate() {
         senderManaged('goto', 'goto');
       }
     }, {
-      label:'GoBack!',
-      accelerator:'Backspace',
+      label: 'GoBack!',
+      accelerator: 'Backspace',
       click: ()=>{
         console.log('should send a window back');
       }
