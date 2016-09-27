@@ -89,6 +89,7 @@ export default function() {
       }
     });
   } else {
+    $('#subtext').remove();
     $('p').removeClass('pwide');
     $('#slides').removeClass('wide');
     $('#slides').addClass('narrow');
