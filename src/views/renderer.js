@@ -2,6 +2,8 @@
 const {ipcRenderer} = require('electron');
 const remote = require('electron').remote;
 const $ = require('jquery');
+import * as fs from 'fs';
+import * as path from 'path';
 const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
 import {switchJS} from './lib/theme-loader';
@@ -191,6 +193,43 @@ window.onload = () => {
     switchCSS(filePath, 0);
   }
 
+  function printing(folder) {
+    let opts = {
+      marginsType: 0,
+      printBackground: true,
+      printSelectionOnly: false,
+      pageSize: 'A4',
+      landscape: true
+    };
+    let win = remote.getCurrentWindow();
+    let last_slide = currentSlide;
+    currentSlide = 0;
+    setContent();
+    console.log(content.msg.length);
+    if(!fs.existsSync(folder + '/.thumbs')) {
+      fs.mkdirSync(folder + '/.thumbs');
+    }
+    let interval = setInterval(function () {
+      win.capturePage(function handleCapture (img) {
+        fs.writeFile(`${folder}/.thumbs/frontal-slide-${padStart(currentSlide, 5, 0)}.png`,
+        img.toPng(), (err, data)=>{
+          if(err) {
+            console.error(err);
+          }
+          if(currentSlide === content.msg.length - 1) {
+            clearInterval(interval);
+          } else {
+            increaseSlideNumber();
+            setContent();
+          }
+        });
+      });
+    }, 500);
+
+    currentSlide = last_slide;
+    setContent();
+  }
+
 
   // -----------execution-------------------
   ipcRenderer.on('new-file', (event, arg) => {
@@ -247,6 +286,10 @@ window.onload = () => {
     }
   });
 
+  ipcRenderer.on('thumbs', (event, arg) => {
+    console.log('thumbs', arg.msg);
+    printing(arg.msg);
+  });
   ipcRenderer.on('plus', (event, arg) => {
     setFontSize(2, null, 'frontal');
     setFontSize(2, null, 'header');

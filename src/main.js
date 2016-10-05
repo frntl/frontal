@@ -1,7 +1,7 @@
 const electron = require('electron');
 const Menu = electron.Menu;
 const app = electron.app;
-const ipcMain = electron.ipcMain;
+// const ipcMain = electron.ipcMain;
 const MenuItem = electron.MenuItem;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;

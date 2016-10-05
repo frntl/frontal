@@ -58,6 +58,13 @@ export function buildTemplate() {
       label: 'Select All',
       accelerator: 'CmdOrCtrl+A',
       role: 'selectall'
+    }, {
+      label: 'Build Thumbnails',
+      accelerator: 'CmdOrCtrl+P',
+      click: ()=>{
+        senderManaged('thumbs', global.presentationRoot);
+        // console.log('should print all pages as');
+      }
     }]
   }, {
     label: 'View',
