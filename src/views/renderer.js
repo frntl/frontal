@@ -218,6 +218,7 @@ window.onload = () => {
           }
           if(currentSlide === content.msg.length - 1) {
             clearInterval(interval);
+            ipcRenderer.send('thumbs-ready', `${folder}/.thumbs/`);
           } else {
             increaseSlideNumber();
             setContent();

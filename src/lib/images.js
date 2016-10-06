@@ -4,7 +4,7 @@
 // - if the link as a relativ link
 // - use path.resolve to fix the link based on presentations location
 let cheerio = require('cheerio');
-const sharp = require('sharp');
+// const sharp = require('sharp');
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -29,12 +29,11 @@ export function thumbs(route) {
   for(let file of files) {
     let ext = path.extname(file);
     if(ext === 'png') {
-      sharp(file).resize(200, null).toFile(file, (err)=>{
-        if(err) {
-          console.error(err);
-        }
-      });
+      // sharp(file).resize(200, null).toFile(file, (err)=>{
+      //   if(err) {
+      //     console.error(err);
+      //   }
+      // });
     }
   }
-  sharp();
 }

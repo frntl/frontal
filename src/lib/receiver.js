@@ -1,5 +1,8 @@
-const ipcMain = electron.ipcMain;
+const {ipcMain} = require('electron');
 
 export function receive() {
-  // ipcMain.on();
+  ipcMain.on('thumbs-ready', (event, arg) =>{
+    console.log(arg);
+    // thumbs(arg);
+  });
 }

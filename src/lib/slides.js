@@ -33,11 +33,13 @@ export function slides(data, config) {
       uncommented.push(hrefed);
     }
     let attr = null;
-    if(useTomlConfig) {
-      attr = tomlAttributes[i];
-    }else {
+    // if(useTomlConfig) {
+    attr = tomlAttributes[i];
+    if(parsed.jsonAttributes[i] !== undefined) {
       attr = parsed.jsonAttributes[i];
     }
+    // }else {
+    // }
     objs.push({
       slide: clean.data,
       comments: uncommented.join('<br><br>'),

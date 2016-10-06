@@ -92,7 +92,7 @@ export function md2htmlMarked(data) {
   let globalfm = false;
   testSplit.forEach((ele, i, arr) => {
     let tmpjson = frontmatter(ele);
-    // console.log(tmpjson);
+    console.log(tmpjson);
     if (i === 0 && 'global' in tmpjson.attributes) {
       globalfm = tmpjson.attributes.global;
       fmjsons.push(tmpjson.attributes);
