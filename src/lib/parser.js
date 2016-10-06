@@ -116,5 +116,6 @@ export function md2htmlMarked(data) {
   let result = {};
   result.slides = slides;
   result.jsonAttributes = fmjsons;
+  // console.log(result.jsonAttributes);
   return result;
 }

@@ -34,6 +34,7 @@
     "node-json-db": "^0.7.2",
     "remove-html-comments": "^1.0.2",
     "req-all": "^0.1.0",
+    "require-all": "^2.0.0",
     "smalltalk": "^2.1.2",
     "toml": "^2.3.0",
     "uuid": "^2.0.2",
