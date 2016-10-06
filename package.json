@@ -1,6 +1,6 @@
 {
   "name": "frontal",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "main": "app/main.js",
   "private": true,
   "scripts": {
