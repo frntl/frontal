@@ -70,6 +70,7 @@ export function processFile(file) {
   let slidesHTML = processing(presentationFile, parsedYaml);
   watch(presentationFile);
   global.presentationFile = presentationFile;
+  global.name = basename(global.presentationFile);
   let name = basename(presentationFile).replace(/[^a-z0-9]/gi, '_').toLowerCase() + uuid.v4();
   let slideLayoutPath = resolve(__dirname, '../views/slides.html');
   // console.log('slideLayoutPath', slideLayoutPath);

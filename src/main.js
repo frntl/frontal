@@ -10,10 +10,11 @@ const Config = require('electron-config');
 const windowManager = require('electron-window-manager');
 const isDev = require('electron-is-dev');
 const chalk = require('chalk');
+import {receive} from './lib/receiver';
 import {initWindows} from './lib/windows';
-if (isDev) {
-  require('electron-reload')(__dirname);
-}
+// if (isDev) {
+//   require('electron-reload')(__dirname);
+// }
 import {helpLoader, initialHelpLoaderManaged} from './help/help-loader';
 import {buildTemplate} from './menu';
 import {watch} from './lib/watcher';
@@ -26,6 +27,7 @@ global.name = null;
 global.database = null;
 global.presentationRoot = null;
 global.presentationFile = null;
+global.slidesPrefix = 'frontal-slide-';
 global.isDev = isDev;
 global.helpFilePath = `${__dirname}/help/help.md`;
 global.config = new Config(require('./config/default.json'));
@@ -107,3 +109,5 @@ app.on('ready', () => {
 
   // initialHelpLoader([global.slidesWindow, global.commentsWindow]);
 });
+
+receive();

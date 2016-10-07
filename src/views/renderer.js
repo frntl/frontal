@@ -8,6 +8,7 @@ const isEmpty = require('lodash.isempty');
 import {getComputedFontSize, setFontSize} from './lib/fontsize';
 import {switchJS} from './lib/theme-loader';
 import {setAttributes, setHeaderFooter} from './lib/header-footer';
+// import {padder} from './lib/utils';
 
 const windowManager = remote.require('electron-window-manager');
 const shell = require('electron').shell;
@@ -15,58 +16,6 @@ const padStart = require('lodash.padStart');
 const drag = require('electron-drag');
 const smalltalk = require('smalltalk');
 let dimensions = false;
-// from here
-// let exec_body_scripts = function(body_el) {
-//   // Finds and executes scripts in a newly added element's body.
-//   // Needed since innerHTML does not run scripts.
-//   //
-//   // Argument body_el is an element in the dom.
-
-//   function nodeName(elem, name) {
-//     return elem.nodeName && elem.nodeName.toUpperCase() ===
-//               name.toUpperCase();
-//   }
-
-//   function evalScript(elem) {
-//     var data = (elem.text || elem.textContent || elem.innerHTML || ''),
-//       head = document.getElementsByTagName('head')[0] ||
-//                   document.documentElement,
-//       script = document.createElement('script');
-
-//     script.type = 'text/javascript';
-//     try {
-//       // doesn't work on ie...
-//       script.appendChild(document.createTextNode(data));
-//     } catch(e) {
-//       // IE has funky script nodes
-//       script.text = data;
-//     }
-
-//     head.insertBefore(script, head.firstChild);
-//     head.removeChild(script);
-//   }
-
-//   // main section of function
-//   var scripts = [],
-//     script,
-//     children_nodes = body_el.childNodes,
-//     child,
-//     i;
-
-//   for (i = 0; children_nodes[i]; i++) {
-//     child = children_nodes[i];
-//     if (nodeName(child, 'script') &&
-//       (!child.type || child.type.toLowerCase() === 'text/javascript')) {
-//       scripts.push(child);
-//     }
-//   }
-
-//   for (i = 0; scripts[i]; i++) {
-//     script = scripts[i];
-//     if (script.parentNode) {script.parentNode.removeChild(script);}
-//     evalScript(scripts[i]);
-//   }
-// };
 
 function showDimensions() {
   let ele = document.getElementById('dimensions');
@@ -148,6 +97,11 @@ window.onload = () => {
     return ndx;
   }
 
+
+  // function notify (eventName, data) {
+  //   windowManager.bridge.emit(eventName, data);
+  // }
+
   function setContent() {
     let cnt = content.msg[constrain(currentSlide, content.msg)];
     ids.forEach((ele, index, array) => {
@@ -159,9 +113,8 @@ window.onload = () => {
           windowManager.bridge.emit('content', {
             message: {comment: cnt.comments,
                       currentSlide: padStart(currentSlide + 1, String(content.msg.length).length, '0'),
-                        currentSlidesLength: content.msg.length}
-          });
-          // exec_body_scripts(element);
+                      currentSlidesLength: content.msg.length}
+          }, 'notes');
         }
       }
     });
@@ -194,31 +147,36 @@ window.onload = () => {
   }
 
   function printing(folder) {
-    let opts = {
-      marginsType: 0,
-      printBackground: true,
-      printSelectionOnly: false,
-      pageSize: 'A4',
-      landscape: true
-    };
+    // let opts = {
+    //   marginsType: 0,
+    //   printBackground: true,
+    //   printSelectionOnly: false,
+    //   pageSize: 'A4',
+    //   landscape: true
+    // };
     let win = remote.getCurrentWindow();
     let last_slide = currentSlide;
-    currentSlide = 0;
+    // currentSlide = 0;
     setContent();
-    console.log(content.msg.length);
-    if(!fs.existsSync(folder + '/.thumbs')) {
-      fs.mkdirSync(folder + '/.thumbs');
+    // let rootPath = remote.getGlobal('presentationRoot');
+    let name = remote.getGlobal('name');
+    let prefix = remote.getGlobal('slidesPrefix');
+    // console.log(content.msg.length);
+    let thumbFolder = `${folder}/thumbs-${name}`;
+    if(!fs.existsSync(thumbFolder)) {
+      fs.mkdirSync(thumbFolder);
     }
+
     let interval = setInterval(function () {
       win.capturePage(function handleCapture (img) {
-        fs.writeFile(`${folder}/.thumbs/frontal-slide-${padStart(currentSlide, 5, 0)}.png`,
+        fs.writeFile(`${thumbFolder}/${prefix}${padStart(currentSlide, 5, 0)}.png`,
         img.toPng(), (err, data)=>{
           if(err) {
             console.error(err);
           }
           if(currentSlide === content.msg.length - 1) {
             clearInterval(interval);
-            ipcRenderer.send('thumbs-ready', `${folder}/.thumbs/`);
+            ipcRenderer.send('thumbs-ready', thumbFolder);
           } else {
             increaseSlideNumber();
             setContent();
@@ -227,8 +185,8 @@ window.onload = () => {
       });
     }, 500);
 
-    currentSlide = last_slide;
-    setContent();
+    // currentSlide = last_slide;
+    // setContent();
   }
 
 
@@ -246,6 +204,7 @@ window.onload = () => {
     // console.log(content);
     increaseSlideNumber();
     setContent();
+    // notify('slides-change', {message:{number: currentSlide}});
     // setCurrentSlideNumber();
     // document.getElementByClassName('content')
     // .innerHTML = currentSlide;
@@ -254,6 +213,7 @@ window.onload = () => {
     // console.log(content);
     decreaseSlideNumber();
     setContent();
+    // notify('slides-change', {message:{number: currentSlide}});
     // setCurrentSlideNumber();
     // document.getElementByClassName('content')
     // .innerHTML = currentSlide;
@@ -310,19 +270,19 @@ window.onload = () => {
     // decrease speakerNotes
     windowManager.bridge.emit('comma', {
       message: {val: -2}
-    });
+    }, 'notes');
   });
   ipcRenderer.on('dot', (event, arg) => {
     // increase speakerNotes
     windowManager.bridge.emit('dot', {
       message: {val: 2}
-    });
+    }, 'notes');
   });
   ipcRenderer.on('zoom-reset-notes', (event, arg) => {
     // decrease speakerNotes
     windowManager.bridge.emit('zoom-reset-notes', {
       message: {val: null}
-    });
+    }, 'notes');
   });
 
   ipcRenderer.on('set-window-size', (event, arg)=>{

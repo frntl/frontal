@@ -5,5 +5,4 @@ import {sender, senderManaged} from './sender';
 export function thumbs() {
   let currWin = windowManager.getCurrent();
   senderManaged('down', 'Hello down from main!');
-
 }

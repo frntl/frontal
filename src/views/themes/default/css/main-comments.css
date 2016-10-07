@@ -36,6 +36,12 @@ body#notes header#speaker-notes input[type="number"] { width: 50px; height: 20px
 
 body#notes #comments { margin-top: 30px; }
 
+.thumbs { float: left; padding-right: 1em; }
+
+#thumb-current img { max-width: 50% !important; max-height: 50% !important; }
+
+#thumb-next img { width: 100% !important; height: 100% !important; }
+
 .blink { -webkit-animation: blink .75s linear infinite; -moz-animation: blink .75s linear infinite; -ms-animation: blink .75s linear infinite; -o-animation: blink .75s linear infinite; animation: blink .75s linear infinite; }
 
 @-webkit-keyframes blink { 0% { opacity: 1; }
