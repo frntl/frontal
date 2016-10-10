@@ -19,7 +19,9 @@
     "prepack": "npm run predist",
     "prestart": "echo 'building help' && ./bin/build-help-html.js",
     "yaml": "echo 'parsing yaml at ./src/help/_frontal.yaml' && ./bin/test-yaml.sh",
-    "changelog": "log=$(git log  --pretty=format:'<li> <a href=\"http://github.com/frntl/frontal/commit/%H\">view commit &bull;</a> %s</li> '); echo \"CHANGELOG\n=======\n${log}\" > CHANGELOG.md"
+    "changelog": "log=$(git log  --pretty=format:'<li> <a href=\"http://github.com/frntl/frontal/commit/%H\">view commit &bull;</a> %s</li> '); echo \"CHANGELOG\n=======\n${log}\" > CHANGELOG.md",
+    "rebuild": "npm rebuild --runtime=electron --target=1.4.3 --disturl=https://atom.io/download/atom-shell --abi=48"
+
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -27,7 +29,7 @@
     "chai": "^3.4.1",
     "cz-conventional-changelog": "^1.1.6",
     "devtron": "^1.2.1",
-    "electron": "^1.4.2",
+    "electron": "^1.4.3",
     "electron-builder": "^5.14.2",
     "electron-packager": "^7.3.0",
     "electron-rebuild": "^1.1.5",
@@ -49,9 +51,8 @@
   "build": {
     "appId": "me.fabianmoronzirfas.frontal",
     "asar": false,
-    "extraResources": "./help/*",
-    "nodeGypRebuild": true
-  },
+    "extraResources": "./help/*"
+      },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

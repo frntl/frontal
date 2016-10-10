@@ -4,7 +4,7 @@
 // - if the link as a relativ link
 // - use path.resolve to fix the link based on presentations location
 let cheerio = require('cheerio');
-const lwip = require('lwip');
+const Jimp = require('jimp');
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -33,23 +33,25 @@ export function thumbs(route) {
     // console.log(ext);
     if(ext === '.png') {
       // console.log('find image to process', file);
-      lwip.open(`${route}/${file}`, (error, image)=>{
+      Jimp.read(`${route}/${file}`, (error, image)=>{
         if(error) {
           console.log('error in lwip', error);
         }else {
-          image.scale(0.2, (e, img)=>{
-            if(e) {
-              console.log(e);
-            } else {
-              img.writeFile(`${route}/${file}`, (err)=>{
-                if(err) {
-                  console.error(err);
-                }
-              });
-            }
-          });
+          image.resize(256, Jimp.AUTO).write(`${route}/${file}`);
+          // image.scale(0.2, (e, img)=>{
+          //   if(e) {
+          //     console.log(e);
+          //   } else {
+          //     img.writeFile(`${route}/${file}`, (err)=>{
+          //       if(err) {
+          //         console.error(err);
+          //       }
+          //     });
+          //   }
+          // });
         }
       });
     }
   }
+  console.log(' done scaling thumbnails');
 }
