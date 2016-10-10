@@ -8,7 +8,7 @@ import {
   detectTomlConfig
 } from '../lib/files';
 
-import {resolve} from 'path';
+import {resolve, basename, extname} from 'path';
 
 const windowManager = require('electron-window-manager');
 
@@ -20,6 +20,7 @@ function send(win, title, data) {
 }
 
 function readHelpFile() {
+  global.name = basename(global.helpFilePath, extname(global.helpFilePath));
   let tomlRes = detectTomlConfig(global.helpFilePath);
   let slidesHTML = processing(global.helpFilePath, tomlRes);
   if(global.isDev) {

@@ -16,7 +16,9 @@ const windowManager = require('electron-window-manager');
 export function detectTomlConfig(filePath) {
   var onlypath = dirname(filePath);
   console.log(onlypath);
-  let res = tomlLoader(onlypath + '/_frontal.toml');
+  console.log(`${onlypath}/${global.name}.toml`);
+  let res = tomlLoader(`${onlypath}/${global.name}.toml`);
+
   if (res === false) {
     return null;
   } else {
@@ -66,11 +68,11 @@ export function processFile(file) {
   app.addRecentDocument(presentationFile);
   setRecentFiles(presentationFile);
   console.log(presentationFile);
+  global.presentationFile = presentationFile;
+  global.name = basename(global.presentationFile, extname(global.presentationFile));
   let parsedYaml = detectTomlConfig(presentationFile);
   let slidesHTML = processing(presentationFile, parsedYaml);
   watch(presentationFile);
-  global.presentationFile = presentationFile;
-  global.name = basename(global.presentationFile);
   let name = basename(presentationFile).replace(/[^a-z0-9]/gi, '_').toLowerCase() + uuid.v4();
   let slideLayoutPath = resolve(__dirname, '../views/slides.html');
   // console.log('slideLayoutPath', slideLayoutPath);
