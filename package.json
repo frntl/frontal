@@ -1,6 +1,6 @@
 {
   "name": "frontal",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "main": "app/main.js",
   "private": true,
   "scripts": {
@@ -21,7 +21,6 @@
     "yaml": "echo 'parsing yaml at ./src/help/_frontal.yaml' && ./bin/test-yaml.sh",
     "changelog": "log=$(git log  --pretty=format:'<li> <a href=\"http://github.com/frntl/frontal/commit/%H\">view commit &bull;</a> %s</li> '); echo \"CHANGELOG\n=======\n${log}\" > CHANGELOG.md",
     "rebuild": "npm rebuild --runtime=electron --target=1.4.3 --disturl=https://atom.io/download/atom-shell --abi=48"
-
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -52,7 +51,7 @@
     "appId": "me.fabianmoronzirfas.frontal",
     "asar": false,
     "extraResources": "./help/*"
-      },
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
