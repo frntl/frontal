@@ -86,5 +86,6 @@ for building the package
 - [jdan.github.io/cleaver](http://jdan.github.io/cleaver/#2)   
 - [decksetapp.com](http://www.decksetapp.com/)  
 - [swipe.to/markdown](https://www.swipe.to/markdown/)  
+- [ycosxapp.github.io](https://ycosxapp.github.io/)
 
 So why writing another app for this task? Well on the one hand it is for learning application development with electron. On the other hand we started this because all the other options did have one or the other thing that we didn't like. (And because we can)
